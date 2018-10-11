@@ -1,2 +1,2 @@
 # imcquee.github.io
-[PitStopPerks](client.html)
+[PitStopPerks](splash.html)
