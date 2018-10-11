@@ -5,8 +5,7 @@
 
   <meta charset="UTF-8">
   <title>Pit Stop Perks</title>
-  
-  
+  <meta name = "viewport" id = "viewport_device"> 
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -119,8 +118,15 @@ option{
   <script>
   window.console = window.console || function(t) {};
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
+if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/IEMobile/i)){
+        $("#viewport_device").attr("content", "initial-scale = 0.80");
+    }
+    else if(navigator.userAgent.match(/iPad/i)){
+        $("#viewport_device").attr("content", "initial-scale = 1.00");
+    }
 </script>
   
   
