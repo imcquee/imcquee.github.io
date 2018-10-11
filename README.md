@@ -1,3 +1,3 @@
 # imcquee.github.io
-<meta http-equiv="refresh" content="0; url=http://isaacmcqueen.me/splash.html" />
+<form action="http://ec2-18-212-39-137.compute-1.amazonaws.com:9615/splash" method="post"> 
 [PitStopPerks](splash.html)
