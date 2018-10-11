@@ -1,3 +1,3 @@
 # imcquee.github.io
 
-[PitStopPerks](splash.html)
+[PitStopPerks](profile.html)
