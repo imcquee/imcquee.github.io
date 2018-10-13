@@ -137,7 +137,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
     }
   }
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://ec2-18-212-39-137.compute-1.amazonaws.com", true);
+  xhttp.open("POST", "http://ec2-18-212-39-137.compute-1.amazonaws.com:9615", true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
