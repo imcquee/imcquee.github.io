@@ -28,17 +28,17 @@ option{
 }
 
 .wrapper {
-  margin-top: 20px;
+  margin-top: 80px;
   margin-bottom: 80px;
 }
 
 .form-signin {
-  max-width: 700px;
+  max-width: 450px;
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color: #fff;
   border: 1px solidrgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  border-radius: 10px;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -135,100 +135,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
     } else {
         x.style.display = "block";
     }
-  }
-  function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-  }
-  var user=getCookie("username");
-  console.log(user);
-  //console.log(decodeURIComponent(document.cookie));
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://ec2-18-212-39-137.compute-1.amazonaws.com:9615", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  //xhttp.setRequestHeader("Content-Type", "application/json"); 
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      //document.getElementById("user").innerHTML = this.responseText;
-      //console.log(JSON.parse(this.responseText));
-      var val = JSON.parse(this.responseText);
-      //console.log(val);
-      /*if (val.action == 'spaz'){
-        console.log("hey man");
-        console.log(document.cookie);
-      }*/
-      document.getElementById("user").innerHTML = val.username;
-      document.getElementById("email").innerHTML = val.email;
-      document.getElementById("pts").innerHTML = val.points; 
-      //document.getElementById("")
-    }
-  };
-  //response format used in Server2
-  /*var query = {
-    name: username,
-    email : em
-  }*/
-  var obj = "action=profile"
-  xhttp.send(obj);
-  /*function createCORSRequest("POST", "http://ec2-18-212-39-137.compute-1.amazonaws.com") {
-  var xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr) {
-
-    // Check if the XMLHttpRequest object has a "withCredentials" property.
-    // "withCredentials" only exists on XMLHTTPRequest2 objects.
-    xhr.open(method, url, true);
-
-  } else if (typeof XDomainRequest != "undefined") {
-
-    // Otherwise, check if XDomainRequest.
-    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-
-  } else {
-
-    // Otherwise, CORS is not supported by the browser.
-    xhr = null;
-
-  }
-  return xhr;
-  }
-
-  var xhr = createCORSRequest('GET', url);
-  if (!xhr) {
-    throw new Error('CORS not supported');
-  }*/
-
-  
-/*console.log("testing");
-var webs= new WebSocket('ws://ec2-18-212-39-137.compute-1.amazonaws.com:9615');
-webs.onopen = function () {
-    webs.send('update');
 }
-
-webs.onmessage = function(call) {
-    console.log(call);
-    var data = call.data;
-    
-    document.getElementById("user").innerHTML = call.data;     
-    
-    //document.getElementById("SongID").innerHTML = call.data;        
-}
-
-webs.onclose = function() {
-
-}*/ 
 
 </script>
 
@@ -264,36 +171,17 @@ webs.onclose = function() {
       </div>
     </nav>
     <!--div class="accent"></div>-->
-    
+    <br>
+    <br>
     <div class="wrapper">
-        
-    <div class="form-signin">  
-        <h2 class="form-signin-heading">Your Profile</h2>
-        <div class="form-group row">
-                <label for="username" class="col-4 col-form-label">User Name:</label> 
-                <div class="col-8">
-                    <label for="username" class="col-4 col-form-label" id="user">User Name</label>
-                </div>
-                <label for="username" class="col-4 col-form-label">Email:</label> 
-                <div class="col-8">
-                    <label for="username" class="col-4 col-form-label" id="email">Email</label>
-                </div>
-                <label for="username" class="col-4 col-form-label">Lifetime Points:</label> 
-                <div class="col-8">
-                    <label for="username" class="col-4 col-form-label" id="pts">Lifetime Points</label>
-                    
-                </div>
-                <br>
-                <br>
-                <button class="btn-primary">Change Password</button>
-        </div>     
-      <!--<select class="form-control" name="accT" required="" id="aSel" onchange="myFunction()">
+    <form class="form-signin" action="http://ec2-18-212-39-137.compute-1.amazonaws.com:9615/action" method="post">       
+      <h2 class="form-signin-heading">Sign Up</h2>
+      <select class="form-control" name="accT" required="" id="aSel" onchange="myFunction()">
             <option value="" disabled selected>Account Type</option>
             <option id="Driver" value="Driver">Driver</option>
             <option id="Admin" value="Admin">Administrator</option>
             <option id="Sponsor" value="Sponsor">Sponsor</option>
-      </select> 
-      
+      </select> <br>
       <div id="auth">
             <input type="text" class="form-control" placeholder="Authorization Email" name="authEmail">
       </div>
@@ -309,14 +197,15 @@ webs.onclose = function() {
                         <button class="btn btn-lg btn-primary btn-block">Administrator</button>   
                 </div>
             </div> 
-      </div>   
+      </div>-->   
+      <br>
       <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
       <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>   
       <input type="hidden" name="account" value="nUser">
       <!--<label class="checkbox">
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->   
+      </label>-->
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>   
     </form>
   </div>
