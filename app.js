@@ -17,7 +17,7 @@ function loadCatalog(){
   main = document.getElementById('main-content');
   frame = document.createElement('iframe');
   frame.setAttribute("id","iFrame");
-  frame.setAttribute("src","http://isaacmcqueen.me/catalog.js");
+  frame.setAttribute("href","http://isaacmcqueen.me/catalog.js");
   frame.setAttribute("height","100%");
   frame.setAttribute("width","100%");
   frame.setAttribute("frameBorder","0");
@@ -28,7 +28,7 @@ function loadOrders(){
   main = document.getElementById('main-content');
   frame = document.createElement('iframe');
   frame.setAttribute("id","iFrame");
-  frame.setAttribute("src","http://isaacmcqueen.me/orders.js");
+  frame.setAttribute("href","http://isaacmcqueen.me/orders.js");
   frame.setAttribute("height","100%");
   frame.setAttribute("width","100%");
   frame.setAttribute("frameBorder","0");
