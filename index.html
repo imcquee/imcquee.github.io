@@ -186,7 +186,7 @@
         <br><br>
         <div class="container">
                 <div class="OuterMostClass">
-                    <div class="Red">
+                    <!--<div class="Red">
                         <form action="http://server.isaacmcqueen.me:9615/SignUp" method="post">
                             <button id="RedB" class="btn btn-lg btn-primary btn-block">Register</button> 
                         </form>
@@ -196,9 +196,20 @@
                         <form action="http://server.isaacmcqueen.me:9615/SignIn" method="post">
                             <button class="btn btn-lg btn-primary btn-block" id="GoldB">Login</button>   
                         </form>
-                        <!--<button class="btn btn-lg btn-primary btn-block" id="GoldB" onclick="window.location.href='/SignIn.html'">Login</button>  -->
+                    </div>-->
+                    <div class="Red">
+                      <form action="http://server.isaacmcqueen.me:9615/action" method="post">
+                          <button id="RedB" name="action" value="signup" class="btn btn-lg btn-primary btn-block">Register</button> 
+                      </form>
                     </div>
-                     
+                    <br>
+                    <div class="Gold">
+                        <form action="http://server.isaacmcqueen.me:9615/action" method="post">
+                            <button class="btn btn-lg btn-primary btn-block" name="action" value="signin" id="GoldB">Login</button>   
+                        </form>
+                        <!--<button class="btn btn-lg btn-primary btn-block" id="GoldB" onclick="window.location.href='/SignIn.html'">Login</button>  -->
+                    </div>                     
+
                 </div> 
         </div>
   </div> 
