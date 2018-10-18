@@ -15,7 +15,6 @@ function clearFrame(){
 
 function loadCatalog(){
   main = document.getElementById('main-content');
-  document.getElementById('main-content').src = "http://isaacmcqueen.me/catalog.js";
   frame = document.createElement('iframe');
   frame.setAttribute("id","iFrame");
   frame.setAttribute("src","catalog.js");
