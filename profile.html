@@ -81,16 +81,19 @@ option{
   /*border-color: #F44336;*/
 }
 .btn-primary{
-    background-color: #fff !important;
-    border-color: #F44336;
-    color: #F44336;
-}
+  background-color: #fff !important;
+  border-color: #EF5350;
+  border-width: 3px;
+  color: #EF5350;
+  font-weight: bold;
+  max-block-size: 70px;
+ }
 
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-    color: #fff !important;
-    background-color: #F44336 !important;
-    border-color: #F44336; /*set the color you want here*/
+  color: #fff !important;
+  background-color: #F44336 !important;
+  border-color: #F44336; /*set the color you want here*/
 }
 
 #navie{
@@ -287,7 +290,7 @@ webs.onclose = function() {
                 </div>
                 <br>
                 <br>
-                <button class="btn-primary">Change Password</button>
+                <button id="RedB" class="btn btn-lg btn-primary btn-block">Home Page</button> 
         </div>     
       <!--<select class="form-control" name="accT" required="" id="aSel" onchange="myFunction()">
             <option value="" disabled selected>Account Type</option>
