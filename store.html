@@ -9,7 +9,7 @@
      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
      <form id="form1" action="http://server.isaacmcqueen.me:9615/profile" method="post"> 
      </form>
-     <a class="active" onclick="document.forms[0].submit()"><span class="glyphicon glyphicon-user side-icon"></span>Profile</a>
+     <a class="active" onclick="document.getElementById('form1').submit();"><span class="glyphicon glyphicon-user side-icon"></span>Profile</a>
      <a href="#" onclick="clearFrame();loadCatalog();closeNav()"><span class="glyphicon glyphicon-th side-icon"></span>Catalog</a>
      <a href="#" onclick="clearFrame();loadOrders();closeNav()"><span class="glyphicon glyphicon-tag side-icon"></span>Orders</a>
      <a href="#" onclick="clearFrame();closeNav()"><span class="glyphicon glyphicon-shopping-cart side-icon"></span>Cart</a>
