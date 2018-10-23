@@ -175,7 +175,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
       document.getElementById("user").innerHTML = val.username;
       document.getElementById("email").innerHTML = val.email;
       document.getElementById("iD").innerHTML = val.points; 
-      document.getElementById("dList").innerHTML = val.list;
+      //document.getElementById("dList").innerHTML = val.list;
       //document.getElementById("")
     }
   };
@@ -289,10 +289,16 @@ webs.onclose = function() {
                     <label for="username" class="col-4 col-form-label" id="iD">User ID</label>
                     
                 </div>
-		<label for="username" class="col-4 col-form-label">Sponsored Drivers:</label>
+		<form class="form-signin" action="http://server.isaacmcqueen.me:9615/addDriver" method="post">
+		<input type="hidden" id="dAdd" name="accT" value="addDriver">
+		<input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
+
+
+</form>
+		<!--<label for="username" class="col-4 col-form-label">Sponsored Drivers:</label>
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="dList">Driver List</label>
-		</div>
+		</div>-->
                 <br>
                 <br>
                 <br>
