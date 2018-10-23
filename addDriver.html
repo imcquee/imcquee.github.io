@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+CTYPE html>
 <html lang="en" >
 
 <head>
@@ -175,7 +175,6 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
       document.getElementById("user").innerHTML = val.username;
       document.getElementById("email").innerHTML = val.email;
       document.getElementById("iD").innerHTML = val.points; 
-      document.getElementById("dList").innerHTML = val.list;
       //document.getElementById("")
     }
   };
@@ -184,7 +183,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
     name: username,
     email : em
   }*/
-  var obj = "action=profile"
+  var obj = "action=addDriver"
   xhttp.withCredentials = true;
   xhttp.send(obj);
   /*function createCORSRequest("POST", "http://ec2-18-212-39-137.compute-1.amazonaws.com") {
@@ -289,10 +288,6 @@ webs.onclose = function() {
                     <label for="username" class="col-4 col-form-label" id="iD">User ID</label>
                     
                 </div>
-		<label for="username" class="col-4 col-form-label">Sponsored Drivers:</label>
-                <div class="col-8">
-                    <label for="username" class="col-4 col-form-label" id="dList">Driver List</label>
-		</div>
                 <br>
                 <br>
                 <br>
@@ -332,3 +327,5 @@ webs.onclose = function() {
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->   
     </form>
   </div>
+
+
