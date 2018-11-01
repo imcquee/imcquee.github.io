@@ -1,0 +1,97 @@
+/* Style the tab */
+.tab {
+   float: left;
+   border-right: 1px solid #ccc;
+   background-color: transparent;
+   width: 15%;
+   height: 100%;
+   float: left;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+   display: block;
+   background-color: inherit;
+   color: black;
+   width: 100%;
+   border: none;
+   outline: none;
+   text-align: center;
+   cursor: pointer;
+   transition: 0.3s;
+   padding-top: 2vh;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+   background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+   background-color: #ccc;
+}
+
+.side-nav{
+  font-size: 3vh;
+}
+
+.side-nav-mid {
+  border-top: 1px solid #ccc !important;
+  border-bottom: 1px solid #ccc !important;
+}
+
+.order-content{
+  width: 80%;
+  height: 100%;
+  float: left;
+  padding: 0px 12px;
+}
+
+.order-card {
+  width: 100%;
+  box-shadow: 5px 10px 18px #888888;
+  float:left;
+  display:inline-block;
+  margin-left:2vh;
+  margin-top: 2vh;
+  margin-bottom:2vh;
+}
+
+.order-button {
+  position: absolute;
+  float: right;
+  bottom: 2vh;
+  right: 2vh;
+  padding-left: 7vh;
+  padding-right: 7vh;
+  font-size: 1.15rem;
+  margin-right: 4vh;
+}
+
+.order-title{
+  position: absolute;
+  float: left;
+  top: 4vh;
+  left: 2vh;
+  font-size: 1.15rem;
+  margin-left: 4vh;
+}
+
+.order-status{
+  position: absolute;
+  float: left;
+  bottom: 2vh;
+  left: 2vh;
+  font-size: 1.15rem;
+  margin-left: 4vh;
+}
+
+.order-points{
+  position: absolute;
+  float: right;
+  top: 4vh;
+  right: 8vh;
+  font-size: 1.15rem;
+  margin-right: 4vh;
+}
