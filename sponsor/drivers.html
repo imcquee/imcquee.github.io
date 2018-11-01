@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="drivers.css">
+    <script src="drivers.js"></script>
+  </head>
+  <body onload="makeDrivers()">
+    <div id="mainDrivers" style="height:100%;width:100%;margin-left:2vh;margin-right:2vh;margin-bottom:2vh">
+      <div class="driver-content" id="driverContent">
+      </div>
+   </div>
+   <div id="bottomBtn" class="btn-div">
+     <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh" onclick="cancelPoints()">
+       Cancel
+     </button>
+     <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh" onclick="submitPoints()">
+       Submit
+     </button>
+   </div>
+   <div id="itemOverlay" class="itemOverlay" style="z-index:6">
+     <div id="overlayContent" class="overlayContent">
+       <button type="button" class="close overlayCloseBtn" onclick="closeItemOverlay()">&times;</button>
+       <button type="button" class="btn btn-info" style="padding-left:9vh;padding-right:9vh;display:block;margin-top:2vh;position:absolute;bottom:20vh;right:4vh" onclick="finishCheckout()">
+         Cancel Changes
+       </button>
+       <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh;position:absolute;bottom:4vh;right:4vh" onclick="cancelCheckout()">
+         Remove Driver
+       </button>
+       <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh;position:absolute;bottom:12vh;right:4vh" onclick="finishCheckout()">
+         Update Profile
+       </button>
+       <div id="itemContent" style="background:#cccccc;margin-left:2vh;margin-right:12vh">
+       </div>
+       <div class="tab" style="position:fixed">
+        <button class="tablinks active" onclick="openTab(this);loadAccount()"><p class="side-nav">Account</p class="side-nav"></button>
+        <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">History</p class="side-nav"></button>
+        <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">Message</p class="side-nav"></button>
+        <button class="tablinks" onclick="openTab(this)"><p class="side-nav">Orders</p class="side-nav"></button>
+       </div>
+       <div id="driverOverlayContent" style="float:right;width:82%;position:relative">
+       </div>
+     </div>
+   </div>
+  </body>
+</html>

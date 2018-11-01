@@ -1,0 +1,63 @@
+.driver-content{
+  width: 95%;
+  height: 100%;
+  float: left;
+  padding: 0px 12px;
+}
+
+.driver-card {
+  width: 100%;
+  box-shadow: 5px 10px 18px #888888;
+  float:left;
+  display:inline-block;
+  margin-left:2vh;
+  margin-top: 2vh;
+  margin-bottom:2vh;
+}
+
+.driver-pic {
+  font-size: 4vh !important;
+  background-color: #ef5350 !important;
+  color: white !important;
+  padding: 1vh;
+}
+
+.driver-button {
+  display: inline-block;
+  float: left;
+  padding-left: 7vh;
+  padding-right: 7vh;
+  font-size: 1.15rem;
+  margin-right: 4vh;
+  margin-left: 40vh;
+}
+
+.driver-title{
+  display: inline-block;
+  float: left;
+  font-size: 1.15rem;
+  margin-bottom: 0 !important;
+  margin-left: 12vh;
+  margin-right: 4vh;
+}
+
+.driver-status{
+  display: inline-block;
+  float: left;
+  font-size: 1.15rem;
+  margin-left: 4vh;
+  margin-right: 4vh;
+  margin-bottom: 0 !important;
+}
+
+.driver-points{
+  display: inline-block;
+  float: left;
+  font-size: 1.15rem;
+  margin-bottom: 0 !important;
+}
+.btn-div{
+  position: fixed;
+  bottom: 10%;
+  right: 2vh;
+}

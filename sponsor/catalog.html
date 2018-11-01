@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden" id="mainCatalogHtml">
+  <head>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="catalog.js"></script>
+  </head>
+  <body onload="makeCatalog()">
+    <div id="mainCatalog" style="height:100%;width:100%;margin-left:2vh;margin-right:2vh;margin-bottom:2vh">
+      <button type="button" class="btn btn-info" style="height:10%;width:5%;position:fixed;bottom:2%;right:2%;z-index:4">
+        <i class="fa fa-plus-circle" aria-hidden="true" style="font-size:7vh"></i>
+      </button>
+    </div>
+    <div id="itemOverlay" class="itemOverlay" style="z-index:6">
+      <div id="overlayContent" class="overlayContent">
+        <button type="button" class="close overlayCloseBtn" onclick="closeItemOverlay()">&times;</button>
+        <div id="itemContent">
+        </div>
+        <div class="prodDescription">
+          <h2>Product Description</h2>
+        </div>
+        <div id="prodDes">
+          <p>This is a Description.</p>
+        </div>
+        <div class="prodReview">
+          <h2>Product Reveiw</h2>
+        </div>
+        <div id="prodRev">
+          <p>This is a Review.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
