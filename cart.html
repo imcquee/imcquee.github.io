@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html style="overflow-x:hidden">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="orders.css">
+    <script src="cart.js"></script>
+  </head>
+  <body onload="makeCart()">
+    <div class="order-content" id="cartContent">
+    </div>
+    <div class="cart-math" id="cartMath">
+    </div>
+    <div id="itemOverlay" class="itemOverlay" style="z-index:6" style="overflow:hidden">
+      <div id="overlayContent" class="overlayContent" style="overflow:hidden">
+        <button type="button" class="close overlayCloseBtn" onclick="closeItemOverlay()">&times;</button>
+        <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh;position:absolute;bottom:4vh;right:4vh" onclick="cancelCheckout()">
+          Cancel Chckout
+        </button>
+        <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh;position:absolute;bottom:12vh;right:4vh" onclick="finishCheckout()">
+          Finish Checkout
+        </button>
+        <div id="itemContent" style="width:75%;overflow-y:scroll;height:100%;overflow-x:hidden">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -8,16 +8,12 @@
     <script src="../ids/ids.js"></script>
     <div id="mySidenav" class="sidenav">
      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-     <form id="form2" action="http://server.isaacmcqueen.me:9615/logout" method="post"> 
-     </form>
      <a class="active" href="#"><span class="glyphicon glyphicon-user side-icon"></span>Profile</a>
      <a href="#" onclick="clearFrame();loadCatalog();closeNav()"><span class="glyphicon glyphicon-th side-icon"></span>Catalog</a>
-     <a href="#" onclick="clearFrame();loadDrivers();closeNav()"><span class="glyphicon glyphicon-road side-icon"></span>Drivers</a>
-     <a href="#" onclick="clearFrame();closeNav()"><span class="glyphicon glyphicon-bell side-icon"></span>Notifications</a>
+     <a href="#" onclick="clearFrame();loadOrders();closeNav()"><span class="glyphicon glyphicon-tag side-icon"></span>Orders</a>
+     <a href="#" onclick="clearFrame();loadCart();closeNav()"><span class="glyphicon glyphicon-shopping-cart side-icon"></span>Cart</a>
      <a href="#" onclick="clearFrame();closeNav()"><span class="glyphicon glyphicon-cog side-icon"></span>Settings</a>
-     <a href="#" onclick="clearFrame();closeNav()"><span class="glyphicon glyphicon-earphone side-icon"></span>Help</a>
     </div>
-    <a class="active" onclick="document.getElementById('form2').submit();"><span class="glyphicon glyphicon-arrow-left side-icon"></span>Log Out</a>
     <div id="content" style="height:8%">
       <nav class="navbar navbar-expand-lg navbar-light bg-light top-nav-bar">
           <div class="container-fluid">
@@ -26,8 +22,10 @@
                   <span class="glyphicon glyphicon-th-list"></span>
               </button>
               <p class="top-nav-title" style="margin-left:1vh"> User One</p>
-              <p class="top-nav-title" style="margin-left:5vh"> Current Driver Amount:</p>
-              <p class="top-nav-title" id="current-driver-amount">To Be Changed</p>
+              <p class="top-nav-title" style="margin-left:5vh"> Current Sponsor Selected:</p>
+              <p class="top-nav-title" id="current-sponsor">To Be Changed</p>
+              <p class="top-nav-title" style="margin-left:5vh">Current Points:</p>
+              <p class="top-nav-title" id="current-points">To Be Chagned</p>
           </div>
       </nav>
     </div>

@@ -9,25 +9,11 @@
   <body onload="makeOrders()">
     <div id="mainOrders" style="height:100%;width:100%;margin-left:2vh;margin-right:2vh;margin-bottom:2vh">
       <div class="tab" style="position:fixed">
-       <button class="tablinks active" onclick=""><p class="side-nav">Current</p class="side-nav"></button>
-       <button class="tablinks side-nav-mid" onclick=""><p class="side-nav">Past</p class="side-nav"></button>
-       <button class="tablinks" onclick=""><p class="side-nav">Cancelled</p class="side-nav"></button>
+       <button class="tablinks active" onclick="makeOrders();openTab(this)"><p class="side-nav">Current</p class="side-nav"></button>
+       <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">Past</p class="side-nav"></button>
+       <button class="tablinks" onclick="makeCancel();openTab(this)"><p class="side-nav">Cancelled</p class="side-nav"></button>
       </div>
-
-       <div class="order-content" id="orderContent" style="margin-left:15%">
-         <!-- <div class="card order-card">
-          <div class="row no-gutters">
-              <div class="col-auto">
-                  <img src="product_1_pic.png" class="img-fluid" alt="">
-              </div>
-              <div class="col" style="position:relative">
-                  <p class="card-text order-title">Missha All Around Safe Block Sebum Zero Sun</p>
-                  <p class="card-text order-status">Status: Shipped</p>
-                  <p class="card-text order-points">4,000 Points</p>
-                  <button class="btn btn-primary order-button">Cancel Order</button>
-              </div>
-          </div>
-        </div> -->
+      <div class="order-content" id="orderContent" style="margin-left:15%">
       </div>
    </div>
   </body>
