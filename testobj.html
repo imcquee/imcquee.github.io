@@ -13,7 +13,8 @@ xhttp.onreadystatechange = function() {
       console.log(val.drivers[i].name);
       console.log(val.drivers[i].points);
     }
-    document.getElementById("d1name").innerHTML = val.drivers[0].name;
+    document.getElementById("d1").innerHTML = val.drivers[0].name;
+    document.getElementById("d1name").innerHTML = val.drivers[0].name; 
     document.getElementById("dAdd").value = val.drivers[0].points;
   }
 };
@@ -25,7 +26,8 @@ xhttp.send(obj);
 <body>
   <form action="http://server.isaacmcqueen.me:9615" method="post">
     <input type="hidden" name="accT" value="updatePoints">
-    <label for="username" name="d1name" id="d1name">Driver1 Name</label> 
+    <label for="username" id="d1">Driver1 Name</label> 
+    <input type="hidden" id="d1name" name="d1name" value="">
 		<input type="number" id="dAdd" name="d1points" value="">
     <button type="submit" >Update Points</button>  
   </form>
