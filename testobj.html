@@ -7,24 +7,13 @@ xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    //console.log(this.responseText);
     var val = JSON.parse(this.responseText);
     for(i=0;i<val.drivers.length;i++){
-      //document.getElementById("username").innerHTML = 
+      val.drivers[i].points = 10;
       console.log(val.drivers[i].name);
       console.log(val.drivers[i].points);
     }
-    
-    //console.log(val);
-    /*if (val.action == 'spaz'){
-      console.log("hey man");
-      console.log(document.cookie);
-    }*/
-    /*document.getElementById("user").innerHTML = val.username;
-    document.getElementById("email").innerHTML = val.email;
-    document.getElementById("iD").innerHTML = val.points;*/
-    //document.getElementById("dList").innerHTML = val.list;
-    //document.getElementById("")
+    xhttp.send(val);
   }
 };
 var obj = "action=driverPoints"
