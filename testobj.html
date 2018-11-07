@@ -14,7 +14,7 @@ xhttp.onreadystatechange = function() {
       console.log(val.drivers[i].points);
     }
     document.getElementById("d1").innerHTML = val.drivers[0].name;
-    document.getElementById("d1name").innerHTML = val.drivers[0].name; 
+    document.getElementById("d1name").value = val.drivers[0].name; 
     document.getElementById("dAdd").value = val.drivers[0].points;
   }
 };
