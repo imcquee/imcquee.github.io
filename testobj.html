@@ -12,6 +12,8 @@
     <button type="submit" >Update Points</button>  
   </form>-->
 <script>
+var nameList =[];
+var pointList = [];
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -19,8 +21,16 @@ xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var val = JSON.parse(this.responseText);
     for(i=0;i<val.drivers.length;i++){
-      console.log(val.drivers[i].name);
-      console.log(val.drivers[i].points);
+      var lbl =  document.createElement("label");
+      lbl.innerText=val.drivers[i].name;
+      var inp = document.createElement("input");
+      inp.type="number";
+      inp.name="d1points";
+      inp.value=val.drivers[i].points;
+      document.getElementById("form1").appendChild(lbl);
+      document.getElementById("form1").appendChild(inp);
+
+      
     }
     //element2.innerText=val.drivers[0].name;
     //document.getElementById("d1").innerHTML = val.drivers[0].name;
