@@ -13,7 +13,7 @@ xhttp.onreadystatechange = function() {
       console.log(val.drivers[i].name);
       console.log(val.drivers[i].points);
     }
-    xhttp.send(val);
+    xhttp.send(JSON.stringify(val));
   }
 };
 var obj = "action=driverPoints"
