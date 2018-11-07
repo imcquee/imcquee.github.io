@@ -20,7 +20,11 @@ xhttp.send(obj);
 </script>
 </head>
 <body>
-  <!--<label for="username">User ID:</label>-->
+  <label for="username" id="d1name">Driver1 Name</label> 
+  <form action="http://server.isaacmcqueen.me:9615/updatePoints" method="post">
+		<input type="text" id="dAdd" name="accT" value="addDriver" placeholder="bab">
+    <button type="submit" >Update Points</button>  
+  </form>
 </body>
 </html>
 
