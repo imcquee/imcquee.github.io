@@ -2,6 +2,8 @@
 <html>
 <body>
 <form action="http://server.isaacmcqueen.me:9615" id="form1" method="post"/>
+  <input type="hidden" name="accT" value="updatePoints">  
+  <button type="submit" >Update Points</button>  
   <!--<form action="http://server.isaacmcqueen.me:9615" method="post">
     <input type="hidden" name="accT" value="updatePoints">
     <label for="username" id="d1">Driver1 Name</label> 
@@ -10,18 +12,6 @@
     <button type="submit" >Update Points</button>  
   </form>-->
 <script>
-var element1 = document.createElement("input"); 
-element1.type="hidden";
-element1.name="accT";
-element1.value="updatePoints";
-document.getElementById("form1").appendChild(element1);
-
-var element2 = document.createElement("button");
-element2.type="submit";
-element2.innerText="Update Points"
-
-document.getElementById("form1").appendChild(element2);
-
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
