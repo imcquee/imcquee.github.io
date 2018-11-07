@@ -8,12 +8,13 @@ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var val = JSON.parse(this.responseText);
+    val.action = "updatePoints";
     for(i=0;i<val.drivers.length;i++){
       val.drivers[i].points = 10;
       console.log(val.drivers[i].name);
       console.log(val.drivers[i].points);
     }
-    xhttp.send(JSON.stringify(val));
+    xhttp.send(val);
   }
 };
 var obj = "action=driverPoints"
