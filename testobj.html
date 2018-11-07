@@ -14,8 +14,13 @@ var element1 = document.createElement("input");
 element1.type="hidden";
 element1.name="accT";
 element1.value="updatePoints";
-//form1.appendChild(element1);
 document.getElementById("form1").appendChild(element1);
+
+var element2 = document.createElement("button");
+element2.type="submit";
+element2.innerText="Update Points"
+
+document.getElementById("form1").appendChild(element2);
 
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
