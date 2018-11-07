@@ -9,7 +9,11 @@ xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     //console.log(this.responseText);
     var val = JSON.parse(this.responseText);
-    console.log(val.drivers[0].name);
+    for(i=0;i<val.drivers.length;i++){
+      //document.getElementById("username").innerHTML = 
+      console.log(val.drivers[i].name);
+    }
+    
     //console.log(val);
     /*if (val.action == 'spaz'){
       console.log("hey man");
@@ -28,7 +32,7 @@ xhttp.send(obj);
 </script>
 </head>
 <body>
-
+  <!--<label for="username">User ID:</label>-->
 </body>
 </html>
 
