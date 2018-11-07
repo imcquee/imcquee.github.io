@@ -2,6 +2,7 @@
 <html>
 <head>
 <script>
+
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -12,6 +13,8 @@ xhttp.onreadystatechange = function() {
       console.log(val.drivers[i].name);
       console.log(val.drivers[i].points);
     }
+    document.getElementById("d1name").innerHTML = val.drivers[0].name;
+    document.getElementById("dAdd").innerHTML = val.drivers[0].points;
   }
 };
 var obj = "action=driverPoints"
@@ -20,9 +23,10 @@ xhttp.send(obj);
 </script>
 </head>
 <body>
-  <label for="username" id="d1name">Driver1 Name</label> 
-  <form action="http://server.isaacmcqueen.me:9615/updatePoints" method="post">
-		<input type="text" id="dAdd" name="accT" value="updatePoints" placeholder="bab">
+  <form action="http://server.isaacmcqueen.me:9615" method="post">
+    <input type="hidden" name="accT" value="updatePoints">
+    <label for="username" id="d1name">Driver1 Name</label> 
+		<input type="text" id="dAdd" name="driver1" value="Driver1 Points">
     <button type="submit" >Update Points</button>  
   </form>
 </body>
