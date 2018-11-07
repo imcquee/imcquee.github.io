@@ -28,7 +28,7 @@ xhttp.onreadystatechange = function() {
       inp.value=val.drivers[i].points;
       document.getElementById("form1").appendChild(lbl);
       document.getElementById("form1").appendChild(inp);
-      document.getElementById("form1").appendChild(document.createTextNode("\n"));
+      document.getElementById("form1").appendChild(document.createElement("br"));
       
     }
     var submit = document.createElement("button");
