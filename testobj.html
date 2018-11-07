@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<body>
+<form action="http://server.isaacmcqueen.me:9615" id="form1" method="post"/>
+  <!--<form action="http://server.isaacmcqueen.me:9615" method="post">
+    <input type="hidden" name="accT" value="updatePoints">
+    <label for="username" id="d1">Driver1 Name</label> 
+    <input type="hidden" id="d1name" name="d1name" value="">
+		<input type="number" id="dAdd" name="d1points" value="">
+    <button type="submit" >Update Points</button>  
+  </form>-->
 <script>
-var form1 = document.createElement("form");
-form1.method = "POST";
-form1.action = "http://server.isaacmcqueen.me:9615";
 var element1 = document.createElement("input"); 
 element1.type="hidden";
 element1.name="accT";
 element1.value="updatePoints";
-form1.appendChild(element1);
-
-var element2 = document.createElement("label");
-element2.id="d1";
+//form1.appendChild(element1);
+document.getElementById("form1").appendChild(element1);
 
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
@@ -24,7 +27,7 @@ xhttp.onreadystatechange = function() {
       console.log(val.drivers[i].name);
       console.log(val.drivers[i].points);
     }
-    element2.innerText=val.drivers[0].name;
+    //element2.innerText=val.drivers[0].name;
     //document.getElementById("d1").innerHTML = val.drivers[0].name;
     //document.getElementById("d1name").value = val.drivers[0].name; 
     //document.getElementById("dAdd").value = val.drivers[0].points;
@@ -34,18 +37,9 @@ var obj = "action=driverPoints"
 xhttp.withCredentials = true;
 xhttp.send(obj);
 
-form1.appendChild(element2);
-document.body.appendChild(form1);
+//form1.appendChild(element2);
+
 </script>
-</head>
-<body>
-  <!--<form action="http://server.isaacmcqueen.me:9615" method="post">
-    <input type="hidden" name="accT" value="updatePoints">
-    <label for="username" id="d1">Driver1 Name</label> 
-    <input type="hidden" id="d1name" name="d1name" value="">
-		<input type="number" id="dAdd" name="d1points" value="">
-    <button type="submit" >Update Points</button>  
-  </form>-->
 </body>
 </html>
 
