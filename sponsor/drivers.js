@@ -20,6 +20,16 @@ function makeDrivers() {
         inpN.type="hidden";
         inpN.name="name";
         inpN.value=val.drivers[i].name;
+        valueIn = document.createElement('input');
+        valueIn.type="number";
+        valueIn.name="points";
+        valueIn.value=val.drivers[i].points;
+        form1.appendChild(valueIn);
+        value2 = document.createElement('input')
+        value2.type="hidden";
+        value2.name="sub";
+        value2.value="pop"
+        form1.appendChild(value2);
         /*document.getElementById("form1").appendChild(lbl);
         document.getElementById("form1").appendChild(inpN)
         document.getElementById("form1").appendChild(inpP);
@@ -44,21 +54,11 @@ function makeDrivers() {
               nameP = document.createElement('p');
               nameP.setAttribute("class","card-text driver-title");
               nameP.innerHTML = val.drivers[i].name;
-              valueIn = document.createElement('input');
               /*valueIn.setAttribute("style","text-align:right;width:15vh");
               valueIn.setAttribute("number","text");
               valueIn.setAttribute("name","points")
               valueIn.setAttribute("value","0");
               valueIn.setAttribute("onclick","event.stopPropagation()");*/
-              valueIn.type="number";
-              valueIn.name="points";
-              valueIn.value=val.drivers[i].points;
-              form1.appendChild(valueIn);
-              value2 = document.createElement('input')
-              value2.type="hidden";
-              value2.name="sub";
-              value2.value="pop"
-              form1.appendChild(value2);
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
@@ -84,19 +84,7 @@ function makeDrivers() {
           
           
       }
-      console.log(document.getElementById("form1"));
-      contentDiv.appendChild(nameP);
-      contentDiv.appendChild(valueIn);
-      contentDiv.appendChild(btn2);
-      contentDiv.appendChild(btn);
-      contentDiv.appendChild(currentP);
-      contentDiv.appendChild(points);
-      contentDiv.appendChild(pointFin);
-      imgDiv.appendChild(img);
-      row.appendChild(imgDiv);
-      row.appendChild(contentDiv);
-      card.appendChild(row);
-      main.appendChild(card);
+      
       /*var submit = document.createElement("button");
       submit.type="submit";
       submit.innerText="Update Points";
@@ -109,6 +97,19 @@ function makeDrivers() {
   var obj = "action=driverPoints"
   xhttp.withCredentials = true;
   xhttp.send(obj);
+
+  contentDiv.appendChild(nameP);
+  contentDiv.appendChild(valueIn);
+  contentDiv.appendChild(btn2);
+  contentDiv.appendChild(btn);
+  contentDiv.appendChild(currentP);
+  contentDiv.appendChild(points);
+  contentDiv.appendChild(pointFin);
+  imgDiv.appendChild(img);
+  row.appendChild(imgDiv);
+  row.appendChild(contentDiv);
+  card.appendChild(row);
+  main.appendChild(card);
 }
 
 function openTab(evt) {
