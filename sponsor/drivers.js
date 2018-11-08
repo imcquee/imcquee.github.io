@@ -53,11 +53,12 @@ function makeDrivers() {
               valueIn.type="number";
               valueIn.name="points";
               valueIn.value=val.drivers[i].points;
+              form1.appendChild(valueIn);
               value2 = document.createElement('input')
               value2.type="hidden";
               value2.name="sub";
               value2.value="pop"
-              form1.appendChild(valueIn);
+              form1.appendChild(value2);
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
