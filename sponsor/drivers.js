@@ -87,7 +87,7 @@ function makeDrivers() {
       submit.type="submit";
       submit.innerText="Update Points";
       form1.appendChild(submit);
-      document.body.appendChild(form1);
+      main.appendChild(form1);
       //document.getElementById("form1").appendChild(submit);
     }
   };
