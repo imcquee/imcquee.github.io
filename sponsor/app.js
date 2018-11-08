@@ -36,3 +36,14 @@ function loadDrivers(){
   frame.setAttribute("frameBorder","0");
   main.appendChild(frame);
 }
+
+function loadProfile() {
+  main = document.getElementById('main-content');
+  frame = document.createElement('iframe');
+  frame.setAttribute("id","iFrame");
+  frame.setAttribute("src","profile.html");
+  frame.setAttribute("height","100%");
+  frame.setAttribute("width","100%");
+  frame.setAttribute("frameBorder","0");
+  main.appendChild(frame);
+}

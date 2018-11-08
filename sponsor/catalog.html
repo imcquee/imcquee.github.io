@@ -9,7 +9,7 @@
   </head>
   <body onload="makeCatalog()">
     <div id="mainCatalog" style="height:100%;width:100%;margin-left:2vh;margin-right:2vh;margin-bottom:2vh">
-      <button type="button" class="btn btn-info" style="height:10%;width:5%;position:fixed;bottom:2%;right:2%;z-index:4">
+      <button type="button" class="btn btn-info" style="height:10%;width:5%;position:fixed;bottom:2%;right:2%;z-index:4" onclick="openAdd()">
         <i class="fa fa-plus-circle" aria-hidden="true" style="font-size:7vh"></i>
       </button>
     </div>
@@ -30,6 +30,16 @@
         <div id="prodRev">
           <p>This is a Review.</p>
         </div>
+      </div>
+    </div>
+    <div id="addOverlay" class="itemOverlay" style="z-index:6">
+      <div id="addContent" style="background-color: #fff;border: 1px solid #000;text-align:center;height: 30%;width: 94%;margin: auto;position: fixed;top: 0;right: 0;bottom: 2vh;left: 0;">
+        <button type="button" class="close overlayCloseBtn" onclick="closeAddOverlay()">&times;</button>
+        <div class="prodDescription" style="width: 92%">
+          <h3 style="float:left">Input the ePID of the Product you Wish to Add to the Catalog</h3>
+        </div>
+        <input id="itemToAdd" number="text" class="inputAdd"></input>
+        <button type="button" class="btn btn-primary add-btn" onclick="addToCatalog()"><h4>Add to Catalog</h4></button>
       </div>
     </div>
   </body>

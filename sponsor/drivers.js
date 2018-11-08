@@ -160,8 +160,22 @@ function loadAccount(){
   user = document.createElement('input');
   curPass = document.createElement('p');
   pass = document.createElement('input');
-  br = document.createElement('br');
+  cancelBtn = document.createElement('button');
+  removeBtn = document.createElement('button');
+  updateBtn = document.createElement('button');
 
+  cancelBtn.setAttribute('type','button');
+  cancelBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  cancelBtn.setAttribute('style','top:40vh;padding-left:9vh;padding-right:9vh');
+  cancelBtn.innerHTML = "Cancel Changes";
+  removeBtn.setAttribute('type','button');
+  removeBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  removeBtn.setAttribute('style','top:56vh');
+  removeBtn.innerHTML = "Remove Driver";
+  updateBtn.setAttribute('type','button');
+  updateBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  updateBtn.setAttribute('style','top:48vh');
+  updateBtn.innerHTML = "Update Profile";
   curUser.setAttribute("class","card-text driver-overlay-top");
   curUser.setAttribute("style","top:2vh");
   curUser.innerHTML = "Current User Name: ";
@@ -177,10 +191,20 @@ function loadAccount(){
   pass.setAttribute("number","text");
   pass.setAttribute("value","cpsc4910");
 
+  driverContent.appendChild(cancelBtn);
+  driverContent.appendChild(updateBtn);
+  driverContent.appendChild(removeBtn);
   driverContent.appendChild(curPass);
   driverContent.appendChild(pass);
   driverContent.appendChild(curUser);
   driverContent.appendChild(user);
   //driverContent.appendChild(br);
 
+}
+
+
+function loadOrders(){
+  var driverContent = document.getElementById("driverOverlayContent");
+  var itemContent = document.getElementById("itemContent");
+  driverContent.innerHTML = "";
 }

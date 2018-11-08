@@ -163,7 +163,7 @@ html, body{
 
 #prodDes {
   height: 30%;
-  width: 70%;
+  width: 50%;
   top: 10%;
   margin-left: 2%;
   position: relative;
@@ -173,7 +173,7 @@ html, body{
 
 #prodRev {
   height: 30%;
-  width: 70%;
+  width: 60%;
   top: 10%;
   margin-left: 2%;
   position: relative;
@@ -183,4 +183,19 @@ html, body{
 
 #cartContent {
   width: 70% !important;
+}
+
+.inputAdd {
+  float: left;
+  margin-top: 4vh;
+  margin-left: 2%;
+  width: 92%;
+  height: 20%;
+}
+
+.add-btn{
+  float: left;
+  margin-top: 2vh;
+  margin-left: 2%;
+  width: 92%;
 }
