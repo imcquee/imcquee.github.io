@@ -20,11 +20,11 @@ function makeDrivers() {
         inpN.type="hidden";
         inpN.name="name";
         inpN.value=val.drivers[i].name;
-        valueIn = document.createElement('input');
+        /*valueIn = document.createElement('input');
         valueIn.type="number";
         valueIn.name="points";
         valueIn.value=val.drivers[i].points;
-        valueIn.style="text-align:right;width:15vh";
+        valueIn.style="text-align:right;width:15vh";*/
         /*value2 = document.createElement('input')
         value2.type="hidden";
         value2.name="sub";
@@ -54,11 +54,12 @@ function makeDrivers() {
               nameP = document.createElement('p');
               nameP.setAttribute("class","card-text driver-title");
               nameP.innerHTML = val.drivers[i].name;
-              /*valueIn.setAttribute("style","text-align:right;width:15vh");
+              valueIn = document.createElement('input');
+              valueIn.setAttribute("style","text-align:right;width:15vh");
               valueIn.setAttribute("number","text");
               valueIn.setAttribute("name","points")
               valueIn.setAttribute("value","0");
-              valueIn.setAttribute("onclick","event.stopPropagation()");*/
+              valueIn.setAttribute("onclick","event.stopPropagation()");
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
@@ -82,8 +83,7 @@ function makeDrivers() {
               btn2.innerHTML = "Add Points";
 
               contentDiv.appendChild(nameP);
-              //var clone = Object.assign({}, valueIn);
-              form1.appendChild(valueIn);
+              contentDiv.appendChild(valueIn);
               contentDiv.appendChild(form1);
               contentDiv.appendChild(btn2);
               contentDiv.appendChild(btn);
