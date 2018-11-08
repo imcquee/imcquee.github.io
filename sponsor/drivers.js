@@ -83,9 +83,14 @@ function makeDrivers() {
           card.appendChild(row);
           main.appendChild(card);
       }
-      var submit = document.createElement("button");
+      /*var submit = document.createElement("button");
       submit.type="submit";
       submit.innerText="Update Points";
+      form1.appendChild(submit);*/
+      var submit = document.createElement("button");
+      submit.type="submit";
+      submit.class="btn btn-info";
+      submit.style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh";
       form1.appendChild(submit);
       main.appendChild(form1);
       //document.getElementById("form1").appendChild(submit);
