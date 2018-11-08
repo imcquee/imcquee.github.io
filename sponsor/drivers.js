@@ -82,9 +82,9 @@ function makeDrivers() {
               btn2.innerHTML = "Add Points";
 
               contentDiv.appendChild(nameP);
-              var clone = Object.assign({}, valueIn);
-              contentDiv.appendChild(valueIn);
-              form1.appendChild(clone);
+              //var clone = Object.assign({}, valueIn);
+              form1.appendChild(valueIn);
+              contentDiv.appendChild(form1);
               contentDiv.appendChild(btn2);
               contentDiv.appendChild(btn);
               contentDiv.appendChild(currentP);
@@ -104,7 +104,7 @@ function makeDrivers() {
       submit.type="submit";
       submit.innerText="Update Points";
       form1.appendChild(submit);*/
-      main.appendChild(form1);
+      //main.appendChild(form1);
       //document.getElementById("form1").appendChild(submit);
     }
   };
