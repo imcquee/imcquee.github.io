@@ -25,7 +25,6 @@ function makeDrivers() {
         valueIn.name="points";
         valueIn.value=val.drivers[i].points;
         valueIn.style="text-align:right;width:15vh";
-        form1.appendChild(valueIn);
         /*value2 = document.createElement('input')
         value2.type="hidden";
         value2.name="sub";
@@ -83,7 +82,8 @@ function makeDrivers() {
               btn2.innerHTML = "Add Points";
 
               contentDiv.appendChild(nameP);
-              //contentDiv.appendChild(valueIn);
+              contentDiv.appendChild(valueIn);
+              form1.appendChild(valueIn);
               contentDiv.appendChild(btn2);
               contentDiv.appendChild(btn);
               contentDiv.appendChild(currentP);
