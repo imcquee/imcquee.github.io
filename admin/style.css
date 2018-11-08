@@ -195,3 +195,18 @@ html, body{
   position: fixed;
   right: 0;
 }
+
+.inputAdd {
+  float: left;
+  margin-top: 4vh;
+  margin-left: 2%;
+  width: 92%;
+  height: 20%;
+}
+
+.add-btn{
+  float: left;
+  margin-top: 2vh;
+  margin-left: 2%;
+  width: 92%;
+}

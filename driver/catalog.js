@@ -46,7 +46,7 @@ function  buildURLArray() {
 
 function makeCatalogItem(e){
     var currentItem = e.findItemsByProductResponse[0].searchResult[0].item[0];
-    console.log(currentItem);
+    // console.log(currentItem);
     main = document.getElementById("mainCatalog");
     cardDiv = document.createElement("div");
     card = document.createElement("div");
@@ -59,7 +59,7 @@ function makeCatalogItem(e){
     cardDiv.setAttribute("onclick","displayItemOverlay();displayItem(this)");
     card.setAttribute("class","card catalog-card");
       img.setAttribute("class","card-img-top");
-      img.setAttribute("style","width:25vh;height:25vh;margin-left:10vh");
+      img.setAttribute("style","width:25vh;height:25vh;margin:0 auto; display:block");
       img.setAttribute("src",currentItem.galleryURL[0]);
       cardBody.setAttribute("class","card-body");
       cardBody.setAttribute("style","text-align:center");

@@ -17,5 +17,50 @@
        Add Sponsor
      </button>
    </div>
+   <div id="itemOverlay" class="itemOverlay" style="z-index:6;overflow:hidden">
+     <div id="overlayContent" class="overlayContent">
+       <button type="button" class="close overlayCloseBtn" onclick="closeItemOverlay()">&times;</button>
+       <div id="itemContent" style="background:#cccccc;margin-left:2vh;margin-right:12vh">
+       </div>
+       <div class="tab" style="position:fixed;height:69%">
+        <button id="accountBtn" class="tablinks active" onclick="openTab(this);loadAccount()"><p class="side-nav">Account</p class="side-nav"></button>
+        <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">History</p class="side-nav"></button>
+        <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">Message</p class="side-nav"></button>
+        <button class="tablinks side-nav-mid" onclick="openTab(this);loadCatalog()"><p class="side-nav">Catalog</p class="side-nav"></button>
+        <button class="tablinks" onclick="openTab(this)"><p class="side-nav">Point Value</p class="side-nav"></button>
+       </div>
+       <div id="driverOverlayContent" style="float:right;width:82%;position:relative;height:75%;overflow:auto">
+       </div>
+     </div>
+     <div id="itemOverlayProduct" class="itemOverlay" style="z-index:8">
+       <div id="overlayContentProduct" class="overlayContent">
+         <button type="button" class="close overlayCloseBtn" onclick="closeItemOverlayProduct()">&times;</button>
+         <div id="itemContentProduct">
+         </div>
+         <div class="prodDescription">
+           <h2>Product Description</h2>
+         </div>
+         <div id="prodDes">
+           <p>This is a Description.</p>
+         </div>
+         <div class="prodReview">
+           <h2>Product Reveiw</h2>
+         </div>
+         <div id="prodRev">
+           <p>This is a Review.</p>
+         </div>
+       </div>
+     </div>
+     <div id="addOverlay" class="itemOverlay" style="z-index:8">
+       <div id="addContent" style="background-color: #fff;border: 1px solid #000;text-align:center;height: 30%;width: 94%;margin: auto;position: fixed;top: 0;right: 0;bottom: 2vh;left: 0;">
+         <button type="button" class="close overlayCloseBtn" onclick="closeAddOverlay()">&times;</button>
+         <div class="prodDescription" style="width: 92%">
+           <h3 style="float:left">Input the ePID of the Product you Wish to Add to the Catalog</h3>
+         </div>
+         <input id="itemToAdd" number="text" class="inputAdd"></input>
+         <button type="button" class="btn btn-primary add-btn" onclick="addToCatalog()"><h4>Add to Catalog</h4></button>
+       </div>
+     </div>
+   </div>
   </body>
 </html>
