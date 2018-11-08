@@ -197,10 +197,10 @@ function subPoints(e){
 }
 
 function cancelPoints(){
-  cards = document.getElementById("mainDrivers").children[0].children;
+  /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
     cards[i].children[0].children[1].children[5].innerHTML = currentPoints[i];
-  }
+  }*/
 }
 
 function submitPoints(){
