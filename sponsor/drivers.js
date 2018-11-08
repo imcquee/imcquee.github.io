@@ -53,7 +53,7 @@ function makeDrivers() {
               valueIn.type="number";
               valueIn.name="points";
               valueIn.value=0;
-              valueIn.style="text-align:right;width:15vh";
+              //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
               currentP.setAttribute("style","margin-left:4vh;margin-right:1vh");
