@@ -1,18 +1,11 @@
+<!--TO TEST THIS PAGE LOGIN AS A SPONSOR AND THEN NAVIGATE TO www.isaacmcqueen.me/testobj.html-->
 <!DOCTYPE html>
 <html>
 <body>
 <form action="http://server.isaacmcqueen.me:9615" id="form1" method="post"/>
-  <input type="hidden" name="accT" value="updatePoints">  
-  <!--<form action="http://server.isaacmcqueen.me:9615" method="post">
-    <input type="hidden" name="accT" value="updatePoints">
-    <label for="username" id="d1">Driver1 Name</label> 
-    <input type="hidden" id="d1name" name="d1name" value="">
-		<input type="number" id="dAdd" name="d1points" value="">
-    <button type="submit" >Update Points</button>  
-  </form>-->
+  <input type="hidden" name="accT" value="updatePoints"> 
+</form>
 <script>
-var nameList =[];
-var pointList = [];
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -41,19 +34,11 @@ xhttp.onreadystatechange = function() {
     submit.innerText="Update Points";
 
     document.getElementById("form1").appendChild(submit);
-    
-    //element2.innerText=val.drivers[0].name;
-    //document.getElementById("d1").innerHTML = val.drivers[0].name;
-    //document.getElementById("d1name").value = val.drivers[0].name; 
-    //document.getElementById("dAdd").value = val.drivers[0].points;
   }
 };
 var obj = "action=driverPoints"
 xhttp.withCredentials = true;
 xhttp.send(obj);
-
-//form1.appendChild(element2);
-
 </script>
 </body>
 </html>
