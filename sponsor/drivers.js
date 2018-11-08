@@ -45,11 +45,15 @@ function makeDrivers() {
               nameP.setAttribute("class","card-text driver-title");
               nameP.innerHTML = val.drivers[i].name;
               valueIn = document.createElement('input');
-              valueIn.setAttribute("style","text-align:right;width:15vh");
+              /*valueIn.setAttribute("style","text-align:right;width:15vh");
               valueIn.setAttribute("number","text");
               valueIn.setAttribute("name","points")
               valueIn.setAttribute("value","0");
-              valueIn.setAttribute("onclick","event.stopPropagation()");
+              valueIn.setAttribute("onclick","event.stopPropagation()");*/
+              valueIn.type="number";
+              valueIn.name="points";
+              valueIn.value=0;
+              valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
               currentP.setAttribute("style","margin-left:4vh;margin-right:1vh");
