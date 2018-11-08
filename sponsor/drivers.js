@@ -46,8 +46,8 @@ function makeDrivers() {
               nameP.innerHTML = val.drivers[i].name;
               valueIn = document.createElement('input');
               valueIn.setAttribute("style","text-align:right;width:15vh");
-              valueIn.setAttribute("number","text");
-              valueIn.setAttribute("value",0);
+              valueIn.type="number"
+              valueIn.value=0;
               valueIn.setAttribute("onclick","event.stopPropagation()");
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
