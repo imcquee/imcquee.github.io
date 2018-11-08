@@ -76,6 +76,7 @@ function makeDrivers() {
               btn2.innerHTML = "Add Points";
           
           form1.appendChild(valueIn);
+          console.log(form1);
           contentDiv.appendChild(nameP);
           contentDiv.appendChild(valueIn);
           contentDiv.appendChild(btn2);
