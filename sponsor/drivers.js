@@ -204,7 +204,7 @@ function cancelPoints(){
   }*/
 }
 
-window.onload = function submitPoints(){
+function submitPoints(){
   //console.log(document.getElementById("form1"))
   //var sub = document.getElementById("form1");
   //console.log(sub);
