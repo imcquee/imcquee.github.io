@@ -87,11 +87,6 @@ function makeDrivers() {
       submit.type="submit";
       submit.innerText="Update Points";
       form1.appendChild(submit);*/
-      var submit = document.createElement("button");
-      submit.type="submit";
-      submit.class="btn btn-info";
-      submit.style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh";
-      form1.appendChild(submit);
       main.appendChild(form1);
       //document.getElementById("form1").appendChild(submit);
     }
@@ -209,10 +204,11 @@ function cancelPoints(){
 }
 
 function submitPoints(){
-  cards = document.getElementById("mainDrivers").children[0].children;
+  document.form1.submit();
+  /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
-  }
+  }*/
 }
 
 function displayItemOverlay(){
