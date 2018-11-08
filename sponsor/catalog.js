@@ -58,7 +58,7 @@ function makeCatalogItem(e){
   cardDiv.setAttribute("onclick","displayItemOverlay();displayItem(this)");
   card.setAttribute("class","card catalog-card");
     img.setAttribute("class","card-img-top");
-    img.setAttribute("style","width:25vh;height:25vh;margin-left:10vh");
+    img.setAttribute("style","width:25vh;height:25vh;margin:0 auto; display:block");
     img.setAttribute("src",currentItem.galleryURL[0]);
     cardBody.setAttribute("class","card-body");
     cardBody.setAttribute("style","text-align:center");
@@ -140,4 +140,24 @@ function closeItemOverlay(){
   document.getElementById("overlayContent").style.display = "none";
   document.documentElement.style.overflow = 'scroll';
   document.body.scroll = "yes";
+}
+
+function openAdd() {
+  document.getElementById("addOverlay").style.display = "block";
+  document.getElementById("addContent").style.display = "block";
+  document.documentElement.style.overflow = 'hidden';
+  document.body.scroll = "no";
+}
+
+function closeAddOverlay() {
+  document.getElementById("addOverlay").style.display = "none";
+  document.getElementById("addContent").style.display = "none";
+  document.documentElement.style.overflow = 'scroll';
+  document.body.scroll = "yes";
+  document.getElementById("itemToAdd").value = "";
+}
+
+function addToCatalog(){
+  console.log(document.getElementById("itemToAdd").value);
+  document.getElementById("itemToAdd").value = "";
 }

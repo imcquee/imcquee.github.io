@@ -1,16 +1,16 @@
 
 <!DOCTYPE html>
 <html style="overflow:hidden">
-  <body onload="loadCatalog()" style="height:100%">
+  <body onload="loadDrivers()" style="height:100%">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="app.js"></script>
     <script src="../ids/ids.js"></script>
     <div id="mySidenav" class="sidenav">
      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-     <form id="form2" action="http://server.isaacmcqueen.me:9615/logout" method="post"> 
+     <form id="form2" action="http://server.isaacmcqueen.me:9615/logout" method="post">
      </form>
-     <a class="active" href="../profile.html"><span class="glyphicon glyphicon-user side-icon"></span>Profile</a>
+     <a href="#" onclick="clearFrame();loadProfile();closeNav()"><span class="glyphicon glyphicon-user side-icon"></span>Profile</a>
      <a href="#" onclick="clearFrame();loadCatalog();closeNav()"><span class="glyphicon glyphicon-th side-icon"></span>Catalog</a>
      <a href="#" onclick="clearFrame();loadDrivers();closeNav()"><span class="glyphicon glyphicon-road side-icon"></span>Drivers</a>
      <a href="#" onclick="clearFrame();closeNav()"><span class="glyphicon glyphicon-bell side-icon"></span>Notifications</a>
