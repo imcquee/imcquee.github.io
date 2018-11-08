@@ -82,20 +82,21 @@ function makeDrivers() {
               btn2.innerHTML = "Add Points";
           
           
-          console.log(document.getElementById("form1"));
-          contentDiv.appendChild(nameP);
-          contentDiv.appendChild(valueIn);
-          contentDiv.appendChild(btn2);
-          contentDiv.appendChild(btn);
-          contentDiv.appendChild(currentP);
-          contentDiv.appendChild(points);
-          contentDiv.appendChild(pointFin);
-          imgDiv.appendChild(img);
-          row.appendChild(imgDiv);
-          row.appendChild(contentDiv);
-          card.appendChild(row);
-          main.appendChild(card);
+          
       }
+      console.log(document.getElementById("form1"));
+      contentDiv.appendChild(nameP);
+      contentDiv.appendChild(valueIn);
+      contentDiv.appendChild(btn2);
+      contentDiv.appendChild(btn);
+      contentDiv.appendChild(currentP);
+      contentDiv.appendChild(points);
+      contentDiv.appendChild(pointFin);
+      imgDiv.appendChild(img);
+      row.appendChild(imgDiv);
+      row.appendChild(contentDiv);
+      card.appendChild(row);
+      main.appendChild(card);
       /*var submit = document.createElement("button");
       submit.type="submit";
       submit.innerText="Update Points";
