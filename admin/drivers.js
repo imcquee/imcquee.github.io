@@ -1,10 +1,24 @@
 currentPoints = [];
 
+function openTab(evt) {
+    // Declare all variables
+    var i, tablinks;
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    evt.classList.add("active");
+}
+
+
 function makeDrivers(){
   for(i = 0; i < 10; i++){
     main = document.getElementById("driverContent");
       card = document.createElement("div");
       card.setAttribute("class","card driver-card");
+      card.setAttribute('onclick','displayItemOverlay();displayItem(this);loadAccount()');
         row = document.createElement("div");
         row.setAttribute("class","row no-gutters");
           imgDiv = document.createElement("div");
@@ -23,6 +37,7 @@ function makeDrivers(){
             valueIn.setAttribute("style","text-align:right;width:15vh");
             valueIn.setAttribute("number","text");
             valueIn.setAttribute("value","0");
+            valueIn.setAttribute("onclick","event.stopPropagation()");
             currentP = document.createElement('p');
             currentP.setAttribute("class","card-text driver-points");
             currentP.setAttribute("style","margin-left:4vh;margin-right:1vh");
@@ -37,12 +52,13 @@ function makeDrivers(){
             pointFin.innerHTML = " Points";
             btn = document.createElement("button");
             btn.setAttribute("class","btn btn-primary driver-button");
-            btn.setAttribute("onclick","subPoints(this)");
+            btn.setAttribute("onclick","subPoints(this);event.stopPropagation()");
             btn.innerHTML = "Subtract Points";
             btn2 = document.createElement("button");
             btn2.setAttribute("class","btn btn-primary driver-button");
-            btn2.setAttribute("onclick","addPoints(this)");
+            btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
             btn2.innerHTML = "Add Points";
+
 
         contentDiv.appendChild(nameP);
         contentDiv.appendChild(valueIn);
@@ -57,6 +73,42 @@ function makeDrivers(){
         card.appendChild(row);
         main.appendChild(card);
   }
+}
+
+function displayItemOverlay(){
+  document.getElementById("itemOverlay").style.display = "block";
+  document.getElementById("overlayContent").style.display = "block";
+  document.documentElement.style.overflow = 'hidden';
+  document.body.scroll = "no";
+}
+
+function displayItem(e){
+  itemContent = document.getElementById('itemContent');
+  overlayContent = document.getElementById('overlayContent');
+  itemContent.innerHTML = e.innerHTML;
+  itemContent.children[0].setAttribute("style","margin:4vh;margin-left:16vh");
+  itemContent.children[0].children[1].children[1].remove();
+  itemContent.children[0].children[1].children[1].remove();
+  itemContent.children[0].children[1].children[1].remove();
+  var numSpon = document.createElement('p');
+  numSpon.setAttribute("class","card-text driver-title");
+  numSpon.setAttribute("style","margin-right:1vh");
+  numSpon.innerHTML = "Number of Sponsors: ";
+  var sponNum = document.createElement('p');
+  sponNum.setAttribute("class","card-text driver-title");
+  sponNum.setAttribute("style","margin:0");
+  sponNum.innerHTML = "3";
+
+  itemContent.children[0].children[1].insertBefore(numSpon,itemContent.children[0].children[1].children[1]);
+  itemContent.children[0].children[1].insertBefore(sponNum,itemContent.children[0].children[1].children[2]);
+}
+
+function closeItemOverlay(){
+  document.getElementById("itemOverlay").style.display = "none";
+  document.getElementById("overlayContent").style.display = "none";
+  document.documentElement.style.overflow = 'scroll';
+  document.body.scroll = "yes";
+  openTab(document.getElementById("accountBtn"));
 }
 
 function addPoints(e){
@@ -97,4 +149,65 @@ function submitPoints(){
   for( i = 0; i < cards.length; i++){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
   }
+}
+
+function loadAccount(){
+  var driverContent = document.getElementById("driverOverlayContent");
+  var itemContent = document.getElementById("itemContent");
+  driverContent.innerHTML = "";
+  curUser = document.createElement('p');
+  user = document.createElement('input');
+  curPass = document.createElement('p');
+  pass = document.createElement('input');
+  cancelBtn = document.createElement('button');
+  removeBtn = document.createElement('button');
+  updateBtn = document.createElement('button');
+
+  cancelBtn.setAttribute('type','button');
+  cancelBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  cancelBtn.setAttribute('style','top:40vh;padding-left:9vh;padding-right:9vh');
+  cancelBtn.innerHTML = "Cancel Changes";
+  removeBtn.setAttribute('type','button');
+  removeBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  removeBtn.setAttribute('style','top:56vh');
+  removeBtn.innerHTML = "Remove Driver";
+  updateBtn.setAttribute('type','button');
+  updateBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  updateBtn.setAttribute('style','top:48vh');
+  updateBtn.innerHTML = "Update Profile";
+  curUser.setAttribute("class","card-text driver-overlay-top");
+  curUser.setAttribute("style","top:2vh");
+  curUser.innerHTML = "Current User Name: ";
+  user.setAttribute("class","driver-overlay-top");
+  user.setAttribute("style","text-align:right;width:25vh;top:10vh");
+  user.setAttribute("number","text");
+  user.setAttribute("value",itemContent.children[0].children[1].children[0].innerHTML);
+  curPass.setAttribute("class","card-text driver-overlay-top");
+  curPass.setAttribute("style","top:22vh");
+  curPass.innerHTML = "Current Password: ";
+  pass.setAttribute("class","driver-overlay-top");
+  pass.setAttribute("style","text-align:right;width:25vh;top:30vh");
+  pass.setAttribute("number","text");
+  pass.setAttribute("value","cpsc4910");
+
+  driverContent.appendChild(cancelBtn);
+  driverContent.appendChild(updateBtn);
+  driverContent.appendChild(removeBtn);
+  driverContent.appendChild(curPass);
+  driverContent.appendChild(pass);
+  driverContent.appendChild(curUser);
+  driverContent.appendChild(user);
+
+}
+
+function loadOrders(){
+  var driverContent = document.getElementById("driverOverlayContent");
+  var itemContent = document.getElementById("itemContent");
+  driverContent.innerHTML = "";
+}
+
+function loadSponsors(){
+  var driverContent = document.getElementById("driverOverlayContent");
+  var itemContent = document.getElementById("itemContent");
+  driverContent.innerHTML = "";
 }

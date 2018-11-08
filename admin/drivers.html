@@ -22,6 +22,21 @@
      <button type="button" class="btn btn-info" style="padding-left:10vh;padding-right:10vh;display:block;margin-top:2vh" onclick="submitPoints()">
        Submit
      </button>
+     <div id="itemOverlay" class="itemOverlay" style="z-index:6;overflow:hidden">
+       <div id="overlayContent" class="overlayContent">
+         <button type="button" class="close overlayCloseBtn" onclick="closeItemOverlay()">&times;</button>
+         <div id="itemContent" style="background:#cccccc;margin-left:2vh;margin-right:12vh">
+         </div>
+         <div class="tab" style="position:fixed">
+          <button id="accountBtn" class="tablinks active" onclick="openTab(this);loadAccount()"><p class="side-nav">Account</p class="side-nav"></button>
+          <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">History</p class="side-nav"></button>
+          <button class="tablinks side-nav-mid" onclick="openTab(this)"><p class="side-nav">Message</p class="side-nav"></button>
+          <button class="tablinks side-nav-mid" onclick="openTab(this);loadOrders()"><p class="side-nav">Orders</p class="side-nav"></button>
+          <button class="tablinks" onclick="openTab(this);loadSponsors()"><p class="side-nav">Sponsors</p class="side-nav"></button>
+         </div>
+         <div id="driverOverlayContent" style="float:right;width:82%;position:relative;height:75%;overflow:auto">
+         </div>
+       </div>
    </div>
   </body>
 </html>
