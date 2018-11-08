@@ -1,6 +1,6 @@
 currentPoints = [];
 
-function request() {
+function makeDrivers() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
