@@ -204,10 +204,11 @@ function cancelPoints(){
   }*/
 }
 
-function submitPoints(){
+window.onload = function submitPoints(){
   //console.log(document.getElementById("form1"))
-  var sub = document.getElementById("form1");
-  console.log(sub);
+  //var sub = document.getElementById("form1");
+  //console.log(sub);
+  document.getElementById("form1").submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
