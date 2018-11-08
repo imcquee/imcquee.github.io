@@ -53,6 +53,7 @@ function makeDrivers() {
               valueIn.type="number";
               valueIn.name="points";
               valueIn.value=0;
+              form1.appendChild(valueIn);
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
               currentP.setAttribute("class","card-text driver-points");
@@ -75,7 +76,7 @@ function makeDrivers() {
               btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
           
-          form1.appendChild(valueIn);
+          
           console.log(document.getElementById("form1"));
           contentDiv.appendChild(nameP);
           contentDiv.appendChild(valueIn);
