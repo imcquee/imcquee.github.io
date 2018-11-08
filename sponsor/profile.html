@@ -5,14 +5,14 @@
 
   <meta charset="UTF-8">
   <title>Pit Stop Perks</title>
-  <meta name = "viewport" id = "viewport_device">
-
-
+  <meta name = "viewport" id = "viewport_device"> 
+  
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
       <style>
       body {
-  background:#ef5350 !important;
+  background:#EF5350 !important;
 }
 
 
@@ -44,8 +44,8 @@ option{
 .form-signin .checkbox {
   margin-bottom: 30px;
   text-align: center;
-  color: #F44336;
-
+  color: #F44336; 
+  
 }
 .form-signin .checkbox {
   font-weight: normal;
@@ -101,7 +101,7 @@ option{
     color: #fff !important;
 }
 .accent {
-        margin: 0;
+        margin: 0; 
         position: fixed;
         background: #FFD700;
         left: 0;
@@ -124,8 +124,8 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         $("#viewport_device").attr("content", "initial-scale = 1.00");
     }
 </script>
-
-
+  
+  
   <script>
   if (document.location.search.match(/type=embed/gi)) {
     window.parent.postMessage("resize", "*");
@@ -160,7 +160,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  //xhttp.setRequestHeader("Cookie", );
+  //xhttp.setRequestHeader("Cookie", ); 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       //document.getElementById("user").innerHTML = this.responseText;
@@ -174,7 +174,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
       }*/
       document.getElementById("user").innerHTML = val.username;
       document.getElementById("email").innerHTML = val.email;
-      document.getElementById("iD").innerHTML = val.points;
+      document.getElementById("iD").innerHTML = val.points; 
       //document.getElementById("dList").innerHTML = val.list;
       //document.getElementById("")
     }
@@ -216,7 +216,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
     throw new Error('CORS not supported');
   }*/
 
-
+  
 /*console.log("testing");
 var webs= new WebSocket('ws://ec2-18-212-39-137.compute-1.amazonaws.com:9615');
 webs.onopen = function () {
@@ -226,15 +226,15 @@ webs.onopen = function () {
 webs.onmessage = function(call) {
     console.log(call);
     var data = call.data;
-
-    document.getElementById("user").innerHTML = call.data;
-
-    //document.getElementById("SongID").innerHTML = call.data;
+    
+    document.getElementById("user").innerHTML = call.data;     
+    
+    //document.getElementById("SongID").innerHTML = call.data;        
 }
 
 webs.onclose = function() {
 
-}*/
+}*/ 
 
 </script>
 
@@ -243,7 +243,7 @@ webs.onclose = function() {
 
 <body translate="no" >
     <!-- Navigation -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="navie">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="navie">
       <div class="container">
         <a class="navbar-brand" href="#">Pit Stop Perks</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -268,30 +268,34 @@ webs.onclose = function() {
           </ul>
         </div>
       </div>
-    </nav> -->
+    </nav>
     <!--div class="accent"></div>-->
     <!--<form class="form-signin" action="http://ec2-18-212-39-137.compute-1.amazonaws.com:9615/action3" method="post">  </form>-->
     <div class="wrapper">
-
-    <div class="form-signin">
+        
+    <div class="form-signin">  
         <h2 class="form-signin-heading">Your Profile</h2>
         <div class="form-group row">
-                <label for="username" class="col-4 col-form-label">User Name:</label>
+                <label for="username" class="col-4 col-form-label">User Name:</label> 
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="user">User Name</label>
                 </div>
-                <label for="username" class="col-4 col-form-label">Email:</label>
+                <label for="username" class="col-4 col-form-label">Email:</label> 
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="email">Email</label>
                 </div>
-                <label for="username" class="col-4 col-form-label">User ID:</label>
+                <label for="username" class="col-4 col-form-label">User ID:</label> 
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="iD">User ID</label>
-
+                    
                 </div>
 		<form class="form-signin" action="http://server.isaacmcqueen.me:9615/addDriver" method="post">
 		<input type="hidden" id="dAdd" name="accT" value="addDriver">
-		<input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
+    <input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
+    <br>
+    <form class="form-signin" action="http://server.isaacmcqueen.me:9615/addItem" method="post">
+    <input type="hidden" id="dAdI" name="accT" value="addItem">
+    <input type="text" class="form-control" placeholder="Enter UPC" name="addItem">
 
 
 </form>
@@ -303,38 +307,38 @@ webs.onclose = function() {
                 <br>
                 <br>
                 <br>
-                <button id="RedB" class="btn btn-lg btn-primary btn-block">Change Password</button>
-        </div>
+                <button id="RedB" class="btn btn-lg btn-primary btn-block">Change Password</button> 
+        </div>     
       <!--<select class="form-control" name="accT" required="" id="aSel" onchange="myFunction()">
             <option value="" disabled selected>Account Type</option>
             <option id="Driver" value="Driver">Driver</option>
             <option id="Admin" value="Admin">Administrator</option>
             <option id="Sponsor" value="Sponsor">Sponsor</option>
-      </select>
-
+      </select> 
+      
       <div id="auth">
             <input type="text" class="form-control" placeholder="Authorization Email" name="authEmail">
       </div>
       <!--<div class="container">
             <div class="OuterMostClass row">
                 <div class="outerClass col-xs-6">
-                        <button class="btn btn-lg btn-primary btn-block">Driver</button>
+                        <button class="btn btn-lg btn-primary btn-block">Driver</button>   
                 </div>
                 <div class="outerClass2 col-xs-6">
-                    <button class="btn btn-lg btn-primary btn-block">Sponsor</button>
+                    <button class="btn btn-lg btn-primary btn-block">Sponsor</button>   
                 </div>
                 <div class="outerClass2 col-xs-6">
-                        <button class="btn btn-lg btn-primary btn-block">Administrator</button>
+                        <button class="btn btn-lg btn-primary btn-block">Administrator</button>   
                 </div>
-            </div>
-      </div>
+            </div> 
+      </div>   
       <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
       <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
-      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>   
       <input type="hidden" name="account" value="nUser">
       <!--<label class="checkbox">
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
       </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>-->   
     </form>
   </div>
