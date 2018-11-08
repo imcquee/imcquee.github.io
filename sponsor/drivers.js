@@ -204,7 +204,8 @@ function cancelPoints(){
   }*/
 }
 
-function submitPoints(){
+document.onload = function submitPoints(){
+  //console.log(document.getElementById("form1"))
   document.getElementById("form1").submit();
   /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
