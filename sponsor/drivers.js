@@ -24,8 +24,9 @@ function makeDrivers() {
         valueIn.type="number";
         valueIn.name="points";
         valueIn.value=val.drivers[i].points;
+        valueIn.style="text-align:right;width:15vh";
         form1.appendChild(valueIn);
-        value2 = document.createElement('input')
+        /*value2 = document.createElement('input')
         value2.type="hidden";
         value2.name="sub";
         value2.value="pop"
@@ -80,6 +81,19 @@ function makeDrivers() {
               btn2.setAttribute("class","btn btn-primary driver-button");
               btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
+
+              contentDiv.appendChild(nameP);
+              contentDiv.appendChild(valueIn);
+              contentDiv.appendChild(btn2);
+              contentDiv.appendChild(btn);
+              contentDiv.appendChild(currentP);
+              contentDiv.appendChild(points);
+              contentDiv.appendChild(pointFin);
+              imgDiv.appendChild(img);
+              row.appendChild(imgDiv);
+              row.appendChild(contentDiv);
+              card.appendChild(row);
+              main.appendChild(card);
           
           
           
@@ -98,18 +112,7 @@ function makeDrivers() {
   xhttp.withCredentials = true;
   xhttp.send(obj);
 
-  contentDiv.appendChild(nameP);
-  contentDiv.appendChild(valueIn);
-  contentDiv.appendChild(btn2);
-  contentDiv.appendChild(btn);
-  contentDiv.appendChild(currentP);
-  contentDiv.appendChild(points);
-  contentDiv.appendChild(pointFin);
-  imgDiv.appendChild(img);
-  row.appendChild(imgDiv);
-  row.appendChild(contentDiv);
-  card.appendChild(row);
-  main.appendChild(card);
+  
 }
 
 function openTab(evt) {
