@@ -10,6 +10,7 @@ function makeDrivers() {
       var form1 = document.createElement("form");
       form1.action="http://server.isaacmcqueen.me:9615";
       form1.method="POST";
+      form1.id="form1";
       var inpR = document.createElement("input");
       inpR.type="hidden";
       inpR.name="accT";
