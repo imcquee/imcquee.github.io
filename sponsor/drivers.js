@@ -98,7 +98,7 @@ function makeDrivers() {
           
           
       }
-      
+      console.log("hello");
       /*var submit = document.createElement("button");
       submit.type="submit";
       submit.innerText="Update Points";
