@@ -204,7 +204,7 @@ function cancelPoints(){
 }
 
 function submitPoints(){
-  document.form1.submit();
+  document.getElementById("form1").submit();
   /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
