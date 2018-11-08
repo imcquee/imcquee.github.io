@@ -52,7 +52,7 @@ function makeDrivers() {
               valueIn.setAttribute("onclick","event.stopPropagation()");*/
               valueIn.type="number";
               valueIn.name="points";
-              valueIn.value=0;
+              valueIn.value=val.drivers[i].points;
               form1.appendChild(valueIn);
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
