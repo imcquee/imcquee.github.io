@@ -83,7 +83,7 @@ function makeDrivers() {
               btn2.innerHTML = "Add Points";
 
               contentDiv.appendChild(nameP);
-              contentDiv.appendChild(valueIn);
+              //contentDiv.appendChild(valueIn);
               contentDiv.appendChild(btn2);
               contentDiv.appendChild(btn);
               contentDiv.appendChild(currentP);
