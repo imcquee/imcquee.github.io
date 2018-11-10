@@ -72,7 +72,7 @@ function makeDrivers() {
               var inpP = document.createElement("input");
               inpP.type="hidden";
               inpP.name="points";
-              inpP.value=points.innerHTML;
+              inpP.value=currentPoints[i];
               form1.appendChild(inpP);
               pointFin = document.createElement('p');
               pointFin.setAttribute("class","card-text driver-points");
