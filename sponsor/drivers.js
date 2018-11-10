@@ -1,5 +1,10 @@
 currentPoints = [];
 
+var form1 = document.createElement("form");
+form1.action="http://server.isaacmcqueen.me:9615";
+form1.method="POST";
+form1.id="form1";
+
 function makeDrivers() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
@@ -7,10 +12,6 @@ function makeDrivers() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var val = JSON.parse(this.responseText);
-      var form1 = document.createElement("form");
-      form1.action="http://server.isaacmcqueen.me:9615";
-      form1.method="POST";
-      form1.id="form1";
       var inpR = document.createElement("input");
       inpR.type="hidden";
       inpR.name="accT";
@@ -235,10 +236,10 @@ function submitPoints(){
     inpP.type="hidden";
     inpP.name="points";
     inpP.value=currentPoints[i];
-    document.getElementById("form1").appendChild(inpP);
+    form1.appendChild(inpP);
   }
-  document.getElementById("ContentDiv").appendChild(document.getElementById("form1"));
-  document.getElementById("form1").submit();
+  document.getElementById("ContentDiv").appendChild(form1);
+  form1.submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
