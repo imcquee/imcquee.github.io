@@ -84,7 +84,6 @@ function makeDrivers() {
 
               contentDiv.appendChild(nameP);
               contentDiv.appendChild(valueIn);
-              contentDiv.appendChild(form1);
               contentDiv.appendChild(btn2);
               contentDiv.appendChild(btn);
               contentDiv.appendChild(currentP);
@@ -238,6 +237,7 @@ function submitPoints(){
     inpP.value=currentPoints[i];
     document.getElementById("form1").appendChild(inpP);
   }
+  document.getElementById("ContentDiv").appendChild(document.getElementById("form1"));
   document.getElementById("form1").submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
