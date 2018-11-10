@@ -15,6 +15,7 @@ function makeDrivers() {
       inpR.type="hidden";
       inpR.name="accT";
       inpR.value="updatePoints";
+      form1.appendChild(inpR);
       for(i=0;i<val.drivers.length;i++){
         var inpN = document.createElement("input");
         inpN.type="hidden";
@@ -34,7 +35,6 @@ function makeDrivers() {
         document.getElementById("form1").appendChild(inpN)
         document.getElementById("form1").appendChild(inpP);
         document.getElementById("form1").appendChild(document.createElement("br"));*/
-        form1.appendChild(inpR);
         form1.appendChild(inpN);
         main = document.getElementById("driverContent");
         card = document.createElement("div");
@@ -225,13 +225,13 @@ function submitPoints(){
   //console.log(document.getElementById("form1"))
   //var sub = document.getElementById("form1");
   //console.log(sub);
-  for(i=0;currentPoints.length;i++){
+  /*for(i=0;currentPoints.length;i++){
     var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
     inpP.value=currentPoints[i];
     document.getElementById("form1").appendChild(inpP);
-  }
+  }*/
   document.getElementById("form1").submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
