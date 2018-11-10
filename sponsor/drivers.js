@@ -69,11 +69,6 @@ function makeDrivers() {
               points.setAttribute("class","card-text driver-points");
               points.innerHTML = val.drivers[i].points;
               currentPoints[i] = points.innerHTML;
-              var inpP = document.createElement("input");
-              inpP.type="hidden";
-              inpP.name="points";
-              inpP.value=currentPoints[i];
-              form1.appendChild(inpP);
               pointFin = document.createElement('p');
               pointFin.setAttribute("class","card-text driver-points");
               pointFin.setAttribute("style","margin-right:4vh;margin-left:1vh");
@@ -230,6 +225,13 @@ function submitPoints(){
   //console.log(document.getElementById("form1"))
   //var sub = document.getElementById("form1");
   //console.log(sub);
+  for(i=0;currentPoints.length;i++){
+    var inpP = document.createElement("input");
+    inpP.type="hidden";
+    inpP.name="points";
+    inpP.value=currentPoints[i];
+    document.getElementById("form1").appendChild(inpP);
+  }
   document.getElementById("form1").submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
