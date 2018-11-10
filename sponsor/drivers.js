@@ -1,9 +1,10 @@
 currentPoints = [];
+currentName = [];
 
-var form1 = document.createElement("form");
+/*var form1 = document.createElement("form");
 form1.action="http://server.isaacmcqueen.me:9615";
 form1.method="POST";
-form1.id="form1";
+form1.id="form1";*/
 
 function makeDrivers() {
   var xhttp = new XMLHttpRequest();
@@ -12,16 +13,17 @@ function makeDrivers() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var val = JSON.parse(this.responseText);
-      var inpR = document.createElement("input");
+      /*var inpR = document.createElement("input");
       inpR.type="hidden";
       inpR.name="accT";
       inpR.value="updatePoints";
-      form1.appendChild(inpR);
+      form1.appendChild(inpR);*/
       for(i=0;i<val.drivers.length;i++){
-        var inpN = document.createElement("input");
+        /*var inpN = document.createElement("input");
         inpN.type="hidden";
         inpN.name="name";
-        inpN.value=val.drivers[i].name;
+        inpN.value=val.drivers[i].name;*/
+        currentName[i] = val.drivers[i].name
         /*valueIn = document.createElement('input');
         valueIn.type="number";
         valueIn.name="points";
@@ -230,16 +232,18 @@ function submitPoints(){
   for( i = 0; i < cards.length; i++){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
   }*/
-  console.log(currentPoints[0]);
+  //console.log(currentPoints[0]);
   for(i=0;currentPoints.length;i++){
-    var inpP = document.createElement("input");
+    console.log(currentName[i]);
+    console.log(currentPoints[i]);
+    /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
     inpP.value=currentPoints[i];
-    form1.appendChild(inpP);
+    form1.appendChild(inpP);*/
   }
-  document.getElementById("ContentDiv").appendChild(form1);
-  form1.submit();
+  //document.getElementById("ContentDiv").appendChild(form1);
+  //form1.submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
