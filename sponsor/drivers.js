@@ -38,7 +38,7 @@ function makeDrivers() {
         document.getElementById("form1").appendChild(inpN)
         document.getElementById("form1").appendChild(inpP);
         document.getElementById("form1").appendChild(document.createElement("br"));*/
-        form1.appendChild(inpN);
+        //form1.appendChild(inpN);
         main = document.getElementById("driverContent");
         card = document.createElement("div");
         card.setAttribute("class","card driver-card");
