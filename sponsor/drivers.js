@@ -225,13 +225,13 @@ function submitPoints(){
   //console.log(document.getElementById("form1"))
   //var sub = document.getElementById("form1");
   //console.log(sub);
-  /*for(i=0;currentPoints.length;i++){
+  for(i=0;currentPoints.length;i++){
     var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
     inpP.value=currentPoints[i];
     document.getElementById("form1").appendChild(inpP);
-  }*/
+  }
   document.getElementById("form1").submit();
   //main.getElementsByClassName
   /*cards = document.getElementById("mainDrivers").children[0].children;
