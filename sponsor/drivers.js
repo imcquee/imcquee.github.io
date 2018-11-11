@@ -233,10 +233,10 @@ function submitPoints(){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
   }*/
   //console.log(currentPoints[0]);
-  
-    console.log(currentName[0]);
-    console.log(currentPoints[0]);
-    console.log(currentName.length);
+  for(i=0;i<currentName.length;i++){
+    console.log(currentName[i]);
+    console.log(currentPoints[i]);
+  }
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
