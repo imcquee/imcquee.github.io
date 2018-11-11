@@ -61,7 +61,7 @@ function makeDrivers() {
               valueIn.setAttribute("style","text-align:right;width:15vh");
               valueIn.setAttribute("number","text");
               valueIn.setAttribute("name","points")
-              valueIn.setAttribute("value","0");
+              valueIn.setAttribute("value","i");
               valueIn.setAttribute("onclick","event.stopPropagation()");
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
