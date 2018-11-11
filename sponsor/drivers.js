@@ -198,7 +198,7 @@ function addPoints(e,z){
   newNum = number + box;
   e.parentNode.children[5].innerHTML = newNum;
   e.parentNode.children[1].value = 0;
-  console.log(z);
+  console.log(e.parentNode.children[5]);
   console.log(newNum);
   currentPoints[z] = newNum;
 }
