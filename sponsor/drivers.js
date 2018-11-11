@@ -205,7 +205,7 @@ function addPoints(e){
   e.parentNode.children[5].innerHTML = newNum;
   e.parentNode.children[1].value = 0;
   console.log(e.parentNode.children[7].value);
-  //currentPoints[e.p] = newNum;
+  currentPoints[e.parentNode.children[7].value] = newNum;
 }
 
 function subPoints(e){
@@ -241,10 +241,29 @@ function submitPoints(){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
   }*/
   //console.log(currentPoints[0]);
+  var form1 = document.createElement("form");
+  form1.action="http://server.isaacmcqueen.me:9615";
+  form1.method="POST";
+  form1.id="form1";
+  var inpR = document.createElement("input");
+  inpR.type="hidden";
+  inpR.name="accT";
+  inpR.value="updatePoints";
+  form1.appendChild(inpR);
   for(i=0;i<currentName.length;i++){
-    console.log(currentName[i]);
-    console.log(currentPoints[i]);
+    var inpN = document.createElement("input");
+    inpN.type="hidden";
+    inpN.name="name";
+    inpN.value=currentName[i];
+    form1.appendChild(inpN);
+    var inpP = document.createElement("input");
+    inpP.type="hidden";
+    inpP.name="points";
+    inpP.value=currentPoints[i];
+    form1.appendChild(inpP);
   }
+  document.getElementById("ContentDiv").appendChild(form1);
+  form1.submit();
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
