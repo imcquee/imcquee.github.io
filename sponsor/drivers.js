@@ -236,6 +236,7 @@ function submitPoints(){
   
     console.log(currentName[0]);
     console.log(currentPoints[0]);
+    console.log(currentName.length);
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
