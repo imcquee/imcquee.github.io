@@ -262,7 +262,7 @@ function submitPoints(){
     inpP.value=currentPoints[i];
     form1.appendChild(inpP);
   }
-  document.getElementById("ContentDiv").appendChild(form1);
+  //document.getElementById("ContentDiv").appendChild(form1);
   form1.submit();
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
