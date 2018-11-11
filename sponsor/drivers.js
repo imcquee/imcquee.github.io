@@ -1,4 +1,5 @@
 currentPoints = [];
+startPoints = [];
 currentName = [];
 
 /*var form1 = document.createElement("form");
@@ -19,6 +20,7 @@ function makeDrivers() {
       inpR.value="updatePoints";
       form1.appendChild(inpR);*/
       for(i=0;i<val.drivers.length;i++){
+        startPoints[i] = val.drivers[i].points;
         var track = document.createElement("input");
         track.type="hidden";
         track.name="tr";
@@ -226,10 +228,10 @@ function subPoints(e){
 }
 
 function cancelPoints(){
-  /*cards = document.getElementById("mainDrivers").children[0].children;
+  cards = document.getElementById("mainDrivers").children[0].children;
   for( i = 0; i < cards.length; i++){
-    cards[i].children[0].children[1].children[5].innerHTML = currentPoints[i];
-  }*/
+    cards[i].children[0].children[1].children[5].innerHTML = startPoints[i];
+  }
 }
 
 function submitPoints(){
