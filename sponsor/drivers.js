@@ -191,6 +191,7 @@ function openTab(evt) {
 }*/
 
 function addPoints(e){
+  console.log(e);
   text = e.parentNode.children[5].textContent;
   val = e.parentNode.children[1].value;
   number = Number(text);
