@@ -233,15 +233,15 @@ function submitPoints(){
     currentPoints[i] = cards[i].children[0].children[1].children[5].innerHTML;
   }*/
   //console.log(currentPoints[0]);
-  for(i=0;currentName.length;i++){
-    console.log(currentName[i]);
-    console.log(currentPoints[i]);
+  
+    console.log(currentName[0]);
+    console.log(currentPoints[0]);
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
     inpP.value=currentPoints[i];
     form1.appendChild(inpP);*/
-  }
+  
   //document.getElementById("ContentDiv").appendChild(form1);
   //form1.submit();
   //main.getElementsByClassName
