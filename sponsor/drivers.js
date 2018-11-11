@@ -82,7 +82,7 @@ function makeDrivers() {
               btn.innerHTML = "Subtract Points";
               btn2 = document.createElement("button");
               btn2.setAttribute("class","btn btn-primary driver-button");
-              btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
+              btn2.setAttribute("onclick","addPoints(this,i);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
 
               contentDiv.appendChild(nameP);
@@ -190,7 +190,7 @@ function openTab(evt) {
   }
 }*/
 
-function addPoints(e){
+function addPoints(e,z){
   console.log(e);
   text = e.parentNode.children[5].textContent;
   val = e.parentNode.children[1].value;
@@ -199,6 +199,7 @@ function addPoints(e){
   newNum = number + box;
   e.parentNode.children[5].innerHTML = newNum;
   e.parentNode.children[1].value = 0;
+  currentPoints[z] = newNum;
 }
 
 function subPoints(e){
