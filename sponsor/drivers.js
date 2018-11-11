@@ -19,6 +19,10 @@ function makeDrivers() {
       inpR.value="updatePoints";
       form1.appendChild(inpR);*/
       for(i=0;i<val.drivers.length;i++){
+        var track = document.createElement("input");
+        track.type="hidden";
+        track.name="tr";
+        track.value=i;
         /*var inpN = document.createElement("input");
         inpN.type="hidden";
         inpN.name="name";
@@ -61,8 +65,7 @@ function makeDrivers() {
               valueIn.setAttribute("style","text-align:right;width:15vh");
               valueIn.setAttribute("number","text");
               valueIn.setAttribute("name","points")
-              //valueIn.setAttribute("value","i");
-              valueIn.value = i;
+              valueIn.setAttribute("value","0");
               valueIn.setAttribute("onclick","event.stopPropagation()");
               //valueIn.style="text-align:right;width:15vh";
               currentP = document.createElement('p');
@@ -83,7 +86,7 @@ function makeDrivers() {
               btn.innerHTML = "Subtract Points";
               btn2 = document.createElement("button");
               btn2.setAttribute("class","btn btn-primary driver-button");
-              btn2.setAttribute("onclick","addPoints(this,i);event.stopPropagation()");
+              btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
 
               contentDiv.appendChild(nameP);
@@ -93,6 +96,7 @@ function makeDrivers() {
               contentDiv.appendChild(currentP);
               contentDiv.appendChild(points);
               contentDiv.appendChild(pointFin);
+              contentDiv.appendChild(track);
               imgDiv.appendChild(img);
               row.appendChild(imgDiv);
               row.appendChild(contentDiv);
@@ -191,7 +195,7 @@ function openTab(evt) {
   }
 }*/
 
-function addPoints(e,z){
+function addPoints(e){
   text = e.parentNode.children[5].textContent;
   val = e.parentNode.children[1].value;
   number = Number(text);
@@ -200,8 +204,8 @@ function addPoints(e,z){
   console.log(e.parentNode.children[1]);
   e.parentNode.children[5].innerHTML = newNum;
   e.parentNode.children[1].value = 0;
-  console.log(newNum);
-  currentPoints[z] = newNum;
+  console.log(e.parentNode.children[7].value);
+  //currentPoints[e.p] = newNum;
 }
 
 function subPoints(e){
