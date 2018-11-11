@@ -221,6 +221,7 @@ function subPoints(e){
     newNum = number - box;
     e.parentNode.children[5].innerHTML = newNum;
     e.parentNode.children[1].value = 0;
+    currentPoints[e.parentNode.children[7].value] = newNum;
   }
 }
 
