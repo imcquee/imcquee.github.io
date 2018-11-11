@@ -191,7 +191,6 @@ function openTab(evt) {
 }*/
 
 function addPoints(e,z){
-  console.log(e);
   text = e.parentNode.children[5].textContent;
   val = e.parentNode.children[1].value;
   number = Number(text);
@@ -199,6 +198,8 @@ function addPoints(e,z){
   newNum = number + box;
   e.parentNode.children[5].innerHTML = newNum;
   e.parentNode.children[1].value = 0;
+  console.log(z);
+  console.log(newNum);
   currentPoints[z] = newNum;
 }
 
