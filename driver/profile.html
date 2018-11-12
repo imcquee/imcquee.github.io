@@ -295,13 +295,14 @@ webs.onclose = function() {
 		<input type="hidden" id="dAdd" name="accT" value="addDriver">
 		<input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
     <div class="dropdown" style="float:left">
-     <input id="sponsorSelect" onclick="myFunction()" class="dropbtn" value="Click to get Sponsor Options"></input>
+     <input id="sponsorSelect" onclick="myFunction();makeSponsorOptions()" class="dropbtn" value="Click to get Sponsor Options"></input>
      <div id="myDropdown" class="dropdown-content">
        <!-- <a href="#">Link 1</a>
        <a href="#">Link 2</a>
        <a href="#">Link 3</a> -->
      </div>
     </div>
+    <button type="button" class="btn btn-primary">Change Sponsor</button>
 
 
 </form>
