@@ -61,6 +61,8 @@ function makeDrivers() {
             contentDiv.setAttribute("class","col");
             contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
               nameP = document.createElement('p');
+              nameDiv = document.createElement('div');
+              nameDiv.setAttribute('style','width:15%');
               nameP.setAttribute("class","card-text driver-title");
               nameP.innerHTML = val.drivers[i].name;
               valueIn = document.createElement('input');
@@ -91,7 +93,8 @@ function makeDrivers() {
               btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
 
-              contentDiv.appendChild(nameP);
+              nameDiv.appendChild(nameP);
+              contentDiv.appendChild(nameDiv);
               contentDiv.appendChild(valueIn);
               contentDiv.appendChild(btn2);
               contentDiv.appendChild(btn);
@@ -104,9 +107,9 @@ function makeDrivers() {
               row.appendChild(contentDiv);
               card.appendChild(row);
               main.appendChild(card);
-          
-          
-          
+
+
+
       }
       /*var submit = document.createElement("button");
       submit.type="submit";
@@ -121,7 +124,7 @@ function makeDrivers() {
   xhttp.withCredentials = true;
   xhttp.send(obj);
 
-  
+
 }
 
 function openTab(evt) {
@@ -272,7 +275,7 @@ function submitPoints(){
     inpP.name="points";
     inpP.value=currentPoints[i];
     form1.appendChild(inpP);*/
-  
+
   //document.getElementById("ContentDiv").appendChild(form1);
   //form1.submit();
   //main.getElementsByClassName
