@@ -2,6 +2,7 @@
 toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("sponsorSelect").blur();
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -17,4 +18,4 @@ window.onclick = function(event) {
       }
     }
   }
-} 
+}
