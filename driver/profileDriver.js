@@ -23,6 +23,7 @@ window.onclick = function(event) {
 
 function makeSponsorOptions(){
   optionList = document.getElementById("myDropdown");
+  optionList.innerHTML = "";
   for(i = 0; i < 4; i++){
     pTag = document.createElement('p');
     pTag.innerHTML = "Option "+i;

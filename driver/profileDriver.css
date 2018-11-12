@@ -44,3 +44,13 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.btn-primary-profile{
+  background-color: #ef5350 !important;
+  border-color: #ef5350 !important;
+}
+
+.btn-primary-profile:hover{
+  background-color: white !important;
+  color: #ef5350 !important;
+}
