@@ -62,7 +62,7 @@ function makeDrivers() {
             contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
               nameP = document.createElement('p');
               nameDiv = document.createElement('div');
-              nameDiv.setAttribute('style','width:15%');
+              nameDiv.setAttribute('style','width:12%');
               nameP.setAttribute("class","card-text driver-title");
               nameP.innerHTML = val.drivers[i].name;
               valueIn = document.createElement('input');
