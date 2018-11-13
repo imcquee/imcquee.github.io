@@ -12,7 +12,7 @@ xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    var JSONval = JSON.parse(this.responseText);
+    let JSONval = JSON.parse(this.responseText);
     
   }
 };
