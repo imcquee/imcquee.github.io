@@ -354,7 +354,7 @@ function loadAccount(){
   user.setAttribute("class","driver-overlay-top");
   user.setAttribute("style","text-align:right;width:25vh;top:10vh");
   user.setAttribute("number","text");
-  user.setAttribute("value",itemContent.children[0].children[1].children[0].innerHTML);
+  user.setAttribute("value",itemContent.children[0].children[1].children[0].children[0].innerHTML);
   curPass.setAttribute("class","card-text driver-overlay-top");
   curPass.setAttribute("style","top:22vh");
   curPass.innerHTML = "Current Password: ";
