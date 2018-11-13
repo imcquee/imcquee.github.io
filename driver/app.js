@@ -20,6 +20,7 @@ xhttp.onreadystatechange = function() {
 var obj = "action=masterDriver"
 xhttp.withCredentials = true;
 xhttp.send(obj);
+console.log(JSONval.driverName);
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
