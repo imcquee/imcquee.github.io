@@ -118,6 +118,11 @@ function makeCatalog(){
 
 function removeFromCatalog(e){
   console.log(e.parentNode.children[1].innerHTML);
+  var index = parent.itemIds.indexOf(e.parentNode.children[1].innerHTML);
+  if (index > -1){
+    parent.itemIds.splice(index,1);
+    location.reload();
+  }
 }
 
 function displayItemOverlay(){
@@ -160,4 +165,6 @@ function closeAddOverlay() {
 function addToCatalog(){
   console.log(document.getElementById("itemToAdd").value);
   document.getElementById("itemToAdd").value = "";
+  parent.itemIds.push(document.getElementById("itemToAdd").value);
+  location.reload();
 }
