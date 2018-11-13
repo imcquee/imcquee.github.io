@@ -1,0 +1,21 @@
+<!--TO TEST THIS PAGE LOGIN AS A SPONSOR AND THEN NAVIGATE TO www.isaacmcqueen.me/testobj.html-->
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    //var val = JSON.parse(this.responseText);
+    
+  }
+};
+
+var obj = "action=masterDriver"
+xhttp.withCredentials = true;
+xhttp.send(obj);
+</script>
+</body>
+</html>
