@@ -294,8 +294,8 @@ webs.onclose = function() {
 		<form class="form-signin" action="http://server.isaacmcqueen.me:9615/addDriver" method="post">
 		<input type="hidden" id="dAdd" name="accT" value="addDriver">
 		<input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
-    <div class="dropdown" style="float:left">
-     <input onload="makeSponsorOptions()" id="sponsorSelect" onclick="myFunction()" class="dropbtn" value="Click to get Sponsor Options"></input>
+    <div class="dropdown" style="float:left" onload="makeSponsorOptions()">
+     <input id="sponsorSelect" onclick="myFunction()" class="dropbtn" value="Click to get Sponsor Options"></input>
      <div id="myDropdown" class="dropdown-content">
        <!-- <a href="#">Link 1</a>
        <a href="#">Link 2</a>

@@ -78,8 +78,3 @@ function loadProfile() {
   frame.setAttribute("frameBorder","0");
   main.appendChild(frame);
 }
-
-// function loadNavBar() {
-//   document.getElementById("driverName").innerHTML = JSONval.driverName;
-//   document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
-// }
