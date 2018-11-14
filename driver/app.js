@@ -15,7 +15,6 @@ xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    console.log(JSON.parse(this.responseText));
     JSONval = JSON.parse(this.responseText);
   }
 };
@@ -76,4 +75,9 @@ function loadProfile() {
   frame.setAttribute("width","100%");
   frame.setAttribute("frameBorder","0");
   main.appendChild(frame);
+}
+
+function loadNavBar() {
+  document.getElementById("driverName").innerHTML = JSONval.driverName;
+  document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
 }
