@@ -3,10 +3,11 @@
 // var orderIds = ["241067840","245232145"];
 
 /* Set the width of the side navigation to 250px */
+var JSONva="";
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
-var JSONval;
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
