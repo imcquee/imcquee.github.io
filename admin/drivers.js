@@ -209,10 +209,11 @@ function loadOrders(){
 function loadSponsors(){
   var main = document.getElementById("driverOverlayContent");
   var itemContent = document.getElementById("itemContent");
-  driverContent.innerHTML = "";
+  main.innerHTML = "";
   card = document.createElement("div");
   card.setAttribute("class","card driver-card");
-  card.setAttribute("onclick","displayItemOverlay();displayItem(this);loadAccount()");
+  // card.setAttribute("onclick","displayItemOverlay();displayItem(this);loadAccount()");
+  card.setAttribute("style","width:90%")
     row = document.createElement("div");
     row.setAttribute("class","row no-gutters");
       imgDiv = document.createElement("div");
@@ -227,24 +228,24 @@ function loadSponsors(){
         nameP = document.createElement('p');
         nameP.setAttribute("class","card-text driver-title");
         nameP.innerHTML = "Sponsor "+i;
-        currentP = document.createElement('p');
-        currentP.setAttribute("class","card-text driver-points");
-        currentP.setAttribute("style","margin-left:20vh;margin-right:1vh");
-        currentP.innerHTML = "Current Active Drivers: ";
-        drivers = document.createElement('p');
-        drivers.setAttribute("class","card-text driver-points");
-        drivers.innerHTML = "400";
+        // currentP = document.createElement('p');
+        // currentP.setAttribute("class","card-text driver-points");
+        // currentP.setAttribute("style","margin-left:20vh;margin-right:1vh");
+        // currentP.innerHTML = "Current Active Drivers: ";
+        // drivers = document.createElement('p');
+        // drivers.setAttribute("class","card-text driver-points");
+        // drivers.innerHTML = "400";
         //currentPoints[i] = points.innerHTML;
-        // btn = document.createElement("button");
-        // btn.setAttribute("class","btn btn-primary driver-button");
-        // btn.setAttribute("onclick","event.stopPropagation()");
-        // btn.innerHTML = "Remove Sponsor";
+        btn = document.createElement("button");
+        btn.setAttribute("class","btn btn-primary driver-button");
+        btn.setAttribute("onclick","event.stopPropagation()");
+        btn.innerHTML = "Remove Sponsor";
 
 
     contentDiv.appendChild(nameP);
-    contentDiv.appendChild(currentP);
-    contentDiv.appendChild(drivers);
-    // contentDiv.appendChild(btn);
+    // contentDiv.appendChild(currentP);
+    // contentDiv.appendChild(drivers);
+    contentDiv.appendChild(btn);
     imgDiv.appendChild(img);
     row.appendChild(imgDiv);
     row.appendChild(contentDiv);
