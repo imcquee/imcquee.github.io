@@ -9,6 +9,9 @@ function myFunction() {
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
 
+    if(event.target.matches('.sponsorOption'){
+      document.getElementById("sponsorSelect").value = event.target.innerHTML;
+    }
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -17,9 +20,6 @@ window.onclick = function(event) {
         openDropdown.classList.remove('show');
       }
     }
-  }
-  else if(event.target.matches('.sponsorOption')){
-    document.getElementById("sponsorSelect").value = event.target.innerHTML;
   }
 }
 
