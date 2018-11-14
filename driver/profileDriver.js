@@ -28,6 +28,7 @@ function makeSponsorOptions(){
   optionList.innerHTML = "";
   for(i = 0; i < 4; i++){
     pTag = document.createElement('p');
+    pTag.setAttribute("class",'sponsorOption');
     pTag.innerHTML = "Option "+i;
     optionList.appendChild(pTag);
   }
