@@ -6,14 +6,14 @@
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
-
+var JSONval;
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     let JSONval = JSON.parse(this.responseText);
-    
+
   }
 };
 
