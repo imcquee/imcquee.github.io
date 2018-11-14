@@ -210,7 +210,7 @@ function loadSponsors(){
   var main = document.getElementById("driverOverlayContent");
   var itemContent = document.getElementById("itemContent");
   main.innerHTML = "";
-  for(i = 0; i < 3; i++){
+  for(i = 0; i < 6; i++){
     card = document.createElement("div");
     card.setAttribute("class","card driver-card");
     // card.setAttribute("onclick","displayItemOverlay();displayItem(this);loadAccount()");
