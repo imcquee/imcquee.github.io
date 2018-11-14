@@ -2,6 +2,7 @@ var itemIds = parent.orderIds;
 var cancelIds = parent.cancelIds;
 var runningCancel = false;
 
+console.log(parent.JSONval);
 function openTab(evt) {
     // Declare all variables
     var i, tablinks;

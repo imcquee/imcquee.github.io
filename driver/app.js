@@ -8,6 +8,8 @@ var JSONval={};
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
+
+
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -21,7 +23,6 @@ xhttp.onreadystatechange = function() {
 var obj = "action=masterDriver"
 xhttp.withCredentials = true;
 xhttp.send(obj);
-console.log(JSONval);
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
