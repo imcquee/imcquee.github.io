@@ -9,7 +9,7 @@ function myFunction() {
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
 
-    if(event.target.matches('.sponsorOption'){
+    if(event.target.matches('.sponsorOption')){
       document.getElementById("sponsorSelect").value = event.target.innerHTML;
     }
     var dropdowns = document.getElementsByClassName("dropdown-content");
