@@ -16,6 +16,8 @@ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     JSONval = JSON.parse(this.responseText);
+    document.getElementById("driverName").innerHTML = JSONval.driverName;
+    document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
   }
 };
 
@@ -77,7 +79,7 @@ function loadProfile() {
   main.appendChild(frame);
 }
 
-function loadNavBar() {
-  document.getElementById("driverName").innerHTML = JSONval.driverName;
-  document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
-}
+// function loadNavBar() {
+//   document.getElementById("driverName").innerHTML = JSONval.driverName;
+//   document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
+// }
