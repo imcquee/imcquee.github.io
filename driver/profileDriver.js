@@ -9,7 +9,7 @@ function myFunction() {
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
 
-    console.log(event.target.innerHTML);
+    document.getElementById("sponsorSelect").value = event.target.innerHTML;
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -29,4 +29,8 @@ function makeSponsorOptions(){
     pTag.innerHTML = "Option "+i;
     optionList.appendChild(pTag);
   }
+}
+
+function changeSponsor(){
+  
 }
