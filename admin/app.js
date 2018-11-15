@@ -10,6 +10,7 @@ xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var val = JSON.parse(this.responseText);
     console.log(val.username);
+  }
 };
 var obj = "action=profile"
 xhttp.withCredentials = true;
