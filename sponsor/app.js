@@ -36,6 +36,7 @@ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     JSONval = JSON.parse(this.responseText);
+    console.log(JSONval);
   }
 };
 
