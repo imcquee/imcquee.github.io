@@ -9,7 +9,7 @@ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var val = JSON.parse(this.responseText);
-    console.log(val.username);
+    document.getElementById('adminName').innerHTML = val.username;
   }
 };
 var obj = "action=profile"
