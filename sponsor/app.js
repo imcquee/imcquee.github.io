@@ -1,5 +1,7 @@
 //var itemIds = ["53039031","245232145","239112716","241067840","710163485"];
 
+var JSONval={};
+
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -25,6 +27,19 @@ xhttp.onreadystatechange = function() {
   }
 };
 var obj = "action=driverPoints"
+xhttp.withCredentials = true;
+xhttp.send(obj);
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    JSONval = JSON.parse(this.responseText);
+  }
+};
+
+var obj = "action=masterSponsor"
 xhttp.withCredentials = true;
 xhttp.send(obj);
 
