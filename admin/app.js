@@ -27,7 +27,7 @@ xhttp.onreadystatechange = function() {
   }
 };
 
-var obj = "action=masterDriver"
+var obj = "action=masterAdmin"
 xhttp.withCredentials = true;
 xhttp.send(obj);
 
