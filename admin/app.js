@@ -17,6 +17,21 @@ xhttp.withCredentials = true;
 xhttp.send(obj);
 
 
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    JSONval = JSON.parse(this.responseText);
+    console.log(JSONval);
+  }
+};
+
+var obj = "action=masterDriver"
+xhttp.withCredentials = true;
+xhttp.send(obj);
+
+
 /* Set the width of the side navigation to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
