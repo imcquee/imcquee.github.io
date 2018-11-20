@@ -121,7 +121,7 @@ function openTab(evt) {
 }
 
 function makeSponsors(){
-  for(i = 0; i < 10; i++){
+  for(i = 0; i < JSONval.drivers.length; i++){
     main = document.getElementById("sponsorContent");
       card = document.createElement("div");
       card.setAttribute("class","card driver-card");
