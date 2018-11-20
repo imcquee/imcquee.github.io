@@ -3,15 +3,6 @@
 // var orderIds = ["241067840","245232145"];
 
 /* Set the width of the side navigation to 250px */
-
-if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/Android/i)
-    || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/IEMobile/i)){
-        $("#viewport_device").attr("content", "initial-scale = 0.80");
-    }
-    else if(navigator.userAgent.match(/iPad/i)){
-        $("#viewport_device").attr("content", "initial-scale = 1.00");
-    }
-
 var JSONval={};
 
 function openNav() {
