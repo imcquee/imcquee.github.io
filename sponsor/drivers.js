@@ -14,6 +14,7 @@ function makeDrivers() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var val = JSON.parse(this.responseText);
+      console.log(val);
       /*var inpR = document.createElement("input");
       inpR.type="hidden";
       inpR.name="accT";
