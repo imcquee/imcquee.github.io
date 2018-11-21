@@ -14,7 +14,7 @@ function openTab(evt) {
 
 
 function makeDrivers(){
-  for(i = 0; i < 10; i++){
+  for(i = 0; i < parent.JSONval.drivers.length; i++){
     main = document.getElementById("driverContent");
       card = document.createElement("div");
       card.setAttribute("class","card driver-card");
@@ -32,7 +32,7 @@ function makeDrivers(){
           contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
             nameP = document.createElement('p');
             nameP.setAttribute("class","card-text driver-title");
-            nameP.innerHTML = "Driver "+i;
+            nameP.innerHTML = parent.JSONval.drivers[i].drivers.driversName;
             valueIn = document.createElement('input');
             valueIn.setAttribute("style","text-align:right;width:15vh");
             valueIn.setAttribute("number","text");
@@ -58,6 +58,9 @@ function makeDrivers(){
             btn2.setAttribute("class","btn btn-primary driver-button");
             btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
             btn2.innerHTML = "Add Points";
+            password = document.createElement('p');
+            password.setAttribute('style','display:none');
+            password.innerHTML = parent.JSONval.drivers[i].drivers.driverPassword;
 
 
         contentDiv.appendChild(nameP);
@@ -67,6 +70,7 @@ function makeDrivers(){
         contentDiv.appendChild(currentP);
         contentDiv.appendChild(points);
         contentDiv.appendChild(pointFin);
+        contentDiv.appendChild(password);
         imgDiv.appendChild(img);
         row.appendChild(imgDiv);
         row.appendChild(contentDiv);
@@ -189,6 +193,7 @@ function loadAccount(){
   pass.setAttribute("style","text-align:right;width:25vh;top:30vh");
   pass.setAttribute("number","text");
   pass.setAttribute("value","cpsc4910");
+  console.log(itemContent.children[0].children[1].children);
 
   driverContent.appendChild(cancelBtn);
   driverContent.appendChild(updateBtn);

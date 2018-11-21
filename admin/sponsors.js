@@ -122,7 +122,6 @@ function openTab(evt) {
 }
 
 function makeSponsors(){
-  console.log(parent.JSONval.sponsors.length);
   for(i = 0; i < parent.JSONval.sponsors.length; i++){
     main = document.getElementById("sponsorContent");
       card = document.createElement("div");
