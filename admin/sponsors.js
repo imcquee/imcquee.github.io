@@ -1,5 +1,5 @@
 var itemIds = parent.itemIds;
-var JSONval = parent.JSONval;
+//var JSONval = parent.JSONval;
 
 // Create a JavaScript array of the item filters you want to use in your request
 var filterarray = [
@@ -122,6 +122,7 @@ function openTab(evt) {
 }
 
 function makeSponsors(){
+  console.log(parent.JSONval.sponsors.length);
   for(i = 0; i < parent.JSONval.sponsors.length; i++){
     main = document.getElementById("sponsorContent");
       card = document.createElement("div");
