@@ -4,7 +4,7 @@ var cartIds = ["53039031","239112716","710163485"];
 var orderIds = ["241067840","245232145"];
 var JSONval={};
 
-function loadMaster() {
+// function loadMaster() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -18,7 +18,7 @@ function loadMaster() {
 var obj = "action=masterAdmin"
 xhttp.withCredentials = true;
 xhttp.send(obj);
-}
+// }
 
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
