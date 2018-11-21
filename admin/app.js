@@ -1,22 +1,8 @@
+
 var itemIds = ["53039031","245232145","239112716","241067840","710163485"];
 var cartIds = ["53039031","239112716","710163485"];
 var orderIds = ["241067840","245232145"];
 var JSONval={};
-
-var xhttp = new XMLHttpRequest();
-xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//xhttp.setRequestHeader("Cookie", );
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var val = JSON.parse(this.responseText);
-    document.getElementById('adminName').innerHTML = val.username;
-  }
-};
-var obj = "action=profile"
-xhttp.withCredentials = true;
-xhttp.send(obj);
-
 
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
@@ -32,6 +18,20 @@ var obj = "action=masterAdmin"
 xhttp.withCredentials = true;
 xhttp.send(obj);
 
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//xhttp.setRequestHeader("Cookie", );
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var val = JSON.parse(this.responseText);
+    document.getElementById('adminName').innerHTML = val.username;
+  }
+};
+var obj = "action=profile"
+xhttp.withCredentials = true;
+xhttp.send(obj);
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
