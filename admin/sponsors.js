@@ -254,8 +254,7 @@ function loadAccount(){
   pass.setAttribute("class","driver-overlay-top");
   pass.setAttribute("style","text-align:right;width:25vh;top:30vh");
   pass.setAttribute("number","text");
-  pass.setAttribute("value","cpsc4910");
-  console.log(itemContent.children[0].children[1].children);
+  pass.setAttribute("value",itemContent.children[0].children[1].children[3].innerHTML);
 
   driverContent.appendChild(cancelBtn);
   driverContent.appendChild(updateBtn);
