@@ -149,6 +149,9 @@ function makeSponsors(){
             drivers = document.createElement('p');
             drivers.setAttribute("class","card-text driver-points");
             drivers.innerHTML = "400";
+            password = document.createElement('p');
+            password.setAttribute('style','display:none');
+            password.innerHTML = parent.JSONval.sponsors[i].sponsors.sponsorPassword;
             //currentPoints[i] = points.innerHTML;
             // btn = document.createElement("button");
             // btn.setAttribute("class","btn btn-primary driver-button");
@@ -159,6 +162,7 @@ function makeSponsors(){
         contentDiv.appendChild(nameP);
         contentDiv.appendChild(currentP);
         contentDiv.appendChild(drivers);
+        contentDiv.appendChild(password);
         // contentDiv.appendChild(btn);
         imgDiv.appendChild(img);
         row.appendChild(imgDiv);
@@ -251,6 +255,7 @@ function loadAccount(){
   pass.setAttribute("style","text-align:right;width:25vh;top:30vh");
   pass.setAttribute("number","text");
   pass.setAttribute("value","cpsc4910");
+  console.log(itemContent);
 
   driverContent.appendChild(cancelBtn);
   driverContent.appendChild(updateBtn);
