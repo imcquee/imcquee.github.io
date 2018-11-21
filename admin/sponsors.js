@@ -1,4 +1,5 @@
 var itemIds = parent.itemIds;
+var JSONval = parent.JSONval;
 
 // Create a JavaScript array of the item filters you want to use in your request
 var filterarray = [
