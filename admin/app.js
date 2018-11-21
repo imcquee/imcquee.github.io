@@ -14,12 +14,11 @@ function loadMaster() {
       console.log(JSONval);
     }
   };
-}
 
 var obj = "action=masterAdmin"
 xhttp.withCredentials = true;
 xhttp.send(obj);
-
+}
 
 var xhttp = new XMLHttpRequest();
 xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
