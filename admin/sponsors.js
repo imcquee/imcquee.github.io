@@ -122,8 +122,7 @@ function openTab(evt) {
 }
 
 function makeSponsors(){
-  console.log(parent.JSONval+"Here");
-  for(i = 0; i < parent.JSONval.drivers.length; i++){
+  for(i = 0; i < parent.JSONval.sponsors.length; i++){
     main = document.getElementById("sponsorContent");
       card = document.createElement("div");
       card.setAttribute("class","card driver-card");
@@ -141,7 +140,7 @@ function makeSponsors(){
           contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
             nameP = document.createElement('p');
             nameP.setAttribute("class","card-text driver-title");
-            nameP.innerHTML = "Sponsor "+i;
+            nameP.innerHTML = parent.JSONval.sponsors[i].sponsors.sponsorName;
             currentP = document.createElement('p');
             currentP.setAttribute("class","card-text driver-points");
             currentP.setAttribute("style","margin-left:20vh;margin-right:1vh");
