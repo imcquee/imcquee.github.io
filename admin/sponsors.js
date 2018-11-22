@@ -121,7 +121,7 @@ function openTab(evt) {
     evt.classList.add("active");
 }
 
-console.log(JSONval);
+console.log(parent.JSONval);
 
 function makeSponsors(){
   for(i = 0; i < parent.JSONval.sponsors.length; i++){
