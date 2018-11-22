@@ -40,5 +40,7 @@ function makeSponsorOptions(){
 }
 
 function changeSponsor(){
-
+  parent.itemIds = parent.sp2Ids;
+  parent.pV = parent.sp2PV;
+  console.log(document.getElementById('sponsorSelect'));
 }

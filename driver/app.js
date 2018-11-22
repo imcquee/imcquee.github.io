@@ -18,6 +18,7 @@ xhttp.onreadystatechange = function() {
     JSONval = JSON.parse(this.responseText);
     document.getElementById("driverName").innerHTML = JSONval.driverName;
     document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
+    document.getElementById("current-sponsor").innerHTML = "TestSp1";
     console.log(JSONval);
   }
 };
