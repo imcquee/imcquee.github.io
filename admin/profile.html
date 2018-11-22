@@ -172,9 +172,9 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         console.log("hey man");
         console.log(document.cookie);
       }*/
-      document.getElementById("user").innerHTML = val.username;
+      // document.getElementById("user").innerHTML = val.username;
       document.getElementById("email").innerHTML = val.email;
-      document.getElementById("iD").innerHTML = val.points;
+      // document.getElementById("iD").innerHTML = val.points;
       //document.getElementById("dList").innerHTML = val.list;
       //document.getElementById("")
     }
@@ -241,7 +241,8 @@ webs.onclose = function() {
 
 </head>
 
-<body translate="no" >
+<body translate="no" onload="setPv()">
+  <script src="profileAdmin.js"></script>
     <!-- Navigation -->
     <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="navie">
       <div class="container">
@@ -278,11 +279,15 @@ webs.onclose = function() {
         <div class="form-group row">
                 <label for="username" class="col-4 col-form-label">User Name:</label>
                 <div class="col-8">
-                    <label for="username" class="col-4 col-form-label" id="user">User Name</label>
+                    <input for="username" class="col-8 col-form-label" id="user"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">Email:</label>
                 <div class="col-8">
-                    <label for="username" class="col-4 col-form-label" id="email">Email</label>
+                    <input for="username" class="col-8 col-form-label" id="email"></input>
+                </div>
+                <label for="username" class="col-4 col-form-label">Password:</label>
+                <div class="col-8">
+                  <input for="username" class="col-8 col-form-label" id="password"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">User ID:</label>
                 <div class="col-8">
