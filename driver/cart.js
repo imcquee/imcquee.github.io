@@ -31,7 +31,7 @@ function makeCartMath(){
     minus.innerHTML = "-";
     main.appendChild(minus);
     main.appendChild(curPoint);
-    cartTotal = cartTotal + Number(curPoint);
+    cartTotal = cartTotal + Number(curCartSplit[0]);
   }
   console.log(cartTotal);
   calcDiv = document.createElement("div");

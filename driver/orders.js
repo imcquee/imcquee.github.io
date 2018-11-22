@@ -91,7 +91,7 @@ function makeOrderItem(e){
           }
           points = document.createElement('p');
           points.setAttribute("class","card-text order-points");
-          points.innerHTML = currentItem.sellingStatus[0].currentPrice[0].__value__+" Dollars";
+          points.innerHTML = Math.round(Number(currentItem.sellingStatus[0].currentPrice[0].__value__))*Number(parent.pV)+" Points";
           btn = document.createElement("button");
           btn.setAttribute("class","btn btn-primary order-button");
           btn.setAttribute("onclick","cancelOrder(this)");
