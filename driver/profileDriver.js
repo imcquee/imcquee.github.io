@@ -45,11 +45,11 @@ function changeSponsor(){
   if(document.getElementById('sponsorSelect').value == "TestSp2"){
     parent.itemIds = parent.sp2Ids;
     parent.pV = parent.sp2PV;
-    console.log(document.getElementById('current-sponsor'));
+    console.log(window.parent.document.getElementById('current-sponsor'));
   }
   else{
     parent.itemIds = parent.sp1Ids;
     parent.pV = parent.sp1PV;
-    console.log(document.getElementById('current-sponsor'));
+    console.log(window.parent.document.getElementById('current-sponsor'));
   }
 }
