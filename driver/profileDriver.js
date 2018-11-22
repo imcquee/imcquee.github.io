@@ -24,8 +24,10 @@ window.onclick = function(event) {
 }
 
 function setPv() {
-  console.log("here");
   document.getElementById("pvalue").innerHTML = parent.pV;
+  document.getElementById('user').value = parent.JSONval.driverName;
+  document.getElementById('password').value = parent.JSONval.driverPassword;
+  document.getElementById('email').value = parent.JSONval.driverEmail;
 }
 
 function makeSponsorOptions(){
