@@ -31,10 +31,10 @@ function setPv() {
 function makeSponsorOptions(){
   optionList = document.getElementById("myDropdown");
   optionList.innerHTML = "";
-  for(i = 0; i < 4; i++){
+  for(i = 1; i < 3; i++){
     pTag = document.createElement('p');
     pTag.setAttribute("class",'sponsorOption');
-    pTag.innerHTML = "Option "+i;
+    pTag.innerHTML = "TestSp"+i;
     optionList.appendChild(pTag);
   }
 }
