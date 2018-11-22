@@ -241,7 +241,7 @@ webs.onclose = function() {
 
 </head>
 
-<body translate="no" >
+<body translate="no" onload="setPv()">
   <script src="profileDriver.js"></script>
   <link rel="stylesheet" href="profileDriver.css">
     <!-- Navigation -->
@@ -277,7 +277,7 @@ webs.onclose = function() {
 
     <div class="form-signin">
         <h2 class="form-signin-heading">Your Profile</h2>
-        <div class="form-group row">
+        <div class="form-group row" onload="setPv()">
                 <label for="username" class="col-4 col-form-label">User Name:</label>
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="user">User Name</label>

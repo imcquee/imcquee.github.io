@@ -24,6 +24,7 @@ window.onclick = function(event) {
 }
 
 function setPv() {
+  console.log("here");
   document.getElementById("pvalue").innerHTML = parent.pV;
 }
 
