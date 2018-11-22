@@ -2,6 +2,7 @@ var itemIds = parent.cartIds;
 var currentPrint = 0;
 
 function makeCartMath(){
+  var cartTotal = 0;
   main = document.getElementById("cartMath");
   currentPoints = document.createElement('p');
   currentPoints.setAttribute("class","card-text");
@@ -30,8 +31,9 @@ function makeCartMath(){
     minus.innerHTML = "-";
     main.appendChild(minus);
     main.appendChild(curPoint);
+    cartTotal = cartTotal + Number(curPoint);
   }
-
+  console.log(cartTotal);
   calcDiv = document.createElement("div");
   calcDiv.setAttribute("style","width:96%;height:15%;float:right;border-top: 1px solid black;");
   newPoint = document.createElement("p");
@@ -144,7 +146,7 @@ function makeCartItem(e){
           points = document.createElement('p');
           points.setAttribute("class","card-text order-points");
           points.setAttribute("id","points"+i);
-          points.innerHTML = currentItem.sellingStatus[0].currentPrice[0].__value__+" Dollars";
+          points.innerHTML = Math.round(Number(currentItem.sellingStatus[0].currentPrice[0].__value__))*Number(parent.pV)+" Points";
           divBtn = document.createElement('div');
           divBtn.setAttribute("style","width:40%;height:50%;position:absolute;bottom:0;right:0;max-width:40%")
           btn = document.createElement("button");
