@@ -12,6 +12,7 @@ var JSONval={};
     if (this.readyState == 4 && this.status == 200) {
       JSONval = JSON.parse(this.responseText);
       console.log(JSONval);
+      document.getElementById('adminName').innerHTML = JSONval.profile[0][0].adminName;
     }
   };
 
@@ -20,19 +21,19 @@ xhttp.withCredentials = true;
 xhttp.send(obj);
 // }
 
-var xhttp = new XMLHttpRequest();
-xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//xhttp.setRequestHeader("Cookie", );
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var val = JSON.parse(this.responseText);
-    document.getElementById('adminName').innerHTML = val.username;
-  }
-};
-var obj = "action=profile"
-xhttp.withCredentials = true;
-xhttp.send(obj);
+// var xhttp = new XMLHttpRequest();
+// xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// //xhttp.setRequestHeader("Cookie", );
+// xhttp.onreadystatechange = function() {
+//   if (this.readyState == 4 && this.status == 200) {
+//     var val = JSON.parse(this.responseText);
+//     document.getElementById('adminName').innerHTML = val.username;
+//   }
+// };
+// var obj = "action=profile"
+// xhttp.withCredentials = true;
+// xhttp.send(obj);
 
 /* Set the width of the side navigation to 250px */
 function openNav() {

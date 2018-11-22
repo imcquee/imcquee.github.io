@@ -32,7 +32,7 @@ function makeDrivers(){
           contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
             nameP = document.createElement('p');
             nameP.setAttribute("class","card-text driver-title");
-            nameP.innerHTML = parent.JSONval.drivers[i].drivers.driversName;
+            nameP.innerHTML = parent.JSONval.drivers[i].drivers.driverName;
             valueIn = document.createElement('input');
             valueIn.setAttribute("style","text-align:right;width:15vh");
             valueIn.setAttribute("number","text");
@@ -192,8 +192,7 @@ function loadAccount(){
   pass.setAttribute("class","driver-overlay-top");
   pass.setAttribute("style","text-align:right;width:25vh;top:30vh");
   pass.setAttribute("number","text");
-  pass.setAttribute("value","cpsc4910");
-  console.log(itemContent.children[0].children[1].children);
+  pass.setAttribute("value",itemContent.children[0].children[1].children[6].innerHTML);
 
   driverContent.appendChild(cancelBtn);
   driverContent.appendChild(updateBtn);
