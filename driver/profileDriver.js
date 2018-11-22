@@ -23,6 +23,10 @@ window.onclick = function(event) {
   }
 }
 
+function setPv() {
+  document.getElementById("pvalue").innerHTML = parent.pV;
+}
+
 function makeSponsorOptions(){
   optionList = document.getElementById("myDropdown");
   optionList.innerHTML = "";
