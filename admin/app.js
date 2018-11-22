@@ -12,7 +12,7 @@ var JSONval={};
     if (this.readyState == 4 && this.status == 200) {
       JSONval = JSON.parse(this.responseText);
       console.log(JSONval);
-      document.getElementById('adminName').innerHTML = JSONval.profile[0][0].adminName;
+      //document.getElementById('adminName').innerHTML = JSONval.profile[0][0].adminName;
     }
   };
 
