@@ -45,11 +45,13 @@ function changeSponsor(){
   if(document.getElementById('sponsorSelect').value == "TestSp2"){
     parent.itemIds = parent.sp2Ids;
     parent.pV = parent.sp2PV;
-    console.log(window.parent.document.getElementById('current-sponsor'));
+    document.getElementById("pvalue").innerHTML = parent.pV;
+    window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp2";
   }
   else{
     parent.itemIds = parent.sp1Ids;
     parent.pV = parent.sp1PV;
-    console.log(window.parent.document.getElementById('current-sponsor'));
+    document.getElementById("pvalue").innerHTML = parent.pV;
+    window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp1";
   }
 }
