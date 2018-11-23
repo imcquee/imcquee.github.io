@@ -12,7 +12,7 @@
 
       <style>
       body {
-  background:#ef5350 !important;
+  background:#EF5350 !important;
 }
 
 
@@ -173,7 +173,7 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         console.log(document.cookie);
       }*/
       // document.getElementById("user").innerHTML = val.username;
-      // document.getElementById("email").innerHTML = val.email;
+      //document.getElementById("email").innerHTML = val.email;
       document.getElementById("iD").innerHTML = val.points;
       document.getElementById("idd").value = val.points;
       //document.getElementById("dList").innerHTML = val.list;
@@ -241,9 +241,9 @@ webs.onclose = function() {
 
 
 </head>
-
-<body translate="no" onload="setPv()">
-  <script src="profileAdmin.js"></script>
+<!-- TODO: do set PV -->
+<body translate="no" onload="setPv()" >
+  <script src="profileSponsor.js"></script>
     <!-- Navigation -->
     <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="navie">
       <div class="container">
@@ -298,10 +298,14 @@ webs.onclose = function() {
                 <input type="hidden" name="id" id="idd">
 		<!-- <form class="form-signin" action="http://server.isaacmcqueen.me:9615/addDriver" method="post">
 		<input type="hidden" id="dAdd" name="accT" value="addDriver">
-		<input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
+    <input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
+    <br>
+    <form class="form-signin" action="http://server.isaacmcqueen.me:9615/addItem" method="post">
+    <input type="hidden" id="dAdI" name="accT" value="addItem">
+    <input type="text" class="form-control" placeholder="Enter UPC" name="addItem"> -->
 
 
-</form> -->
+<!-- </form> -->
 		<!--<label for="username" class="col-4 col-form-label">Sponsored Drivers:</label>
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="dList">Driver List</label>
