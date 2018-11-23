@@ -276,17 +276,18 @@ webs.onclose = function() {
     <form class="form-signin" action="http://server.isaacmcqueen.me:9615/action" method="post"> 
         <h2 class="form-signin-heading">Your Profile</h2>
         <div class="form-group row">
+                <input type="hidden" name="action" value="updateProfile">
                 <label for="username" class="col-4 col-form-label">User Name:</label>
                 <div class="col-8">
-                    <input for="username" class="col-8 col-form-label" id="user"></input>
+                    <input for="username" name="username" class="col-8 col-form-label" id="user"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">Email:</label>
                 <div class="col-8">
-                    <input for="username" class="col-8 col-form-label" id="email"></input>
+                    <input for="username" name="email" class="col-8 col-form-label" id="email"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">Password:</label>
                 <div class="col-8">
-                  <input for="username" class="col-8 col-form-label" id="password"></input>
+                  <input for="username" name="password" class="col-8 col-form-label" id="password"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">User ID:</label>
                 <div class="col-8">
