@@ -22,7 +22,8 @@ window.onclick = function(event) {
     }
   }
 }
-
+console.log(parent.JSONval.driverPassword);
+console.log(parent.JSONval);
 function setPv() {
   document.getElementById("pvalue").innerHTML = parent.pV;
   document.getElementById('user').value = parent.JSONval.driverName;
