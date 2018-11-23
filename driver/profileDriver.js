@@ -25,7 +25,7 @@ window.onclick = function(event) {
 console.log(parent.JSONval.driverPassword);
 console.log(parent.JSONval);
 function setPv() {
-  document.getElementById("pvalue").innerHTML = parent.pV;
+  //document.getElementById("pvalue").innerHTML = parent.pV;
   document.getElementById('user').value = parent.JSONval.driverName;
   document.getElementById('password').value = parent.JSONval.driverPassword;
   document.getElementById('email').value = parent.JSONval.driverEmail;
@@ -46,13 +46,13 @@ function changeSponsor(){
   if(document.getElementById('sponsorSelect').value == "TestSp2"){
     parent.itemIds = parent.sp2Ids;
     parent.pV = parent.sp2PV;
-    document.getElementById("pvalue").innerHTML = parent.pV;
+    //document.getElementById("pvalue").innerHTML = parent.pV;
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp2";
   }
   else{
     parent.itemIds = parent.sp1Ids;
     parent.pV = parent.sp1PV;
-    document.getElementById("pvalue").innerHTML = parent.pV;
+    //document.getElementById("pvalue").innerHTML = parent.pV;
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp1";
   }
 }
