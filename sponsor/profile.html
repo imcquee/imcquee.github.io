@@ -12,7 +12,7 @@
 
       <style>
       body {
-  background:#EF5350 !important;
+  background:#ef5350 !important;
 }
 
 
@@ -173,8 +173,9 @@ if(navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) ||
         console.log(document.cookie);
       }*/
       // document.getElementById("user").innerHTML = val.username;
-      //document.getElementById("email").innerHTML = val.email;
+      // document.getElementById("email").innerHTML = val.email;
       document.getElementById("iD").innerHTML = val.points;
+      document.getElementById("idd").value = val.points;
       //document.getElementById("dList").innerHTML = val.list;
       //document.getElementById("")
     }
@@ -240,9 +241,9 @@ webs.onclose = function() {
 
 
 </head>
-<!-- TODO: do set PV -->
-<body translate="no" onload="setPv()" >
-  <script src="profileSponsor.js"></script>
+
+<body translate="no" onload="setPv()">
+  <script src="profileAdmin.js"></script>
     <!-- Navigation -->
     <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="navie">
       <div class="container">
@@ -273,37 +274,34 @@ webs.onclose = function() {
     <!--div class="accent"></div>-->
     <!--<form class="form-signin" action="http://ec2-18-212-39-137.compute-1.amazonaws.com:9615/action3" method="post">  </form>-->
     <div class="wrapper">
-
-    <div class="form-signin">
+    <form class="form-signin" action="http://server.isaacmcqueen.me:9615/action" method="post"> 
         <h2 class="form-signin-heading">Your Profile</h2>
         <div class="form-group row">
+                <input type="hidden" name="action" value="updateProfile">
                 <label for="username" class="col-4 col-form-label">User Name:</label>
                 <div class="col-8">
-                    <input for="username" class="col-8 col-form-label" id="user"></input>
+                    <input for="username" name="username" class="col-8 col-form-label" id="user"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">Email:</label>
                 <div class="col-8">
-                    <input for="username" class="col-8 col-form-label" id="email"></input>
+                    <input for="username" name="email" class="col-8 col-form-label" id="email"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">Password:</label>
                 <div class="col-8">
-                  <input for="username" class="col-8 col-form-label" id="password"></input>
+                  <input for="username" name="password" class="col-8 col-form-label" id="password"></input>
                 </div>
                 <label for="username" class="col-4 col-form-label">User ID:</label>
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="iD">User ID</label>
 
                 </div>
+                <input type="hidden" name="id" id="idd">
 		<!-- <form class="form-signin" action="http://server.isaacmcqueen.me:9615/addDriver" method="post">
 		<input type="hidden" id="dAdd" name="accT" value="addDriver">
-    <input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
-    <br>
-    <form class="form-signin" action="http://server.isaacmcqueen.me:9615/addItem" method="post">
-    <input type="hidden" id="dAdI" name="accT" value="addItem">
-    <input type="text" class="form-control" placeholder="Enter UPC" name="addItem"> -->
+		<input type="text" class="form-control" placeholder="Add a Driver by Email" name="addDriver">
 
 
-<!-- </form> -->
+</form> -->
 		<!--<label for="username" class="col-4 col-form-label">Sponsored Drivers:</label>
                 <div class="col-8">
                     <label for="username" class="col-4 col-form-label" id="dList">Driver List</label>
@@ -312,7 +310,7 @@ webs.onclose = function() {
                 <br>
                 <br>
                 <br>
-                <button id="RedB" class="btn btn-lg btn-primary btn-block">Update Profile</button>
+                <button id="RedB" type="submit" class="btn btn-lg btn-primary btn-block">Update Profile</button>
         </div>
       <!--<select class="form-control" name="accT" required="" id="aSel" onchange="myFunction()">
             <option value="" disabled selected>Account Type</option>
