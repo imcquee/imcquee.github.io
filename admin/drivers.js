@@ -33,7 +33,8 @@ function makeDrivers(){
           contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
             nameP = document.createElement('p');
             nameP.setAttribute("class","card-text driver-title");
-            nameP.innerHTML = parent.JSONval.drivers[i].drivers.driverName;
+            //nameP.innerHTML = parent.JSONval.drivers[i].drivers.driverName;
+            nameP.innerHTML = parent.JSONval.points[i].points.dName + parent.JSONval.points[i].points.sName;  
             valueIn = document.createElement('input');
             valueIn.setAttribute("style","text-align:right;width:15vh");
             valueIn.setAttribute("number","text");
@@ -45,7 +46,8 @@ function makeDrivers(){
             currentP.innerHTML = "Current Points: ";
             points = document.createElement('p');
             points.setAttribute("class","card-text driver-points");
-            points.innerHTML = parent.JSONval.drivers[i].drivers.driverPoints;;
+            //points.innerHTML = parent.JSONval.drivers[i].drivers.driverPoints;
+            points.innerHTML = parent.JSONval.points[i].points.driverPoints;
             currentPoints[i] = points.innerHTML;
             pointFin = document.createElement('p');
             pointFin.setAttribute("class","card-text driver-points");
