@@ -180,7 +180,7 @@ function submitPoints(){
     inpN.value=currentName[i];
     form1.appendChild(inpN);
 
-    var inpN = document.createElement("input");
+    var inpZ = document.createElement("input");
     inpZ.type="hidden";
     inpZ.name="username";
     inpZ.value=currentSponsor[i];
@@ -248,7 +248,7 @@ function loadAccount(){
 
 }
 
-function miniUpdate(){
+/*function miniUpdate(){
   var itemContent = document.getElementById("itemContent");
   var form2 = document.createElement("form");
   form2.action="http://server.isaacmcqueen.me:9615";
@@ -270,6 +270,31 @@ function miniUpdate(){
   console.log(itemContent.children[0].children[1].children[0].innerHTML)
   form2.appendChild(inpZ);
   form2.submit();
+}*/
+
+function miniUpdate() {
+  var itemContent = document.getElementById("itemContent");
+  var form3 = document.createElement("form");
+  form3.action="http://server.isaacmcqueen.me:9615";
+  form3.method="POST";
+  var inpN = document.createElement("input");
+  inpN.type="hidden";
+  inpN.name="action";
+  inpN.value="miniUpdate";
+  form3.appendChild(inpN);
+  var inpY = document.createElement("input");
+  inpY.type="hidden";
+  inpY.name="password";
+  inpY.value=itemContent.children[0].children[1].children[6].innerHTML;
+  form3.appendChild(inpY);
+  var inpZ = document.createElement("input");
+  inpZ.type="hidden";
+  inpZ.name="username";
+  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
+  form2.appendChild(inpZ);
+  form2.submit();
+
+
 }
 
 function removePerm() {
