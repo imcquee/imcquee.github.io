@@ -285,7 +285,7 @@ function removePerm() {
   var inpZ = document.createElement("input");
   inpZ.type="hidden";
   inpZ.name="username";
-  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
+  inpZ.value=itemContent.children[0].children[1].children[0].innerHTML; 
   form2.appendChild(inpZ);
   form2.submit();
 
