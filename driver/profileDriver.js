@@ -48,7 +48,7 @@ function changeSponsor(){
     parent.pV = parent.sp2PV;
     //document.getElementById("pvalue").innerHTML = parent.pV;
     //if( parent.JSONval.drivers.leng)
-    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.drivers[0][1].driverPoints; 
+    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.points[0][1].driverPoints; 
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp2";
   }
   else{
