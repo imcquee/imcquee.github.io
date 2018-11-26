@@ -267,14 +267,6 @@ function submitPoints(){
     inpN.name="name";
     inpN.value=currentName[i];
     form1.appendChild(inpN);
-
-    /*var inpZ = document.createElement("input");
-    inpZ.type="hidden";
-    inpZ.name="username";
-    console.log(window.parent.document.getElementById("sponsorName").innerHTML);
-    inpZ.value= window.parent.document.getElementById("sponsorName").innerHTML;
-    form1.appendChild(inpZ);*/
-
     var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
@@ -283,6 +275,33 @@ function submitPoints(){
   }
   //document.getElementById("ContentDiv").appendChild(form1);
   form1.submit();
+  /*var inpR = document.createElement("input");
+  inpR.type="hidden";
+  inpR.name="accT";
+  inpR.value="updatePoints";
+  form1.appendChild(inpR);
+  for(i=0;i<currentName.length;i++){
+    var inpN = document.createElement("input");
+    inpN.type="hidden";
+    inpN.name="name";
+    inpN.value=currentName[i];
+    form1.appendChild(inpN);
+
+    var inpZ = document.createElement("input");
+    inpZ.type="hidden";
+    inpZ.name="username";
+    console.log(window.parent.document.getElementById("sponsorName").innerHTML);
+    inpZ.value= window.parent.document.getElementById("sponsorName").innerHTML;
+    form1.appendChild(inpZ);
+
+    var inpP = document.createElement("input");
+    inpP.type="hidden";
+    inpP.name="points";
+    inpP.value=currentPoints[i];
+    form1.appendChild(inpP);
+}*/
+  //document.getElementById("ContentDiv").appendChild(form1);
+  //form1.submit();
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
