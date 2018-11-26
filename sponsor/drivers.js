@@ -267,6 +267,7 @@ function submitPoints(){
     var inpZ = document.createElement("input");
     inpZ.type="hidden";
     inpZ.name="username";
+    console.log(window.parent.document.getElementById("sponsorName").innerHTML);
     inpZ.value= window.parent.document.getElementById("sponsorName").innerHTML;
     form1.appendChild(inpZ);
 
