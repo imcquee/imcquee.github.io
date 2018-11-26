@@ -16,9 +16,11 @@ function loadMaster(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       JSONval = JSON.parse(this.responseText);
-      document.getElementById("driverName").innerHTML = JSONval.driverName;
-      document.getElementById("driverPoints").innerHTML = JSONval.driverPoints;
+      document.getElementById("driverName").innerHTML = JSONval.profile[0][0].driverName;
+      document.getElementById("driverPoints").innerHTML = JSONval.profile[0][0].driverPoints;
       document.getElementById("current-sponsor").innerHTML = "TestSp1";
+
+      //document.getElementById("current-sponsor").innerHTML = JSONval.sponsors[0].sponsors.sponsorName;
       console.log(JSONval);
     }
   };
