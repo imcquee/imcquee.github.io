@@ -71,6 +71,9 @@ function makeCatalogItem(e){
       butn.setAttribute("class","btn btn-primary");
       butn.setAttribute("style","margin:auto;width:60%");
       butn.setAttribute("onclick","event.stopPropagation();removeFromCatalog(this)");
+      itemId = document.createElement('p');
+      itemId.setAttribute("style","display:none");
+      itemId.innerHTML = currentItem.productId[0].__value__;
 
       h5.innerHTML = currentItem.title[0];
       p.innerHTML = Math.round(Number(currentItem.sellingStatus[0].currentPrice[0].__value__))*Number(parent.pV);
@@ -80,6 +83,7 @@ function makeCatalogItem(e){
       cardBody.appendChild(h5Div);
       cardBody.appendChild(p);
       cardBody.appendChild(butn);
+      cardBody.appendChild(itemId);
       card.appendChild(img);
       card.appendChild(cardBody);
       cardDiv.appendChild(card);
@@ -331,6 +335,7 @@ function addToCatalog(){
 }
 
 function removeFromCatalog(e) {
+  // console.log(e.parentNode);
   var index = parent.itemIds.indexOf(e.parentNode.children[3].innerHTML);
   if (index > -1){
     parent.itemIds.splice(index,1);

@@ -34,10 +34,10 @@ function setPv() {
 function makeSponsorOptions(){
   optionList = document.getElementById("myDropdown");
   optionList.innerHTML = "";
-  for(i = 1; i < 3; i++){
-    pTag = document.createElement('p');
+  for(i = 0; i < parent.JSONval.sponsors.length; i++){
+     var pTag = document.createElement('p');
     pTag.setAttribute("class",'sponsorOption');
-    pTag.innerHTML = "TestSp"+i;
+    pTag.innerHTML = parent.JSONval.sponsors[i].sponsors.sponsorName;
     optionList.appendChild(pTag);
   }
 }
@@ -48,14 +48,14 @@ function changeSponsor(){
     parent.pV = parent.sp2PV;
     //document.getElementById("pvalue").innerHTML = parent.pV;
     //if( parent.JSONval.drivers.leng)
-    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.drivers[0][1].driverPoints; 
+    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.points[1].points.driverPoints;
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp2";
   }
   else{
     parent.itemIds = parent.sp1Ids;
     parent.pV = parent.sp1PV;
     //document.getElementById("pvalue").innerHTML = parent.pV;
-    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.points[0][0].driverPoints;
+    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.points[0].points.driverPoints;
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp1";
   }
 }

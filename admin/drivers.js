@@ -101,7 +101,7 @@ function displayItem(e){
   var sponNum = document.createElement('p');
   sponNum.setAttribute("class","card-text driver-title");
   sponNum.setAttribute("style","margin:0");
-  sponNum.innerHTML = "3";
+  sponNum.innerHTML = "2";
 
   itemContent.children[0].children[1].insertBefore(numSpon,itemContent.children[0].children[1].children[1]);
   itemContent.children[0].children[1].insertBefore(sponNum,itemContent.children[0].children[1].children[2]);
@@ -206,7 +206,7 @@ function loadAccount(){
 }
 
 function removeDriver(){
-  
+
 }
 
 function loadOrders(){
@@ -219,7 +219,7 @@ function loadSponsorsAdmin(){
   var main = document.getElementById("driverOverlayContent");
   var itemContent = document.getElementById("itemContent");
   main.innerHTML = "";
-  for(i = 0; i < 6; i++){
+  for(i = 1; i < 3; i++){
     card = document.createElement("div");
     card.setAttribute("class","card driver-card");
     // card.setAttribute("onclick","displayItemOverlay();displayItem(this);loadAccount()");
@@ -237,7 +237,7 @@ function loadSponsorsAdmin(){
         contentDiv.setAttribute("style","position:relative;align-items:center;display:flex");
           nameP = document.createElement('p');
           nameP.setAttribute("class","card-text driver-title");
-          nameP.innerHTML = "Sponsor "+i;
+          nameP.innerHTML = "TestSp"+i;
           // currentP = document.createElement('p');
           // currentP.setAttribute("class","card-text driver-points");
           // currentP.setAttribute("style","margin-left:20vh;margin-right:1vh");
