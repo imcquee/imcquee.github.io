@@ -35,7 +35,7 @@ function makeSponsorOptions(){
   optionList = document.getElementById("myDropdown");
   optionList.innerHTML = "";
   for(i = 1; i < parent.JSONval.sponsors.length; i++){
-    pTag = document.createElement('p');
+     var pTag = document.createElement('p');
     pTag.setAttribute("class",'sponsorOption');
     pTag.innerHTML = parent.JSONval.sponsors[i].sponsors.sponsorName;
     optionList.appendChild(pTag);
