@@ -310,7 +310,8 @@ function addToCatalog(){
 }
 
 function removeFromCatalog(e) {
-  var index = parent.itemIds.indexOf(e.parentNode.children[3].innerHTML);
+  console.log(e);
+  // var index = parent.itemIds.indexOf(e.parentNode.children[3].innerHTML);
   if (index > -1){
     parent.itemIds.splice(index,1);
     loadCatalog();
