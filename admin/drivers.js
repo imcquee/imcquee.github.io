@@ -101,7 +101,7 @@ function displayItem(e){
   var sponNum = document.createElement('p');
   sponNum.setAttribute("class","card-text driver-title");
   sponNum.setAttribute("style","margin:0");
-  sponNum.innerHTML = "3";
+  sponNum.innerHTML = "2";
 
   itemContent.children[0].children[1].insertBefore(numSpon,itemContent.children[0].children[1].children[1]);
   itemContent.children[0].children[1].insertBefore(sponNum,itemContent.children[0].children[1].children[2]);
@@ -206,7 +206,7 @@ function loadAccount(){
 }
 
 function removeDriver(){
-  
+
 }
 
 function loadOrders(){
