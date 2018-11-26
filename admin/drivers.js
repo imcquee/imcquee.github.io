@@ -1,6 +1,7 @@
 currentPoints = [];
 startPoints = [];
 currentName = [];
+currentSponsor = [];
 
 function openTab(evt) {
     // Declare all variables
@@ -16,6 +17,10 @@ function openTab(evt) {
 
 function makeDrivers(){
   for(i = 0; i < parent.JSONval.drivers.length; i++){
+      startPoints[i] = parent.JSONval.points[i].points.driverPoints;
+      currentName[i] = parent.JSONval.points[i].points.dName;
+      currentSponsor[i] = parent.JSONval.points[i].points.sName;
+
       main = document.getElementById("driverContent");
       card = document.createElement("div");
       card.setAttribute("class","card driver-card");
@@ -34,7 +39,8 @@ function makeDrivers(){
             nameP = document.createElement('p');
             nameP.setAttribute("class","card-text driver-title");
             //nameP.innerHTML = parent.JSONval.drivers[i].drivers.driverName;
-            nameP.innerHTML = parent.JSONval.points[i].points.dName + parent.JSONval.points[i].points.sName;  
+            nameP.innerHTML = parent.JSONval.points[i].points.dName +" - "+ parent.JSONval.points[i].points.sName;  
+
             valueIn = document.createElement('input');
             valueIn.setAttribute("style","text-align:right;width:15vh");
             valueIn.setAttribute("number","text");
@@ -173,7 +179,15 @@ function submitPoints(){
     inpN.name="name";
     inpN.value=currentName[i];
     form1.appendChild(inpN);
+
+    var inpN = document.createElement("input");
+    inpZ.type="hidden";
+    inpZ.name="username";
+    inpZ.value=currentSponsor[i];
+    form1.appendChild(inpZ);
+
     var inpP = document.createElement("input");
+    
     inpP.type="hidden";
     inpP.name="points";
     inpP.value=currentPoints[i];

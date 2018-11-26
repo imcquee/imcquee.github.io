@@ -263,6 +263,13 @@ function submitPoints(){
     inpN.name="name";
     inpN.value=currentName[i];
     form1.appendChild(inpN);
+
+    var inpZ = document.createElement("input");
+    inpZ.type="hidden";
+    inpZ.name="username";
+    inpZ.value= window.parent.document.getElementById("sponsorName");
+    form1.appendChild(inpZ);
+
     var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
@@ -393,6 +400,31 @@ function removeDriver() {
   var inpZ = document.createElement("input");
   inpZ.type="hidden";
   inpZ.name="Driver";
+  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
+  form2.appendChild(inpZ);
+  form2.submit();
+
+
+}
+
+function miniUpdate() {
+  var itemContent = document.getElementById("itemContent");
+  var form3 = document.createElement("form");
+  form3.action="http://server.isaacmcqueen.me:9615";
+  form3.method="POST";
+  var inpN = document.createElement("input");
+  inpN.type="hidden";
+  inpN.name="action";
+  inpN.value="miniUpdate";
+  form3.appendChild(inpN);
+  var inpY = document.createElement("input");
+  inpY.type="hidden";
+  inpY.name="password";
+  inpY.value=;
+  form3.appendChild(inpY);
+  var inpZ = document.createElement("input");
+  inpZ.type="hidden";
+  inpZ.name="username";
   inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
   form2.appendChild(inpZ);
   form2.submit();
