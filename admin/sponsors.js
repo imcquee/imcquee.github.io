@@ -282,6 +282,11 @@ function removePerm() {
   inpN.name="action";
   inpN.value="removePerm";
   form2.appendChild(inpN);
+  var inpY = document.createElement("input");
+  inpY.type="hidden";
+  inpY.name="auth";
+  inpY.value="sponsor";
+  form2.appendChild(inpY);
   var inpZ = document.createElement("input");
   inpZ.type="hidden";
   inpZ.name="username";
