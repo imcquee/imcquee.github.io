@@ -93,6 +93,9 @@ function makeDrivers() {
               btn2.setAttribute("class","btn btn-primary driver-button");
               btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
+              password = document.createElement('p');
+              password.setAttribute('style','display:none');
+              password.innerHTML = parent.JSONval.drivers[i].drivers.driverPassword;
 
               nameDiv.appendChild(nameP);
               contentDiv.appendChild(nameDiv);
@@ -103,6 +106,7 @@ function makeDrivers() {
               contentDiv.appendChild(points);
               contentDiv.appendChild(pointFin);
               contentDiv.appendChild(track);
+              contentDiv.appendChild(password);
               imgDiv.appendChild(img);
               row.appendChild(imgDiv);
               row.appendChild(contentDiv);
@@ -401,7 +405,7 @@ function removeDriver() {
   var inpZ = document.createElement("input");
   inpZ.type="hidden";
   inpZ.name="Driver";
-  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
+  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML;
   form2.appendChild(inpZ);
   form2.submit();
 
