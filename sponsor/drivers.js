@@ -268,12 +268,12 @@ function submitPoints(){
     inpN.value=currentName[i];
     form1.appendChild(inpN);
 
-    var inpZ = document.createElement("input");
+    /*var inpZ = document.createElement("input");
     inpZ.type="hidden";
     inpZ.name="username";
     console.log(window.parent.document.getElementById("sponsorName").innerHTML);
     inpZ.value= window.parent.document.getElementById("sponsorName").innerHTML;
-    form1.appendChild(inpZ);
+    form1.appendChild(inpZ);*/
 
     var inpP = document.createElement("input");
     inpP.type="hidden";
