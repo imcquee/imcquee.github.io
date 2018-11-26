@@ -11,7 +11,7 @@ function makeCartMath(){
   points = document.createElement('p');
   points.setAttribute("class","card-text");
   points.setAttribute("style","font-size: 1.15rem;float:right;margin-right:8%;margin-top:15%;margin-left:10%")
-  points.innerHTML = parent.JSONval.profile[0][0].driverPoints;
+  points.innerHTML = pwindow.parent.document.getElementById("driverPoints").innerHTML;
 
   main.appendChild(currentPoints);
   main.appendChild(points);
