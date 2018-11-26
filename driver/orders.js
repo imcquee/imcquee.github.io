@@ -15,7 +15,7 @@ function openTab(evt) {
     evt.classList.add("active");
 }
 
-console.log(parent.JSONval.driverName);
+//console.log(parent.JSONval.driverName);
 
 // Create a JavaScript array of the item filters you want to use in your request
 var filterarray = [

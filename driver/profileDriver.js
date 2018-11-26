@@ -22,13 +22,13 @@ window.onclick = function(event) {
     }
   }
 }
-console.log(parent.JSONval.driverPassword);
+//console.log(parent.JSONval.driverPassword);
 console.log(parent.JSONval);
 function setPv() {
   //document.getElementById("pvalue").innerHTML = parent.pV;
-  document.getElementById('user').value = parent.JSONval.driverName;
-  document.getElementById('password').value = parent.JSONval.driverPassword;
-  document.getElementById('email').value = parent.JSONval.driverEmail;
+  document.getElementById('user').value = parent.JSONval.profile[0][0].driverName;
+  document.getElementById('password').value = parent.JSONval.profile[0][0].driverPassword;
+  document.getElementById('email').value = parent.JSONval.profile[0][0].driverEmail;
 }
 
 function makeSponsorOptions(){
