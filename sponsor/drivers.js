@@ -344,6 +344,7 @@ function loadAccount(){
   removeBtn.setAttribute('type','button');
   removeBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
   removeBtn.setAttribute('style','top:56vh');
+  removeBtn.setAttribute('onclick','removeDriver()');
   removeBtn.innerHTML = "Remove Driver";
   updateBtn.setAttribute('type','button');
   updateBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
@@ -374,7 +375,25 @@ function loadAccount(){
   //driverContent.appendChild(br);
 
 }
+function removeDriver() {
+  var itemContent = document.getElementById("itemContent");
+  var form2 = document.createElement("form");
+  form2.action="http://server.isaacmcqueen.me:9615";
+  form2.method="POST";
+  var inpN = document.createElement("input");
+  inpN.type="hidden";
+  inpN.name="action";
+  inpN.value="removeDriver";
+  form2.appendChild(inpN);
+  var inpZ = document.createElement("input");
+  inpZ.type="hidden";
+  inpZ.name="Driver";
+  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
+  form2.appendChild(inpZ);
+  form2.submit();
 
+
+}
 
 function loadOrders(){
   var driverContent = document.getElementById("driverOverlayContent");

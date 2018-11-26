@@ -22,13 +22,13 @@ window.onclick = function(event) {
     }
   }
 }
-console.log(parent.JSONval.driverPassword);
+//console.log(parent.JSONval.driverPassword);
 console.log(parent.JSONval);
 function setPv() {
   //document.getElementById("pvalue").innerHTML = parent.pV;
-  document.getElementById('user').value = parent.JSONval.driverName;
-  document.getElementById('password').value = parent.JSONval.driverPassword;
-  document.getElementById('email').value = parent.JSONval.driverEmail;
+  document.getElementById('user').value = parent.JSONval.profile[0][0].driverName;
+  document.getElementById('password').value = parent.JSONval.profile[0][0].driverPassword;
+  document.getElementById('email').value = parent.JSONval.profile[0][0].driverEmail;
 }
 
 function makeSponsorOptions(){
@@ -47,12 +47,15 @@ function changeSponsor(){
     parent.itemIds = parent.sp2Ids;
     parent.pV = parent.sp2PV;
     //document.getElementById("pvalue").innerHTML = parent.pV;
+    //if( parent.JSONval.drivers.leng)
+    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.drivers[0][1].driverPoints; 
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp2";
   }
   else{
     parent.itemIds = parent.sp1Ids;
     parent.pV = parent.sp1PV;
     //document.getElementById("pvalue").innerHTML = parent.pV;
+    window.parent.document.getElementById('driverPoints').innerHTML = parent.JSONval.points[0][0].driverPoints;
     window.parent.document.getElementById('current-sponsor').innerHTML = "TestSp1";
   }
 }
