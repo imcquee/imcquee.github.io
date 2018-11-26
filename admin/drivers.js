@@ -210,7 +210,7 @@ function loadOrders(){
   driverContent.innerHTML = "";
 }
 
-function loadSponsors(){
+function loadSponsorsAdmin(){
   var main = document.getElementById("driverOverlayContent");
   var itemContent = document.getElementById("itemContent");
   main.innerHTML = "";
