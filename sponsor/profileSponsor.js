@@ -3,4 +3,8 @@ function setPv() {
   document.getElementById('user').value = parent.JSONval.profile[0][0].sponsorName;
   document.getElementById('password').value = parent.JSONval.profile[0][0].sponsorPassword;
   document.getElementById('email').value = parent.JSONval.profile[0][0].sponsorEmail;
+  document.getElementById('pValue').value = parent.pV;
+}
+function changeSponsor(){
+  parent.pV = document.getElementById('pValue');
 }
