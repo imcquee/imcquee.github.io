@@ -380,9 +380,14 @@ function removeDriver() {
   var form2 = document.createElement("form");
   form2.action="http://server.isaacmcqueen.me:9615";
   form2.method="POST";
+  var inpN = document.createElement("input");
+  inpN.type="hidden";
+  inpN.name="action";
+  inpN.value="removeDriver";
+  form2.appendChild(inpN);
   var inpZ = document.createElement("input");
   inpZ.type="hidden";
-  inpZ.name="removeDriver";
+  inpZ.name="Driver";
   inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
   form2.appendChild(inpZ);
   form2.submit();
