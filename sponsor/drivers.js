@@ -407,7 +407,7 @@ function removeDriver() {
 
 }
 
-function miniUpdate() {
+/*function miniUpdate() {
   var itemContent = document.getElementById("itemContent");
   var form3 = document.createElement("form");
   form3.action="http://server.isaacmcqueen.me:9615";
@@ -430,7 +430,7 @@ function miniUpdate() {
   form2.submit();
 
 
-}
+}*/
 
 function loadOrders(){
   var driverContent = document.getElementById("driverOverlayContent");
