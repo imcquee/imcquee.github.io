@@ -303,5 +303,16 @@ function closeAddOverlay() {
 
 function addToCatalog(){
   console.log(document.getElementById("itemToAdd").value);
+  parent.itemIds.push(document.getElementById("itemToAdd").value);
   document.getElementById("itemToAdd").value = "";
+  closeAddOverlay();
+  loadCatalog();
+}
+
+function removeFromCatalog() {
+  var index = parent.itemIds.indexOf(e.parentNode.children[3].innerHTML);
+  if (index > -1){
+    parent.itemIds.splice(index,1);
+    loadCatalog();
+  }
 }

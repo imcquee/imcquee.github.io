@@ -44,7 +44,7 @@ function makeDrivers(){
             currentP.innerHTML = "Current Points: ";
             points = document.createElement('p');
             points.setAttribute("class","card-text driver-points");
-            points.innerHTML = "2000";
+            points.innerHTML = parent.JSONval.drivers[i].drivers.driverPoints;;
             currentPoints[i] = points.innerHTML;
             pointFin = document.createElement('p');
             pointFin.setAttribute("class","card-text driver-points");
