@@ -19,7 +19,7 @@ function loadMaster() {
 var obj = "action=masterAdmin"
 xhttp.withCredentials = true;
 xhttp.send(obj);
-loadSponsors();
+setTimeout(loadSponsors,1000);
 }
 
 // var xhttp = new XMLHttpRequest();
