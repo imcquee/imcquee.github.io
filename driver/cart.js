@@ -1,8 +1,10 @@
 var itemIds = parent.cartIds;
 var currentPrint = 0;
+var cartFinal = 0;
 
 function makeCartMath(){
   var cartTotal = 0;
+  cartFinal = 0;
   main = document.getElementById("cartMath");
   currentPoints = document.createElement('p');
   currentPoints.setAttribute("class","card-text");
@@ -66,6 +68,7 @@ function makeCartMath(){
   buttonDiv.appendChild(btnCheck);
   buttonDiv.appendChild(btnRemove);
   main.appendChild(buttonDiv);
+  cartFinal = Number(window.parent.document.getElementById("driverPoints").innerHTML)-Number(cartTotal);
 }
 
 function runMath(e){
@@ -248,6 +251,7 @@ function finishCheckout(){
   for(i = 0; i < itemContent.children.length; i++){
     orderIds.push(itemContent.children[i].children[0].children[1].children[3].innerHTML);
   }
+  console.log(cartFinal);
   removeAllCart();
 }
 
