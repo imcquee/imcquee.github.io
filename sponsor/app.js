@@ -2,48 +2,52 @@
 
 var JSONval={};
 
-var xhttp = new XMLHttpRequest();
-xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//xhttp.setRequestHeader("Cookie", );
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var val = JSON.parse(this.responseText);
-    document.getElementById('sponsorName').innerHTML = val.username;
-  }
-};
-var obj = "action=profile"
-xhttp.withCredentials = true;
-xhttp.send(obj);
+// var xhttp = new XMLHttpRequest();
+// xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// //xhttp.setRequestHeader("Cookie", );
+// xhttp.onreadystatechange = function() {
+//   if (this.readyState == 4 && this.status == 200) {
+//     var val = JSON.parse(this.responseText);
+//     document.getElementById('sponsorName').innerHTML = val.username;
+//   }
+// };
+// var obj = "action=profile"
+// xhttp.withCredentials = true;
+// xhttp.send(obj);
+//
+// var xhttp = new XMLHttpRequest();
+// xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// //xhttp.setRequestHeader("Cookie", );
+// xhttp.onreadystatechange = function() {
+//   if (this.readyState == 4 && this.status == 200) {
+//     var val = JSON.parse(this.responseText);
+//     document.getElementById('current-driver-amount').innerHTML = val.drivers.length;
+//   }
+// };
+// var obj = "action=driverPoints"
+// xhttp.withCredentials = true;
+// xhttp.send(obj);
 
-var xhttp = new XMLHttpRequest();
-xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//xhttp.setRequestHeader("Cookie", );
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var val = JSON.parse(this.responseText);
-    document.getElementById('current-driver-amount').innerHTML = val.drivers.length;
-  }
-};
-var obj = "action=driverPoints"
-xhttp.withCredentials = true;
-xhttp.send(obj);
+function loadMaster(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      JSONval = JSON.parse(this.responseText);
+      document.getElementById('current-driver-amount').innerHTML = JSONval.drivers.length;
+      document.getElementById('sponsorName').innerHTML = JSONval.profile[0][0].sponsorName;
+      console.log(JSONval);
+    }
+  };
 
-var xhttp = new XMLHttpRequest();
-xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
-xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    JSONval = JSON.parse(this.responseText);
-    console.log(JSONval);
-  }
-};
-
-var obj = "action=masterSponsor"
-xhttp.withCredentials = true;
-xhttp.send(obj);
-
+  var obj = "action=masterSponsor"
+  xhttp.withCredentials = true;
+  xhttp.send(obj);
+  setTimeout(loadDrivers,1000);
+}
 
 
 /* Set the width of the side navigation to 250px */

@@ -4,7 +4,7 @@
 // var orderIds = ["241067840","245232145"];
 var JSONval={};
 
-// function loadMaster() {
+function loadMaster() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -19,7 +19,8 @@ var JSONval={};
 var obj = "action=masterAdmin"
 xhttp.withCredentials = true;
 xhttp.send(obj);
-// }
+setTimeout(loadSponsors,1000);
+}
 
 // var xhttp = new XMLHttpRequest();
 // xhttp.open("POST", "http://server.isaacmcqueen.me:9615/action", true);

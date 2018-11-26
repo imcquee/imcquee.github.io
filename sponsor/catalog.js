@@ -76,7 +76,7 @@ function makeCatalogItem(e){
       itemId.innerHTML = currentItem.productId[0].__value__;
 
       h5.innerHTML = currentItem.title[0];
-      p.innerHTML = currentItem.sellingStatus[0].currentPrice[0].__value__;
+      p.innerHTML = Math.round(Number(currentItem.sellingStatus[0].currentPrice[0].__value__))*Number(parent.pV);
       butn.innerHTML = "Remove";
 
       h5Div.appendChild(h5);

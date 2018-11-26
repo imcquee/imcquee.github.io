@@ -44,7 +44,7 @@ function makeDrivers(){
             currentP.innerHTML = "Current Points: ";
             points = document.createElement('p');
             points.setAttribute("class","card-text driver-points");
-            points.innerHTML = "2000";
+            points.innerHTML = parent.JSONval.drivers[i].drivers.driverPoints;;
             currentPoints[i] = points.innerHTML;
             pointFin = document.createElement('p');
             pointFin.setAttribute("class","card-text driver-points");
@@ -210,7 +210,7 @@ function loadOrders(){
   driverContent.innerHTML = "";
 }
 
-function loadSponsors(){
+function loadSponsorsAdmin(){
   var main = document.getElementById("driverOverlayContent");
   var itemContent = document.getElementById("itemContent");
   main.innerHTML = "";

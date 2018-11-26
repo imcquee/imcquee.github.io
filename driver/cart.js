@@ -11,7 +11,7 @@ function makeCartMath(){
   points = document.createElement('p');
   points.setAttribute("class","card-text");
   points.setAttribute("style","font-size: 1.15rem;float:right;margin-right:8%;margin-top:15%;margin-left:10%")
-  points.innerHTML = "2,000";
+  points.innerHTML = parent.JSONval.driverPoints;
 
   main.appendChild(currentPoints);
   main.appendChild(points);
@@ -43,7 +43,7 @@ function makeCartMath(){
   actPoints = document.createElement("p");
   actPoints.setAttribute("class","card-text");
   actPoints.setAttribute("style","font-size: 1.15rem;float:right;margin-right:8%;margin-top:5%;margin-left:4%");
-  actPoints.innerHTML = "900";
+  actPoints.innerHTML = Number(parent.JSONval.driverPoints)-Number(cartTotal);
   calcDiv.appendChild(newPoint);
   calcDiv.appendChild(actPoints);
   main.appendChild(calcDiv);

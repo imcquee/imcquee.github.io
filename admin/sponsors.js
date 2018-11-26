@@ -73,7 +73,7 @@ function makeCatalogItem(e){
       butn.setAttribute("onclick","event.stopPropagation();removeFromCatalog(this)");
 
       h5.innerHTML = currentItem.title[0];
-      p.innerHTML = currentItem.sellingStatus[0].currentPrice[0].__value__;
+      p.innerHTML = Math.round(Number(currentItem.sellingStatus[0].currentPrice[0].__value__))*Number(parent.pV);
       butn.innerHTML = "Remove";
 
       h5Div.appendChild(h5);
@@ -303,5 +303,45 @@ function closeAddOverlay() {
 
 function addToCatalog(){
   console.log(document.getElementById("itemToAdd").value);
+  parent.itemIds.push(document.getElementById("itemToAdd").value);
   document.getElementById("itemToAdd").value = "";
+  closeAddOverlay();
+  loadCatalog();
+}
+
+function removeFromCatalog(e) {
+  var index = parent.itemIds.indexOf(e.parentNode.children[3].innerHTML);
+  if (index > -1){
+    parent.itemIds.splice(index,1);
+    loadCatalog();
+  }
+}
+
+function changePv(){
+  parent.pV = document.getElementById("userPointValue").value;
+}
+
+function loadPointValue(){
+  var driverContent = document.getElementById("driverOverlayContent");
+  var itemContent = document.getElementById("itemContent");
+  driverContent.innerHTML = "";
+  curUser = document.createElement('p');
+  user = document.createElement('input');
+  updateBtn = document.createElement('button');
+  curUser.setAttribute("class","card-text driver-overlay-top");
+  curUser.setAttribute("style","top:2vh");
+  curUser.innerHTML = "Current Point Value: ";
+  user.setAttribute("class","driver-overlay-top");
+  user.setAttribute("style","text-align:right;width:25vh;top:10vh");
+  user.setAttribute("number","text");
+  user.setAttribute("id","userPointValue");
+  user.setAttribute("value",parent.pV);
+  updateBtn.setAttribute('type','button');
+  updateBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
+  updateBtn.setAttribute('style','top:48vh');
+  updateBtn.setAttribute("onclick",'changePv()');
+  updateBtn.innerHTML = "Update Value";
+  driverContent.appendChild(curUser);
+  driverContent.appendChild(user);
+  driverContent.appendChild(updateBtn);
 }
