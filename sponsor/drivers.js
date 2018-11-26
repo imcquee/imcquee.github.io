@@ -93,9 +93,6 @@ function makeDrivers() {
               btn2.setAttribute("class","btn btn-primary driver-button");
               btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
               btn2.innerHTML = "Add Points";
-              password = document.createElement('p');
-              password.setAttribute('style','display:none');
-              password.innerHTML = parent.JSONval.drivers[i].drivers.driverPassword;
 
               nameDiv.appendChild(nameP);
               contentDiv.appendChild(nameDiv);
@@ -106,7 +103,6 @@ function makeDrivers() {
               contentDiv.appendChild(points);
               contentDiv.appendChild(pointFin);
               contentDiv.appendChild(track);
-              contentDiv.appendChild(password);
               imgDiv.appendChild(img);
               row.appendChild(imgDiv);
               row.appendChild(contentDiv);
@@ -189,7 +185,6 @@ function openTab(evt) {
             btn2.setAttribute("class","btn btn-primary driver-button");
             btn2.setAttribute("onclick","addPoints(this);event.stopPropagation()");
             btn2.innerHTML = "Add Points";
-
         contentDiv.appendChild(nameP);
         contentDiv.appendChild(valueIn);
         contentDiv.appendChild(btn2);
@@ -275,33 +270,6 @@ function submitPoints(){
   }
   //document.getElementById("ContentDiv").appendChild(form1);
   form1.submit();
-  /*var inpR = document.createElement("input");
-  inpR.type="hidden";
-  inpR.name="accT";
-  inpR.value="updatePoints";
-  form1.appendChild(inpR);
-  for(i=0;i<currentName.length;i++){
-    var inpN = document.createElement("input");
-    inpN.type="hidden";
-    inpN.name="name";
-    inpN.value=currentName[i];
-    form1.appendChild(inpN);
-
-    var inpZ = document.createElement("input");
-    inpZ.type="hidden";
-    inpZ.name="username";
-    console.log(window.parent.document.getElementById("sponsorName").innerHTML);
-    inpZ.value= window.parent.document.getElementById("sponsorName").innerHTML;
-    form1.appendChild(inpZ);
-
-    var inpP = document.createElement("input");
-    inpP.type="hidden";
-    inpP.name="points";
-    inpP.value=currentPoints[i];
-    form1.appendChild(inpP);
-}*/
-  //document.getElementById("ContentDiv").appendChild(form1);
-  //form1.submit();
     /*var inpP = document.createElement("input");
     inpP.type="hidden";
     inpP.name="points";
@@ -416,45 +384,15 @@ function removeDriver() {
   inpN.name="action";
   inpN.value="removeDriver";
   form2.appendChild(inpN);
-  /*var inpY = document.createElement("input");
-  inpY.type="hidden";
-  inpY.name="auth";
-  inpY.value="sponsor";
-  form2.appendChild(inpY);*/
   var inpZ = document.createElement("input");
   inpZ.type="hidden";
   inpZ.name="Driver";
-  inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML;
-  form2.appendChild(inpZ);
-  form2.submit();
-
-
-}
-
-/*function miniUpdate() {
-  var itemContent = document.getElementById("itemContent");
-  var form3 = document.createElement("form");
-  form3.action="http://server.isaacmcqueen.me:9615";
-  form3.method="POST";
-  var inpN = document.createElement("input");
-  inpN.type="hidden";
-  inpN.name="action";
-  inpN.value="miniUpdate";
-  form3.appendChild(inpN);
-  var inpY = document.createElement("input");
-  inpY.type="hidden";
-  inpY.name="password";
-  inpY.value=;
-  form3.appendChild(inpY);
-  var inpZ = document.createElement("input");
-  inpZ.type="hidden";
-  inpZ.name="username";
   inpZ.value=itemContent.children[0].children[1].children[0].children[0].innerHTML; 
   form2.appendChild(inpZ);
   form2.submit();
 
 
-}*/
+}
 
 function loadOrders(){
   var driverContent = document.getElementById("driverOverlayContent");
