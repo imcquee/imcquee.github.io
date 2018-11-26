@@ -174,6 +174,7 @@ function loadAccount(){
   removeBtn.setAttribute('type','button');
   removeBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
   removeBtn.setAttribute('style','top:56vh');
+  removeBtn.setAttribute('onclick','removeDriver()');
   removeBtn.innerHTML = "Remove Driver";
   updateBtn.setAttribute('type','button');
   updateBtn.setAttribute('class','btn btn-info sponsorProfileBtn');
@@ -202,6 +203,10 @@ function loadAccount(){
   driverContent.appendChild(curUser);
   driverContent.appendChild(user);
 
+}
+
+function removeDriver(){
+  
 }
 
 function loadOrders(){

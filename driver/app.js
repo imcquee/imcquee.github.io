@@ -19,7 +19,7 @@ function loadMaster(){
       document.getElementById("driverName").innerHTML = JSONval.profile[0][0].driverName;
       document.getElementById("driverPoints").innerHTML = JSONval.profile[0][0].driverPoints;
       document.getElementById("current-sponsor").innerHTML = "TestSp1";
-
+      
       //document.getElementById("current-sponsor").innerHTML = JSONval.sponsors[0].sponsors.sponsorName;
       console.log(JSONval);
     }
