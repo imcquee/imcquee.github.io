@@ -6,5 +6,5 @@ function setPv() {
   document.getElementById('pValue').value = parent.pV;
 }
 function changeSponsor(){
-  parent.pV = document.getElementById('pValue').innerHTML;
+  parent.pV = document.getElementById('pValue').value;
 }
