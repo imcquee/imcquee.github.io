@@ -267,13 +267,14 @@ function finishCheckout(){
   inpY.value=cartFinal;
   form2.appendChild(inpY);
 
-  var inpZ = document.createElement("input");
+  /*var inpZ = document.createElement("input");
   inpZ.type="hidden";
   inpZ.name="username";
   inpZ.value=window.parent.document.getElementById("driverName").innerHTML ; 
-  form2.appendChild(inpZ);
+  form2.appendChild(inpZ);*/
 
   console.log(cartFinal);
+  console.log(form2);
   form2.submit();
 
   removeAllCart();
