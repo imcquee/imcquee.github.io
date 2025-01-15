@@ -2,7 +2,8 @@ import gleam/dict
 import gleam/io
 import gleam/list
 import lustre/ssg
-import pages/index
+import pages/home
+import pages/post
 
 pub fn main() {
   let posts =
@@ -11,16 +12,10 @@ pub fn main() {
       #(post.id, post)
     })
 
-  let build =
+  let assert Ok(_) =
     ssg.new("./priv")
-    |> ssg.add_static_route("/", index.view())
+    |> ssg.add_static_route("/", home.view())
+    |> ssg.add_dynamic_route("/posts", posts, post.view)
+    |> ssg.add_static_dir("./static")
     |> ssg.build
-
-  case build {
-    Ok(_) -> io.println("Build succeeded!")
-    Error(e) -> {
-      io.debug(e)
-      io.println("Build failed!")
-    }
-  }
 }

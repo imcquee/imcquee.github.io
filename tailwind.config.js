@@ -1,7 +1,11 @@
 module.exports = {
-  content: ["./index.html", "./src/**/*.{gleam,mjs}"],
+  content: ["./priv/index.html"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        outfit: ['Outfit', 'serif'],
+      },
+    },
   },
   plugins: [],
 };
