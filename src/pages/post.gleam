@@ -21,19 +21,20 @@ pub type Post {
 }
 
 pub fn fetch() {
-  use post_files <- result.try(simplifile.read_directory("src/pages/posts/"))
+  todo
+  //   use post_files <- result.try(simplifile.read_directory("src/pages/posts/"))
 
-  use posts <- result.try(
-    post_files
-    |> list.map(extract_post)
-    |> result.all(),
-  )
+  //   // use posts <- result.try(
+  //   //   post_files
+  //   //   |> list.map(extract_post)
+  //   //   |> result.all(),
+  //   // )
 
-  Ok(
-    posts
-    |> list.filter(validate)
-    |> list.sort(most_recent),
-  )
+  //   Ok(
+  //     posts
+  //     |> list.filter(validate)
+  //     |> list.sort(most_recent),
+  //   )
 }
 
 pub fn view(post: Post) -> Element(a) {

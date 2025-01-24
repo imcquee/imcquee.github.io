@@ -23,6 +23,13 @@ pub type InlineContent {
   Text(String)
 }
 
+pub fn view_home(home_content: Element(msg)) -> Element(msg) {
+  html.html([attribute.property("lang", "en")], [
+    head(),
+    html.body([class("h-screen w-screen bg-slate-800")], [home_content]),
+  ])
+}
+
 pub fn view_page(page: Page) -> Element(msg) {
   html.html([attribute.property("lang", "en")], [head(), body(page)])
 }
@@ -78,7 +85,6 @@ fn head() -> Element(a) {
         "https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap",
       ),
     ]),
-    // html.script([attribute.src("https://cdn.tailwindcss.com")], ""),
   ])
 }
 
