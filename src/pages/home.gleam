@@ -7,7 +7,9 @@ import lustre/element.{type Element}
 import lustre/element/html
 import lustre/element/svg
 import lustre/ui
+import lustre/ui/button
 import lustre/ui/cluster
+import lustre/ui/stack
 
 pub fn view() -> Element(a) {
   // Page(title: "Home", content: [
@@ -24,8 +26,8 @@ pub fn view() -> Element(a) {
   // |> content.view_page()
   html.body([class("w-screen h-screen")], [
     ui.centre(
-      [class("max-w-1/2")],
-      ui.stack([], [
+      [],
+      ui.stack([stack.loose()], [
         ui.centre(
           [],
           html.img([
@@ -35,19 +37,22 @@ pub fn view() -> Element(a) {
         ),
         ui.centre(
           [],
-          html.h1([class("text-3xl font-mono text-white")], [
+          html.h1([class("text-4xl font-mono text-white")], [
             element.text("imcquee"),
           ]),
         ),
-        html.p([class("max-w-prose font-mono text-white")], [
-          element.text(
-            "I'm Isaac McQueen 🙋🏾‍♂️ a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
-          ),
-        ]),
         ui.centre(
-          [class("w-full")],
-          ui.cluster([cluster.space("35px")], [
-            ui.button([], [
+          [class("w-screen")],
+          html.p([class("max-w-lg font-mono text-white")], [
+            element.text(
+              "I'm Isaac McQueen 🙋🏾‍♂️ a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
+            ),
+          ]),
+        ),
+        ui.centre(
+          [],
+          ui.cluster([], [
+            ui.button([button.small()], [
               html.a(
                 [
                   attribute.rel("noopener noreferrer"),
@@ -82,49 +87,15 @@ pub fn view() -> Element(a) {
                 ],
               ),
             ]),
-            ui.button([], [
-              html.a(
-                [
-                  attribute.rel("noopener noreferrer"),
-                  attribute.target("_blank"),
-                  attribute.href("https://github.com/imcquee"),
-                ],
-                [
-                  ui.cluster([], [
-                    html.svg(
-                      [
-                        attribute.property(
-                          "xmlns",
-                          "http://www.w3.org/2000/svg",
-                        ),
-                        attribute.property("fill", "none"),
-                        attribute.property("viewBox", "0 0 24 24"),
-                        attribute.property("height", "24"),
-                        attribute.property("width", "24"),
-                      ],
-                      [
-                        svg.path([
-                          attribute.property(
-                            "d",
-                            "M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.966 0-1.75-.785-1.75-1.75s.784-1.75 1.75-1.75 1.75.785 1.75 1.75-.784 1.75-1.75 1.75zm13.5 10.28h-3v-4.28c0-1.02-.02-2.33-1.42-2.33s-1.64 1.11-1.64 2.26v4.35h-3v-9h2.88v1.23h.04c.4-.76 1.36-1.56 2.8-1.56 2.99 0 3.54 1.97 3.54 4.53v4.8z",
-                          ),
-                          attribute.property("fill", "currentColor"),
-                        ]),
-                      ],
-                    ),
-                    element.text("LinkedIn"),
-                  ]),
-                ],
-              ),
-            ]),
-            ui.button([], [element.text("📃 CV")]),
-            ui.button([], [element.text("✉️ Email")]),
-            ui.button([], [element.text("🔧 Tools")]),
+            ui.button([button.small()], [element.text("🚧 Projects")]),
+            ui.button([button.small()], [element.text("📃 CV")]),
+            ui.button([button.small()], [element.text("✉️ Email")]),
+            ui.button([button.small()], [element.text("👨🏿‍💻 Tools")]),
           ]),
         ),
         ui.centre(
           [],
-          html.h1([class("mt-10 text-3xl font-mono text-white")], [
+          html.h1([class("text-3xl font-mono text-white")], [
             element.text("thoughts"),
           ]),
         ),
