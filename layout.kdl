@@ -1,0 +1,33 @@
+default_shell "fish"
+layout {
+
+    tab hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        pane split_direction="horizontal" {
+            pane {
+                command "direnv"
+                args "exec" "." "hx"
+                size "75%"
+                focus true
+            }
+            pane {
+                command "fish"
+                args "-c" "direnv exec . ./render.sh"
+            }
+        }        
+        floating_panes {
+            lazygit
+        }
+    }
+    
+    // TEMPLATES
+    pane_template name="lazygit" {
+        command "lazygit"
+        x "10%"
+        y "5%"
+        width "80%"
+        height "80%"
+    }
+}

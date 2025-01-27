@@ -14,6 +14,7 @@
             "x86_64-darwin"
             "aarch64-darwin"
           ];
+          projectName = "website";
         in
         lib.genAttrs systems (
           system:
@@ -33,6 +34,16 @@
                   tailwindcss-language-server
                 ]
                 ++ (if pkgs.stdenv.isLinux then [ inotify-tools ] else [ ]);
+
+              shellHook = ''
+                if zellij list-sessions | grep -q ${projectName}; then
+                  echo "Attaching to existing Zellij session: ${projectName}"
+                  zellij attach "${projectName}"
+                else
+                  echo "Creating new Zellij session: ${projectName}"
+                  zellij --new-session-with-layout layout.kdl --session website
+                fi
+              '';
             };
           }
         );
