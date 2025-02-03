@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ['Outfit', 'serif'],
+        outfit: [ "Outfit" ]
       },
     },
   },
