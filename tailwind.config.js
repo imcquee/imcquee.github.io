@@ -3,7 +3,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ['Outfit', 'serif'],
+        outfit: [
+          "Outfit",
+          "system-ui",
+          "-apple-system",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "sans-serif"          
+        ],
       },
     },
   },
