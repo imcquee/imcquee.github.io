@@ -1,58 +1,102 @@
 {
+  description = "A demo of sqlite-web and multiple postgres services";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default";
+    process-compose-flake.url = "github:Platonic-Systems/process-compose-flake";
+    services-flake.url = "github:juspay/services-flake";
 
-  outputs =
-    { nixpkgs, ... }:
-    {
-      devShells =
-        let
-          lib = nixpkgs.lib;
-          systems = [
-            "x86_64-linux"
-            "x86_64-darwin"
-            "aarch64-darwin"
-          ];
-          projectName = "website";
-        in
-        lib.genAttrs systems (
-          system:
+    northwind.url = "github:pthom/northwind_psql";
+    northwind.flake = false;
+  };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import inputs.systems;
+      imports = [
+        inputs.process-compose-flake.flakeModule
+      ];
+      perSystem = { self', pkgs, config, lib, ... }: {
+        # `process-compose.foo` will add a flake package output called "foo".
+        # Therefore, this will add a default package that you can build using
+        # `nix build` and run using `nix run`.
+        process-compose."default" = { config, ... }:
           let
-            pkgs = import nixpkgs { inherit system; };
+            dbName = "sample";
           in
           {
-            default = pkgs.mkShell {
-              packages =
-                with pkgs;
-                [
-                  gleam
-                  erlang_27
-                  rebar3
-                  flyctl
-                  tailwindcss
-                  tailwindcss-language-server
-                ]
-                ++ (if pkgs.stdenv.isLinux then [ inotify-tools ] else [ ]);
+            imports = [
+              inputs.services-flake.processComposeModules.default
+            ];
 
-              shellHook = ''
-                if ! ps aux | grep -q '[z]ellij'; then
-                  if zellij ls -n 2>&1 | grep -E '^${projectName} .*EXITED' >/dev/null; then
-                    # zellij delete-session ${projectName} # delete dead session
-                    echo "delete"
-                  fi
-
-                  if zellij ls -n 2>&1 | grep -E '^${projectName} ' >/dev/null; then
-                    echo "attaching"
-                    # zellij attach ${projectName}
-                  else
-                    echo "creating"
-                    # zellij --session ${projectName} --new-session-with-layout layout.kdl
-                  fi
-                fi
-              '';
+            services.postgres."pg1" = {
+              enable = true;
+              initialDatabases = [
+                {
+                  name = dbName;
+                  schemas = [ "${inputs.northwind}/northwind.sql" ];
+                }
+              ];
             };
-          }
-        );
+
+            settings.processes.pgweb =
+              let
+                pgcfg = config.services.postgres.pg1;
+              in
+              {
+                environment.PGWEB_DATABASE_URL = pgcfg.connectionURI { inherit dbName; };
+                command = pkgs.pgweb;
+                depends_on."pg1".condition = "process_healthy";
+              };
+            settings.processes.test = {
+              command = pkgs.writeShellApplication {
+                name = "pg1-test";
+                runtimeInputs = [ config.services.postgres.pg1.package ];
+                text = ''
+                  echo 'SELECT version();' | psql -h 127.0.0.1 ${dbName}
+                '';
+              };
+              depends_on."pg1".condition = "process_healthy";
+            };
+          };
+
+        devShells.default =
+          let
+            projectName = "website";
+          in
+          pkgs.mkShell {
+            inputsFrom = [
+              config.process-compose."default".services.outputs.devShell
+            ];
+            nativeBuildInputs =
+              with pkgs;
+              [
+                gleam
+                erlang_27
+                rebar3
+                flyctl
+                tailwindcss
+                tailwindcss-language-server
+              ]
+              ++ (if pkgs.stdenv.isLinux then [ inotify-tools ] else [ ]);
+
+            shellHook = ''
+              if ! ps aux | grep -q '[z]ellij'; then
+                if zellij ls -n 2>&1 | grep -E '^${projectName} .*EXITED' >/dev/null; then
+                  zellij delete-session ${projectName} # delete dead session
+                  echo "delete"
+                fi
+
+                if zellij ls -n 2>&1 | grep -E '^${projectName} ' >/dev/null; then
+                  echo "attaching"
+                  zellij attach ${projectName}
+                else
+                  echo "creating"
+                  zellij --session ${projectName} --new-session-with-layout layout.kdl
+                fi
+              fi
+            '';
+          };
+      };
     };
 }
