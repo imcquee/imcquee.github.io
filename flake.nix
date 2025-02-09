@@ -1,7 +1,7 @@
 {
   description = "A demo of sqlite-web and multiple postgres services";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     process-compose-flake.url = "github:Platonic-Systems/process-compose-flake";
