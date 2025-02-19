@@ -12,8 +12,6 @@
       devShells = forAllSystems ({ pkgs }:
         let
           layoutFile = pkgs.writeText "layout.kdl" ''
-            pane_frames false
-            default_shell "fish"
             layout {
               pane split_direction="horizontal" {
                   pane {
@@ -21,11 +19,6 @@
                     args "."
                   }
                   pane size="20%"
-              }
-            }
-            keybinds {
-              shared {
-                bind "Alt f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
               }
             }
           '';
