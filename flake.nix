@@ -15,9 +15,17 @@
             pane_frames false
             default_shell "fish"
             layout {
-              pane {
-                command "hx"
-                args "."
+              pane split_direction="horizontal" {
+                  pane {
+                    command "hx"
+                    args "."
+                  }
+                  pane size="20%"
+              }
+            }
+            keybinds {
+              shared {
+                bind "Alt f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
               }
             }
           '';
