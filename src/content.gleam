@@ -60,6 +60,7 @@ fn body(page: Page) -> Element(a) {
 
 fn head() -> Element(a) {
   html.head([], [
+    html.meta([attribute.charset("UTF-8")]),
     html.link([
       attribute.href("./lustre_ui.css"),
       attribute.type_("text/css"),
