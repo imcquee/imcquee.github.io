@@ -33,6 +33,7 @@
                 flyctl
                 tailwindcss
                 tailwindcss-language-server
+                mermaid-cli
               ]
               ++ (if pkgs.stdenv.isLinux then [ inotify-tools ] else [ ]);
             shellHook = ''
