@@ -1,0 +1,53 @@
+{
+  description = "Gleam development environment";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  outputs = { nixpkgs, ... }:
+    let
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
+        pkgs = import nixpkgs { inherit system; };
+      });
+    in
+    {
+      devShells = forAllSystems ({ pkgs }:
+        {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              gleam
+              erlang_27
+              rebar3
+              act
+              colima
+            ]
+            ++
+            pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
+              inotify-tools
+            ]);
+
+            shellHook = ''
+              export DOCKER_HOST="unix:///Users/imcquee/.config/colima/default/docker.sock"
+            '';
+          };
+        });
+
+      packages = forAllSystems ({ pkgs }: {
+        default = pkgs.stdenv.mkDerivation {
+          pname = "my-gleam-app";
+          version = "0.1.0";
+          src = ./.;
+
+          nativeBuildInputs = with pkgs; [ gleam erlang_27 rebar3 ];
+
+          buildPhase = ''
+            gleam build
+          '';
+
+          installPhase = ''
+            # Install your built artifacts
+            mkdir -p $out/bin
+            # Copy your built gleam application
+          '';
+        };
+      });
+    };
+}
