@@ -23,7 +23,6 @@
             pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
               inotify-tools
             ]);
-
             shellHook = ''
               export DOCKER_HOST="unix:///Users/imcquee/.config/colima/default/docker.sock"
             '';
@@ -31,20 +30,19 @@
         });
       packages = forAllSystems ({ pkgs }: {
         default = pkgs.stdenv.mkDerivation {
-          pname = "imcquee_github_io";
+          pname = "website";
+          version = "0.1.0"; # Add this line
           src = ./.;
-
           nativeBuildInputs = with pkgs; [ gleam erlang_27 rebar3 ];
-
           buildPhase = ''
             export HOME=$TMPDIR
             export XDG_CACHE_HOME=$TMPDIR/gleam-cache
             mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
-            gleam build
+            gleam run -m build
           '';
-
           installPhase = ''
-            mkdir -p $out/bin
+            mkdir -p $out
+            cp -r priv $out
           '';
         };
       });
