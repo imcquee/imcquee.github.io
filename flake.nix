@@ -41,7 +41,8 @@
             gleam run -m build
           '';
           installPhase = ''
-            mkdir -p $out/bin
+            mkdir -p $out
+            cp -r priv $out
           '';
         };
       });

@@ -73,12 +73,6 @@ pub fn view() -> Element(a) {
           ui.button([button.small()], [element.text("👨🏿‍💻 Tools")]),
         ]),
       ),
-      ui.centre(
-        [],
-        html.h1([class("text-3xl mt-6 font-mono text-white")], [
-          element.text("thoughts"),
-        ]),
-      ),
     ]),
   )
   |> content.view_home()
