@@ -16,11 +16,17 @@
               gleam
               erlang_27
               rebar3
+              act
+              colima
             ]
             ++
             pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
               inotify-tools
             ]);
+
+            shellHook = ''
+              export DOCKER_HOST="unix:///Users/imcquee/.config/colima/default/docker.sock"
+            '';
           };
         });
     };
