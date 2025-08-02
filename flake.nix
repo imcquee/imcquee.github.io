@@ -29,23 +29,22 @@
             '';
           };
         });
-
       packages = forAllSystems ({ pkgs }: {
         default = pkgs.stdenv.mkDerivation {
-          pname = "my-gleam-app";
-          version = "0.1.0";
+          pname = "imcquee_github_io";
           src = ./.;
 
           nativeBuildInputs = with pkgs; [ gleam erlang_27 rebar3 ];
 
           buildPhase = ''
+            export HOME=$TMPDIR
+            export XDG_CACHE_HOME=$TMPDIR/gleam-cache
+            mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
             gleam build
           '';
 
           installPhase = ''
-            # Install your built artifacts
             mkdir -p $out/bin
-            # Copy your built gleam application
           '';
         };
       });
