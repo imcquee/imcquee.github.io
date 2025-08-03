@@ -1,5 +1,10 @@
 name: Build Gleam SSG site
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 on:
   pull_request:
   push:
