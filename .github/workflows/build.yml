@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
-      - run: nix build .
+      - run: nix build --option sandbox false .
       
       - name: Upload static files as artifact
         id: deployment
