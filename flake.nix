@@ -20,6 +20,7 @@
       devPackages = pkgs: with pkgs; [
         act
         colima
+        tailwindcss-language-server
       ];
     in
     {
