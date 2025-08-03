@@ -35,7 +35,7 @@ pub fn view() -> Element(a) {
       ),
       ui.centre(
         [],
-        ui.cluster([cluster.space("2px")], [
+        ui.cluster([], [
           ui.button([button.small()], [
             html.a(
               [
@@ -44,7 +44,7 @@ pub fn view() -> Element(a) {
                 attribute.href("https://github.com/imcquee"),
               ],
               [
-                ui.cluster([], [
+                ui.cluster([cluster.space("4px")], [
                   html.svg(
                     [
                       attribute.property("xmlns", "http://www.w3.org/2000/svg"),
@@ -68,10 +68,30 @@ pub fn view() -> Element(a) {
               ],
             ),
           ]),
-          ui.button([button.small()], [element.text("📃 CV")]),
-          ui.button([button.small()], [element.text("✉️ Email")]),
-          ui.button([button.small()], [element.text("🚧 Projects")]),
-          ui.button([button.small()], [element.text("👨🏿‍💻 Tools")]),
+          // ui.button([button.small()], [element.text("📃 CV")]),
+          // 
+          ui.button([button.small()], [
+            html.a(
+              [
+                attribute.rel("noopener noreferrer"),
+                attribute.target("_blank"),
+                attribute.href(
+                  "https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf",
+                ),
+              ],
+              [element.text("📃 CV")],
+            ),
+          ]),
+          ui.button([button.small()], [
+            html.a(
+              [
+                attribute.rel("noopener noreferrer"),
+                attribute.target("_blank"),
+                attribute.href("mailto:imcqueendev@gmail.com"),
+              ],
+              [element.text("✉️ Email")],
+            ),
+          ]),
         ]),
       ),
     ]),
