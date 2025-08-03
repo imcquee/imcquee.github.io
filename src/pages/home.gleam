@@ -5,6 +5,7 @@ import lustre/element/html
 import lustre/element/svg
 import lustre/ui
 import lustre/ui/button
+import lustre/ui/cluster
 import lustre/ui/stack
 
 pub fn view() -> Element(a) {
@@ -34,7 +35,7 @@ pub fn view() -> Element(a) {
       ),
       ui.centre(
         [],
-        ui.cluster([], [
+        ui.cluster([cluster.space("2px")], [
           ui.button([button.small()], [
             html.a(
               [
