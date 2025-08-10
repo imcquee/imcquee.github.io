@@ -20,7 +20,7 @@ function devPlugin() {
     
     const gleamOk = await run("gleam", ["run", "-m", "build"]);
     if (gleamOk) {
-      await run("tailwindcss", ["-i", CSS_IN, "-o", CSS_OUT]);
+      await run("tailwindcss", ["-i", CSS_IN, "-o", CSS_OUT, "--content", "src/**/*.gleam"]);
       server.ws.send({ type: "full-reload" });
     }
     
@@ -28,14 +28,14 @@ function devPlugin() {
   };
 
   const buildCss = async (server) => {
-    await run("tailwindcss", ["-i", CSS_IN, "-o", CSS_OUT]);
+    await run("tailwindcss", ["-i", CSS_IN, "-o", CSS_OUT, "--content", "src/**/*.gleam"]);
     server.ws.send({ type: "full-reload" });
   };
 
   return {
     name: "gleam-tailwind",
     async configureServer(server) {
-      await run("tailwindcss", ["-i", CSS_IN, "-o", CSS_OUT]);
+      await run("tailwindcss", ["-i", CSS_IN, "-o", CSS_OUT, "--content", "src/**/*.gleam"]);
       server.watcher.add("src");
       server.watcher.add(CSS_IN);
       
