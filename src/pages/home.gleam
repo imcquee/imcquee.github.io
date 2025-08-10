@@ -16,29 +16,34 @@ type AboutItem {
   SubText(String)
 }
 
+fn header() -> Element(a) {
+  html.div([], [])
+}
+
 pub fn view() -> Element(a) {
-  html.div([class("h-screen w-screen flex-row grid p-24 grid-cols-2 ")], [
-    html.div([class("flex-row col-span-1")], [
-      html.img([
-        attribute.src("images/city.png"),
-        class("object-cover p-8 h-48 w-48 rounded-full"),
+  html.div(
+    [
+      class("flex-row grid px-24 pt-24 grid-cols-1 sm:grid-cols-2"),
+    ],
+    [
+      html.div([class("flex-row")], [
+        html.img([
+          attribute.src("images/city.png"),
+          class("object-cover mb-8 h-36 w-36 rounded-full"),
+        ]),
+        html.h1([class("font-mono text-4xl pb-8 text-black")], [
+          element.text("Isaac McQueen"),
+        ]),
+        html.p([class("max-w-lg text-md font-mono text-black")], [
+          element.text(
+            "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 5+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
+          ),
+        ]),
       ]),
-      html.h1([class("font-mono text-4xl pb-8 text-black")], [
-        element.text("Isaac McQueen"),
-      ]),
-      html.p([class("max-w-lg  font-mono text-black")], [
-        element.text(
-          "Hello 🙋🏾‍♂️ I'm Isaac, a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
-        ),
-      ]),
-    ]),
-    html.div([class("col-span-1")], [
-      html.div([class("grid grid-cols-2 gap-2 justify-items-center")], [
+      html.div([class("grid grid-cols-2 gap-2 p-12 justify-items-center")], [
         html.div(
           [
-            class(
-              "border-2 rounded-sm border-black w-24 h-24 flex flex-col p-4",
-            ),
+            class("border-2 border-black w-full h-full shadow-md"),
           ],
           [
             html.svg(
@@ -59,7 +64,7 @@ pub fn view() -> Element(a) {
                 ]),
               ],
             ),
-            html.p([class("font-mono")], [element.text("M")]),
+            html.p([class("font-mono")], [element.text("Mark")]),
           ],
         ),
         html.div(
@@ -123,8 +128,8 @@ pub fn view() -> Element(a) {
         html.div([class("border-2 rounded-sm border-black w-24 h-24")], []),
         html.div([class("border-2 rounded-sm border-black w-24 h-24")], []),
       ]),
-    ]),
-  ])
+    ],
+  )
   |> content.view_home()
 }
 

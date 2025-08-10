@@ -1,2 +1,5 @@
-[Personal Website](www.isaacmcqueeen.com)
+## Setup
 
+### Start Dev Server
+
+`nix run .#develop`

@@ -62,6 +62,10 @@ fn body(page: Page) -> Element(a) {
 fn head() -> Element(a) {
   html.head([], [
     html.meta([attribute.charset("UTF-8")]),
+    html.meta([
+      attribute.name("viewport"),
+      attribute.content("width=device-width, initial-scale=1.0"),
+    ]),
     // html.link([
     //   attribute.href("./custom.css"),
     //   attribute.type_("text/css"),
