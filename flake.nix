@@ -5,10 +5,8 @@
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs =
-          nixpkgs.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${system};
       });
-
       # Shared package list
       gleamPackages = pkgs: with pkgs; [
         gleam
@@ -16,7 +14,6 @@
         rebar3
         tailwindcss_4
       ];
-
       # Development-specific packages
       devPackages = pkgs: with pkgs; [
         act
@@ -31,12 +28,15 @@
         {
           default = pkgs.mkShell {
             packages = (gleamPackages pkgs) ++ (devPackages pkgs)
-              ++
-              pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
-                inotify-tools
-              ]);
+              ++ pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
+              inotify-tools
+            ]);
             shellHook = ''
               export DOCKER_HOST="unix:///Users/imcquee/.config/colima/default/docker.sock"
+              if ! bun pm ls | grep -q "vite@"; then
+                echo "Installing vite..."
+                bun add -d vite
+              fi
             '';
           };
         });
@@ -45,7 +45,7 @@
           pname = "website";
           version = "1.0.0";
           src = ./.;
-          nativeBuildInputs = gleamPackages pkgs;
+          nativeBuildInputs = (gleamPackages pkgs) ++ [ pkgs.bun ];
           buildPhase = ''
             export HOME=$TMPDIR
             export XDG_CACHE_HOME=$TMPDIR/gleam-cache
@@ -72,8 +72,13 @@
 
         develop = {
           type = "app";
-          program = "${pkgs.writeShellScript "view-website" ''
-            BUILT_SITE=${self.packages.${pkgs.system}.default}
+          program = "${pkgs.writeShellScript "develop-website" ''
+            if ! bun pm ls | grep -q "vite@"; then
+              echo "Installing vite..."
+              bun add -d vite
+            fi
+            
+            echo "Starting development server..."
             bun run vite
           ''}";
         };

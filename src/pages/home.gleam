@@ -23,10 +23,12 @@ pub fn view() -> Element(a) {
         attribute.src("images/city.png"),
         class("object-cover p-8 h-48 w-48 rounded-full"),
       ]),
-      html.h1([class("font-mono text-white")], [element.text("Isaac McQueen")]),
-      html.p([class("max-w-lg font-mono")], [
+      html.h1([class("font-mono text-4xl pb-8 text-black")], [
+        element.text("Isaac McQueen"),
+      ]),
+      html.p([class("max-w-lg  font-mono text-black")], [
         element.text(
-          "Tello 🙋🏾‍♂️ I'm a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
+          "Hello 🙋🏾‍♂️ I'm Isaac, a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
         ),
       ]),
     ]),
