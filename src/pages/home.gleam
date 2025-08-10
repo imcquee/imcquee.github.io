@@ -26,7 +26,7 @@ pub fn view() -> Element(a) {
       html.h1([class("font-mono text-black")], [element.text("Isaac McQueen")]),
       html.p([class("max-w-lg font-mono text-black")], [
         element.text(
-          "Mello🙋🏾‍♂️ I'm a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
+          "Tello 🙋🏾‍♂️ I'm a full-stack software engineer with 5+ years of experience. I use this page to post about things that excite me. You can also access my cv, contacts, and relevant links.",
         ),
       ]),
     ]),
@@ -85,7 +85,7 @@ pub fn view() -> Element(a) {
                 ]),
               ],
             ),
-            html.p([class("font-mono")], [element.text("CV")]),
+            html.p([class("font-mono")], [element.text("VC")]),
           ],
         ),
         html.div(
