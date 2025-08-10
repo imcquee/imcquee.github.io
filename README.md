@@ -10,7 +10,7 @@
 ### TODO
 
 - [x] Add Workflow
-- [] Cleanup code
-- [] Add dynamic paths and file reads for blog
-- [] Add markdown/djot parsing (maybe Pandoc)
+- [ ] Cleanup code
+- [ ] Add dynamic paths and file reads for blog
+- [ ] Add markdown/djot parsing (maybe Pandoc)
 
