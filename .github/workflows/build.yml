@@ -25,8 +25,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: result/priv/
-
+        if: github.ref == 'refs/heads/main'
+        
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
