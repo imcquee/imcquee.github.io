@@ -33,9 +33,9 @@
             ]);
             shellHook = ''
               export DOCKER_HOST="unix:///Users/imcquee/.config/colima/default/docker.sock"
-              if ! bun pm ls | grep -q "vite@"; then
+              if ! bun pm ls | grep -q "vite@7.1.1"; then
                 echo "Installing vite..."
-                bun add -d vite
+                bun add -d vite@7.1.1
               fi
             '';
           };
@@ -63,13 +63,13 @@
         develop = {
           type = "app";
           program = "${pkgs.writeShellScript "develop-website" ''
-            if ! bun pm ls | grep -q "vite@"; then
+            if ! bun pm ls | grep -q "vite@7.1.1"; then
               echo "Installing vite..."
-              bun add -d vite
+              bun add -d vite@7.1.1
             fi
             
             echo "Starting development server..."
-            bun run vite
+            bun vite
           ''}";
         };
       });
