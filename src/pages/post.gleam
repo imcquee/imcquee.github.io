@@ -1,12 +1,8 @@
-import content.{
-  type Page, Bold, Code, Heading, Page, Section, Snippet, Subheading, Text,
-  Title,
-}
+import content.{type Page, Bold, Date, Page, Section, Text, Title}
 import gleam/list
 import gleam/result
 import lustre/attribute.{class}
 import lustre/element.{type Element}
-import lustre/ui
 import simplifile
 
 pub type Post {
@@ -40,7 +36,7 @@ pub fn fetch() {
 pub fn view(post: Post) -> Element(a) {
   Page(title: "Home", content: [
     Title("First Post"),
-    Subheading("10-12-2024"),
+    Date("August 3, 2025"),
     Section([
       Text(
         "Fonts are essential in web design as they give personality to your website, improve readability, and evoke certain emotions.

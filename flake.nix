@@ -1,6 +1,6 @@
 {
   description = "Gleam development environment";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   outputs = { self, nixpkgs, ... }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
@@ -12,8 +12,9 @@
       # Shared package list
       gleamPackages = pkgs: with pkgs; [
         gleam
-        erlang_27
+        erlang_28
         rebar3
+        tailwindcss_4
       ];
 
       # Development-specific packages
@@ -21,6 +22,8 @@
         act
         colima
         tailwindcss-language-server
+        bun
+        vscode-langservers-extracted
       ];
     in
     {
@@ -48,6 +51,7 @@
             export XDG_CACHE_HOME=$TMPDIR/gleam-cache
             mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
             gleam run -m build
+            tailwindcss -i ./static/website.css -o ./priv/output.css
           '';
           installPhase = ''
             mkdir -p $out
@@ -63,6 +67,14 @@
             echo "Opening site..."
             cd "$BUILT_SITE/priv"
             open "index.html"
+          ''}";
+        };
+
+        develop = {
+          type = "app";
+          program = "${pkgs.writeShellScript "view-website" ''
+            BUILT_SITE=${self.packages.${pkgs.system}.default}
+            bun run vite
           ''}";
         };
       });
