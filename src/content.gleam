@@ -72,6 +72,25 @@ fn head() -> Element(a) {
     //   attribute.rel("stylesheet"),
     // ]),
     html.link([
+      attribute.rel("apple-touch-icon"),
+      attribute.sizes("180x180"),
+      attribute.href("images/apple-touch-icon.png"),
+    ]),
+    html.link([
+      attribute.rel("icon"),
+      attribute.sizes("32x32"),
+      attribute.href("images/favicon-32x32.png"),
+    ]),
+    html.link([
+      attribute.rel("icon"),
+      attribute.sizes("16x16"),
+      attribute.href("images/favicon-16x16.png"),
+    ]),
+    html.link([
+      attribute.rel("manifest"),
+      attribute.href("images/site.webmanifest"),
+    ]),
+    html.link([
       attribute.href("./output.css"),
       attribute.type_("text/css"),
       attribute.rel("stylesheet"),
@@ -91,6 +110,21 @@ fn head() -> Element(a) {
         "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Kanchenjunga:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
       ),
     ]),
+    html.link([
+      attribute.rel("stylesheet"),
+      attribute.href(
+        "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css",
+      ),
+    ]),
+    html.script(
+      [
+        attribute.attribute("type", "module"),
+        attribute.src(
+          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js",
+        ),
+      ],
+      "",
+    ),
   ])
 }
 
