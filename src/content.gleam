@@ -66,11 +66,6 @@ fn head() -> Element(a) {
       attribute.name("viewport"),
       attribute.content("width=device-width, initial-scale=1.0"),
     ]),
-    // html.link([
-    //   attribute.href("./custom.css"),
-    //   attribute.type_("text/css"),
-    //   attribute.rel("stylesheet"),
-    // ]),
     html.link([
       attribute.rel("apple-touch-icon"),
       attribute.sizes("180x180"),
@@ -94,21 +89,6 @@ fn head() -> Element(a) {
       attribute.href("./output.css"),
       attribute.type_("text/css"),
       attribute.rel("stylesheet"),
-    ]),
-    html.link([
-      attribute.href("https://fonts.googleapis.com"),
-      attribute.rel("preconnect"),
-    ]),
-    html.link([
-      attribute("crossorigin", ""),
-      attribute.href("https://fonts.gstatic.com"),
-      attribute.rel("preconnect"),
-    ]),
-    html.link([
-      attribute.rel("stylesheet"),
-      attribute.href(
-        "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Kanchenjunga:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
-      ),
     ]),
     html.link([
       attribute.rel("stylesheet"),
