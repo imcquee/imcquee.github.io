@@ -3,17 +3,30 @@ import gleam/list
 import gleam/result
 import lustre/attribute.{class}
 import lustre/element.{type Element}
+import lustre/ssg/djot
 import simplifile
 
 pub type Post {
-  Post(
-    slug: String,
-    title: String,
-    description: String,
-    author: String,
-    date: String,
-    content: String,
-  )
+  Post(slug: String, content: List(Element(Nil)))
+}
+
+pub fn parse(from filepath: String) -> Post {
+  let post = {
+    use file <- result.try(
+      simplifile.read(filepath) |> result.replace_error(Nil),
+    )
+    let content = djot.render(file, djot.default_renderer())
+    let slug = "touch"
+
+    Ok(Post(slug:, content:))
+  }
+  case post {
+    Ok(post) -> post
+    Error(_) -> {
+      let error_message = "could not parse content from file: " <> filepath
+      panic as error_message
+    }
+  }
 }
 
 pub fn fetch() {
