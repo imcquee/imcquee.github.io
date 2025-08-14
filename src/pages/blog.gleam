@@ -1,7 +1,9 @@
 import content.{type Page, Bold, Date, Page, Section, Text, Title}
+import gleam/list
 import lustre/element.{type Element}
+import pages/post.{type Post}
 
-pub fn view() -> Element(a) {
+pub fn view(list: List(Post)) -> Element(a) {
   Page(title: "Home", content: [
     Title("First Post"),
     Date("August 3, 2025"),
