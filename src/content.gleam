@@ -33,18 +33,61 @@ pub fn view_home(home_content: Element(msg)) -> Element(msg) {
   ])
 }
 
+pub fn view_blog_page(content: Element(a)) -> Element(a) {
+  html.html([attribute.lang("en")], [head(), blog_body(content)])
+}
+
 pub fn view_page(page: Page) -> Element(msg) {
   html.html([attribute.lang("en")], [head(), body(page)])
+}
+
+fn blog_body(content: Element(a)) -> Element(a) {
+  html.body([class("h-screen w-screen bg-fuchsia-100")], [
+    html.header([], [
+      html.a(
+        [
+          attribute.href("./index.html"),
+          class("flex flex-row p-8 gap-2 items-center"),
+        ],
+        [
+          html.img([
+            attribute.src("images/city.png"),
+            class("object-cover h-10 w-10 rounded-full"),
+          ]),
+          html.h1([class("text-2xl font-mono text-black")], [
+            element.text("imcquee"),
+          ]),
+        ],
+      ),
+    ]),
+    html.div([class("py-4")], [
+      html.div([], [
+        html.div([class("w-screen h-screen")], [
+          html.main([attribute.class("container")], [content]),
+        ]),
+      ]),
+    ]),
+  ])
 }
 
 fn body(page: Page) -> Element(a) {
   html.body([class("h-screen w-screen bg-fuchsia-100")], [
     html.header([], [
-      html.a([attribute.href("./index.html")], [
-        html.h1([class("text-2xl p-8 font-mono text-black")], [
-          element.text("imcquee"),
-        ]),
-      ]),
+      html.a(
+        [
+          attribute.href("./"),
+          class("flex flex-row p-8 gap-2 items-center"),
+        ],
+        [
+          html.img([
+            attribute.src("images/city.png"),
+            class("object-cover h-10 w-10 rounded-full"),
+          ]),
+          html.h1([class("text-2xl font-mono text-black")], [
+            element.text("imcquee"),
+          ]),
+        ],
+      ),
     ]),
     html.div([class("py-12")], [
       html.div([], [

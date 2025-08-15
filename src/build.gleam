@@ -13,17 +13,8 @@ const static_dir = "./static"
 
 pub fn main() {
   let posts =
-    list.map(posts.all(), fn(post) { #(post.slug, post) })
-    |> echo
+    list.map(posts.all(), fn(post) { #(post.metadata.slug, post) })
     |> dict.from_list()
-
-  // let assert Ok(_) =
-  //   ssg.new("./priv")
-  //   |> ssg.add_static_route("/", index.view())
-  //   |> ssg.add_static_route("/blog", blog.view())
-  //   |> ssg.add_dynamic_route("/posts", posts, post.view)
-  //   |> ssg.add_static_dir("./static")
-  //   |> ssg.build
 
   let build =
     ssg.new(out_dir)

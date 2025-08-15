@@ -47,36 +47,36 @@ pub fn view() -> Element(a) {
     ),
   ]
 
-  html.div([], [
-    html.div(
-      [
-        class("flex-row grid px-24 pt-24 grid-cols-1 sm:grid-cols-2"),
-      ],
-      [
-        html.div([class("flex-row")], [
-          html.img([
-            attribute.src("images/city.png"),
-            class("object-cover mb-8 h-36 w-36 rounded-full"),
-          ]),
-          html.h1([class("font-mono text-4xl pb-8 text-black")], [
-            element.text("Isaac McQueen"),
-          ]),
-          html.p([class("max-w-lg text-md font-mono text-black")], [
-            element.text(
-              "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
-            ),
-          ]),
+  html.div(
+    [
+      class(
+        "w-screen h-screen flex-row grid px-24 pt-24 grid-cols-1 sm:grid-cols-2",
+      ),
+    ],
+    [
+      html.div([class("flex-row")], [
+        html.img([
+          attribute.src("images/city.png"),
+          class("object-cover mb-8 h-36 w-36 rounded-full"),
         ]),
-        html.div(
-          [
-            class("grid grid-cols-1 w-full sm:grid-cols-2 py-12 gap-2 h-36"),
-          ],
-          about_cards
-            |> display_about_cards,
-        ),
-      ],
-    ),
-  ])
+        html.h1([class("font-mono text-4xl pb-8 text-black")], [
+          element.text("Isaac McQueen"),
+        ]),
+        html.p([class("max-w-lg text-md font-mono text-black")], [
+          element.text(
+            "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
+          ),
+        ]),
+      ]),
+      html.div(
+        [
+          class("grid grid-cols-3 w-full sm:grid-cols-2 py-12 gap-2"),
+        ],
+        about_cards
+          |> display_about_cards,
+      ),
+    ],
+  )
   |> content.view_home()
 }
 

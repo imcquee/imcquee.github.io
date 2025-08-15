@@ -63,7 +63,9 @@
               echo "Installing vite..."
               bun add -d vite@7.1.1
             fi
-            
+
+            gleam run -m build
+            tailwindcss -i ./static/website.css -o ./priv/output.css
             echo "Starting development server..."
             bun vite
           ''}";

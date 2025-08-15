@@ -1,7 +1,8 @@
 ---
-id = "parsing-djot"
+slug = "parsing-djot"
 title = "Parsing djot with lustre_ssg"
 description = "A post about parsing djot syntax with lustre_ssg"
+preview_img = "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg"
 ---
 # Hello, world!
 
