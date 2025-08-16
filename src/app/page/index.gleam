@@ -27,7 +27,7 @@ type AboutCard {
 
 pub fn view() -> Element(a) {
   let about_cards = [
-    AboutCard(ASCII("🕮"), "Blog", None, Internal("./blog"), True),
+    AboutCard(ASCII("🕮"), "Blog", None, Internal("/blog"), True),
     AboutCard(
       ASCII("📃"),
       "CV",
@@ -73,7 +73,7 @@ pub fn view() -> Element(a) {
         html.h1([class("font-mono text-4xl pb-8 text-black")], [
           element.text("Isaac McQueen"),
         ]),
-        html.p([class("max-w-lg text-md font-mono text-black")], [
+        html.p([class("max-w-lg text-xl text-black")], [
           element.text(
             "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
           ),

@@ -61,18 +61,6 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
 }
 
 pub fn view(post: Post) -> Element(Nil) {
-  //   Page(title: "Home", content: [
-  //     Title("First Post"),
-  //     Date("August 3, 2025"),
-  //     Section([
-  //       Text(
-  //         "Fonts are essential in web design as they give personality to your website, improve readability, and evoke certain emotions.
-  // Although Tailwind CSS provides many default fonts, there are times when you may want a more unique option.
-  // Custom fonts can assist you in achieving that special appearance.",
-  //       ),
-  //     ]),
-  //   ])
-  //
   html.div([class("flex flex-col items-center px-12 gap-2")], [
     html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
       html.h1([class("text-3xl")], [element.text(post.metadata.title)]),

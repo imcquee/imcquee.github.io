@@ -9,7 +9,7 @@ fn body_container(content: List(Element(a))) {
 pub fn view_home(home_content: Element(msg)) -> Element(msg) {
   html.html([attribute.lang("en")], [
     head(),
-    body_container([home_content]),
+    body_container([html.main([], [home_content])]),
   ])
 }
 
@@ -39,7 +39,7 @@ fn body(content: Element(a)) -> Element(a) {
     html.div([class("py-4")], [
       html.div([], [
         html.div([class("w-screen h-screen")], [
-          html.main([attribute.class("container")], [content]),
+          html.main([], [content]),
         ]),
       ]),
     ]),
