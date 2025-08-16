@@ -70,7 +70,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.a(
       [
         class(
-          "sm:fixed sm:left-4 ml-2 self-start sm:p-4 p-2 rounded-md border-2 border-black bg-white sm:h-18 mb-4 flex items-center",
+          "sm:fixed sm:left-4 ml-2 self-start sm:p-4 p-2 mb-4 rounded-md border-2 border-black bg-white sm:h-18 flex items-center",
         ),
         attribute.href("/blog"),
       ],
