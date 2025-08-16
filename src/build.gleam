@@ -1,23 +1,34 @@
+import app/data/posts
+import app/page/blog
+import app/page/index
+import app/page/post
 import gleam/dict
 import gleam/io
 import gleam/list
 import lustre/ssg
-import pages/home
-import pages/post
-import pages/presentation
+
+const out_dir = "./priv"
+
+const static_dir = "./static"
 
 pub fn main() {
-  // let posts =
-  //   dict.from_list({
-  //     use post <- list.map(posts.all())
-  //     #(post.id, post)
-  //   })
+  let posts =
+    list.map(posts.all(), fn(post) { #(post.metadata.slug, post) })
+    |> dict.from_list()
 
-  let assert Ok(_) =
-    ssg.new("./priv")
-    |> ssg.add_static_route("/", home.view())
-    |> ssg.add_static_route("/presentation", presentation.view())
-    // |> ssg.add_dynamic_route("/posts", posts, post.view)
-    |> ssg.add_static_dir("./static")
+  let build =
+    ssg.new(out_dir)
+    |> ssg.add_static_route("/", index.view())
+    |> ssg.add_static_route("/blog", blog.view(posts.all()))
+    |> ssg.add_dynamic_route("/blog", posts, post.view)
+    |> ssg.add_static_dir(static_dir)
     |> ssg.build
+
+  case build {
+    Ok(_) -> io.println("Build succeeded!")
+    Error(e) -> {
+      echo e
+      io.println("Build failed!")
+    }
+  }
 }

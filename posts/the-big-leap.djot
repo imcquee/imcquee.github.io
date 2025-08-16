@@ -1,0 +1,13 @@
+---
+slug = "the-big-leap"
+title = "The Big Leap 跳"
+date = "August 4, 2025"
+description = "Contemplating our next big move, because we can't sit still 🦈🦈🦈"
+preview_img = "/images/valencia.jpg"
+---
+
+Me trying to write a sentence
+
+``` =html
+<img src="/images/valencia.jpg" class="shadow" style="width: 550px; margin-bottom: 4rem" alt="Neovim showing imports being autocompleted">
+```

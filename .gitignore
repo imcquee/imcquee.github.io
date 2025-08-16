@@ -1,6 +1,8 @@
 *.beam
 *.ez
 /build
+/.dev
+/node_modules
 erl_crash.dump
 .DS_Store
 .aider*

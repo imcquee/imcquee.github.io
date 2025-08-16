@@ -1,0 +1,15 @@
+@font-face {
+  font-family: JBMono;
+  src: url("fonts/JetBrainsMono-Regular.ttf");
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("fonts/Inter_24pt-Regular.ttf");
+}
+
+@import "tailwindcss";
+@theme {
+  --font-mono: "JBMono", monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
