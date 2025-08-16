@@ -46,9 +46,11 @@ function devPlugin() {
       { stdio: "inherit" }
     );
 
+    // Mirror the compiled CSS into priv/ whenever it changes
     fs.watch(path.dirname(CSS_OUT_TMP), { persistent: true }, (_evt, f) => {
       if (f === path.basename(CSS_OUT_TMP)) copyCssIntoPriv();
     });
+
     const kill = () => {
       if (tailwindProc && !tailwindProc.killed) {
         tailwindProc.kill();
@@ -61,37 +63,45 @@ function devPlugin() {
     tailwindProc.on("exit", () => { tailwindProc = null; });
   };
 
-  const buildGleamThenSyncCss = async (server) => {
+  const buildGleamThenSyncCss = async (server, { reload = true } = {}) => {
     if (building) return;
     building = true;
     const ok = await run("gleam", ["run", "-m", "build"]);
+    // Gleam build may recreate priv/, so always copy CSS *after* building
     copyCssIntoPriv();
-    if (ok) server.ws.send({ type: "full-reload" });
+    if (ok && reload) {
+      // On initial startup there may be no clients; harmless if none are connected
+      server.ws.send({ type: "full-reload" });
+    }
     building = false;
   };
 
   return {
     name: "gleam-tailwind",
     async configureServer(server) {
-      await startTailwindWatch();
       copyCssIntoPriv();
 
+      // 2) Do an initial Gleam build (no reload needed yet)
+      await buildGleamThenSyncCss(server, { reload: false });
+
+      // Now start the long-lived Tailwind watcher
+      await startTailwindWatch();
+
+      // Watch sources for subsequent rebuilds
       server.watcher.add("src");
       server.watcher.add(CSS_IN);
 
       server.watcher.on("change", (file) => {
         if (file.endsWith(".gleam")) {
-          debounceBuild(() => buildGleamThenSyncCss(server));
+          debounceBuild(() => buildGleamThenSyncCss(server, { reload: true }));
         } else if (file.endsWith("website.css")) {
-          debounceCss(() => {
-            copyCssIntoPriv();
-          });
+          debounceCss(copyCssIntoPriv);
         }
       });
 
       server.httpServer?.once("close", () => {
         if (tailwindProc && !tailwindProc.killed) {
-          try { tailwindProc.kill(); } catch {}
+           tailwindProc.kill();
         }
       });
     },

@@ -3,6 +3,7 @@ import gleam/list
 import gleam/result
 import lustre/attribute.{class}
 import lustre/element.{type Element}
+import lustre/element/html
 import lustre/ssg/djot
 import simplifile
 import tom
@@ -39,9 +40,7 @@ pub fn parse(path path: String) -> Post {
 }
 
 fn parse_metadata(path: String) -> Result(Metadata, Nil) {
-  echo path
   use metadata <- result.try(djot.metadata(path) |> result.replace_error(Nil))
-  echo metadata
   use slug <- result.try(
     tom.get_string(metadata, ["slug"])
     |> result.replace_error(Nil),
@@ -62,17 +61,30 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
   Ok(Metadata(slug:, title:, description:, preview_img:))
 }
 
-pub fn view(post: Post) -> Element(a) {
-  Page(title: "Home", content: [
-    Title("First Post"),
-    Date("August 3, 2025"),
-    Section([
-      Text(
-        "Fonts are essential in web design as they give personality to your website, improve readability, and evoke certain emotions.
-Although Tailwind CSS provides many default fonts, there are times when you may want a more unique option.
-Custom fonts can assist you in achieving that special appearance.",
-      ),
+pub fn view(post: Post) -> Element(Nil) {
+  //   Page(title: "Home", content: [
+  //     Title("First Post"),
+  //     Date("August 3, 2025"),
+  //     Section([
+  //       Text(
+  //         "Fonts are essential in web design as they give personality to your website, improve readability, and evoke certain emotions.
+  // Although Tailwind CSS provides many default fonts, there are times when you may want a more unique option.
+  // Custom fonts can assist you in achieving that special appearance.",
+  //       ),
+  //     ]),
+  //   ])
+  //
+  html.div([class("flex flex-col items-center px-12 gap-2")], [
+    html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
+      html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
     ]),
+    html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
+      html.h1([], [element.text("August 14, 2025")]),
+    ]),
+    html.div(
+      [class("p-4 rounded-md border-2 border-black bg-white w-3/4")],
+      post.content,
+    ),
   ])
-  |> content.view_page()
+  |> content.view_blog_page()
 }

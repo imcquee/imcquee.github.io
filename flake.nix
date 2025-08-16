@@ -1,6 +1,6 @@
 {
   description = "Gleam development environment";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   outputs = { nixpkgs, ... }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
@@ -64,8 +64,6 @@
               bun add -d vite@7.1.1
             fi
 
-            gleam run -m build
-            tailwindcss -i ./static/website.css -o ./priv/output.css
             echo "Starting development server..."
             bun vite
           ''}";
