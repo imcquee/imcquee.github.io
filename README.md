@@ -18,3 +18,8 @@
 - [ ] Add automatic git based blog dates
 - [ ] Add better error handling
 - [ ] Add custom code block
+- [ ] Add SEO attributes for embeds
+
+### Credit
+
+Thanks to [Olle](https://github.com/ollema) for the awesome code highlighting tool [Glimra](https://github.com/ollema/glimra) and the examples I used in this blog

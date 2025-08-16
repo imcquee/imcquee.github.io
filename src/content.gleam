@@ -50,6 +50,10 @@ fn head() -> Element(a) {
   html.head([], [
     html.meta([attribute.charset("UTF-8")]),
     html.meta([
+      attribute.name("description"),
+      attribute.content("Isaac McQueen's Personal Profile and Blog"),
+    ]),
+    html.meta([
       attribute.name("viewport"),
       attribute.content("width=device-width, initial-scale=1.0"),
     ]),

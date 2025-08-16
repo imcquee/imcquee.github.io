@@ -71,7 +71,7 @@ pub fn view(post: Post) -> Element(Nil) {
       html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
     ]),
     html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
-      html.h1([], [element.text(post.metadata.date)]),
+      html.h1([class("italic")], [element.text(post.metadata.date)]),
     ]),
     html.div(
       [class("p-4 rounded-md border-2 border-black bg-white w-3/4")],
