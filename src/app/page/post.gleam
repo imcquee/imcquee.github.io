@@ -67,6 +67,17 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
 
 pub fn view(post: Post) -> Element(Nil) {
   html.div([class("flex flex-col items-center px-12 gap-2")], [
+    html.a(
+      [
+        class(
+          "fixed left-4 p-4 rounded-md border-2 border-black bg-white h-18 flex items-center",
+        ),
+        attribute.href("/blog"),
+      ],
+      [
+        html.h1([class("font-bold text-xl")], [element.text("Back to Blog")]),
+      ],
+    ),
     html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
       html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
     ]),

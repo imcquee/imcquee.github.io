@@ -68,7 +68,7 @@ pub fn view() -> Element(a) {
       html.div([class("flex-row")], [
         html.img([
           attribute.src("images/city.png"),
-          class("object-cover mb-8 h-36 w-36 rounded-full"),
+          class("object-cover mb-8 h-48 w-48 rounded-full"),
         ]),
         html.h1([class("font-mono text-4xl pb-8 text-black")], [
           element.text("Isaac McQueen"),
@@ -81,7 +81,7 @@ pub fn view() -> Element(a) {
       ]),
       html.div(
         [
-          class("grid w-full grid-cols-1 sm:grid-cols-2 gap-2"),
+          class("grid w-full grid-cols-1 sm:grid-cols-2 gap-4"),
         ],
         about_cards
           |> display_about_cards,
@@ -95,9 +95,9 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
   list.map(cards, fn(card) {
     let AboutCard(image_source, title, subtext, href, full_width) = card
     let style =
-      "w-full h-full p-4 rounded-md border-2 border-black bg-white
+      "w-full p-4 rounded-md border-2 border-black bg-white
                cursor-pointer select-none
-               flex flex-col gap-1
+               flex flex-col gap-2
                transition ease-out duration-200
                hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
                active:translate-y-0
@@ -116,21 +116,24 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
     }
 
     html.a(link_attributes, [
-      case image_source {
-        Image(source) ->
-          html.img([
-            attribute.src(source),
-            attribute.width(24),
-            attribute.height(24),
-            attribute.alt(title),
-          ])
-        Unicode(source) -> element.text(source)
-      },
-      html.p([class("font-mono text-lg")], [element.text(title)]),
+      html.div([class("flex flex-row gap-2 items-center")], [
+        case image_source {
+          Image(source) ->
+            html.img([
+              attribute.src(source),
+              attribute.width(28),
+              attribute.height(28),
+              attribute.alt(title),
+            ])
+          Unicode(source) ->
+            html.p([class("text-xl font-light")], [element.text(source)])
+        },
+        html.p([class("text-2xl font-light")], [element.text(title)]),
+      ]),
       case subtext {
         None -> element.none()
         Some(text) ->
-          html.p([class("font-mono text-md truncate")], [
+          html.p([class("font-mono text-xl truncate")], [
             element.text(text),
           ])
       },
