@@ -61,7 +61,7 @@ pub fn view() -> Element(a) {
   html.div(
     [
       class(
-        "flex-row grid p-12 sm:p-24 grid-cols-1 gap-8 sm:grid-cols-2 w-screen",
+        "flex-row grid p-12 lg:p-24 grid-cols-1 gap-8 lg:grid-cols-2 w-screen",
       ),
     ],
     [
@@ -81,7 +81,7 @@ pub fn view() -> Element(a) {
       ]),
       html.div(
         [
-          class("grid w-full grid-cols-1 sm:grid-cols-2 gap-4"),
+          class("grid w-full grid-cols-1 lg:grid-cols-2 gap-4"),
         ],
         about_cards
           |> display_about_cards,

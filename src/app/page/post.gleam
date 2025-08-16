@@ -66,11 +66,11 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
 }
 
 pub fn view(post: Post) -> Element(Nil) {
-  html.div([class("flex flex-col items-center sm:px-12 sm:gap-2")], [
+  html.div([class("flex flex-col items-center lg:px-12 lg:gap-2")], [
     html.a(
       [
         class(
-          "sm:fixed sm:left-4 ml-2 self-start p-4 mb-4 rounded-md border-2 border-black bg-white sm:h-18 flex items-center",
+          "lg:fixed lg:left-4 ml-2 self-start p-4 mb-4 rounded-md border-2 border-black bg-white lg:h-18 flex items-center",
         ),
         attribute.href("/blog"),
       ],
@@ -81,7 +81,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "sm:p-4 py-1 px-2 sm:rounded-md sm:border-2 sm:border-black sm:bg-white sm:w-3/4 w-full",
+          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
         ),
       ],
       [
@@ -91,7 +91,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "sm:p-4 py-1 px-2 sm:rounded-md sm:border-2 sm:border-black sm:bg-white sm:w-3/4 w-full",
+          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
         ),
       ],
       [
@@ -101,7 +101,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "sm:p-4 py-1 px-2 sm:rounded-md sm:border-2 sm:border-black sm:bg-white sm:w-3/4 w-full",
+          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
         ),
       ],
       post.content,

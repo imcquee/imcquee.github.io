@@ -6,8 +6,8 @@ description = "Contemplating our next big move, because we can't sit still ðŸ¦ˆð
 preview_img = "/images/valencia.jpg"
 ---
 
-Me trying to write a sentence
-
 ``` =html
-<img src="/images/valencia.jpg" class="shadow" style="width: 550px; margin-bottom: 4rem" alt="Neovim showing imports being autocompleted">
+<div class="flex justify-center items-center w-full h-108">
+  <img src="/images/valencia.jpg" class="max-h-108" alt="valencia">
+</div>
 ```

@@ -13,7 +13,7 @@ pub fn view(list: List(Post)) -> Element(a) {
           html.div(
             [
               class(
-                "flex sm:flex-row flex-col w-full p-8 rounded-md border-2 border-black bg-white
+                "flex lg:flex-row flex-col w-full p-8 rounded-md border-2 border-black bg-white
                cursor-pointer select-none
                flex flex-col gap-1 items-center
                transition ease-out duration-200
@@ -24,7 +24,7 @@ pub fn view(list: List(Post)) -> Element(a) {
             ],
             [
               html.img([
-                class("object-cover sm:h-36 sm:w-36 h-60 w-60 rounded-md"),
+                class("object-cover lg:h-36 lg:w-36 h-60 w-60 rounded-md"),
                 attribute.src(post.metadata.preview_img),
                 attribute.width(48),
                 attribute.height(48),
