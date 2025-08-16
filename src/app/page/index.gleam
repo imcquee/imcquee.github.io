@@ -7,7 +7,7 @@ import lustre/element/html
 
 type ImageSource {
   Image(String)
-  ASCII(String)
+  Unicode(String)
 }
 
 type Link {
@@ -27,16 +27,16 @@ type AboutCard {
 
 pub fn view() -> Element(a) {
   let about_cards = [
-    AboutCard(ASCII("🕮"), "Blog", None, Internal("/blog"), True),
+    AboutCard(Unicode("🕮"), "Blog", None, Internal("/blog"), True),
     AboutCard(
-      ASCII("📃"),
+      Unicode("📃"),
       "CV",
       None,
       External("https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf"),
       False,
     ),
     AboutCard(
-      ASCII("🔧"),
+      Unicode("🔧"),
       "Tools",
       None,
       Internal("https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf"),
@@ -50,7 +50,7 @@ pub fn view() -> Element(a) {
       False,
     ),
     AboutCard(
-      ASCII("✉️"),
+      Unicode("✉️"),
       "Email",
       Some("imcqueendev@gmail.com"),
       External("mailto:imcqueendev@gmail.com"),
@@ -124,7 +124,7 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
             attribute.height(24),
             attribute.alt(title),
           ])
-        ASCII(source) -> element.text(source)
+        Unicode(source) -> element.text(source)
       },
       html.p([class("font-mono text-lg")], [element.text(title)]),
       case subtext {

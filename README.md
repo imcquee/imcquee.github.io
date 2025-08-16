@@ -19,6 +19,7 @@
 - [ ] Add better error handling
 - [ ] Add custom code block
 - [ ] Add SEO attributes for embeds
+- [ ] Add Tools Page
 
 ### Credit
 
