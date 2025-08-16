@@ -16,4 +16,5 @@
 - [x] Move all images to static image dir
 - [x] Use pinned version of vite
 - [ ] Add automatic git based blog dates
-
+- [ ] Add better error handling
+- [ ] Add custom code block

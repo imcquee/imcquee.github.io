@@ -1,6 +1,7 @@
 ---
 slug = "parsing-djot"
 title = "Parsing djot with lustre_ssg"
+date = "August 12, 2025"
 description = "A post about parsing djot syntax with lustre_ssg"
 preview_img = "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg"
 ---

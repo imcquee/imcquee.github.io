@@ -11,6 +11,7 @@ pub type Metadata {
   Metadata(
     slug: String,
     title: String,
+    date: String,
     description: String,
     preview_img: String,
   )
@@ -56,8 +57,12 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
     tom.get_string(metadata, ["preview_img"])
     |> result.replace_error(Nil),
   )
+  use date <- result.try(
+    tom.get_string(metadata, ["date"])
+    |> result.replace_error(Nil),
+  )
 
-  Ok(Metadata(slug:, title:, description:, preview_img:))
+  Ok(Metadata(slug:, title:, description:, preview_img:, date:))
 }
 
 pub fn view(post: Post) -> Element(Nil) {
@@ -66,7 +71,7 @@ pub fn view(post: Post) -> Element(Nil) {
       html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
     ]),
     html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
-      html.h1([], [element.text("August 14, 2025")]),
+      html.h1([], [element.text(post.metadata.date)]),
     ]),
     html.div(
       [class("p-4 rounded-md border-2 border-black bg-white w-3/4")],
