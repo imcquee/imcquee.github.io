@@ -13,7 +13,7 @@ pub fn view(list: List(Post)) -> Element(a) {
           html.div(
             [
               class(
-                "flex lg:flex-row flex-col w-full p-8 rounded-md border-2 border-black bg-white
+                "flex md:flex-row flex-col w-full p-8 rounded-md border-2 border-black bg-white
                cursor-pointer select-none
                flex flex-col gap-1 items-center
                transition ease-out duration-200
@@ -24,20 +24,20 @@ pub fn view(list: List(Post)) -> Element(a) {
             ],
             [
               html.img([
-                class("object-cover lg:h-36 lg:w-36 h-60 w-60 rounded-md"),
+                class("object-cover md:h-36 md:w-36 h-48 w-48 rounded-md"),
                 attribute.src(post.metadata.preview_img),
                 attribute.width(48),
                 attribute.height(48),
                 attribute.alt(post.metadata.title),
               ]),
               html.div([class("flex flex-col p-4 gap-2")], [
-                html.h1([class("text-3xl font-bold")], [
+                html.h1([class("md:text-3xl text-xl font-bold")], [
                   element.text(post.metadata.title),
                 ]),
-                html.h1([class("italic text-lg")], [
+                html.h1([class("italic md:text-lg")], [
                   element.text(post.metadata.date),
                 ]),
-                html.p([class("italic text-lg")], [
+                html.p([class("italic md:text-lg")], [
                   element.text(post.metadata.description),
                 ]),
               ]),
