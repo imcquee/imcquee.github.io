@@ -128,7 +128,7 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
           Unicode(source) ->
             html.p([class("text-xl font-light")], [element.text(source)])
         },
-        html.p([class("text-2xl font-light truncate")], [element.text(title)]),
+        html.p([class("text-2xl truncate")], [element.text(title)]),
       ]),
       case subtext {
         None -> element.none()
