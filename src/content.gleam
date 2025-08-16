@@ -39,7 +39,7 @@ fn body(content: Element(a)) -> Element(a) {
     html.div([class("py-4")], [
       html.div([], [
         html.div([class("w-screen h-screen")], [
-          html.main([], [content]),
+          html.main([class("pb-12")], [content]),
         ]),
       ]),
     ]),

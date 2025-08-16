@@ -9,30 +9,41 @@ pub fn view(list: List(Post)) -> Element(a) {
   let posts =
     list.map(list, fn(post) {
       html.a([attribute.href("./blog/" <> post.metadata.slug)], [
-        html.div(
-          [
-            class(
-              "flex p-4 max-h-36 rounded-md border-2 border-black bg-white
+        html.div([class("w-full")], [
+          html.div(
+            [
+              class(
+                "flex flex-row w-full p-4 max-h-48 rounded-md border-2 border-black bg-white
                cursor-pointer select-none
                flex flex-col gap-1
                transition ease-out duration-200
                hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
                active:translate-y-0
                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
-            ),
-          ],
-          [
-            html.img([
-              attribute.src(post.metadata.preview_img),
-              attribute.width(48),
-              attribute.height(48),
-              attribute.alt(post.metadata.title),
-            ]),
-            element.text(post.metadata.title),
-          ],
-        ),
+              ),
+            ],
+            [
+              html.img([
+                class("object-contain h-36 w-36"),
+                attribute.src(post.metadata.preview_img),
+                attribute.width(48),
+                attribute.height(48),
+                attribute.alt(post.metadata.title),
+              ]),
+              html.div([class("flex flex-col p-4 gap-2")], [
+                html.h1([class("text-2xl font-bold")], [
+                  element.text(post.metadata.title),
+                ]),
+                html.h1([class("italic")], [
+                  element.text(post.metadata.date),
+                ]),
+                element.text(post.metadata.description),
+              ]),
+            ],
+          ),
+        ]),
       ])
     })
-  html.div([class("h-screen w-screen px-12 flex gap-4")], posts)
+  html.div([class("h-screen w-screen px-12 flex flex-col gap-4")], posts)
   |> content.view_page()
 }
