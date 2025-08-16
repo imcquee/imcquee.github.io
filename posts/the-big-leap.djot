@@ -1,7 +1,7 @@
 ---
 slug = "the-big-leap"
-title = "The Big Leap ♙ -> ♚"
-date = "August 12, 2025"
+title = "The Big Leap 跳"
+date = "August 4, 2025"
 description = "Contemplating our next big move, because we can't sit still 🦈🦈🦈"
 preview_img = "/images/valencia.jpg"
 ---
@@ -11,34 +11,3 @@ Me trying to write a sentence
 ``` =html
 <img src="/images/valencia.jpg" class="shadow" style="width: 550px; margin-bottom: 4rem" alt="Neovim showing imports being autocompleted">
 ```
-## Language server improvements
-
-Productivity and developer experience is a first class concern to us, and in a
-modern language good editor support is an important part of the puzzle. To help
-Gleam has a built-in language server which is developed and maintained by the
-core team. The language server is relatively immature compared to the rest of
-the language's tooling, and it is one of the main focuses for core development
-at the moment.
-
-It has been improved in these ways:
-
-### Compilation batching
-
-The language server is driven by messages sent by your editor each time a file
-is opened, code is edited, autocompletions are needed, and so on. When messages
-are received the language server runs the compiler (minus the codegen sections)
-to get information about the code.
-
-The language server now batches theses messages intelligently, compiling when
-required rather than on every message. For example, if your editor rapidly sends
-several text edits and then a request for refactorings the language server will
-now apply all the edits to its in-memory filesystem overlay before compiling a
-single time. If you are using a faster computer you likely will see no
-difference, but if you're using a slower computer or in a very large project
-you'll no longer experience a delay before getting feedback from the language
-server.
-
-### Autocomplete imports
-
-The language server will now autocomplete module names when writing import
-statements. Thank you [Ameen Radwan](https://github.com/Acepie) for this improvement!

@@ -70,7 +70,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.a(
       [
         class(
-          "fixed left-4 p-4 rounded-md border-2 border-black bg-white h-18 flex items-center",
+          "sm:fixed sm:left-4 self-start p-4 rounded-md border-2 border-black bg-white h-18 flex items-center",
         ),
         attribute.href("/blog"),
       ],
@@ -78,14 +78,20 @@ pub fn view(post: Post) -> Element(Nil) {
         html.h1([class("font-bold text-xl")], [element.text("Back to Blog")]),
       ],
     ),
-    html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
-      html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
-    ]),
-    html.div([class("p-4 rounded-md border-2 border-black bg-white w-3/4")], [
-      html.h1([class("italic")], [element.text(post.metadata.date)]),
-    ]),
     html.div(
-      [class("p-4 rounded-md border-2 border-black bg-white w-3/4")],
+      [class("p-4 rounded-md border-2 border-black bg-white sm:w-3/4 w-full")],
+      [
+        html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
+      ],
+    ),
+    html.div(
+      [class("p-4 rounded-md border-2 border-black bg-white sm:w-3/4 w-full")],
+      [
+        html.h1([class("italic")], [element.text(post.metadata.date)]),
+      ],
+    ),
+    html.div(
+      [class("p-4 rounded-md border-2 border-black bg-white sm:w-3/4 w-full")],
       post.content,
     ),
   ])

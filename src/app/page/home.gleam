@@ -50,7 +50,7 @@ pub fn view() -> Element(a) {
   html.div(
     [
       class(
-        "w-screen h-screen flex-row grid px-24 pt-24 grid-cols-1 sm:grid-cols-2",
+        "w-screen h-screen flex-row grid px-12 pt-24 grid-cols-1 sm:grid-cols-2",
       ),
     ],
     [

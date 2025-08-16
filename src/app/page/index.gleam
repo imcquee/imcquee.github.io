@@ -61,7 +61,7 @@ pub fn view() -> Element(a) {
   html.div(
     [
       class(
-        "flex-row grid px-24 pt-24 grid-cols-1 gap-4 sm:grid-cols-2 w-screen",
+        "flex-row grid p-12 sm:p-24 grid-cols-1 gap-8 sm:grid-cols-2 w-screen",
       ),
     ],
     [
@@ -73,7 +73,7 @@ pub fn view() -> Element(a) {
         html.h1([class("font-mono text-4xl pb-8 text-black")], [
           element.text("Isaac McQueen"),
         ]),
-        html.p([class("max-w-lg text-xl text-black")], [
+        html.p([class("w-full text-2xl text-black")], [
           element.text(
             "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
           ),
@@ -128,12 +128,12 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
           Unicode(source) ->
             html.p([class("text-xl font-light")], [element.text(source)])
         },
-        html.p([class("text-2xl font-light")], [element.text(title)]),
+        html.p([class("text-2xl font-light truncate")], [element.text(title)]),
       ]),
       case subtext {
         None -> element.none()
         Some(text) ->
-          html.p([class("font-mono text-xl truncate")], [
+          html.p([class("font-mono text-lg truncate")], [
             element.text(text),
           ])
       },
