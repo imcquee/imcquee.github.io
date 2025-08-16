@@ -4,7 +4,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 const CSS_IN = "static/website.css";
-const CSS_OUT_TMP = path.resolve("dev/output.css");
+const CSS_OUT_TMP = path.resolve(".dev/output.css");
 const CSS_OUT = path.resolve("priv/output.css");
 
 function run(cmd, args, opts = {}) {
