@@ -1,5 +1,4 @@
 import content
-import gleam/int
 import gleam/list
 import gleam/option.{type Option, None, Some}
 import lustre/attribute.{class, classes}

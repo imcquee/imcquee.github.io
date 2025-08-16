@@ -1,5 +1,4 @@
-import content.{type Page, Bold, Date, Page, Section, Text, Title}
-import gleam/list
+import content
 import gleam/result
 import lustre/attribute.{class}
 import lustre/element.{type Element}
@@ -86,5 +85,5 @@ pub fn view(post: Post) -> Element(Nil) {
       post.content,
     ),
   ])
-  |> content.view_blog_page()
+  |> content.view_page()
 }

@@ -1,9 +1,9 @@
+import app/page/post.{type Post}
 import content
 import gleam/list
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
-import pages/post.{type Post}
 
 pub fn view(list: List(Post)) -> Element(a) {
   let posts =
@@ -34,5 +34,5 @@ pub fn view(list: List(Post)) -> Element(a) {
       ])
     })
   html.div([class("h-screen w-screen px-12 flex gap-4")], posts)
-  |> content.view_blog_page()
+  |> content.view_page()
 }

@@ -1,11 +1,11 @@
 import app/data/posts
+import app/page/blog
 import app/page/index
+import app/page/post
 import gleam/dict
 import gleam/io
 import gleam/list
 import lustre/ssg
-import pages/blog
-import pages/post
 
 const out_dir = "./priv"
 

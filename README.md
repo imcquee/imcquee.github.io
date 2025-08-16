@@ -10,9 +10,10 @@
 ### TODO
 
 - [x] Add Workflow
-- [ ] Cleanup code
-- [ ] Add dynamic paths and file reads for blog
-- [ ] Add markdown/djot parsing (maybe Pandoc)
-- [ ] Move all images to static image dir
-- [ ] Use pinned version of vite
+- [x] Cleanup code
+- [x] Add dynamic paths and file reads for blog
+- [x] Add markdown/djot parsing (maybe Pandoc)
+- [x] Move all images to static image dir
+- [x] Use pinned version of vite
+- [ ] Add automatic git based blog dates
 

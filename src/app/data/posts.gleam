@@ -1,5 +1,5 @@
+import app/page/post.{type Post}
 import gleam/list
-import pages/post.{type Post}
 import simplifile
 
 const posts_dir = "./posts"

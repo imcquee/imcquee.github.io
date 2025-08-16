@@ -1,48 +1,24 @@
-import gleam/list
-import lustre/attribute.{attribute, class}
+import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
 
-pub type Page {
-  Page(title: String, content: List(Content))
-}
-
-pub type Dimensions {
-  Height(Int)
-  Width(Int)
-}
-
-pub type Content {
-  Date(String)
-  Title(String)
-  Section(List(InlineContent))
-}
-
-pub type InlineContent {
-  Bold(String)
-  Code(String)
-  Link(href: String, text: String)
-  Text(String)
-  Image(size: Dimensions, src: String)
+fn body_container(content: List(Element(a))) {
+  html.body([class("h-screen w-screen bg-fuchsia-100")], content)
 }
 
 pub fn view_home(home_content: Element(msg)) -> Element(msg) {
   html.html([attribute.lang("en")], [
     head(),
-    html.body([class("h-screen w-screen bg-fuchsia-100")], [home_content]),
+    body_container([home_content]),
   ])
 }
 
-pub fn view_blog_page(content: Element(a)) -> Element(a) {
-  html.html([attribute.lang("en")], [head(), blog_body(content)])
+pub fn view_page(content: Element(a)) -> Element(a) {
+  html.html([attribute.lang("en")], [head(), body(content)])
 }
 
-pub fn view_page(page: Page) -> Element(msg) {
-  html.html([attribute.lang("en")], [head(), body(page)])
-}
-
-fn blog_body(content: Element(a)) -> Element(a) {
-  html.body([class("h-screen w-screen bg-fuchsia-100")], [
+fn body(content: Element(a)) -> Element(a) {
+  body_container([
     html.header([], [
       html.a(
         [
@@ -64,38 +40,6 @@ fn blog_body(content: Element(a)) -> Element(a) {
       html.div([], [
         html.div([class("w-screen h-screen")], [
           html.main([attribute.class("container")], [content]),
-        ]),
-      ]),
-    ]),
-  ])
-}
-
-fn body(page: Page) -> Element(a) {
-  html.body([class("h-screen w-screen bg-fuchsia-100")], [
-    html.header([], [
-      html.a(
-        [
-          attribute.href("./"),
-          class("flex flex-row p-8 gap-2 items-center"),
-        ],
-        [
-          html.img([
-            attribute.src("images/city.png"),
-            class("object-cover h-10 w-10 rounded-full"),
-          ]),
-          html.h1([class("text-2xl font-mono text-black")], [
-            element.text("imcquee"),
-          ]),
-        ],
-      ),
-    ]),
-    html.div([class("py-12")], [
-      html.div([], [
-        html.div([class("w-screen")], [
-          html.main(
-            [attribute.class("container"), class("px-12")],
-            list.map(page.content, view),
-          ),
         ]),
       ]),
     ]),
@@ -149,33 +93,4 @@ fn head() -> Element(a) {
       "",
     ),
   ])
-}
-
-pub fn view(content: Content) -> Element(msg) {
-  case content {
-    Title(text) ->
-      html.h1([class("text-5xl font-mono text-black")], [element.text(text)])
-    Date(text) ->
-      html.h1([class("text-5xl font-mono text-black")], [element.text(text)])
-    Section(content) ->
-      html.p(
-        [class("py-4 text-2xl font-outfit text-black")],
-        list.map(content, view_inline),
-      )
-  }
-}
-
-fn view_inline(content: InlineContent) -> Element(msg) {
-  case content {
-    Bold(text) -> html.strong([], [element.text(text)])
-    Code(text) -> html.code([], [element.text(text)])
-    Link(href, text) -> html.a([attribute("href", href)], [element.text(text)])
-    Text(text) -> element.text(text)
-    Image(size, src) ->
-      html.img([
-        attribute("src", src),
-        attribute("height", "300"),
-        attribute("width", "300"),
-      ])
-  }
 }
