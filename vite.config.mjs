@@ -37,9 +37,7 @@ function devPlugin() {
 
   const startTailwindWatch = async () => {
     if (tailwindProc) return;
-
     fs.mkdirSync(path.dirname(CSS_OUT_TMP), { recursive: true });
-
     tailwindProc = spawn(
       "tailwindcss",
       ["-i", CSS_IN, "-o", CSS_OUT_TMP, "--watch"],
@@ -56,10 +54,10 @@ function devPlugin() {
         tailwindProc.kill();
       }
     };
+
     process.on("exit", kill);
     process.on("SIGINT", () => { kill(); process.exit(); });
     process.on("SIGTERM", () => { kill(); process.exit(); });
-
     tailwindProc.on("exit", () => { tailwindProc = null; });
   };
 
@@ -80,19 +78,18 @@ function devPlugin() {
     name: "gleam-tailwind",
     async configureServer(server) {
       copyCssIntoPriv();
-
       // 2) Do an initial Gleam build (no reload needed yet)
       await buildGleamThenSyncCss(server, { reload: false });
-
       // Now start the long-lived Tailwind watcher
       await startTailwindWatch();
 
       // Watch sources for subsequent rebuilds
       server.watcher.add("src");
+      server.watcher.add("posts");
       server.watcher.add(CSS_IN);
 
       server.watcher.on("change", (file) => {
-        if (file.endsWith(".gleam")) {
+        if (file.endsWith(".gleam") || file.endsWith(".djot")) {
           debounceBuild(() => buildGleamThenSyncCss(server, { reload: true }));
         } else if (file.endsWith("website.css")) {
           debounceCss(copyCssIntoPriv);
