@@ -103,7 +103,7 @@ pub fn view(post: Post) -> Element(Nil) {
         attribute.href("/blog"),
       ],
       [
-        html.h1([class("font-bold text-xl")], [element.text("Back to Blog")]),
+        html.h1([class("font-bold text-xl")], [element.text("<- Blog")]),
       ],
     ),
     html.div(
