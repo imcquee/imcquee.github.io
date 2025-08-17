@@ -1,10 +1,12 @@
 import content
+import gleam/list
 import gleam/result
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
 import lustre/ssg/djot
 import simplifile
+import stateless_components/tag.{type TagInfo}
 import tom
 
 pub type Metadata {
@@ -14,6 +16,7 @@ pub type Metadata {
     date: String,
     description: String,
     preview_img: String,
+    tags: List(TagInfo),
   )
 }
 
@@ -61,8 +64,31 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
     tom.get_string(metadata, ["date"])
     |> result.replace_error(Nil),
   )
+  use list_of_tags <- result.try(
+    tom.get_string(metadata, ["tags"])
+    |> result.replace_error(Nil),
+  )
+  let tags = list_of_tags |> tag.parse_tags("|")
 
-  Ok(Metadata(slug:, title:, description:, preview_img:, date:))
+  Ok(Metadata(slug:, title:, description:, preview_img:, date:, tags:))
+}
+
+fn render_tags(tags: List(TagInfo)) -> Element(a) {
+  let tag_list =
+    list.map(tags, fn(tag) {
+      let #(name, color) = tag.to_string(tag.name, tag.color)
+
+      html.div(
+        [
+          class(color <> " px-4 border-2 border-black rounded-md"),
+        ],
+        [
+          element.text(name),
+        ],
+      )
+    })
+
+  html.div([class("flex flex-row gap-3")], tag_list)
 }
 
 pub fn view(post: Post) -> Element(Nil) {
@@ -70,7 +96,9 @@ pub fn view(post: Post) -> Element(Nil) {
     html.a(
       [
         class(
-          "lg:fixed lg:left-4 ml-2 self-start p-4 mb-4 rounded-md border-2 border-black bg-white lg:h-18 flex items-center",
+          "lg:fixed lg:left-4 ml-2 self-start p-4 mb-4 rounded-md border-2 border-black bg-white lg:h-18 flex items-center                hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
+           active:translate-y-0
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
         ),
         attribute.href("/blog"),
       ],
@@ -91,11 +119,12 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
+          "flex flex-row gap-3 items-center lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
         ),
       ],
       [
         html.h1([class("italic")], [element.text(post.metadata.date)]),
+        render_tags(post.metadata.tags),
       ],
     ),
     html.div(

@@ -4,10 +4,12 @@ title = "The Big Leap 跳"
 date = "August 4, 2025"
 description = "Contemplating our next big move, because we can't sit still 🦈🦈🦈"
 preview_img = "/images/valencia.jpg"
+tags = "travel|motivation"
 ---
 
 ``` =html
-<div class="flex justify-center items-center w-full h-108">
+<div class="flex flex-col justify-center items-center w-full h-108">
   <img src="/images/valencia.jpg" class="max-h-108" alt="valencia">
+  <p>(跳 = Han Symbol for Leap/Jump)</p>
 </div>
 ```
