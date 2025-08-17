@@ -1,12 +1,4 @@
-@font-face {
-  font-family: JBMono;
-  src: url("./fonts/jb.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: Inter;
-  src: url("./fonts/inter.ttf") format("truetype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 @import "tailwindcss";
 @theme {
