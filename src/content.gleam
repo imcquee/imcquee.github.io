@@ -60,21 +60,21 @@ fn head() -> Element(a) {
     html.link([
       attribute.rel("apple-touch-icon"),
       attribute.sizes("180x180"),
-      attribute.href("images/apple-touch-icon.png"),
+      attribute.href("/images/apple-touch-icon.png"),
     ]),
     html.link([
       attribute.rel("icon"),
       attribute.sizes("32x32"),
-      attribute.href("images/favicon-32x32.png"),
+      attribute.href("/images/favicon-32x32.png"),
     ]),
     html.link([
       attribute.rel("icon"),
       attribute.sizes("16x16"),
-      attribute.href("images/favicon-16x16.png"),
+      attribute.href("/images/favicon-16x16.png"),
     ]),
     html.link([
       attribute.rel("manifest"),
-      attribute.href("images/site.webmanifest"),
+      attribute.href("/images/site.webmanifest"),
     ]),
     html.link([
       attribute.href("/output.css"),
