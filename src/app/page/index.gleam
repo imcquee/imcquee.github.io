@@ -65,7 +65,7 @@ pub fn view() -> Element(a) {
       ),
     ],
     [
-      html.div([class("flex-row")], [
+      html.div([class("flex flex-col lg:items-start items-center")], [
         html.img([
           attribute.src("images/city.png"),
           class("object-cover mb-8 h-48 w-48 rounded-full"),
