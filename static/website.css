@@ -1,11 +1,11 @@
 @font-face {
   font-family: JBMono;
-  src: url("/fonts/jb.ttf");
+  src: url("./fonts/jb.ttf") format("truetype");
 }
 
 @font-face {
   font-family: Inter;
-  src: url("/fonts/inter.ttf");
+  src: url("./fonts/inter.ttf") format("truetype");
 }
 
 @import "tailwindcss";
