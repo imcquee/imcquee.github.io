@@ -27,7 +27,7 @@ type AboutCard {
 
 pub fn view() -> Element(a) {
   let about_cards = [
-    AboutCard(Unicode("🕮"), "Blog", None, Internal("/blog"), True),
+    AboutCard(Unicode("✍"), "Blog", None, Internal("/blog"), True),
     AboutCard(
       Unicode("📃"),
       "CV",
