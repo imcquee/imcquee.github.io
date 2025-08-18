@@ -25,16 +25,6 @@ pub type TagError {
   TagNotFound(String)
 }
 
-pub fn color_to_tailwind_bg(color: Color) -> String {
-  case color {
-    Red -> "bg-red-200"
-    Green -> "bg-green-200"
-    Purple -> "bg-purple-200"
-    Blue -> "bg-blue-200"
-    Yellow -> "bg-yellow-200"
-  }
-}
-
 pub fn string_to_tag(tag_name: String) -> Result(TagInfo, TagError) {
   case string.lowercase(tag_name) {
     "travel" -> Ok(TagInfo(Travel, Red))
@@ -48,7 +38,7 @@ pub fn string_to_tag(tag_name: String) -> Result(TagInfo, TagError) {
 
 pub fn to_string(tag: Tag, color: Color) -> #(String, String) {
   let tag_string = case tag {
-    Programming -> "Progamming"
+    Programming -> "Programming"
     Music -> "Music"
     Food -> "Food"
     Travel -> "Travel"

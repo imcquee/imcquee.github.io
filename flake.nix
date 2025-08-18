@@ -21,6 +21,7 @@
         tailwindcss-language-server
         bun
         vscode-langservers-extracted
+        codebook
       ];
     in
     {

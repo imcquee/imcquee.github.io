@@ -2,14 +2,12 @@ import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
 
-fn body_container(content: List(Element(a))) {
-  html.body([class("h-screen w-screen bg-fuchsia-100")], content)
-}
-
 pub fn view_home(home_content: Element(msg)) -> Element(msg) {
   html.html([attribute.lang("en")], [
     head(),
-    body_container([html.main([], [home_content])]),
+    html.body([class("h-screen w-screen bg-fuchsia-100")], [
+      html.main([], [home_content]),
+    ]),
   ])
 }
 
@@ -18,7 +16,7 @@ pub fn view_page(content: Element(a)) -> Element(a) {
 }
 
 fn body(content: Element(a)) -> Element(a) {
-  body_container([
+  html.body([class("h-screen w-screen bg-fuchsia-100")], [
     html.header([], [
       html.a(
         [

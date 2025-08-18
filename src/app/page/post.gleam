@@ -1,12 +1,14 @@
+import app/stateless_components/tag.{type TagInfo}
 import content
+import gleam/dict
 import gleam/list
+import gleam/option
 import gleam/result
-import lustre/attribute.{class}
+import lustre/attribute.{attribute, class}
 import lustre/element.{type Element}
 import lustre/element/html
 import lustre/ssg/djot
 import simplifile
-import stateless_components/tag.{type TagInfo}
 import tom
 
 pub type Metadata {
@@ -24,10 +26,25 @@ pub type Post {
   Post(metadata: Metadata, content: List(Element(Nil)))
 }
 
+fn to_attributes(attrs) {
+  use attrs, key, val <- dict.fold(attrs, [])
+  [attribute(key, val), ..attrs]
+}
+
 pub fn parse(path path: String) -> Post {
   let post = {
     use file <- result.try(simplifile.read(path) |> result.replace_error(Nil))
-    let content = djot.render(file, djot.default_renderer())
+
+    let renderer =
+      djot.Renderer(..djot.default_renderer(), codeblock: fn(attrs, lang, code) {
+        let lang = option.unwrap(lang, "text")
+        html.div([class("my-4 p-4 rounded-md border-2 border-black")], [
+          html.pre(to_attributes(attrs), [
+            html.code([attribute("data-lang", lang)], [html.text(code)]),
+          ]),
+        ])
+      })
+    let content = djot.render(file, renderer)
     use metadata <- result.try(
       parse_metadata(file) |> result.replace_error(Nil),
     )
