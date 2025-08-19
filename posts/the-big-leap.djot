@@ -4,12 +4,163 @@ title = "The Big Leap 跳"
 date = "August 4, 2025"
 description = "Contemplating our next big move, because we can't sit still 🦈🦈🦈"
 preview_img = "/images/valencia.jpg"
-tags = "travel|motivation"
+tags = "travel|motivation|languages"
 ---
 
+{class="max-w-3/5 pt-4 self-center"}
+![Valencia Cover](/images/valencia.jpg)
+
+{class="italic self-center"}
+跳 = Han Symbol for Leap/Jump
+
+
+\
+You can't ever truly know what a place is like without physically going there (touching grass).
+Instagram, video tours, articles, local forums, VR walking tours, none of them can compare to actually
+experiencing a place first-hand. Unfortunately, most of us lack the funds and availability to test-drive different places
+around the world.
+\
+\
+The same logic applies for vacationing somewhere vs. living there. You might have lived somewhere that everyone
+wants to visit, but slowly discovered that the day to day falls massively short of the glamorous appeal.
+\
+\
+My friends and I have the goal to move somewhere together for a short but not too short period (1-6 months depending on visa),
+and we've been individually selecting places we think might suit everyone in the group. It's a fun exercise, but we
+are also being intentional, as we fully intend to attempt this. We are committed to treat the places we go, and cultures we see,
+ with the upmost respect. As short term residents, we want would like to cause as little impact as we can.
+\
+\
+We'll do this House Hunters style, so I've selected three places that I think are suitable for the group.
+As a control I've selected a completely random large U.S. city to compare to:
+
+{class="font-bold"}
+\
+Charlotte, North Carolina
+
+\
+Now let's go over some non-negotiables and priorities.
+
+{class="text-lg font-bold"}
+\
+Non-Negotiables:
+
+* Max 1k USD housing expense per person
+* Safe, especially considering women and minorities
+* Possesses the wow factor
+
+{class="text-lg font-bold"}
+\
+Priorities:
+
+* Access to natural landmarks (ocean, lakes, mountains)
+* Solid climate
+* Walkability
+* Good public transportation
+* Not overcrowded
+* Distance to major airport
+* High Speed Internet
+* Diversity
+
+\
+Now for the destinations...
+
+{class="text-lg self-center items-center font-bold"}
+\
+Panama City, Panama
+
+{class="max-w-3/4 self-center"}
+![Panama City](/images/panama-city-scape.jpeg)
+
+\
+Panama stands out to me a truly unique hidden gem. I just kept finding more and more pros it became hard to track
+them all. I think Costa Rica justifiably gets a lot of attention from tourists and expats, but unfortunately as a result,
+the cost of living there has exploded. Panama is also a well known tourist/expat location, but I think it still sits
+in that "underrated" category for now.
+
+{class="font-bold"}
+\
+Pros:
+
+* No currency conversion 1 Balboa = 1 USD (USD is also standard currency)
+* Great opportunity to learn Spanish in a smaller more personable country
+* Extremely lenient travel visa laws (Can stay 180 days without a tourist visa!!!)
+* Great remote work visa and path to citizenship
+* World class healthcare
+* Great time conversion (US central time)
+* Great international airport with cheap Flights
+* No double dip taxes
+* High quality water supply
+* Very stable economy
+* Diverse expat community
+* Really bad allergy symptoms for uninitiated
+* Good cheap public transportation
+* High quality medical and dental care
+* Amazing weather in dry season (low humidity, between 75-85F)
+* Co-working venues with generators and reliable internet
+
+{class="font-bold"}
+\
+Cons:
+
+* Bad traffic
+* Wealth inequality
+* Eating out is vastly more expensive than cooking
+* Questionable electricity reliability
+* Humid season is really really humid...
+
+{class="font-bold"}
+\
+Comps:
+
+
+
 ``` =html
-<div class="flex flex-col justify-center items-center w-full h-108">
-  <img src="/images/valencia.jpg" class="max-h-108 pt-4" alt="valencia">
-  <p>(跳 = Han Symbol for Leap/Jump)</p>
-</div>
+<table class="w-full mt-4 border-collapse font-sans border border-gray-300">
+  <thead>
+      <tr>
+          <th class="border border-gray-300 text-left p-2 bg-gray-100"></th>
+          <th class="border border-gray-300 text-left p-2 bg-gray-100">Charlotte, NC</th>
+          <th class="border border-gray-300 text-left p-2 bg-gray-100">Panama City, PA</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td class="border border-gray-300 text-left p-2">1BDR City Center</td>
+          <td class="border border-gray-300 text-left p-2">$1,895</td>
+          <td class="border border-gray-300 text-left p-2">$1,185</td>
+      </tr>
+      <tr class="bg-gray-200">
+          <td class="border border-gray-300 text-left p-2">Average Meal Out</td>
+          <td class="border border-gray-300 text-left p-2">$18.00</td>
+          <td class="border border-gray-300 text-left p-2">$10.75</td>
+      </tr>
+      <tr>
+          <td class="border border-gray-300 text-left p-2">Bus ticket</td>
+          <td class="border border-gray-300 text-left p-2">$2.20</td>
+          <td class="border border-gray-300 text-left p-2">$0.35</td>
+      </tr>
+      <tr class="bg-gray-200">
+          <td class="border border-gray-300 text-left p-2">VW Golf (Avg new car)</td>
+          <td class="border border-gray-300 text-left p-2">$35k</td>
+          <td class="border border-gray-300 text-left p-2">$20k</td>
+      </tr>
+      <tr>
+          <td class="border border-gray-300 text-left p-2">Summer Dress in a Chain Store (Zara, H&M, etc.)</td>
+          <td class="border border-gray-300 text-left p-2">$36</td>
+          <td class="border border-gray-300 text-left p-2">$45</td>
+      </tr>
+  </tbody>
+</table>
 ```
+
+{class="text-lg items-center font-bold"}
+\
+Airbnb
+
+
+{class="max-w-3/4 self-center"}
+![Casco Living Room](/images/loft-living-room.avif)
+
+{class="text-sky-400 underline self-center"}
+[Casco Viejo Loft - 4 Guests ($1k -> 7 nights)](https://www.airbnb.com/rooms/1250060023570983767?adults=4&check_in=2025-12-01&check_out=2025-12-08&search_mode=regular_search&source_impression_id=p3_1755604437_P3qXfIdgKRZRnH0S&previous_page_section_name=1000&federated_search_id=9bb0f76e-4ff0-4de7-8661-8cd25a99aa17)

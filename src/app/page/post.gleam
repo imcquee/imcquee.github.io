@@ -1,10 +1,9 @@
 import app/stateless_components/tag.{type TagInfo}
+import app/utilities/djot_renderer
 import content
-import gleam/dict
 import gleam/list
-import gleam/option
 import gleam/result
-import lustre/attribute.{attribute, class}
+import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
 import lustre/ssg/djot
@@ -26,25 +25,11 @@ pub type Post {
   Post(metadata: Metadata, content: List(Element(Nil)))
 }
 
-fn to_attributes(attrs) {
-  use attrs, key, val <- dict.fold(attrs, [])
-  [attribute(key, val), ..attrs]
-}
-
 pub fn parse(path path: String) -> Post {
   let post = {
     use file <- result.try(simplifile.read(path) |> result.replace_error(Nil))
 
-    let renderer =
-      djot.Renderer(..djot.default_renderer(), codeblock: fn(attrs, lang, code) {
-        let lang = option.unwrap(lang, "text")
-        html.div([class("my-4 p-4 rounded-md border-2 border-black")], [
-          html.pre(to_attributes(attrs), [
-            html.code([attribute("data-lang", lang)], [html.text(code)]),
-          ]),
-        ])
-      })
-    let content = djot.render(file, renderer)
+    let content = djot.render(file, djot_renderer.custom_renderer())
     use metadata <- result.try(
       parse_metadata(file) |> result.replace_error(Nil),
     )
@@ -147,7 +132,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
+          "flex flex-col lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
         ),
       ],
       post.content,
