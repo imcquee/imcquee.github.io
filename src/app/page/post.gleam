@@ -2,7 +2,6 @@ import app/stateless_components/tag.{type TagInfo}
 import app/utilities/djot_renderer
 import content
 import gleam/list
-import gleam/result
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
@@ -26,50 +25,20 @@ pub type Post {
 }
 
 pub fn parse(path path: String) -> Post {
-  let post = {
-    use file <- result.try(simplifile.read(path) |> result.replace_error(Nil))
-
-    let content = djot.render(file, djot_renderer.custom_renderer())
-    use metadata <- result.try(
-      parse_metadata(file) |> result.replace_error(Nil),
-    )
-    Ok(Post(metadata:, content:))
-  }
-  case post {
-    Ok(post) -> post
-    Error(_) -> {
-      let error_message = "could not parse content from file: " <> path
-      panic as error_message
-    }
-  }
+  let assert Ok(file) = simplifile.read(path)
+  let content = djot.render(file, djot_renderer.custom_renderer())
+  let assert Ok(metadata) = parse_metadata(file)
+  Post(metadata:, content:)
 }
 
 fn parse_metadata(path: String) -> Result(Metadata, Nil) {
-  use metadata <- result.try(djot.metadata(path) |> result.replace_error(Nil))
-  use slug <- result.try(
-    tom.get_string(metadata, ["slug"])
-    |> result.replace_error(Nil),
-  )
-  use title <- result.try(
-    tom.get_string(metadata, ["title"])
-    |> result.replace_error(Nil),
-  )
-  use description <- result.try(
-    tom.get_string(metadata, ["description"])
-    |> result.replace_error(Nil),
-  )
-  use preview_img <- result.try(
-    tom.get_string(metadata, ["preview_img"])
-    |> result.replace_error(Nil),
-  )
-  use date <- result.try(
-    tom.get_string(metadata, ["date"])
-    |> result.replace_error(Nil),
-  )
-  use list_of_tags <- result.try(
-    tom.get_string(metadata, ["tags"])
-    |> result.replace_error(Nil),
-  )
+  let assert Ok(metadata) = djot.metadata(path)
+  let assert Ok(slug) = tom.get_string(metadata, ["slug"])
+  let assert Ok(title) = tom.get_string(metadata, ["title"])
+  let assert Ok(description) = tom.get_string(metadata, ["description"])
+  let assert Ok(preview_img) = tom.get_string(metadata, ["preview_img"])
+  let assert Ok(date) = tom.get_string(metadata, ["date"])
+  let assert Ok(list_of_tags) = tom.get_string(metadata, ["tags"])
   let tags = list_of_tags |> tag.parse_tags("|")
 
   Ok(Metadata(slug:, title:, description:, preview_img:, date:, tags:))
