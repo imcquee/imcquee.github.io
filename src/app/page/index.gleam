@@ -27,34 +27,42 @@ type AboutCard {
 
 pub fn view() -> Element(a) {
   let about_cards = [
-    AboutCard(Unicode("✍"), "Blog", None, Internal("/blog"), True),
     AboutCard(
-      Unicode("📃"),
-      "CV",
-      None,
-      External("https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf"),
-      False,
+      image: Unicode("✍"),
+      title: "Blog",
+      subtext: None,
+      href: Internal("/blog"),
+      full_width: True,
     ),
     AboutCard(
-      Unicode("🔧"),
-      "Tools",
-      None,
-      Internal("https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf"),
-      False,
+      image: Unicode("📃"),
+      title: "CV",
+      subtext: None,
+      href: External(
+        "https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf",
+      ),
+      full_width: False,
     ),
     AboutCard(
-      Image("images/github.svg"),
-      "GitHub",
-      Some("@imcquee"),
-      External("https://github.com/imcquee"),
-      False,
+      image: Unicode("🚧"),
+      title: "Projects",
+      subtext: None,
+      href: Internal("/projects"),
+      full_width: False,
     ),
     AboutCard(
-      Unicode("✉️"),
-      "Email",
-      Some("imcqueendev@gmail.com"),
-      External("mailto:imcqueendev@gmail.com"),
-      False,
+      image: Image("images/github.svg"),
+      title: "GitHub",
+      subtext: Some("@imcquee"),
+      href: External("https://github.com/imcquee"),
+      full_width: False,
+    ),
+    AboutCard(
+      image: Unicode("✉️"),
+      title: "Email",
+      subtext: Some("imcqueendev@gmail.com"),
+      href: External("mailto:imcqueendev@gmail.com"),
+      full_width: False,
     ),
   ]
 

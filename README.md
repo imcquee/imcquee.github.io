@@ -15,6 +15,8 @@
 - [x] Add markdown/djot parsing (maybe Pandoc)
 - [x] Move all images to static image dir
 - [x] Use pinned version of vite
+- [ ] Add syntax highlighter
+- [ ] Add custom lustre component support via vite
 - [ ] Add Tag Engine
 - [ ] Add custom djot renderer
 - [ ] Add automatic git based blog dates

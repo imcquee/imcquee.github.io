@@ -1,6 +1,6 @@
 ---
 slug = "the-big-leap"
-title = "The Big Leap 跳"
+title = "The Big Leap 跳 - Part One"
 date = "August 4, 2025"
 description = "Contemplating our next big move, because we can't sit still 🦈🦈🦈"
 preview_img = "/images/valencia.jpg"
@@ -13,40 +13,41 @@ tags = "travel|motivation|languages"
 {class="italic self-center"}
 跳 = Han Symbol for Leap/Jump
 
+\
+My friends and I have the goal to move somewhere together for a short (1-6 months depending on visa) period of time, with
+the idea of potentially relocating long term. We've been individually selecting places we think might suit everyone in the group. It's a
+fun exercise, but we are also being intentional, as we fully intend to attempt this.
+
+{class="italic"}
+\
+Wait, aren't you just doing gentrification in another country???
+
 
 \
-You can't ever truly know what a place is like without physically going there (touching grass).
-Instagram, video tours, articles, local forums, VR walking tours, none of them can compare to actually
-experiencing a place first-hand. Unfortunately, most of us lack the funds and availability to test-drive different places
-around the world.
-\
-\
-The same logic applies for vacationing somewhere vs. living there. You might have lived somewhere that everyone
-wants to visit, but slowly discovered that the day to day falls massively short of the glamorous appeal.
-\
-\
-My friends and I have the goal to move somewhere together for a short but not too short period (1-6 months depending on visa),
-and we've been individually selecting places we think might suit everyone in the group. It's a fun exercise, but we
-are also being intentional, as we fully intend to attempt this. We are committed to treat the places we go, and cultures we see,
- with the upmost respect. As short term residents, we want would like to cause as little impact as we can.
-\
-\
-We'll do this House Hunters style, so I've selected three places that I think are suitable for the group.
-As a control I've selected a completely random large U.S. city to compare to:
+We are committed to treat the places we go, and cultures we see,
+ with the upmost respect. As short term residents, we want to cause as little impact as we can. We don't want to contribute
+to rising living costs either.
 
-{class="font-bold"}
-\
-Charlotte, North Carolina
 
 \
-Now let's go over some non-negotiables and priorities.
+We plan to:
+
+* Live modestly in shared housing
+* Predominantly patron local small business
+* Pay all relevant local taxes and fees
+* Create as little waste/trash as possible
+* Keep our accommodations clean and treat local parks/landmarks with respect
+
+\
+I'm trying to do this House Hunters style, so I've selected three places that I think are suitable for the group.
+I'll be covering one destination a per week.
 
 {class="text-lg font-bold"}
 \
 Non-Negotiables:
 
 * Max 1k USD housing expense per person
-* Safe, especially considering women and minorities
+* Safe, especially considering women, minorities and LGBTQ+
 * Possesses the wow factor
 
 {class="text-lg font-bold"}
@@ -56,6 +57,7 @@ Priorities:
 * Access to natural landmarks (ocean, lakes, mountains)
 * Solid climate
 * Walkability
+* Good air quality
 * Good public transportation
 * Not overcrowded
 * Distance to major airport
@@ -63,7 +65,7 @@ Priorities:
 * Diversity
 
 \
-Now for the destinations...
+Now for this week's destination...
 
 {class="text-lg self-center items-center font-bold"}
 \
@@ -71,12 +73,6 @@ Panama City, Panama
 
 {class="max-w-3/4 self-center"}
 ![Panama City](/images/panama-city-scape.jpeg)
-
-\
-Panama stands out to me a truly unique hidden gem. I just kept finding more and more pros it became hard to track
-them all. I think Costa Rica justifiably gets a lot of attention from tourists and expats, but unfortunately as a result,
-the cost of living there has exploded. Panama is also a well known tourist/expat location, but I think it still sits
-in that "underrated" category for now.
 
 {class="font-bold"}
 \
@@ -159,8 +155,74 @@ Comps:
 Airbnb
 
 
-{class="max-w-3/4 self-center"}
+{class="max-w-3/4 self-center pt-4"}
 ![Casco Living Room](/images/loft-living-room.avif)
 
-{class="text-sky-400 underline self-center"}
-[Casco Viejo Loft - 4 Guests ($1k -> 7 nights)](https://www.airbnb.com/rooms/1250060023570983767?adults=4&check_in=2025-12-01&check_out=2025-12-08&search_mode=regular_search&source_impression_id=p3_1755604437_P3qXfIdgKRZRnH0S&previous_page_section_name=1000&federated_search_id=9bb0f76e-4ff0-4de7-8661-8cd25a99aa17)
+``` =html
+<div class="grid grid-cols-3 gap-2 px-32 pt-8 pb-4">
+    <img src="/images/panama-kitchen.avif"/>
+    <img src="/images/balcony.avif"/>
+    <img src="/images/bathroom.avif"/>
+    <img src="/images/gym.avif"/>
+    <img src="/images/pool.avif"/>
+    <img src="/images/living-room-2.avif"/>
+</div>
+```
+
+``` =html
+<p class="text-sky-400 underline flex flex-row justify-center">
+    <a rel="noopener noreferrer" target="_blank" href="https://www.airbnb.com/rooms/1250060023570983767?adults=4&check_in=2025-12-01&check_out=2025-12-08&search_mode=regular_search&source_impression_id=p3_1755604437_P3qXfIdgKRZRnH0S&previous_page_section_name=1000&federated_search_id=9bb0f76e-4ff0-4de7-8661-8cd25a99aa17">
+        Casco Viejo Loft - 4 Guests ($1k -> 7 nights)
+    </a>
+</p>
+```
+
+{class="text-lg items-center font-bold"}
+\
+Apartments
+
+{class="max-w-3/4 self-center pt-4"}
+![East Coast Living Room](/images/apartment-living-room.avif)
+
+``` =html
+<p class="text-sky-400 underline flex flex-row justify-center">
+    <a rel="noopener noreferrer" target="_blank" href="https://www.encuentra24.com/panama-es/bienes-raices-alquiler-apartamentos/apartamento-amueblado-165m2-3-recamaras-3-banos-completos-costa-del-este/30917047">
+        East Coast Apartment - 3 Bdr / 3 Bth ($1750 a month)
+    </a>
+</p>
+```
+
+{class="text-lg items-center font-bold"}
+\
+Nature
+
+{class="max-w-3/4 self-center pt-4"}
+![Wilderness](/images/wilderness.jpeg)
+
+{class="max-w-3/4 self-center pt-4"}
+![Mountains](/images/mountains.jpeg)
+
+{class="max-w-3/4 self-center pt-4"}
+![Mountains](/images/beach.jpeg)
+
+{class="text-lg items-center font-bold"}
+\
+Restaurants
+
+``` =html
+<div class="grid grid-cols-2 gap-2 px-28 pt-8 pb-4">
+    <img src="/images/menu-pulperia.jpg"/>
+    <div class="grid grid-rows-2 gap-4">
+        <img src="/images/fish.webp"/>
+        <img src="/images/shrimp.webp"/>
+    </div>
+</div>
+```
+
+``` =html
+<p class="text-sky-400 underline flex flex-row justify-center">
+    <a rel="noopener noreferrer" target="_blank" href="https://www.lapulperia.com.pa/">
+        La Pulperia
+    </a>
+</p>
+```

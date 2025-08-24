@@ -6,7 +6,8 @@ import lustre/element.{type Element}
 import lustre/element/html
 
 pub fn view(list: List(Post)) -> Element(a) {
-  let posts =
+  html.div(
+    [class("h-screen w-screen px-12 flex flex-col gap-4")],
     list.map(list, fn(post) {
       html.a([attribute.href("./blog/" <> post.metadata.slug)], [
         html.div([class("w-full")], [
@@ -14,12 +15,9 @@ pub fn view(list: List(Post)) -> Element(a) {
             [
               class(
                 "flex md:flex-row flex-col w-full p-8 rounded-md border-2 border-black bg-white
-               cursor-pointer select-none
-               flex flex-col gap-1 items-center
-               transition ease-out duration-200
-               hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
-               active:translate-y-0
-               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
+                 cursor-pointer select-none flex flex-col gap-1 items-center transition ease-out
+                 duration-200 hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0
+                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
               ),
             ],
             [
@@ -45,7 +43,7 @@ pub fn view(list: List(Post)) -> Element(a) {
           ),
         ]),
       ])
-    })
-  html.div([class("h-screen w-screen px-12 flex flex-col gap-4")], posts)
+    }),
+  )
   |> content.view_page()
 }

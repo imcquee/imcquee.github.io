@@ -49,6 +49,12 @@
             mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
             gleam run -m build
             tailwindcss -i ./static/website.css -o ./priv/output.css
+            if ! bun pm ls | grep -q "vite@7.1.1"; then
+              echo "Installing vite..."
+              bun add -d vite@7.1.1
+              bun add vite-gleam
+              bun vite build
+            fi
           '';
           installPhase = ''
             mkdir -p $out
@@ -63,6 +69,8 @@
             if ! bun pm ls | grep -q "vite@7.1.1"; then
               echo "Installing vite..."
               bun add -d vite@7.1.1
+              bun add vite-gleam
+              bun vite build
             fi
 
             echo "Starting development server..."

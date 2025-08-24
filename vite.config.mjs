@@ -1,11 +1,15 @@
 import { defineConfig } from "vite";
+import gleam from "vite-gleam";
 import { spawn } from "node:child_process";
+import { readdirSync } from 'fs';
 import * as fs from "node:fs";
 import * as path from "node:path";
 
 const CSS_IN = "static/website.css";
 const CSS_OUT_TMP = path.resolve(".dev/output.css");
 const CSS_OUT = path.resolve("priv/output.css");
+const jsDir = path.resolve('js');
+const entryPoints = {};
 
 function run(cmd, args, opts = {}) {
   return new Promise((resolve) => {
@@ -44,7 +48,6 @@ function devPlugin() {
       { stdio: "inherit" }
     );
 
-    // Mirror the compiled CSS into priv/ whenever it changes
     fs.watch(path.dirname(CSS_OUT_TMP), { persistent: true }, (_evt, f) => {
       if (f === path.basename(CSS_OUT_TMP)) copyCssIntoPriv();
     });
@@ -65,10 +68,8 @@ function devPlugin() {
     if (building) return;
     building = true;
     const ok = await run("gleam", ["run", "-m", "build"]);
-    // Gleam build may recreate priv/, so always copy CSS *after* building
     copyCssIntoPriv();
     if (ok && reload) {
-      // On initial startup there may be no clients; harmless if none are connected
       server.ws.send({ type: "full-reload" });
     }
     building = false;
@@ -78,16 +79,11 @@ function devPlugin() {
     name: "gleam-tailwind",
     async configureServer(server) {
       copyCssIntoPriv();
-      // 2) Do an initial Gleam build (no reload needed yet)
       await buildGleamThenSyncCss(server, { reload: false });
-      // Now start the long-lived Tailwind watcher
       await startTailwindWatch();
-
-      // Watch sources for subsequent rebuilds
       server.watcher.add("src");
       server.watcher.add("posts");
       server.watcher.add(CSS_IN);
-
       server.watcher.on("change", (file) => {
         if (file.endsWith(".gleam") || file.endsWith(".djot")) {
           debounceBuild(() => buildGleamThenSyncCss(server, { reload: true }));
@@ -95,7 +91,6 @@ function devPlugin() {
           debounceCss(copyCssIntoPriv);
         }
       });
-
       server.httpServer?.once("close", () => {
         if (tailwindProc && !tailwindProc.killed) {
            tailwindProc.kill();
@@ -105,10 +100,26 @@ function devPlugin() {
   };
 }
 
+
+const jsFiles = readdirSync(jsDir).filter(file => file.endsWith('.js'));
+jsFiles.forEach(file => {
+  const name = file.replace('.js', '');
+  entryPoints[name] = path.join(jsDir, file);
+});
+
 export default defineConfig({
   root: "./priv",
-  plugins: [devPlugin()],
+  plugins: [devPlugin(), gleam()],
   server: {
     watch: { ignored: [] },
   },
+  build: {
+    rollupOptions: {
+      input: entryPoints,
+      output: {
+        dir: './static/js',
+        entryFileNames: '[name].js',
+      }
+    }
+  }
 });
