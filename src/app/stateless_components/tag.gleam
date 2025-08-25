@@ -1,5 +1,8 @@
 import gleam/list
 import gleam/string
+import lustre/attribute.{class}
+import lustre/element.{type Element}
+import lustre/element/html
 
 pub type Color {
   Red
@@ -62,4 +65,22 @@ pub fn to_string(tag: Tag, color: Color) -> #(String, String) {
 pub fn parse_tags(tags: String, delimiter: String) -> List(TagInfo) {
   string.split(tags, delimiter)
   |> list.filter_map(string_to_tag)
+}
+
+pub fn render_tags(tags: List(TagInfo)) -> Element(a) {
+  let tag_list =
+    list.map(tags, fn(tag) {
+      let #(name, color) = to_string(tag.name, tag.color)
+
+      html.div(
+        [
+          class(color <> " px-4 border-2 border-black rounded-md"),
+        ],
+        [
+          element.text(name),
+        ],
+      )
+    })
+
+  html.div([class("flex flex-row gap-3")], tag_list)
 }

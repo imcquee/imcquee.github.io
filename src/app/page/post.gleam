@@ -1,7 +1,6 @@
-import app/stateless_components/tag.{type TagInfo}
+import app/stateless_components/tag.{type TagInfo, render_tags}
 import app/utilities/djot_renderer
 import content
-import gleam/list
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
@@ -42,24 +41,6 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
   let tags = list_of_tags |> tag.parse_tags("|")
 
   Ok(Metadata(slug:, title:, description:, preview_img:, date:, tags:))
-}
-
-fn render_tags(tags: List(TagInfo)) -> Element(a) {
-  let tag_list =
-    list.map(tags, fn(tag) {
-      let #(name, color) = tag.to_string(tag.name, tag.color)
-
-      html.div(
-        [
-          class(color <> " px-4 border-2 border-black rounded-md"),
-        ],
-        [
-          element.text(name),
-        ],
-      )
-    })
-
-  html.div([class("flex flex-row gap-3")], tag_list)
 }
 
 pub fn view(post: Post) -> Element(Nil) {

@@ -1,4 +1,5 @@
 import app/page/post.{type Post}
+import app/stateless_components/tag
 import content
 import gleam/list
 import lustre/attribute.{class}
@@ -32,6 +33,7 @@ pub fn view(list: List(Post)) -> Element(a) {
                 html.h1([class("md:text-3xl text-xl font-bold")], [
                   element.text(post.metadata.title),
                 ]),
+                tag.render_tags(post.metadata.tags),
                 html.h1([class("italic md:text-lg")], [
                   element.text(post.metadata.date),
                 ]),
