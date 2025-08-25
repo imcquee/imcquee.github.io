@@ -104,12 +104,12 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
     let AboutCard(image_source, title, subtext, href, full_width) = card
     let style =
       "w-full p-4 rounded-md border-2 border-black bg-white
-               cursor-pointer select-none
-               flex flex-col gap-2
-               transition ease-out duration-200
-               hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
-               active:translate-y-0
-               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+       cursor-pointer select-none
+       flex flex-col gap-2
+       transition ease-out duration-200
+       hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
+       active:translate-y-0
+       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
     let link_attributes = case href {
       External(src) -> [
         attribute.rel("noopener noreferrer"),
