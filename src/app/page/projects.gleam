@@ -9,7 +9,7 @@ type Card(a) {
 }
 
 fn card_to_element(card: Card(a)) {
-  html.div([class("h-72 border-2 border-black rounded-md bg-white p-8")], [
+  html.div([class("border-2 border-black rounded-md bg-white p-8")], [
     html.h1([class("text-4xl mb-8")], [element.text(card.title)]),
     ..card.content
   ])

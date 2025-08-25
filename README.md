@@ -14,16 +14,14 @@
 - [x] Add dynamic paths and file reads for blog
 - [x] Add markdown/djot parsing (maybe Pandoc)
 - [x] Move all images to static image dir
-- [x] Use pinned version of vite
+- [x] Add custom djot renderer
+- [x] Add custom lustre component support via vite
+- [x] Add Projects Page
 - [ ] Add syntax highlighter
-- [ ] Add custom lustre component support via vite
 - [ ] Add Tag Engine
-- [ ] Add custom djot renderer
 - [ ] Add automatic git based blog dates
-- [ ] Add better error handling
 - [ ] Add custom code block
 - [ ] Add SEO attributes and images for embeds
-- [ ] Add Tools Page
 
 ### Credit
 
