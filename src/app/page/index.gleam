@@ -4,15 +4,16 @@ import gleam/option.{type Option, None, Some}
 import lustre/attribute.{class, classes}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/link
 
 type ImageSource {
   Image(String)
   Unicode(String)
 }
 
-type Link {
-  Internal(String)
-  External(String)
+type Action {
+  Button(String)
+  Link(link.Link)
 }
 
 type AboutCard {
@@ -20,7 +21,7 @@ type AboutCard {
     image: ImageSource,
     title: String,
     subtext: Option(String),
-    href: Link,
+    action: Action,
     full_width: Bool,
   )
 }
@@ -31,37 +32,37 @@ pub fn view() -> Element(a) {
       image: Unicode("✍"),
       title: "Blog",
       subtext: None,
-      href: Internal("/blog"),
+      action: Link(link.Internal("/blog")),
       full_width: True,
     ),
     AboutCard(
       image: Unicode("📃"),
       title: "CV",
-      subtext: None,
-      href: External(
+      subtext: Some("Download PDF"),
+      action: Link(link.External(
         "https://raw.githubusercontent.com/imcquee/Resume/master/cv.pdf",
-      ),
+      )),
       full_width: False,
     ),
     AboutCard(
       image: Unicode("🚧"),
       title: "Projects",
       subtext: None,
-      href: Internal("/projects"),
+      action: Link(link.Internal("/projects")),
       full_width: False,
     ),
     AboutCard(
       image: Image("images/github.svg"),
       title: "GitHub",
       subtext: Some("@imcquee"),
-      href: External("https://github.com/imcquee"),
+      action: Link(link.External("https://github.com/imcquee")),
       full_width: False,
     ),
     AboutCard(
       image: Unicode("✉️"),
       title: "Email",
       subtext: Some("imcqueendev@gmail.com"),
-      href: External("mailto:imcqueendev@gmail.com"),
+      action: Button("imcqueendev@gmail.com"),
       full_width: False,
     ),
   ]
@@ -99,31 +100,44 @@ pub fn view() -> Element(a) {
   |> content.view_home()
 }
 
-fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
-  list.map(cards, fn(card) {
-    let AboutCard(image_source, title, subtext, href, full_width) = card
-    let style =
-      "w-full p-4 rounded-md border-2 border-black bg-white
+fn get_card_container(
+  action: Action,
+  full_width: Bool,
+  content: List(Element(a)),
+) -> Element(a) {
+  let style =
+    "w-full p-4 rounded-md border-2 border-black bg-white
        cursor-pointer select-none
        flex flex-col gap-2
        transition ease-out duration-200
        hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
        active:translate-y-0
        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-    let link_attributes = case href {
-      External(src) -> [
-        attribute.rel("noopener noreferrer"),
-        attribute.target("_blank"),
-        attribute.href(src),
-        classes([#("col-span-full", full_width), #(style, True)]),
-      ]
-      Internal(src) -> [
-        attribute.href(src),
-        classes([#("col-span-full", full_width), #(style, True)]),
-      ]
-    }
+  case action {
+    Link(link) ->
+      link.render_link(
+        link,
+        [
+          classes([#("col-span-full", full_width), #(style, True)]),
+        ],
+        content,
+      )
+    Button(text) ->
+      html.div(
+        [
+          attribute.role("button"),
+          attribute.attribute("data-copy", text),
+          classes([#("col-span-full", full_width), #(style, True)]),
+        ],
+        content,
+      )
+  }
+}
 
-    html.a(link_attributes, [
+fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
+  list.map(cards, fn(card) {
+    let AboutCard(image_source, title, subtext, action, full_width) = card
+    get_card_container(action, full_width, [
       html.div([class("flex flex-row gap-2 items-center")], [
         case image_source {
           Image(source) ->

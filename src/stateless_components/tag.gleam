@@ -1,6 +1,6 @@
 import gleam/list
 import gleam/string
-import lustre/attribute.{class}
+import lustre/attribute.{type Attribute, class}
 import lustre/element.{type Element}
 import lustre/element/html
 
@@ -67,7 +67,10 @@ pub fn parse_tags(tags: String, delimiter: String) -> List(TagInfo) {
   |> list.filter_map(string_to_tag)
 }
 
-pub fn render_tags(tags: List(TagInfo)) -> Element(a) {
+pub fn render_tags(
+  tags: List(TagInfo),
+  tag_attrs: List(Attribute(a)),
+) -> Element(a) {
   let tag_list =
     list.map(tags, fn(tag) {
       let #(name, color) = to_string(tag.name, tag.color)
@@ -76,9 +79,7 @@ pub fn render_tags(tags: List(TagInfo)) -> Element(a) {
         [
           class(color <> " px-4 border-2 border-black rounded-md"),
         ],
-        [
-          element.text(name),
-        ],
+        [html.p(tag_attrs, [element.text(name)])],
       )
     })
 

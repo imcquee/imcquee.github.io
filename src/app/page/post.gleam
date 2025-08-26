@@ -1,4 +1,3 @@
-import app/stateless_components/tag.{type TagInfo, render_tags}
 import app/utilities/djot_renderer
 import content
 import lustre/attribute.{class}
@@ -6,6 +5,8 @@ import lustre/element.{type Element}
 import lustre/element/html
 import lustre/ssg/djot
 import simplifile
+import stateless_components/link
+import stateless_components/tag.{type TagInfo, render_tags}
 import tom
 
 pub type Metadata {
@@ -45,14 +46,14 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
 
 pub fn view(post: Post) -> Element(Nil) {
   html.div([class("flex flex-col items-center lg:px-12 lg:gap-2")], [
-    html.a(
+    link.render_link(
+      link.Internal("/blog"),
       [
         class(
-          "lg:fixed lg:left-4 ml-2 self-start p-4 mb-4 rounded-md border-2 border-black bg-white lg:h-18 flex items-center                hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
-           active:translate-y-0
+          "lg:fixed lg:left-4 ml-2 self-start p-4 mb-4 rounded-md border-2 border-black bg-white lg:h-18 flex items-center
+           hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
         ),
-        attribute.href("/blog"),
       ],
       [
         html.h1([class("font-bold text-xl")], [element.text("<- Blog")]),
@@ -76,7 +77,7 @@ pub fn view(post: Post) -> Element(Nil) {
       ],
       [
         html.h1([class("italic")], [element.text(post.metadata.date)]),
-        render_tags(post.metadata.tags),
+        render_tags(post.metadata.tags, []),
       ],
     ),
     html.div(

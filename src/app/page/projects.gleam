@@ -3,6 +3,7 @@ import gleam/list
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/link
 
 type Card(a) {
   Card(title: String, content: List(Element(a)))
@@ -28,15 +29,10 @@ pub fn view() -> Element(a) {
         html.p([class("mt-4 text-2xl")], [
           element.text("⭐  4"),
         ]),
-        html.a(
+        link.render_link(
+          link.External("https://github.com/imcquee/nix-home"),
+          [],
           [
-            attribute.rel("noopener noreferrer"),
-            attribute.target("_blank"),
-            attribute.href("https://github.com/imcquee/nix-home"),
-            class("flex flex-row gap-2 text-sky-400 underline "),
-          ],
-          [
-            html.img([attribute.src("/images/github.svg")]),
             element.text("Source"),
           ],
         ),

@@ -1,29 +1,35 @@
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/link
 
 pub fn view_home(home_content: Element(msg)) -> Element(msg) {
   html.html([attribute.lang("en")], [
     head(),
-    html.body([class("h-screen w-screen bg-fuchsia-100")], [
-      html.main([], [home_content]),
+    html.div([class("flex flex-col h-screen justify-between")], [
+      html.body([class("w-screen bg-fuchsia-100")], [
+        html.main([], [home_content]),
+      ]),
+      footer(),
     ]),
   ])
 }
 
 pub fn view_page(content: Element(a)) -> Element(a) {
-  html.html([attribute.lang("en")], [head(), body(content)])
+  html.html([attribute.lang("en")], [
+    head(),
+    html.div([class("flex flex-col min-h-screen h-full justify-between")], [
+      body(content),
+      footer(),
+    ]),
+  ])
 }
 
 fn body(content: Element(a)) -> Element(a) {
-  html.body([class("h-screen w-screen bg-fuchsia-100")], [
+  html.body([class("w-screen bg-fuchsia-100")], [
     html.header([], [
-      html.a(
-        [
-          attribute.href("/index.html"),
-          class("flex flex-row p-4 gap-2 items-center"),
-        ],
-        [
+      link.render_link(link.Internal("index.html"), [], [
+        html.div([class("flex flex-row p-4 gap-2 items-center")], [
           html.img([
             attribute.src("/images/city.png"),
             class("object-cover h-10 w-10 rounded-full"),
@@ -31,13 +37,11 @@ fn body(content: Element(a)) -> Element(a) {
           html.h1([class("text-2xl font-mono text-black")], [
             element.text("imcquee"),
           ]),
-        ],
-      ),
-    ]),
-    html.div([], [
-      html.div([class("w-screen h-screen")], [
-        html.main([class("pb-12")], [content]),
+        ]),
       ]),
+    ]),
+    html.div([class("w-screen mb-auto")], [
+      html.main([class("pb-12")], [content]),
     ]),
   ])
 }
@@ -92,5 +96,58 @@ fn head() -> Element(a) {
       ],
       "",
     ),
+    html.script(
+      [
+        attribute.src("/js/copy.js"),
+        attribute.attribute("type", "module"),
+      ],
+      "",
+    ),
+  ])
+}
+
+fn footer() -> Element(a) {
+  html.footer([], [
+    html.div([class("flex justify-center gap-1")], [
+      html.p([class("text-xl")], [element.text("Made with")]),
+      link.render_link(
+        link.External("https://gleam.run/"),
+        [
+          class("flex items-center"),
+        ],
+        [
+          html.img([
+            class("rounded-full h-6 w-6"),
+            attribute.src("/images/lucy.svg"),
+          ]),
+        ],
+      ),
+      html.p([class("text-xl")], [element.text("and")]),
+      link.render_link(
+        link.External("https://github.com/lustre-labs/lustre"),
+        [
+          class("flex items-center"),
+        ],
+        [
+          html.img([
+            class("rounded-full h-6 w-6"),
+            attribute.src("/images/lustre.png"),
+          ]),
+        ],
+      ),
+      html.p([class("text-xl")], [element.text("on")]),
+      link.render_link(
+        link.External("https://github.com/imcquee/imcquee.github.io"),
+        [
+          class("flex items-center"),
+        ],
+        [
+          html.img([
+            class("rounded-full h-6 w-6"),
+            attribute.src("/images/github.svg"),
+          ]),
+        ],
+      ),
+    ]),
   ])
 }

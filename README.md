@@ -17,8 +17,9 @@
 - [x] Add custom djot renderer
 - [x] Add custom lustre component support via vite
 - [x] Add Projects Page
-- [x] Add Tag Engine
+- [x] Add Tags
 - [ ] Add syntax highlighter
+- [ ] Fix Nix cache error
 - [ ] Add automatic git based blog dates
 - [ ] Add custom code block
 - [ ] Add SEO attributes and images for embeds
