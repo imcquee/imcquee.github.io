@@ -51,7 +51,11 @@ fn head() -> Element(a) {
     html.meta([attribute.charset("UTF-8")]),
     html.meta([
       attribute.name("description"),
-      attribute.content("Isaac McQueen's Personal Profile and Blog"),
+      attribute.content("Isaac McQueen's Personal Website and Blog"),
+    ]),
+    html.meta([
+      attribute.name("title"),
+      attribute.content("Isaac McQueen Website"),
     ]),
     html.meta([
       attribute.name("viewport"),
@@ -108,44 +112,71 @@ fn head() -> Element(a) {
 
 fn footer() -> Element(a) {
   html.footer([], [
-    html.div([class("flex justify-center gap-1")], [
+    html.div([class("flex justify-center items-center gap-1")], [
       html.p([class("text-xl")], [element.text("Made with")]),
       link.render_link(
         link.External("https://gleam.run/"),
         [
-          class("flex items-center"),
+          class(
+            "flex items-center hover:scale-110 transition-transform duration-200",
+          ),
         ],
         [
-          html.img([
-            class("rounded-full h-6 w-6"),
-            attribute.src("/images/lucy.svg"),
-          ]),
+          html.div(
+            [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
+            [
+              html.p([class("text-sm")], [element.text("Gleam")]),
+              html.img([
+                class("rounded-full h-6 w-6"),
+                attribute.src("/images/lucy.svg"),
+                attribute.alt("lucy"),
+              ]),
+            ],
+          ),
         ],
       ),
       html.p([class("text-xl")], [element.text("and")]),
       link.render_link(
         link.External("https://github.com/lustre-labs/lustre"),
         [
-          class("flex items-center"),
+          class(
+            "flex items-center hover:scale-110 transition-transform duration-200",
+          ),
         ],
         [
-          html.img([
-            class("rounded-full h-6 w-6"),
-            attribute.src("/images/lustre.png"),
-          ]),
+          html.div(
+            [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
+            [
+              html.p([class("text-sm")], [element.text("Lustre")]),
+              html.img([
+                class("rounded-full h-6 w-6"),
+                attribute.src("/images/lustre.png"),
+                attribute.alt("lustre"),
+              ]),
+            ],
+          ),
         ],
       ),
       html.p([class("text-xl")], [element.text("on")]),
       link.render_link(
         link.External("https://github.com/imcquee/imcquee.github.io"),
         [
-          class("flex items-center"),
+          class(
+            "flex items-center hover:scale-110 transition-transform duration-200",
+          ),
         ],
         [
-          html.img([
-            class("rounded-full h-6 w-6"),
-            attribute.src("/images/github.svg"),
-          ]),
+          html.div(
+            [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
+            [
+              html.p([class("text-sm")], [element.text("Github")]),
+              html.img([
+                class("rounded-full h-6 w-6"),
+                attribute.src("/images/github.svg"),
+                attribute.alt("github"),
+              ]),
+            ],
+          ),
         ],
       ),
     ]),
