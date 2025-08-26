@@ -48,5 +48,10 @@ pub fn view(list: List(Post)) -> Element(a) {
       ])
     }),
   )
-  |> content.view_page()
+  |> content.view_page(content.PageInfo(
+    title: "Isaac McQueen Blog",
+    description: "Blog page where you can browse my blog posts",
+    image: "/images/city.png",
+    page_type: "website",
+  ))
 }

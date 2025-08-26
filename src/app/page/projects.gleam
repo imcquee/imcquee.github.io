@@ -40,5 +40,10 @@ pub fn view() -> Element(a) {
     ]
       |> list.map(fn(card) { card_to_element(card) }),
   )
-  |> content.view_page()
+  |> content.view_page(content.PageInfo(
+    title: "Projects Page",
+    description: "Page showcasing projects",
+    image: "/images/city.png",
+    page_type: "website",
+  ))
 }

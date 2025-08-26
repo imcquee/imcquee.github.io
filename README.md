@@ -18,8 +18,9 @@
 - [x] Add custom lustre component support via vite
 - [x] Add Projects Page
 - [x] Add Tags
-- [ ] Deprecate Google Fonts
-- [ ] Add copy button
+- [x] Fix meta tags, they should be different per page
+- [x] Deprecate Google Fonts
+- [x] Add copy button
 - [ ] Add syntax highlighter
 - [ ] Fix Nix cache error
 - [ ] Add automatic git based blog dates

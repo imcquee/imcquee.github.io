@@ -3,9 +3,13 @@ import lustre/element.{type Element}
 import lustre/element/html
 import stateless_components/link
 
-pub fn view_home(home_content: Element(msg)) -> Element(msg) {
+pub type PageInfo {
+  PageInfo(title: String, description: String, image: String, page_type: String)
+}
+
+pub fn view_home(home_content: Element(msg), page: PageInfo) -> Element(msg) {
   html.html([attribute.lang("en")], [
-    head(),
+    head(page),
     html.div([class("flex flex-col h-screen justify-between")], [
       html.body([class("w-screen bg-fuchsia-100")], [
         html.main([], [home_content]),
@@ -15,9 +19,9 @@ pub fn view_home(home_content: Element(msg)) -> Element(msg) {
   ])
 }
 
-pub fn view_page(content: Element(a)) -> Element(a) {
+pub fn view_page(content: Element(a), page: PageInfo) -> Element(a) {
   html.html([attribute.lang("en")], [
-    head(),
+    head(page),
     html.div([class("flex flex-col min-h-screen h-full justify-between")], [
       body(content),
       footer(),
@@ -47,17 +51,45 @@ fn body(content: Element(a)) -> Element(a) {
   ])
 }
 
-fn head() -> Element(a) {
+fn head(page: PageInfo) -> Element(a) {
   html.head([], [
+    html.title([], page.title),
     html.meta([attribute.charset("UTF-8")]),
     html.meta([
       attribute.name("description"),
-      attribute.content("Isaac McQueen's Personal Website and Blog"),
+      attribute.content(page.description),
     ]),
-    html.title([], "Isaac McQueen website home page"),
     html.meta([
       attribute.name("viewport"),
       attribute.content("width=device-width, initial-scale=1.0"),
+    ]),
+    html.meta([
+      attribute.attribute("property", "og:title"),
+      attribute.content(page.title),
+    ]),
+    html.meta([
+      attribute.attribute("property", "og:description"),
+      attribute.content(page.description),
+    ]),
+    html.meta([
+      attribute.attribute("property", "og:image"),
+      attribute.content(page.image),
+    ]),
+    html.meta([
+      attribute.attribute("property", "og:type"),
+      attribute.content(page.page_type),
+    ]),
+    html.meta([
+      attribute.attribute("property", "twitter:title"),
+      attribute.content(page.title),
+    ]),
+    html.meta([
+      attribute.attribute("property", "twitter:description"),
+      attribute.content(page.description),
+    ]),
+    html.meta([
+      attribute.attribute("property", "twitter:image"),
+      attribute.content(page.image),
     ]),
     html.link([
       attribute.rel("apple-touch-icon"),

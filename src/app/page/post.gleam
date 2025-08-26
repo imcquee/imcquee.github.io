@@ -91,5 +91,10 @@ pub fn view(post: Post) -> Element(Nil) {
       post.content,
     ),
   ])
-  |> content.view_page()
+  |> content.view_page(content.PageInfo(
+    title: post.metadata.title,
+    description: post.metadata.description,
+    image: post.metadata.preview_img,
+    page_type: "article",
+  ))
 }
