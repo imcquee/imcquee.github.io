@@ -66,18 +66,20 @@ pub fn view(post: Post) -> Element(Nil) {
         ),
       ],
       [
-        html.h1([class("text-3xl")], [element.text(post.metadata.title)]),
+        html.h1([class("md:text-3xl text-xl")], [
+          element.text(post.metadata.title),
+        ]),
       ],
     ),
     html.div(
       [
         class(
-          "flex flex-row gap-3 items-center lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
+          "flex flex-col md:flex-row gap-3 md:items-center lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
         ),
       ],
       [
         html.h1([class("italic")], [element.text(post.metadata.date)]),
-        render_tags(post.metadata.tags, []),
+        render_tags(post.metadata.tags, [class("text-xs md:text-base")]),
       ],
     ),
     html.div(

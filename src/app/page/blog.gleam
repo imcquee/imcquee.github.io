@@ -9,7 +9,7 @@ import stateless_components/tag
 
 pub fn view(list: List(Post)) -> Element(a) {
   html.div(
-    [class("w-screen px-12 flex flex-col gap-4")],
+    [class("w-screen md:px-12 px-4 flex flex-col gap-4")],
     list.map(list, fn(post) {
       link.render_link(link.Internal("./blog/" <> post.metadata.slug), [], [
         html.div([class("w-full")], [
