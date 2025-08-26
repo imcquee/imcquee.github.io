@@ -53,10 +53,7 @@ fn head() -> Element(a) {
       attribute.name("description"),
       attribute.content("Isaac McQueen's Personal Website and Blog"),
     ]),
-    html.meta([
-      attribute.name("title"),
-      attribute.content("Isaac McQueen Website"),
-    ]),
+    html.title([], "Isaac McQueen website home page"),
     html.meta([
       attribute.name("viewport"),
       attribute.content("width=device-width, initial-scale=1.0"),
@@ -129,7 +126,7 @@ fn footer() -> Element(a) {
               html.img([
                 class("rounded-full h-6 w-6"),
                 attribute.src("/images/lucy.svg"),
-                attribute.alt("lucy"),
+                attribute.alt("gleam lucy logo"),
               ]),
             ],
           ),
@@ -151,7 +148,7 @@ fn footer() -> Element(a) {
               html.img([
                 class("rounded-full h-6 w-6"),
                 attribute.src("/images/lustre.png"),
-                attribute.alt("lustre"),
+                attribute.alt("lustre logo"),
               ]),
             ],
           ),
@@ -173,7 +170,7 @@ fn footer() -> Element(a) {
               html.img([
                 class("rounded-full h-6 w-6"),
                 attribute.src("/images/github.svg"),
-                attribute.alt("github"),
+                attribute.alt("github logo"),
               ]),
             ],
           ),
