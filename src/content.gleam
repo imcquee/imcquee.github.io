@@ -110,7 +110,7 @@ fn head() -> Element(a) {
 fn footer() -> Element(a) {
   html.footer([], [
     html.div([class("flex justify-center items-center gap-1")], [
-      html.p([class("text-xl")], [element.text("Made with")]),
+      html.p([class("md:text-lg text-xs")], [element.text("Made with")]),
       link.render_link(
         link.External("https://gleam.run/"),
         [
@@ -122,7 +122,7 @@ fn footer() -> Element(a) {
           html.div(
             [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
             [
-              html.p([class("text-sm")], [element.text("Gleam")]),
+              html.p([class("md:text-sm text-xs")], [element.text("Gleam")]),
               html.img([
                 class("rounded-full h-6 w-6"),
                 attribute.src("/images/lucy.svg"),
@@ -132,7 +132,7 @@ fn footer() -> Element(a) {
           ),
         ],
       ),
-      html.p([class("text-xl")], [element.text("and")]),
+      html.p([class("md:text-lg text-xs")], [element.text("and")]),
       link.render_link(
         link.External("https://github.com/lustre-labs/lustre"),
         [
@@ -144,7 +144,7 @@ fn footer() -> Element(a) {
           html.div(
             [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
             [
-              html.p([class("text-sm")], [element.text("Lustre")]),
+              html.p([class("md:text-sm text-xs")], [element.text("Lustre")]),
               html.img([
                 class("rounded-full h-6 w-6"),
                 attribute.src("/images/lustre.png"),
@@ -154,7 +154,7 @@ fn footer() -> Element(a) {
           ),
         ],
       ),
-      html.p([class("text-xl")], [element.text("on")]),
+      html.p([class("md:text-lg text-xs")], [element.text("on")]),
       link.render_link(
         link.External("https://github.com/imcquee/imcquee.github.io"),
         [
@@ -166,7 +166,7 @@ fn footer() -> Element(a) {
           html.div(
             [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
             [
-              html.p([class("text-sm")], [element.text("Github")]),
+              html.p([class("md:text-sm text-xs")], [element.text("Github")]),
               html.img([
                 class("rounded-full h-6 w-6"),
                 attribute.src("/images/github.svg"),
