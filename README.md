@@ -18,6 +18,7 @@
 - [x] Add custom lustre component support via vite
 - [x] Add Projects Page
 - [x] Add Tags
+- [ ] Deprecate Google Fonts
 - [ ] Add copy button
 - [ ] Add syntax highlighter
 - [ ] Fix Nix cache error

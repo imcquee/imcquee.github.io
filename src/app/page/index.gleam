@@ -77,7 +77,7 @@ pub fn view() -> Element(a) {
       html.div([class("flex flex-col lg:items-start items-center")], [
         html.img([
           attribute.src("images/city.png"),
-          attribute.alt("city"),
+          attribute.alt("city logo"),
           class("object-cover mb-8 h-48 w-48 rounded-full"),
         ]),
         html.h1([class("font-mono text-4xl pb-8 text-black")], [

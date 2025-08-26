@@ -32,6 +32,7 @@ fn body(content: Element(a)) -> Element(a) {
         html.div([class("flex flex-row p-4 gap-2 items-center")], [
           html.img([
             attribute.src("/images/city.png"),
+            attribute.alt("city logo"),
             class("object-cover h-10 w-10 rounded-full"),
           ]),
           html.h1([class("text-2xl font-mono text-black")], [
