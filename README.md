@@ -21,6 +21,7 @@
 - [x] Fix meta tags, they should be different per page
 - [x] Deprecate Google Fonts
 - [x] Add copy button
+- [ ] Image optimization
 - [ ] Add syntax highlighter
 - [ ] Fix Nix cache error
 - [ ] Add automatic git based blog dates

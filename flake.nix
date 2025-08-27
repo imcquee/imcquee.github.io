@@ -22,6 +22,7 @@
         bun
         vscode-langservers-extracted
         codebook
+        ffmpeg
       ];
     in
     {
