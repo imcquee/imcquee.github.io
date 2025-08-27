@@ -7,8 +7,9 @@ preview_img = "/images/valencia.jpg"
 tags = "travel|motivation|languages"
 ---
 
-{class="md:max-w-3/5 pt-4 self-center"}
-![Valencia Cover](/images/valencia.jpg)
+``` =html
+<img class="pt-4 mx-auto md:max-w-3/5" src="/images/valencia.jpg" alt="Valencia Cover" fetchpriority="high" />
+```
 
 {class="italic self-center"}
 跳 = Han Symbol for Leap/Jump
