@@ -23,6 +23,7 @@
         vscode-langservers-extracted
         codebook
         ffmpeg
+        elixir
       ];
     in
     {

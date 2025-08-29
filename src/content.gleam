@@ -7,6 +7,10 @@ pub type PageInfo {
   PageInfo(title: String, description: String, image: String, page_type: String)
 }
 
+type FooterButton {
+  FooterButton(name: String, src: String, icon: String)
+}
+
 pub fn view_home(home_content: Element(msg), page: PageInfo) -> Element(msg) {
   html.html([attribute.lang("en")], [
     head(page),
@@ -25,28 +29,6 @@ pub fn view_page(content: Element(a), page: PageInfo) -> Element(a) {
     html.div([class("flex flex-col min-h-screen h-full justify-between")], [
       body(content),
       footer(),
-    ]),
-  ])
-}
-
-fn body(content: Element(a)) -> Element(a) {
-  html.body([class("w-screen bg-fuchsia-100")], [
-    html.header([], [
-      link.render_link(link.Internal("index.html"), [], [
-        html.div([class("flex flex-row p-4 gap-2 items-center")], [
-          html.img([
-            attribute.src("/images/city.png"),
-            attribute.alt("city logo"),
-            class("object-cover h-10 w-10 rounded-full"),
-          ]),
-          html.h1([class("text-2xl font-mono text-black")], [
-            element.text("imcquee"),
-          ]),
-        ]),
-      ]),
-    ]),
-    html.div([class("w-screen mb-auto")], [
-      html.main([class("pb-12")], [content]),
     ]),
   ])
 }
@@ -140,75 +122,72 @@ fn head(page: PageInfo) -> Element(a) {
   ])
 }
 
+fn body(content: Element(a)) -> Element(a) {
+  html.body([class("w-screen bg-fuchsia-100")], [
+    html.header([], [
+      link.render_link(
+        link.Internal("index.html"),
+        [class("inline-flex p-4 gap-2 items-center")],
+        [
+          html.img([
+            attribute.src("/images/city.png"),
+            attribute.alt("city logo"),
+            class("object-cover h-10 w-10 rounded-full"),
+          ]),
+          html.h1([class("text-2xl font-mono text-black")], [
+            element.text("imcquee"),
+          ]),
+        ],
+      ),
+    ]),
+    html.div([class("w-screen mb-auto")], [
+      html.main([class("pb-12")], [content]),
+    ]),
+  ])
+}
+
 fn footer() -> Element(a) {
   html.footer([], [
     html.div([class("flex justify-center items-center gap-1")], [
       html.p([class("md:text-lg text-xs")], [element.text("Made with")]),
-      link.render_link(
-        link.External("https://gleam.run/"),
-        [
-          class(
-            "flex items-center hover:scale-110 transition-transform duration-200",
-          ),
-        ],
-        [
-          html.div(
-            [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
-            [
-              html.p([class("md:text-sm text-xs")], [element.text("Gleam")]),
-              html.img([
-                class("rounded-full h-6 w-6"),
-                attribute.src("/images/lucy.svg"),
-                attribute.alt("gleam lucy logo"),
-              ]),
-            ],
-          ),
-        ],
-      ),
+      render_footer_button(FooterButton(
+        name: "Gleam",
+        src: "https://gleam.run/",
+        icon: "/images/lucy.svg",
+      )),
       html.p([class("md:text-lg text-xs")], [element.text("and")]),
-      link.render_link(
-        link.External("https://github.com/lustre-labs/lustre"),
-        [
-          class(
-            "flex items-center hover:scale-110 transition-transform duration-200",
-          ),
-        ],
-        [
-          html.div(
-            [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
-            [
-              html.p([class("md:text-sm text-xs")], [element.text("Lustre")]),
-              html.img([
-                class("rounded-full h-6 w-6"),
-                attribute.src("/images/lustre.png"),
-                attribute.alt("lustre logo"),
-              ]),
-            ],
-          ),
-        ],
-      ),
+      render_footer_button(FooterButton(
+        name: "Lustre",
+        src: "https://github.com/lustre-labs/lustre",
+        icon: "/images/lustre.png",
+      )),
       html.p([class("md:text-lg text-xs")], [element.text("on")]),
-      link.render_link(
-        link.External("https://github.com/imcquee/imcquee.github.io"),
-        [
-          class(
-            "flex items-center hover:scale-110 transition-transform duration-200",
-          ),
-        ],
-        [
-          html.div(
-            [class("flex items-center rounded-full bg-purple-300 gap-1 p-1")],
-            [
-              html.p([class("md:text-sm text-xs")], [element.text("Github")]),
-              html.img([
-                class("rounded-full h-6 w-6"),
-                attribute.src("/images/github.svg"),
-                attribute.alt("github logo"),
-              ]),
-            ],
-          ),
-        ],
-      ),
+      render_footer_button(FooterButton(
+        name: "Github",
+        src: "https://github.com/imcquee/imcquee.github.io",
+        icon: "/images/github.svg",
+      )),
     ]),
   ])
+}
+
+fn render_footer_button(button: FooterButton) {
+  link.render_link(
+    link.External(button.src),
+    [
+      class(
+        "flex items-center hover:scale-110 transition-transform duration-200",
+      ),
+    ],
+    [
+      html.div([class("flex items-center rounded-full gap-1 p-1")], [
+        html.p([class("md:text-lg text-xs")], [element.text(button.name)]),
+        html.img([
+          class("rounded-full h-6 w-6"),
+          attribute.src(button.icon),
+          attribute.alt(button.name <> "logo"),
+        ]),
+      ]),
+    ],
+  )
 }

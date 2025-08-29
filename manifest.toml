@@ -12,6 +12,7 @@ packages = [
   { name = "gleam_regexp", version = "1.1.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleam_regexp", source = "hex", outer_checksum = "9C215C6CA84A5B35BB934A9B61A9A306EC743153BE2B0425A0D032E477B062A9" },
   { name = "gleam_stdlib", version = "0.62.0", build_tools = ["gleam"], requirements = [], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "DC8872BC0B8550F6E22F0F698CFE7F1E4BDA7312FDEB40D6C3F44C5B706C8310" },
   { name = "gleeunit", version = "1.6.1", build_tools = ["gleam"], requirements = ["gleam_stdlib"], otp_app = "gleeunit", source = "hex", outer_checksum = "FDC68A8C492B1E9B429249062CD9BAC9B5538C6FBF584817205D0998C42E1DAC" },
+  { name = "glimra", version = "2.0.2", build_tools = ["gleam"], requirements = ["gleam_stdlib", "lustre", "lustre_ssg", "simplifile"], source = "git", repo = "https://github.com/ollema/glimra", commit = "5104292299a4df76431662cfd659e1d7cda58202" },
   { name = "houdini", version = "1.2.0", build_tools = ["gleam"], requirements = [], otp_app = "houdini", source = "hex", outer_checksum = "5DB1053F1AF828049C2B206D4403C18970ABEF5C18671CA3C2D2ED0DD64F6385" },
   { name = "jot", version = "4.0.0", build_tools = ["gleam"], requirements = ["gleam_stdlib", "houdini", "splitter"], otp_app = "jot", source = "hex", outer_checksum = "E9E266D2768EA1238283D2CF125AA68095F17BAA4DDF3598360FD19F38593C59" },
   { name = "lustre", version = "5.2.1", build_tools = ["gleam"], requirements = ["gleam_erlang", "gleam_json", "gleam_otp", "gleam_stdlib", "houdini"], otp_app = "lustre", source = "hex", outer_checksum = "DCD121F8E6B7E179B27D9A8AEB6C828D8380E26DF2E16D078511EDAD1CA9F2A7" },
@@ -25,6 +26,7 @@ packages = [
 [requirements]
 gleam_stdlib = { version = ">= 0.34.0 and < 2.0.0" }
 gleeunit = { version = ">= 1.0.0 and < 2.0.0" }
+glimra = { git = "https://github.com/ollema/glimra", ref = "5104292" }
 jot = { version = ">= 4.0.0 and < 5.0.0" }
 lustre = { version = ">= 5.2.0 and < 6.0.0" }
 lustre_ssg = { version = ">= 0.9.0 and < 1.0.0" }

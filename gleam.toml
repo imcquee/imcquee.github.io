@@ -13,6 +13,7 @@ version = "1.0.0"
 # https://gleam.run/writing-gleam/gleam-toml/.
 
 [dependencies]
+glimra = { git = "https://github.com/ollema/glimra", ref = "5104292" }
 gleam_stdlib = ">= 0.34.0 and < 2.0.0"
 simplifile = ">= 2.2.0 and < 3.0.0"
 lustre = ">= 5.2.0 and < 6.0.0"

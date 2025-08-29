@@ -4,6 +4,7 @@ import gleam/list
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/card
 import stateless_components/link
 import stateless_components/tag
 
@@ -13,18 +14,16 @@ pub fn view(list: List(Post)) -> Element(a) {
     list.map(list, fn(post) {
       link.render_link(link.Internal("./blog/" <> post.metadata.slug), [], [
         html.div([class("w-full")], [
-          html.div(
+          card.render_card(
+            True,
             [
               class(
-                "flex md:flex-row flex-col w-full py-2 px-4 rounded-md border-2 border-black bg-white
-                 cursor-pointer select-none flex flex-col gap-1 items-center transition ease-out
-                 duration-200 hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0
-                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
+                "flex md:flex-row flex-col gap-1 items-center w-full py-2 px-4",
               ),
             ],
             [
               html.img([
-                class("object-cover md:h-36 md:w-36 h-48 w-48 rounded-md"),
+                class("object-contain md:h-36 md:w-36 h-48 w-48 rounded-md"),
                 attribute.src(post.metadata.preview_img),
                 attribute.width(48),
                 attribute.height(48),

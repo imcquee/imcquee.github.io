@@ -26,7 +26,7 @@
 - [ ] Fix Nix cache error
 - [ ] Add automatic git based blog dates
 - [ ] Add custom code block
-- [ ] Add SEO attributes and images for embeds
+- [x] Add SEO attributes and images for embeds
 
 ### Credit
 
