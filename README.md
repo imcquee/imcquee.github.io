@@ -23,7 +23,6 @@
 - [x] Add copy button
 - [ ] Image optimization
 - [x] Add syntax highlighter
-- [ ] Fix Nix cache error
 - [ ] Add automatic git based blog dates
 - [x] Add custom code block
 - [x] Add SEO attributes and images for embeds
