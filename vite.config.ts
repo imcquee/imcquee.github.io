@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
+import { defineConfig, ViteDevServer, Plugin } from "vite";
 import gleam from "vite-gleam";
-import { spawn } from "node:child_process";
+import { spawn, ChildProcess } from "node:child_process";
 import { readdirSync } from "fs";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -9,37 +9,37 @@ const CSS_IN = "static/website.css";
 const CSS_OUT_TMP = path.resolve(".dev/output.css");
 const CSS_OUT = path.resolve("priv/output.css");
 const jsDir = path.resolve("js");
-const entryPoints = {};
+const entryPoints: Record<string, string> = {};
 
-function run(cmd, args, opts = {}) {
+function run(cmd: string, args: string[], opts: object = {}): Promise<boolean> {
   return new Promise((resolve) => {
     const proc = spawn(cmd, args, { stdio: "inherit", ...opts });
     proc.on("close", (code) => resolve(code === 0));
   });
 }
 
-function copyCssIntoPriv() {
+function copyCssIntoPriv(): void {
   fs.mkdirSync(path.dirname(CSS_OUT), { recursive: true });
   if (fs.existsSync(CSS_OUT_TMP)) {
     fs.copyFileSync(CSS_OUT_TMP, CSS_OUT);
   }
 }
 
-function makeDebounce(ms) {
-  let t = null;
-  return (fn) => {
+function makeDebounce(ms: number): (fn: () => void) => void {
+  let t: NodeJS.Timeout | null = null;
+  return (fn: () => void) => {
     if (t) clearTimeout(t);
     t = setTimeout(fn, ms);
   };
 }
 
-function devPlugin() {
+function devPlugin(): Plugin {
   let building = false;
-  let tailwindProc = null;
+  let tailwindProc: ChildProcess | null = null;
   const debounceBuild = makeDebounce(100);
   const debounceCss = makeDebounce(50);
 
-  const startTailwindWatch = async () => {
+  const startTailwindWatch = async (): Promise<void> => {
     if (tailwindProc) return;
     fs.mkdirSync(path.dirname(CSS_OUT_TMP), { recursive: true });
     tailwindProc = spawn(
@@ -52,7 +52,7 @@ function devPlugin() {
       if (f === path.basename(CSS_OUT_TMP)) copyCssIntoPriv();
     });
 
-    const kill = () => {
+    const kill = (): void => {
       if (tailwindProc && !tailwindProc.killed) {
         tailwindProc.kill();
       }
@@ -67,16 +67,20 @@ function devPlugin() {
       kill();
       process.exit();
     });
+
     tailwindProc.on("exit", () => {
       tailwindProc = null;
     });
   };
 
-  const buildGleamThenSyncCss = async (server, { reload = true } = {}) => {
+  const buildGleamThenSyncCss = async (
+    server: ViteDevServer,
+    { reload = true }: { reload?: boolean } = {},
+  ): Promise<void> => {
     if (building) return;
     building = true;
     const ok = await run("gleam", ["run", "-m", "build"]);
-    await run("bun", ["run", "scripts/shiki.mjs"]);
+    await run("bun", ["run", "scripts/shiki.ts"]);
     copyCssIntoPriv();
     if (ok && reload) {
       server.ws.send({ type: "full-reload" });
@@ -86,20 +90,23 @@ function devPlugin() {
 
   return {
     name: "gleam-tailwind",
-    async configureServer(server) {
+    async configureServer(server: ViteDevServer) {
       copyCssIntoPriv();
       await buildGleamThenSyncCss(server, { reload: false });
       await startTailwindWatch();
+
       server.watcher.add("src");
       server.watcher.add("posts");
       server.watcher.add(CSS_IN);
-      server.watcher.on("change", (file) => {
+
+      server.watcher.on("change", (file: string) => {
         if (file.endsWith(".gleam") || file.endsWith(".djot")) {
           debounceBuild(() => buildGleamThenSyncCss(server, { reload: true }));
         } else if (file.endsWith("website.css")) {
           debounceCss(copyCssIntoPriv);
         }
       });
+
       server.httpServer?.once("close", () => {
         if (tailwindProc && !tailwindProc.killed) {
           tailwindProc.kill();
