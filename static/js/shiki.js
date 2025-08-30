@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       lang,
       theme: "github-light",
       meta: {
-        class: "p-4 bg-white",
+        class: "p-4 bg-white whitespace-pre-wrap break-words",
       },
     });
 

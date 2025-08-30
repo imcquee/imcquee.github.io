@@ -126,6 +126,13 @@ fn head(page: PageInfo) -> Element(a) {
       ],
       "",
     ),
+    html.script(
+      [
+        attribute.src("https://kit.fontawesome.com/a1771e9d5b.js"),
+        attribute.crossorigin("anonymous"),
+      ],
+      "",
+    ),
   ])
 }
 

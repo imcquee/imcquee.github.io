@@ -59,7 +59,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
+          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full",
         ),
       ],
       [
@@ -71,7 +71,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "flex flex-col md:flex-row gap-3 md:items-center lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
+          "flex flex-col md:flex-row gap-3 md:items-center lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full",
         ),
       ],
       [
@@ -82,7 +82,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "flex flex-col lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-3/4 w-full",
+          "flex flex-col lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full",
         ),
       ],
       post.content,
