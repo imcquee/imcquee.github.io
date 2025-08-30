@@ -2,15 +2,11 @@ import gleam/dict
 import gleam/list
 import gleam/option
 import jot
-import lustre/attribute.{attribute, class}
+import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
 import lustre/ssg/djot.{type Renderer}
-
-fn to_attributes(attrs) {
-  use attrs, key, val <- dict.fold(attrs, [])
-  [attribute(key, val), ..attrs]
-}
+import stateless_components/code
 
 pub fn custom_renderer() -> Renderer(Element(msg)) {
   djot.Renderer(
@@ -19,36 +15,7 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
       let lang = option.unwrap(lang, "text")
       let assert Ok(title) = dict.get(attrs, "title")
         as "Please title this codeblock ex. {title='hello_world.gleam'}"
-      html.div(
-        [
-          class("flex flex-col my-4 border-1 border-black"),
-        ],
-        [
-          html.div(
-            [
-              class("flex flex-row p-2 border-b-1 border-black justify-between"),
-            ],
-            [
-              html.p([class("text-xl")], [element.text(title)]),
-              html.button(
-                [
-                  class(
-                    "cursor-pointer hover:scale-120 transition-transform duration-200",
-                  ),
-
-                  attribute.attribute("data-copy", code),
-                ],
-                [
-                  html.img([attribute.src("/images/copy.svg"), class("h-6 w-6")]),
-                ],
-              ),
-            ],
-          ),
-          html.pre(to_attributes(attrs), [
-            html.code([attribute("data-lang", lang)], [html.text(code)]),
-          ]),
-        ],
-      )
+      code.render_code_snippet(title:, code:, lang:, attrs:)
     },
     bullet_list: fn(layout, style, items) {
       let list_style_type =
