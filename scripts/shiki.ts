@@ -11,7 +11,8 @@ function detectLang(codeEl: Element): string {
 
 async function highlightHtml(html: string): Promise<string> {
   const { document } = parseHTML(html);
-  const nodes = [...document.querySelectorAll("pre > code")];
+  const nodeList = document.querySelectorAll("pre > code");
+  const nodes = Array.from(nodeList);
 
   for (const codeEl of nodes) {
     const pre = codeEl.parentElement;
@@ -28,7 +29,9 @@ async function highlightHtml(html: string): Promise<string> {
 
     const wrapper = document.createElement("div");
     wrapper.innerHTML = shikiHtml;
-    pre.replaceWith(...wrapper.childNodes);
+
+    const childNodesArray = Array.from(wrapper.childNodes);
+    pre.replaceWith(...childNodesArray);
   }
 
   return document.toString();
