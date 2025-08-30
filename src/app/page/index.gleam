@@ -12,7 +12,7 @@ type ImageSource {
 }
 
 type Action {
-  Button(String)
+  Copy(String)
   Link(link.Link)
 }
 
@@ -62,7 +62,7 @@ pub fn view() -> Element(a) {
       image: Unicode("✉️"),
       title: "Email",
       subtext: Some("imcqueendev@gmail.com"),
-      action: Button("imcqueendev@gmail.com"),
+      action: Copy("imcqueendev@gmail.com"),
       full_width: False,
     ),
   ]
@@ -128,7 +128,7 @@ fn get_card_container(
         ],
         content,
       )
-    Button(text) ->
+    Copy(text) ->
       html.div(
         [
           attribute.role("button"),

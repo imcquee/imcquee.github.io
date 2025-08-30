@@ -17,7 +17,17 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
     ..djot.default_renderer(),
     codeblock: fn(attrs, lang, code) {
       let lang = option.unwrap(lang, "text")
-      html.div([class("my-4 p-4 rounded-md border-2 border-black")], [
+      html.div([class("my-4 rounded-md border-2 border-black relative")], [
+        html.button(
+          [
+            class("absolute right-2 top-2 cursor-pointer"),
+
+            attribute.attribute("data-copy", code),
+          ],
+          [
+            html.p([class("text-2xl")], [element.text("📋")]),
+          ],
+        ),
         html.pre(to_attributes(attrs), [
           html.code([attribute("data-lang", lang)], [html.text(code)]),
         ]),

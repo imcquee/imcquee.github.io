@@ -62,14 +62,8 @@
         develop = {
           type = "app";
           program = "${pkgs.writeShellScript "develop-website" ''
-            if ! bun pm ls | grep -q "vite@7.1.1"; then
-              echo "Installing vite..."
-              bun add -d vite@7.1.1
-              bun add vite-gleam
-              bun vite build
-            fi
-
             echo "Starting development server..."
+            bun i
             bun vite
           ''}";
         };

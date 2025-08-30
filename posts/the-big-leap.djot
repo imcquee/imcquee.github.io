@@ -166,8 +166,8 @@ Airbnb
         <img src="/images/balcony.avif" alt="balcony pic"/>
         <img src="/images/bathroom.avif" alt="bathroom pic"/>
         <img src="/images/gym.avif" alt="gym pic"/>
-        <img src="/images/pool.avif"alt="pool pic"/>
-        <img src="/images/living-room-2.avif"alt="living room pic"/>
+        <img src="/images/pool.avif" alt="pool pic"/>
+        <img src="/images/living-room-2.avif" alt="living room pic"/>
     </div>
 </div>
 ```

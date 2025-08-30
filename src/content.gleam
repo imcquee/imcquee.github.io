@@ -119,6 +119,13 @@ fn head(page: PageInfo) -> Element(a) {
       ],
       "",
     ),
+    html.script(
+      [
+        attribute.src("/js/shiki.js"),
+        attribute.attribute("type", "module"),
+      ],
+      "",
+    ),
   ])
 }
 

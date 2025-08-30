@@ -1,0 +1,14 @@
+{
+  "name": "imcquee.github.io",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "shiki": "^3.12.0",
+    "vite": "^7.1.3"
+  }
+}
