@@ -1,11 +1,11 @@
-import { defineConfig, ViteDevServer, Plugin } from "vite";
+import { defineConfig, type ViteDevServer, type Plugin } from "vite";
 import gleam from "vite-gleam";
 import { spawn, ChildProcess } from "node:child_process";
 import { readdirSync } from "fs";
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-const CSS_IN = "static/website.css";
+const CSS_IN = "website.css";
 const CSS_OUT_TMP = path.resolve(".dev/output.css");
 const CSS_OUT = path.resolve("priv/output.css");
 const jsDir = path.resolve("js");
@@ -122,9 +122,9 @@ jsFiles.forEach((file) => {
   entryPoints[name] = path.join(jsDir, file);
 });
 
-export default defineConfig({
+export default defineConfig(async () => ({
   root: "./priv",
-  plugins: [devPlugin(), gleam()],
+  plugins: [devPlugin(), (await gleam()) as Plugin],
   server: {
     watch: { ignored: [] },
   },
@@ -137,4 +137,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

@@ -52,7 +52,7 @@
             mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
             gleam run -m build
             bun run scripts/shiki.ts
-            tailwindcss -i ./static/website.css -o ./priv/output.css --minify
+            tailwindcss -i ./website.css -o ./priv/output.css --minify
           '';
           installPhase = ''
             mkdir -p $out
