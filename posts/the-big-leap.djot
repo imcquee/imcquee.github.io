@@ -173,7 +173,7 @@ Airbnb
 ```
 
 ``` =html
-<p class="text-sky-400 underline flex flex-row justify-center">
+<p class="text-blue-700 underline flex flex-row justify-center">
     <a rel="noopener noreferrer" target="_blank" href="https://www.airbnb.com/rooms/1250060023570983767?adults=4&check_in=2025-12-01&check_out=2025-12-08&search_mode=regular_search&source_impression_id=p3_1755604437_P3qXfIdgKRZRnH0S&previous_page_section_name=1000&federated_search_id=9bb0f76e-4ff0-4de7-8661-8cd25a99aa17">
         Casco Viejo Loft - 4 Guests ($1k -> 7 nights)
     </a>
@@ -188,7 +188,7 @@ Apartments
 ![East Coast Living Room](/images/apartment-living-room.avif)
 
 ``` =html
-<p class="text-sky-400 underline flex flex-row justify-center">
+<p class="text-blue-700 underline flex flex-row justify-center">
     <a rel="noopener noreferrer" target="_blank" href="https://www.encuentra24.com/panama-es/bienes-raices-alquiler-apartamentos/apartamento-amueblado-165m2-3-recamaras-3-banos-completos-costa-del-este/30917047">
         East Coast Apartment - 3 Bdr / 3 Bth ($1750 a month)
     </a>
@@ -225,7 +225,7 @@ Restaurants
 ```
 
 ``` =html
-<p class="text-sky-400 underline flex flex-row justify-center">
+<p class="text-blue-700 underline flex flex-row justify-center">
     <a rel="noopener noreferrer" target="_blank" href="https://www.lapulperia.com.pa/">
         La Pulperia
     </a>

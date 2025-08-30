@@ -21,9 +21,7 @@
 - [x] Fix meta tags, they should be different per page
 - [x] Deprecate Google Fonts
 - [x] Add copy button
-- [ ] Image optimization
 - [x] Add syntax highlighter
-- [ ] Add automatic git based blog dates
 - [x] Add custom code block
 - [x] Add SEO attributes and images for embeds
 
