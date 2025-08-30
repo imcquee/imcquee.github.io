@@ -1,14 +1,14 @@
 import { defineConfig } from "vite";
 import gleam from "vite-gleam";
 import { spawn } from "node:child_process";
-import { readdirSync } from 'fs';
+import { readdirSync } from "fs";
 import * as fs from "node:fs";
 import * as path from "node:path";
 
 const CSS_IN = "static/website.css";
 const CSS_OUT_TMP = path.resolve(".dev/output.css");
 const CSS_OUT = path.resolve("priv/output.css");
-const jsDir = path.resolve('js');
+const jsDir = path.resolve("js");
 const entryPoints = {};
 
 function run(cmd, args, opts = {}) {
@@ -45,7 +45,7 @@ function devPlugin() {
     tailwindProc = spawn(
       "tailwindcss",
       ["-i", CSS_IN, "-o", CSS_OUT_TMP, "--watch"],
-      { stdio: "inherit" }
+      { stdio: "inherit" },
     );
 
     fs.watch(path.dirname(CSS_OUT_TMP), { persistent: true }, (_evt, f) => {
@@ -59,15 +59,24 @@ function devPlugin() {
     };
 
     process.on("exit", kill);
-    process.on("SIGINT", () => { kill(); process.exit(); });
-    process.on("SIGTERM", () => { kill(); process.exit(); });
-    tailwindProc.on("exit", () => { tailwindProc = null; });
+    process.on("SIGINT", () => {
+      kill();
+      process.exit();
+    });
+    process.on("SIGTERM", () => {
+      kill();
+      process.exit();
+    });
+    tailwindProc.on("exit", () => {
+      tailwindProc = null;
+    });
   };
 
   const buildGleamThenSyncCss = async (server, { reload = true } = {}) => {
     if (building) return;
     building = true;
     const ok = await run("gleam", ["run", "-m", "build"]);
+    await run("bun", ["run", "scripts/shiki.mjs"]);
     copyCssIntoPriv();
     if (ok && reload) {
       server.ws.send({ type: "full-reload" });
@@ -93,17 +102,16 @@ function devPlugin() {
       });
       server.httpServer?.once("close", () => {
         if (tailwindProc && !tailwindProc.killed) {
-           tailwindProc.kill();
+          tailwindProc.kill();
         }
       });
     },
   };
 }
 
-
-const jsFiles = readdirSync(jsDir).filter(file => file.endsWith('.js'));
-jsFiles.forEach(file => {
-  const name = file.replace('.js', '');
+const jsFiles = readdirSync(jsDir).filter((file) => file.endsWith(".js"));
+jsFiles.forEach((file) => {
+  const name = file.replace(".js", "");
   entryPoints[name] = path.join(jsDir, file);
 });
 
@@ -117,9 +125,9 @@ export default defineConfig({
     rollupOptions: {
       input: entryPoints,
       output: {
-        dir: './static/js',
-        entryFileNames: '[name].js',
-      }
-    }
-  }
+        dir: "./static/js",
+        entryFileNames: "[name].js",
+      },
+    },
+  },
 });

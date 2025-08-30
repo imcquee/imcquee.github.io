@@ -119,20 +119,6 @@ fn head(page: PageInfo) -> Element(a) {
       ],
       "",
     ),
-    html.script(
-      [
-        attribute.src("/js/shiki.js"),
-        attribute.attribute("type", "module"),
-      ],
-      "",
-    ),
-    html.script(
-      [
-        attribute.src("https://kit.fontawesome.com/a1771e9d5b.js"),
-        attribute.crossorigin("anonymous"),
-      ],
-      "",
-    ),
   ])
 }
 

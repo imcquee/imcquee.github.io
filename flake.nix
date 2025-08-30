@@ -51,6 +51,7 @@
             export XDG_CACHE_HOME=$TMPDIR/gleam-cache
             mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
             gleam run -m build
+            bun run scripts/shiki.mjs
             tailwindcss -i ./static/website.css -o ./priv/output.css --minify
           '';
           installPhase = ''

@@ -37,11 +37,7 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
                   attribute.attribute("data-copy", code),
                 ],
                 [
-                  element.element(
-                    "i",
-                    [class("fa-solid fa-copy fa-xl text-[#6F42C1]")],
-                    [],
-                  ),
+                  html.img([attribute.src("/images/copy.svg"), class("h-6 w-6")]),
                 ],
               ),
             ],
