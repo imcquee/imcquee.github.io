@@ -31,7 +31,7 @@ pub fn view() -> Element(a) {
         ]),
         link.render_link(
           link.External("https://github.com/imcquee/nix-home"),
-          [],
+          [class("text-blue-700 underline")],
           [
             element.text("Source"),
           ],

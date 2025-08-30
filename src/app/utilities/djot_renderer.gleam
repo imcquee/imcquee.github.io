@@ -32,7 +32,9 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
               html.p([class("text-xl")], [element.text(title)]),
               html.button(
                 [
-                  class("cursor-pointer"),
+                  class(
+                    "cursor-pointer hover:scale-120 transition-transform duration-200",
+                  ),
 
                   attribute.attribute("data-copy", code),
                 ],
