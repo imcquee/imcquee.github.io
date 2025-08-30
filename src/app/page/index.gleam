@@ -4,6 +4,7 @@ import gleam/option.{type Option, None, Some}
 import lustre/attribute.{class, classes}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/card
 import stateless_components/link
 
 type ImageSource {
@@ -111,25 +112,21 @@ fn get_card_container(
   full_width: Bool,
   content: List(Element(a)),
 ) -> Element(a) {
-  let style =
-    "w-full p-4 rounded-md border-2 border-black bg-white
-       cursor-pointer select-none
-       flex flex-col gap-2
-       transition ease-out duration-200
-       hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
-       active:translate-y-0
-       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+  let style = "w-full p-4 flex flex-col gap-2 h-full"
   case action {
     Link(link) ->
       link.render_link(
         link,
         [
-          classes([#("col-span-full", full_width), #(style, True)]),
+          classes([#("col-span-full", full_width)]),
         ],
-        content,
+        [
+          card.render_card(True, [class(style)], content),
+        ],
       )
     Copy(text) ->
-      html.div(
+      card.render_card(
+        True,
         [
           attribute.role("button"),
           attribute.attribute("data-copy", text),

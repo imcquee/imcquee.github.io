@@ -24,7 +24,7 @@ async function highlightHtml(html: string): Promise<string> {
     const shikiHtml = await codeToHtml(code, {
       lang,
       theme: "github-light",
-      meta: { class: "p-4 bg-white whitespace-pre-wrap break-words" },
+      meta: { class: "p-4 whitespace-pre-wrap break-words" },
     });
 
     const wrapper = document.createElement("div");

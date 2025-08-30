@@ -3,16 +3,17 @@ import gleam/list
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/card
 import stateless_components/link
 
-type Card(a) {
-  Card(title: String, content: List(Element(a)))
+type Project(a) {
+  Project(title: String, content: List(Element(a)))
 }
 
-fn card_to_element(card: Card(a)) {
-  html.div([class("border-2 border-black rounded-md bg-white p-8")], [
-    html.h1([class("text-4xl mb-8")], [element.text(card.title)]),
-    ..card.content
+fn project_to_element(project: Project(a)) {
+  card.render_card(False, [class("p-8")], [
+    html.h1([class("text-4xl mb-8")], [element.text(project.title)]),
+    ..project.content
   ])
 }
 
@@ -20,7 +21,7 @@ pub fn view() -> Element(a) {
   html.div(
     [class("grid grid-cols-3 w-screen gap-12 px-12")],
     [
-      Card("NixOS Configuration", [
+      Project("NixOS Configuration", [
         html.p([], [
           element.text(
             "My Nix config for NixOS, Darwin, and Linux based environments",
@@ -38,7 +39,7 @@ pub fn view() -> Element(a) {
         ),
       ]),
     ]
-      |> list.map(fn(card) { card_to_element(card) }),
+      |> list.map(fn(card) { project_to_element(card) }),
   )
   |> content.view_page(content.PageInfo(
     title: "Projects Page",
