@@ -22,10 +22,10 @@
 - [x] Deprecate Google Fonts
 - [x] Add copy button
 - [ ] Image optimization
-- [ ] Add syntax highlighter
+- [x] Add syntax highlighter
 - [ ] Fix Nix cache error
 - [ ] Add automatic git based blog dates
-- [ ] Add custom code block
+- [x] Add custom code block
 - [x] Add SEO attributes and images for embeds
 
 ### Credit
