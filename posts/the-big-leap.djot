@@ -11,15 +11,6 @@ tags = "travel|motivation|languages"
 <img class="pt-4 mx-auto md:max-w-3/5" src="/images/valencia.jpg" alt="Valencia Cover" fetchpriority="high" />
 ```
 
-{title="hello.gleam"}
-```gleam
-import gleam/io
-
-pub fn main() {
-  io.println("Hello, world!")
-}
-```
-
 {class="italic self-center"}
 跳 = Han Symbol for Leap/Jump
 
