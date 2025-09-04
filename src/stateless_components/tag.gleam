@@ -16,7 +16,6 @@ pub type Color {
 
 pub type Tag {
   Travel
-  Motivation
   Programming
   Gleam
   Languages
@@ -38,7 +37,6 @@ pub fn string_to_tag(tag_name: String) -> Result(TagInfo, TagError) {
     "programming" -> Ok(TagInfo(Programming, Blue))
     "music" -> Ok(TagInfo(Music, Green))
     "food" -> Ok(TagInfo(Food, Purple))
-    "motivation" -> Ok(TagInfo(Motivation, Yellow))
     "languages" -> Ok(TagInfo(Languages, Orange))
     "gleam" -> Ok(TagInfo(Gleam, Pink))
     _ -> Error(TagNotFound("Tag not found, please add it"))
@@ -51,7 +49,6 @@ pub fn to_string(tag: Tag, color: Color) -> #(String, String) {
     Music -> "Music"
     Food -> "Food"
     Travel -> "Travel"
-    Motivation -> "Motivation"
     Languages -> "Languages"
     Gleam -> "Gleam"
   }
