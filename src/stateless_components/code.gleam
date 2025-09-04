@@ -21,7 +21,9 @@ pub fn render_code_snippet(
     [
       html.div(
         [
-          class("flex flex-row p-2 border-b-1 border-black justify-between"),
+          class(
+            "flex flex-row p-2 bg-white border-b-1 border-black justify-between",
+          ),
         ],
         [
           html.p([class("text-xl")], [element.text(title)]),

@@ -24,6 +24,9 @@
 - [x] Add syntax highlighter
 - [x] Add custom code block
 - [x] Add SEO attributes and images for embeds
+- [x] Add date sorting
+- [x] Add Shiki diff highlighting
+- [ ] Replace shoelace with [grille-pain](https://github.com/ghivert/grille-pain)
 
 ### Credit
 

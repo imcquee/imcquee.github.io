@@ -24,7 +24,6 @@
         typescript-language-server
         codebook
         ffmpeg
-        elixir
       ];
     in
     {

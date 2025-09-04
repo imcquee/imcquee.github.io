@@ -1,4 +1,5 @@
 import app/page/post.{type Post}
+import app/utilities/date
 import content
 import gleam/list
 import lustre/attribute.{class}
@@ -9,9 +10,14 @@ import stateless_components/link
 import stateless_components/tag
 
 pub fn view(list: List(Post)) -> Element(a) {
+  let sorted_list =
+    list
+    |> list.sort(fn(post1, post2) {
+      date.compare_post_dates(post1.metadata.date, post2.metadata.date)
+    })
   html.div(
     [class("w-screen md:px-12 px-4 flex flex-col gap-4")],
-    list.map(list, fn(post) {
+    list.map(sorted_list, fn(post) {
       link.render_link(link.Internal("./blog/" <> post.metadata.slug), [], [
         card.render_card(
           True,
@@ -34,7 +40,7 @@ pub fn view(list: List(Post)) -> Element(a) {
               ]),
               tag.render_tags(post.metadata.tags, [class("text-sm")]),
               html.h1([class("italic md:text-lg")], [
-                element.text(post.metadata.date),
+                element.text(post.metadata.date |> date.pretty_print()),
               ]),
               html.p([class("italic md:text-lg")], [
                 element.text(post.metadata.description),

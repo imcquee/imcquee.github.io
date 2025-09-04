@@ -2,6 +2,7 @@
   "name": "imcquee.github.io",
   "private": true,
   "devDependencies": {
+    "@shikijs/transformers": "^3.12.1",
     "@types/bun": "latest"
   },
   "peerDependencies": {

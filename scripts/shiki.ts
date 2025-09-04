@@ -2,6 +2,10 @@ import { codeToHtml } from "shiki";
 import { glob } from "glob";
 import { readFile, writeFile } from "node:fs/promises";
 import { parseHTML } from "linkedom";
+import {
+  transformerNotationHighlight,
+  transformerNotationDiff,
+} from "@shikijs/transformers";
 
 function detectLang(codeEl: Element): string {
   const dl = codeEl.getAttribute("data-lang");
@@ -25,6 +29,7 @@ async function highlightHtml(html: string): Promise<string> {
       lang,
       theme: "github-light",
       meta: { class: "p-4 whitespace-pre-wrap break-words" },
+      transformers: [transformerNotationDiff(), transformerNotationHighlight()],
     });
 
     const wrapper = document.createElement("div");

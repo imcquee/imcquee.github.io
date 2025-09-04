@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.line.diff.remove {
+  @apply !bg-red-500/30;
+}
+
+.line.diff.add {
+  @apply !bg-green-500/30;
+}
