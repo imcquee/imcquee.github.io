@@ -3,7 +3,6 @@ import app/page/blog
 import app/page/index
 import app/page/post
 import app/page/projects
-import app/utilities/date
 import gleam/dict
 import gleam/io
 import gleam/list
