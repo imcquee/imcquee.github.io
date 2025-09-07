@@ -1,4 +1,4 @@
-import { main } from '../src/components/counter.gleam'
+import { main } from "../src/components/clipboard.gleam";
 
 document.addEventListener("DOMContentLoaded", () => {
   const dispatch = main({});

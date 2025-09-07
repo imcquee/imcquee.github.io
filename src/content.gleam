@@ -97,25 +97,10 @@ fn head(page: PageInfo) -> Element(a) {
       attribute.type_("text/css"),
       attribute.rel("stylesheet"),
     ]),
-    html.link([
-      attribute.rel("stylesheet"),
-      attribute.href(
-        "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css",
-      ),
-    ]),
     html.script(
       [
         attribute.attribute("type", "module"),
-        attribute.src(
-          "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js",
-        ),
-      ],
-      "",
-    ),
-    html.script(
-      [
-        attribute.src("/js/copy.js"),
-        attribute.attribute("type", "module"),
+        attribute.src("/js/clipboard.js"),
       ],
       "",
     ),

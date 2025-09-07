@@ -2,6 +2,7 @@ import gleam/dict.{type Dict}
 import lustre/attribute.{attribute, class}
 import lustre/element
 import lustre/element/html
+import stateless_components/copy_button
 
 fn to_attributes(attrs) {
   use attrs, key, val <- dict.fold(attrs, [])
@@ -27,18 +28,7 @@ pub fn render_code_snippet(
         ],
         [
           html.p([class("text-xl")], [element.text(title)]),
-          html.button(
-            [
-              class(
-                "cursor-pointer hover:scale-120 transition-transform duration-200",
-              ),
-
-              attribute.attribute("data-copy", code),
-            ],
-            [
-              html.p([class("text-2xl")], [element.text("📋")]),
-            ],
-          ),
+          copy_button.render_copy_button(code),
         ],
       ),
       html.pre(to_attributes(attrs), [

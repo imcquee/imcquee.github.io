@@ -1,0 +1,30 @@
+import gleam/javascript/array
+import gleam/list
+import gleam/result
+import grille_pain
+import grille_pain/options
+import grille_pain/toast
+import plinth/browser/clipboard
+import plinth/browser/document
+import plinth/browser/element
+
+pub fn main() {
+  let elements =
+    document.query_selector_all("[copy_button]")
+    |> array.to_list()
+
+  let assert Ok(_) =
+    options.default() |> options.timeout(2000) |> grille_pain.setup()
+
+  list.index_map(elements, fn(element, _index) {
+    let copy_text =
+      element.get_attribute(element, "data-copy")
+      |> result.unwrap("")
+
+    element.add_event_listener(element, "click", fn(_event) {
+      clipboard.write_text(copy_text)
+      toast.info("Copied!")
+      Nil
+    })
+  })
+}

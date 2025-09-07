@@ -129,6 +129,7 @@ fn get_card_container(
         True,
         [
           attribute.role("button"),
+          attribute.attribute("copy_button", ""),
           attribute.attribute("data-copy", text),
           classes([#("col-span-full", full_width), #(style, True)]),
         ],

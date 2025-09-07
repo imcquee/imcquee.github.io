@@ -1,0 +1,91 @@
+---
+slug = "lustre-blog-guide"
+title = "Building a blog with Lustre SSG"
+date = "2025-08-01"
+description = "Building a very simple blog using Gleam, Lustre, and Tailwind. Sigh... and a little bit of js"
+preview_img = "/images/lucy.svg"
+tags = "programming|gleam"
+---
+
+``` =html
+<img class="pt-4 mx-auto min-w-1/4 md:max-w-3/5" src="/images/lucy.svg" alt="Lucy Cover" fetchpriority="high" />
+```
+
+
+{class="italic self-center"}
+Meet Lucy - The protagonist in the Gleam universe
+
+\
+There's so many ways to build a blog. You can use ol' reliable [WordPress](https://wordpress.org), or some newer CMS like [Ghost](https://ghost.org). If you
+desire more control, and work with a popular frontend framework such as React, you can simply use [Astro](https://astro.build/).
+Astro builds the static content for you, so there's no React overhead at runtime. You just get a fast and performant static site without any trouble.
+The motivation to build a site with a lower level abstraction than these can only be, as the kids say: *For the love of the game*.
+
+\
+I built this site using Lustre and Gleam because I find it very enjoyable to not only write Gleam code, but to refactor it as well.
+So when we inevitably leave our blog unmaintained for a year, it's very simple to get back on the horse. The development environment is pretty
+easy to setup, the language is easy to use for basic tasks, and the compiler pretty much holds your hand the entire time (but doesn't squeeze 🙂).
+
+\
+If you're still reading I'm assuming you didn't listen to my warnings and want to proceed building your blog with gleam and lustre. Yay!
+
+\
+By the end of this guide you will have:
+
+- Lustre static site including a home page and blog
+- Hot reload environment to edit your site in real time
+- Code component with syntax highlighting and copy support for code snippets
+
+### What we'll need:
+
+* [*Gleam*](https://gleam.run) (Highly recommend version 1.12.0 and greater)
+* Any JS Runtime like Bun, Deno, NodeJS (For this guide I'll be using [*Bun*](https://bun.com/))
+* Any modern text editor that supports [LSP](https://microsoft.github.io/language-server-protocol/)
+* A [Github](https://github.com) account (You can host your site any way you'd like, Github pages is free and easy so that's what I'm using here)
+
+\
+I use Nix for my project dependencies, but for this guide I will go through normal installation. Here's the nix config for those interested: [flake.nix](https://github.com/imcquee/imcquee.github.io/blob/main/flake.nix)
+
+\
+First let's install Gleam and Bun
+
+[Gleam Instructions](https://gleam.run/getting-started/installing/)
+
+[Bun Instructions](https://bun.com/docs/installation)
+
+\
+Then quickly verify the versions:
+
+{title="bash"}
+```bash
+gleam --version && echo "bun $(bun --version)"
+```
+
+I recommend gleam version of *1.12.0* or higher and a bun version of *1.2* and above. Other versions should work fine but this is what I used for this guide.
+
+\
+Sweet! Now we're ready to start. Let's create a new gleam project called *website*
+
+{title="bash"}
+```bash
+gleam new website
+cd website
+```
+Let's go ahead and initialize the bun dependencies as well (and remove unnecessary root)
+
+{title="bash"}
+```bash
+bun init -y
+rm index.ts
+```
+
+Gleam creates our .gitignore, but now we need to add node_modules now that we've initialized a typescript project
+
+{title=".gitignore"}
+```tsx
+*.beam
+*.ez
+/build
+erl_crash.dump
+node_modules/ // [!code ++]
+```
