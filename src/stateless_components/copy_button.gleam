@@ -3,7 +3,7 @@ import lustre/element
 import lustre/element/html
 
 pub fn render_copy_button(text_to_copy: String) {
-  html.div(
+  html.button(
     [
       attribute.attribute("copy_button", ""),
       attribute.attribute("data-copy", text_to_copy),

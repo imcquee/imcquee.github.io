@@ -8,11 +8,9 @@ import gleam/io
 import gleam/list
 import lustre/ssg
 
-const out_dir = "./priv"
-
-const static_dir = "./static"
-
 pub fn main() {
+  let static_dir = "./static"
+  let out_dir = "./priv"
   let posts =
     list.map(posts.all(), fn(post) { #(post.metadata.slug, post) })
     |> dict.from_list()

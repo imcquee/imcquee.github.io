@@ -42,7 +42,7 @@ pub fn view(list: List(Post)) -> Element(a) {
               html.h1([class("italic md:text-lg")], [
                 element.text(post.metadata.date |> date.pretty_print()),
               ]),
-              html.p([class("italic md:text-lg")], [
+              html.p([class("md:text-lg")], [
                 element.text(post.metadata.description),
               ]),
             ]),

@@ -2,7 +2,7 @@
 slug = "lustre-blog-guide"
 title = "Building a blog with Lustre SSG"
 date = "2025-08-01"
-description = "Building a very simple blog using Gleam, Lustre, and Tailwind. Sigh... and a little bit of js"
+description = "Building a very simple blog using Gleam, Lustre, and Tailwind. No JS required 😎"
 preview_img = "/images/lucy.svg"
 tags = "programming|gleam"
 ---
@@ -94,11 +94,9 @@ Now navigate to the src directory in the root and rename the file *website.gleam
 import gleam/io
 import lustre/ssg
 
-const out_dir = "./priv"
-
-const static_dir = "./static"
-
 pub fn main() {
+  let out_dir = "./priv"
+  let static_dir = "./static"
   let build =
     ssg.new(out_dir)
     |> ssg.add_static_route("/", todo)
@@ -126,12 +124,37 @@ The code here is very readable and self explanatory (Thank you Hayleigh and Loui
 
 4. [Pattern Match](https://tour.gleam.run/flow-control/case-expressions/) on the build, logging error if matched
 
-5. The [todo](https://tour.gleam.run/advanced-features/todo/) keyword is a convenient placeholder we can use until we finish our home page
+{class="italic"}
+\
+Note: The [todo](https://tour.gleam.run/advanced-features/todo/) keyword is a convenient placeholder we can use until we finish our home page
 
 \
-We're ready to build our home page!
+Create a new file in the */src* directory called *layout.gleam*. This is will contain helper functions to scaffold our html on each page
 
-\
+{title="layout.gleam"}
+```gleam
+import gleam/io
+import lustre/ssg
+
+pub fn main() {
+  let out_dir = "./priv"
+  let static_dir = "./static"
+  let build =
+    ssg.new(out_dir)
+    |> ssg.add_static_route("/", todo)
+    |> ssg.add_static_dir(static_dir)
+    |> ssg.build
+
+  case build {
+    Ok(_) -> io.println("Build succeeded!")
+    Error(e) -> {
+      echo e
+      io.println("Build failed!")
+    }
+  }
+}
+```
+
 Still in our */src* directory, let's create a new directory *app* and a second directory inside that called *page*. Finally, we can create
 *home.gleam* in the *page* directory. Let's also take this time to create our *static* directory in the root. The resulting file structure
 should contain these folders and files:
@@ -143,6 +166,7 @@ should contain these folders and files:
 ├── static/
 └── src/
     ├── build.gleam
+    ├── layout.gleam
     └── app/
         └── page/
             └── home.gleam
@@ -152,3 +176,72 @@ should contain these folders and files:
 ```gleam
 echo "hello gall"
 ```
+
+### Dynamic Content
+
+All of our website content is currently static and determined at build time. This keeps our site fast, predictable and easy to manage.
+However, there are a few instances where you might want side-effects. In this case, we want to extend our code snippet component by adding the ability to copy code to a user's clipboard.
+
+\
+Thankfully a few gleam packages make this very simple to do:
+
+[Plinth](https://github.com/CrowdHailer/plinth) Provides us js bindings for common browser APIs like the clipboard API
+
+[Grille_Pain](https://github.com/ghivert/grille-pain) Gives us the ability to display a toast notification when our user hits the copy button
+
+{title="shell"}
+```bash
+gleam add plinth
+gleam add grille_pain
+gleam add gleam_javascript
+```
+
+Let's create a new directory called *components* in the */src* directory. This will contain any components that have side-effects. For our clipboard interaction,
+we want to build a script attached to our html that will interact with the DOM, adding event listeners that will trigger on a click event.
+
+{title="clipboard.gleam"}
+```gleam
+import gleam/javascript/array
+import gleam/list
+import gleam/result
+import grille_pain
+import grille_pain/options
+import grille_pain/toast
+import plinth/browser/clipboard
+import plinth/browser/document
+import plinth/browser/element
+
+pub fn main() {
+  let elements =
+    document.query_selector_all("[copy_button]")
+    |> array.to_list()
+
+  let assert Ok(_) =
+    options.default() |> options.timeout(2000) |> grille_pain.setup()
+
+  list.index_map(elements, fn(element, _index) {
+    let copy_text =
+      element.get_attribute(element, "data-copy")
+      |> result.unwrap("")
+
+    element.add_event_listener(element, "click", fn(_event) {
+      clipboard.write_text(copy_text)
+      toast.info("Copied!")
+      Nil
+    })
+  })
+}
+```
+
+### Next Steps
+
+Now that you have a foundation, there's so many features you can add like:
+
+* Syntax highlighting for other languages, there's some gleam projects like [Glimra](https://github.com/ollema/glimra) - [Just](https://github.com/GearsDatapacks/just) - [Pearl](https://github.com/GearsDatapacks/pearl)
+* [Mermaid](https://mermaid.js.org/) rendering
+* Auto image optimization
+* Auto timestamps (and update timestamps)
+* Comment section like [Giscus](https://github.com/giscus/giscus)
+* Add hot reloading (Detailed in this blog post)
+* Old fashioned visitor counter or more complex blog analytics
+

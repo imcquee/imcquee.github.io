@@ -26,7 +26,8 @@
 - [x] Add SEO attributes and images for embeds
 - [x] Add date sorting
 - [x] Add Shiki diff highlighting
-- [ ] Replace shoelace with [grille-pain](https://github.com/ghivert/grille-pain)
+- [x] Replace shoelace with [grille-pain](https://github.com/ghivert/grille-pain)
+- [ ] Move dirs to env
 
 ### Credit
 
