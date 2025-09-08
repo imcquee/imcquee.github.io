@@ -27,10 +27,10 @@ So when we inevitably leave our blog unmaintained for a year, it's very simple t
 easy to setup, the language is easy to use for basic tasks, and the compiler pretty much holds your hand the entire time (but doesn't squeeze 🙂).
 
 \
-If you're still reading I'm assuming you didn't listen to my warnings and want to proceed building your blog with gleam and lustre. Yay!
+If you're still reading I'm assuming you didn't listen to my warnings and want to proceed building your blog with Gleam and Lustre. Yay!
 
 \
-By the end of this guide you will have:
+By the end of this guide you will have created:
 
 - Lustre static site including a home page and blog
 - Hot reload environment to edit your site in real time
@@ -41,7 +41,6 @@ By the end of this guide you will have:
 * [*Gleam*](https://gleam.run) (Highly recommend version 1.12.0 and greater)
 * Any JS Runtime like Bun, Deno, NodeJS (For this guide I'll be using [*Bun*](https://bun.com/))
 * Any modern text editor that supports [LSP](https://microsoft.github.io/language-server-protocol/)
-* A [Github](https://github.com) account (You can host your site any way you'd like, Github pages is free and easy so that's what I'm using here)
 
 \
 I use Nix for my project dependencies, but for this guide I will go through normal installation. Here's the nix config for those interested: [flake.nix](https://github.com/imcquee/imcquee.github.io/blob/main/flake.nix)
@@ -56,36 +55,100 @@ First let's install Gleam and Bun
 \
 Then quickly verify the versions:
 
-{title="bash"}
+{title="shell"}
 ```bash
 gleam --version && echo "bun $(bun --version)"
 ```
 
-I recommend gleam version of *1.12.0* or higher and a bun version of *1.2* and above. Other versions should work fine but this is what I used for this guide.
+I recommend gleam version of *1.12.0* or higher, any bun version should work fine.
 
 \
 Sweet! Now we're ready to start. Let's create a new gleam project called *website*
 
-{title="bash"}
+{title="shell"}
 ```bash
 gleam new website
 cd website
 ```
-Let's go ahead and initialize the bun dependencies as well (and remove unnecessary root)
 
-{title="bash"}
+Per Lustre SSG documentation, we should add lustre_ssg as a dev dependency for our project. Remember that lustre ssg is very simple to use,
+you give it a few instructions, and it orchestrates the building of your static site. We only rely on it at build time.
+
+\
+We're also going to add tailwind using lustre dev tools. You can always use traditional CSS, but this guide will be using tailwind.
+
+
+{title="shell"}
 ```bash
-bun init -y
-rm index.ts
+gleam add lustre
+gleam add lustre_ssg --dev
+gleam add lustre_dev_tools --dev
+gleam run -m lustre/dev add tailwind
 ```
 
-Gleam creates our .gitignore, but now we need to add node_modules now that we've initialized a typescript project
+Now navigate to the src directory in the root and rename the file *website.gleam* to *build.gleam*. This will be the initial contents:
 
-{title=".gitignore"}
-```tsx
-*.beam
-*.ez
-/build
-erl_crash.dump
-node_modules/ // [!code ++]
+
+{title="build.gleam"}
+```gleam
+import gleam/io
+import lustre/ssg
+
+const out_dir = "./priv"
+
+const static_dir = "./static"
+
+pub fn main() {
+  let build =
+    ssg.new(out_dir)
+    |> ssg.add_static_route("/", todo)
+    |> ssg.add_static_dir(static_dir)
+    |> ssg.build
+
+  case build {
+    Ok(_) -> io.println("Build succeeded!")
+    Error(e) -> {
+      echo e
+      io.println("Build failed!")
+    }
+  }
+}
+```
+
+The code here is very readable and self explanatory (Thank you Hayleigh and Louis). In this file we:
+
+\
+1. Initialize lustre ssg
+
+2. Define an out directory which will hold our generated static html and assets after building
+
+3. Add our first static page which will eventually be our home page
+
+4. [Pattern Match](https://tour.gleam.run/flow-control/case-expressions/) on the build, logging error if matched
+
+5. The [todo](https://tour.gleam.run/advanced-features/todo/) keyword is a convenient placeholder we can use until we finish our home page
+
+\
+We're ready to build our home page!
+
+\
+Still in our */src* directory, let's create a new directory *app* and a second directory inside that called *page*. Finally, we can create
+*home.gleam* in the *page* directory. Let's also take this time to create our *static* directory in the root. The resulting file structure
+should contain these folders and files:
+
+{title="Directory"}
+{not_copyable="true"}
+```bash
+.
+├── static/
+└── src/
+    ├── build.gleam
+    └── app/
+        └── page/
+            └── home.gleam
+```
+
+{title="home.gleam"}
+```gleam
+echo "hello gall"
 ```

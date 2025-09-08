@@ -1,136 +1,176 @@
 import { defineConfig, type ViteDevServer, type Plugin } from "vite";
 import gleam from "vite-gleam";
-import { spawn, ChildProcess } from "node:child_process";
-import { readdirSync } from "fs";
-import * as fs from "node:fs";
-import * as path from "node:path";
+import { spawn, type ChildProcess } from "node:child_process";
+import {
+  readdirSync,
+  mkdirSync,
+  existsSync,
+  copyFileSync,
+  watch,
+} from "node:fs";
+import { resolve, dirname, basename, join } from "node:path";
 
-const CSS_IN = "website.css";
-const CSS_OUT_TMP = path.resolve(".dev/output.css");
-const CSS_OUT = path.resolve("priv/output.css");
-const jsDir = path.resolve("js");
-const entryPoints: Record<string, string> = {};
+// Configuration constants
+const PATHS = {
+  cssInput: "website.css",
+  cssTempOutput: resolve(".dev/output.css"),
+  cssOutput: resolve("priv/output.css"),
+  jsDir: resolve("js"),
+  srcDir: "src",
+  postsDir: "posts",
+} as const;
 
-function run(cmd: string, args: string[], opts: object = {}): Promise<boolean> {
+// Utility functions
+function runCommand(cmd: string, args: string[]): Promise<boolean> {
   return new Promise((resolve) => {
-    const proc = spawn(cmd, args, { stdio: "inherit", ...opts });
+    const proc = spawn(cmd, args, { stdio: "inherit" });
     proc.on("close", (code) => resolve(code === 0));
   });
 }
 
-function copyCssIntoPriv(): void {
-  fs.mkdirSync(path.dirname(CSS_OUT), { recursive: true });
-  if (fs.existsSync(CSS_OUT_TMP)) {
-    fs.copyFileSync(CSS_OUT_TMP, CSS_OUT);
+function createDebouncer(delay: number) {
+  let timeout: NodeJS.Timeout | null = null;
+  return (fn: () => void) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(fn, delay);
+  };
+}
+
+function copyCssToOutput(): void {
+  mkdirSync(dirname(PATHS.cssOutput), { recursive: true });
+  if (existsSync(PATHS.cssTempOutput)) {
+    copyFileSync(PATHS.cssTempOutput, PATHS.cssOutput);
   }
 }
 
-function makeDebounce(ms: number): (fn: () => void) => void {
-  let t: NodeJS.Timeout | null = null;
-  return (fn: () => void) => {
-    if (t) clearTimeout(t);
-    t = setTimeout(fn, ms);
-  };
+function getJsEntryPoints(): Record<string, string> {
+  const jsFiles = readdirSync(PATHS.jsDir).filter((file) =>
+    file.endsWith(".js"),
+  );
+  return jsFiles.reduce(
+    (entries, file) => {
+      const name = file.replace(".js", "");
+      entries[name] = join(PATHS.jsDir, file);
+      return entries;
+    },
+    {} as Record<string, string>,
+  );
 }
 
-function devPlugin(): Plugin {
-  let building = false;
-  let tailwindProc: ChildProcess | null = null;
-  const debounceBuild = makeDebounce(100);
-  const debounceCss = makeDebounce(50);
+// Main plugin
+function createDevPlugin(): Plugin {
+  let isBuilding = false;
+  let tailwindProcess: ChildProcess | null = null;
 
-  const startTailwindWatch = async (): Promise<void> => {
-    if (tailwindProc) return;
-    fs.mkdirSync(path.dirname(CSS_OUT_TMP), { recursive: true });
-    tailwindProc = spawn(
+  const debounceBuild = createDebouncer(100);
+  const debounceCss = createDebouncer(50);
+
+  async function startTailwindWatcher(): Promise<void> {
+    if (tailwindProcess) return;
+
+    // Ensure temp directory exists
+    mkdirSync(dirname(PATHS.cssTempOutput), { recursive: true });
+
+    // Start Tailwind CSS watcher
+    tailwindProcess = spawn(
       "tailwindcss",
-      ["-i", CSS_IN, "-o", CSS_OUT_TMP, "--watch"],
+      ["-i", PATHS.cssInput, "-o", PATHS.cssTempOutput, "--watch"],
       { stdio: "inherit" },
     );
 
-    fs.watch(path.dirname(CSS_OUT_TMP), { persistent: true }, (_evt, f) => {
-      if (f === path.basename(CSS_OUT_TMP)) copyCssIntoPriv();
+    // Watch for Tailwind output changes
+    watch(dirname(PATHS.cssTempOutput), { persistent: true }, (_, filename) => {
+      if (filename === basename(PATHS.cssTempOutput)) {
+        copyCssToOutput();
+      }
     });
 
-    const kill = (): void => {
-      if (tailwindProc && !tailwindProc.killed) {
-        tailwindProc.kill();
+    // Setup cleanup handlers
+    const cleanup = () => {
+      if (tailwindProcess && !tailwindProcess.killed) {
+        tailwindProcess.kill();
       }
     };
 
-    process.on("exit", kill);
+    process.on("exit", cleanup);
     process.on("SIGINT", () => {
-      kill();
+      cleanup();
       process.exit();
     });
     process.on("SIGTERM", () => {
-      kill();
+      cleanup();
       process.exit();
     });
 
-    tailwindProc.on("exit", () => {
-      tailwindProc = null;
+    tailwindProcess.on("exit", () => {
+      tailwindProcess = null;
     });
-  };
+  }
 
-  const buildGleamThenSyncCss = async (
+  async function buildGleamAndSyncCss(
     server: ViteDevServer,
-    { reload = true }: { reload?: boolean } = {},
-  ): Promise<void> => {
-    if (building) return;
-    building = true;
-    const ok = await run("gleam", ["run", "-m", "build"]);
-    await run("bun", ["run", "scripts/shiki.ts"]);
-    copyCssIntoPriv();
-    if (ok && reload) {
-      server.ws.send({ type: "full-reload" });
+    shouldReload = true,
+  ): Promise<void> {
+    if (isBuilding) return;
+
+    isBuilding = true;
+    const debounceBuild = createDebouncer(100);
+    try {
+      const gleamSuccess = await runCommand("gleam", ["run", "-m", "build"]);
+      await runCommand("bun", ["run", "scripts/shiki.ts"]);
+      copyCssToOutput();
+
+      if (gleamSuccess && shouldReload) {
+        debounceBuild(() => server.ws.send({ type: "full-reload" }));
+      }
+    } finally {
+      isBuilding = false;
     }
-    building = false;
-  };
+  }
 
   return {
-    name: "gleam-tailwind",
+    name: "gleam-tailwind-dev",
+
     async configureServer(server: ViteDevServer) {
-      copyCssIntoPriv();
-      await buildGleamThenSyncCss(server, { reload: false });
-      await startTailwindWatch();
+      // Initial setup
+      copyCssToOutput();
+      await buildGleamAndSyncCss(server, false);
+      await startTailwindWatcher();
 
-      server.watcher.add("src");
-      server.watcher.add("posts");
-      server.watcher.add(CSS_IN);
+      // Setup file watchers
+      server.watcher.add(PATHS.srcDir);
+      server.watcher.add(PATHS.postsDir);
+      server.watcher.add(PATHS.cssInput);
 
-      server.watcher.on("change", (file: string) => {
-        if (file.endsWith(".gleam") || file.endsWith(".djot")) {
-          debounceBuild(() => buildGleamThenSyncCss(server, { reload: true }));
-        } else if (file.endsWith("website.css")) {
-          debounceCss(copyCssIntoPriv);
+      // Handle file changes
+      server.watcher.on("change", (filePath: string) => {
+        if (filePath.endsWith(".gleam") || filePath.endsWith(".djot")) {
+          debounceBuild(() => buildGleamAndSyncCss(server, true));
+        } else if (filePath.endsWith("website.css")) {
+          debounceCss(copyCssToOutput);
         }
       });
 
+      // Cleanup on server close
       server.httpServer?.once("close", () => {
-        if (tailwindProc && !tailwindProc.killed) {
-          tailwindProc.kill();
+        if (tailwindProcess && !tailwindProcess.killed) {
+          tailwindProcess.kill();
         }
       });
     },
   };
 }
 
-const jsFiles = readdirSync(jsDir).filter((file) => file.endsWith(".js"));
-jsFiles.forEach((file) => {
-  const name = file.replace(".js", "");
-  entryPoints[name] = path.join(jsDir, file);
-});
-
+// Export configuration
 export default defineConfig(async () => ({
   root: "./priv",
-  plugins: [devPlugin(), (await gleam()) as Plugin],
+  plugins: [createDevPlugin(), (await gleam()) as Plugin],
   server: {
     watch: { ignored: [] },
   },
   build: {
     rollupOptions: {
-      input: entryPoints,
+      input: getJsEntryPoints(),
       output: {
         dir: "./static/js",
         entryFileNames: "[name].js",
