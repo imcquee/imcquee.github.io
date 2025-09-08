@@ -24,9 +24,10 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
     ..djot.default_renderer(),
     codeblock: fn(attrs, lang, code) {
       let lang = option.unwrap(lang, "text")
+      let not_copyable = dict.has_key(attrs, "not_copyable")
       let assert Ok(title) = dict.get(attrs, "title")
         as "Please title this codeblock ex. {title='hello_world.gleam'}"
-      code.render_code_snippet(title:, code:, lang:, attrs:)
+      code.render_code_snippet(title:, code:, lang:, attrs:, not_copyable:)
     },
     heading: fn(_, level, content) {
       case level {
