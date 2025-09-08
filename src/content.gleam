@@ -100,9 +100,8 @@ fn head(page: PageInfo) -> Element(a) {
     html.script(
       [
         attribute.attribute("type", "module"),
-        attribute.src("/js/clipboard.js"),
       ],
-      "",
+      "import{main}from'/js/clipboard.js';document.addEventListener(\"DOMContentLoaded\",()=>{main({})});",
     ),
   ])
 }

@@ -27,6 +27,7 @@
 - [x] Add date sorting
 - [x] Add Shiki diff highlighting
 - [x] Replace shoelace with [grille-pain](https://github.com/ghivert/grille-pain)
+- [x] Switch components from building with vite to esgleam
 - [ ] Move dirs to env
 
 ### Credit

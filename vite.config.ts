@@ -15,7 +15,6 @@ const PATHS = {
   cssInput: "website.css",
   cssTempOutput: resolve(".dev/output.css"),
   cssOutput: resolve("priv/output.css"),
-  jsDir: resolve("js"),
   srcDir: "src",
   postsDir: "posts",
 } as const;
@@ -41,20 +40,6 @@ function copyCssToOutput(): void {
   if (existsSync(PATHS.cssTempOutput)) {
     copyFileSync(PATHS.cssTempOutput, PATHS.cssOutput);
   }
-}
-
-function getJsEntryPoints(): Record<string, string> {
-  const jsFiles = readdirSync(PATHS.jsDir).filter((file) =>
-    file.endsWith(".js"),
-  );
-  return jsFiles.reduce(
-    (entries, file) => {
-      const name = file.replace(".js", "");
-      entries[name] = join(PATHS.jsDir, file);
-      return entries;
-    },
-    {} as Record<string, string>,
-  );
 }
 
 // Main plugin
@@ -164,17 +149,17 @@ function createDevPlugin(): Plugin {
 // Export configuration
 export default defineConfig(async () => ({
   root: "./priv",
-  plugins: [createDevPlugin(), (await gleam()) as Plugin],
+  plugins: [createDevPlugin()],
   server: {
     watch: { ignored: [] },
   },
-  build: {
-    rollupOptions: {
-      input: getJsEntryPoints(),
-      output: {
-        dir: "./static/js",
-        entryFileNames: "[name].js",
-      },
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     input: getJsEntryPoints(),
+  //     output: {
+  //       dir: "./static/js",
+  //       entryFileNames: "[name].js",
+  //     },
+  //   },
+  // },
 }));

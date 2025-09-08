@@ -3,6 +3,7 @@ import app/page/blog
 import app/page/index
 import app/page/post
 import app/page/projects
+import esgleam
 import gleam/dict
 import gleam/io
 import gleam/list
@@ -31,4 +32,8 @@ pub fn main() {
       io.println("Build failed!")
     }
   }
+
+  esgleam.new("./static/js")
+  |> esgleam.entry("/components/clipboard.gleam")
+  |> esgleam.bundle
 }
