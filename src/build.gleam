@@ -8,6 +8,7 @@ import gleam/dict
 import gleam/io
 import gleam/list
 import lustre/ssg
+import simplifile
 
 pub fn main() {
   let static_dir = "./static"
@@ -32,8 +33,22 @@ pub fn main() {
       io.println("Build failed!")
     }
   }
+  get_components()
+}
 
-  esgleam.new("./static/js")
-  |> esgleam.entry("/components/clipboard.gleam")
-  |> esgleam.bundle
+fn get_components() {
+  let assert Ok(paths) = simplifile.read_directory("./src/components")
+  use file <- list.map(paths)
+  let es_build =
+    esgleam.new("./static/js")
+    |> esgleam.entry("components/" <> file)
+    |> esgleam.bundle
+
+  case es_build {
+    Ok(_) -> io.println("Esbuild succeeded!")
+    Error(e) -> {
+      echo e
+      io.println("Esbuild failed!")
+    }
+  }
 }
