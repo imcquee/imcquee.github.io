@@ -15,7 +15,7 @@ pub fn view_home(home_content: Element(msg), page: PageInfo) -> Element(msg) {
   html.html([attribute.lang("en")], [
     head(page),
     html.div([class("flex flex-col h-screen justify-between")], [
-      html.body([class("w-screen bg-fuchsia-100")], [
+      html.body([class("bg-fuchsia-100")], [
         html.main([], [home_content]),
       ]),
       footer(),
