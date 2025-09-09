@@ -194,6 +194,7 @@ Thankfully a few gleam packages make this very simple to do:
 gleam add plinth
 gleam add grille_pain
 gleam add gleam_javascript
+gleam add esgleam
 ```
 
 Let's create a new directory called *components* in the */src* directory. This will contain any components that have side-effects. For our clipboard interaction,

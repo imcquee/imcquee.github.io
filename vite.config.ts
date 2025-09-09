@@ -1,13 +1,6 @@
 import { defineConfig, type ViteDevServer, type Plugin } from "vite";
-import gleam from "vite-gleam";
 import { spawn, type ChildProcess } from "node:child_process";
-import {
-  readdirSync,
-  mkdirSync,
-  existsSync,
-  copyFileSync,
-  watch,
-} from "node:fs";
+import { mkdirSync, existsSync, copyFileSync, watch } from "node:fs";
 import { resolve, dirname, basename, join } from "node:path";
 
 // Configuration constants
@@ -153,13 +146,4 @@ export default defineConfig(async () => ({
   server: {
     watch: { ignored: [] },
   },
-  // build: {
-  //   rollupOptions: {
-  //     input: getJsEntryPoints(),
-  //     output: {
-  //       dir: "./static/js",
-  //       entryFileNames: "[name].js",
-  //     },
-  //   },
-  // },
 }));

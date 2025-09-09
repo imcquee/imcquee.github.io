@@ -1,7 +1,6 @@
-import app/data/posts
 import app/page/blog
 import app/page/index
-import app/page/post
+import app/page/post.{type Post}
 import app/page/projects
 import esgleam
 import gleam/dict
@@ -14,13 +13,14 @@ pub fn main() {
   let static_dir = "./static"
   let out_dir = "./priv"
   let posts =
-    list.map(posts.all(), fn(post) { #(post.metadata.slug, post) })
+    get_posts()
+    |> list.map(fn(post) { #(post.metadata.slug, post) })
     |> dict.from_list()
 
   let build =
     ssg.new(out_dir)
     |> ssg.add_static_route("/", index.view())
-    |> ssg.add_static_route("/blog", blog.view(posts.all()))
+    |> ssg.add_static_route("/blog", get_posts() |> blog.view())
     |> ssg.add_static_route("/projects", projects.view())
     |> ssg.add_dynamic_route("/blog", posts, post.view)
     |> ssg.add_static_dir(static_dir)
@@ -51,4 +51,11 @@ fn get_components() {
       io.println("Esbuild failed!")
     }
   }
+}
+
+fn get_posts() -> List(Post) {
+  let posts_dir = "./posts"
+  let assert Ok(paths) = simplifile.read_directory(posts_dir)
+  use file <- list.map(paths)
+  post.parse(path: posts_dir <> "/" <> file)
 }
