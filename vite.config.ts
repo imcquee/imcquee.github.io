@@ -1,7 +1,7 @@
 import { defineConfig, type ViteDevServer, type Plugin } from "vite";
 import { spawn, type ChildProcess } from "node:child_process";
 import { mkdirSync, existsSync, copyFileSync, watch } from "node:fs";
-import { resolve, dirname, basename, join } from "node:path";
+import { resolve, dirname, basename } from "node:path";
 
 // Configuration constants
 const PATHS = {
