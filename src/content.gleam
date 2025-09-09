@@ -139,6 +139,7 @@ fn body(content: Element(a)) -> Element(a) {
 
 fn footer() -> Element(a) {
   html.footer([], [
+  html.div([class("flex flex-col items-center")],[
     html.div([class("flex justify-center items-center gap-1")], [
       html.p([class("md:text-lg text-xs")], [element.text("Made with")]),
       render_footer_button(FooterButton(
@@ -159,6 +160,8 @@ fn footer() -> Element(a) {
         icon: "/images/github.svg",
       )),
     ]),
+    html.p([class("text-xs")],[element.text("All product names, logos, and brands are property of their respective owners")])
+    ])
   ])
 }
 
