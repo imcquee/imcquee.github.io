@@ -18,6 +18,7 @@ pub type Tag {
   Travel
   Programming
   Gleam
+  Career
   Languages
   Music
   Food
@@ -39,6 +40,7 @@ pub fn string_to_tag(tag_name: String) -> Result(TagInfo, TagError) {
     "food" -> Ok(TagInfo(Food, Purple))
     "languages" -> Ok(TagInfo(Languages, Orange))
     "gleam" -> Ok(TagInfo(Gleam, Pink))
+    "career" -> Ok(TagInfo(Career, Yellow))
     _ -> Error(TagNotFound("Tag not found, please add it"))
   }
 }
@@ -51,6 +53,7 @@ pub fn to_string(tag: Tag, color: Color) -> #(String, String) {
     Travel -> "Travel"
     Languages -> "Languages"
     Gleam -> "Gleam"
+    Career -> "Career"
   }
   let color_string = case color {
     Red -> "bg-red-200"
