@@ -103,6 +103,13 @@ fn head(page: PageInfo) -> Element(a) {
       ],
       "import{main}from'/js/clipboard.js';document.addEventListener(\"DOMContentLoaded\",()=>{main({})});",
     ),
+    html.script(
+      [
+        attribute.attribute("type", "module"),
+        attribute.src("/js/mermaid.tiny.js")
+      ],
+      ""
+    )
   ])
 }
 

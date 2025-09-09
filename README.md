@@ -28,6 +28,7 @@
 - [x] Add Shiki diff highlighting
 - [x] Replace shoelace with [grille-pain](https://github.com/ghivert/grille-pain)
 - [x] Switch components from building with vite to esgleam
+- [x] Add mermaid support
 - [ ] Move dirs to env
 
 ### Credit
