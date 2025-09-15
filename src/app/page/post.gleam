@@ -7,6 +7,7 @@ import lustre/element/html
 import lustre/ssg/djot
 import simplifile
 import stateless_components/card
+import stateless_components/giscus
 import stateless_components/link
 import stateless_components/tag.{type TagInfo, render_tags}
 import tom
@@ -90,6 +91,7 @@ pub fn view(post: Post) -> Element(Nil) {
       ],
       post.content,
     ),
+    giscus.render_discus(),
   ])
   |> content.view_page(content.PageInfo(
     title: post.metadata.title,
