@@ -1,0 +1,234 @@
+---
+slug = "the-big-leap"
+title = "The Big Leap 跳 - Part One"
+date = "2025-08-04"
+description = "Contemplating our next big move, because we can't sit still 🦈🦈🦈"
+preview_img = "/images/valencia.jpg"
+tags = "travel|languages"
+---
+
+``` =html
+<img class="pt-4 mx-auto md:max-w-3/5" src="/images/valencia.jpg" alt="Valencia Cover" fetchpriority="high" />
+```
+
+{class="italic self-center"}
+跳 = Han Symbol for Leap/Jump
+
+\
+My friends and I have the goal to move somewhere together for a short (1-6 months depending on visa) period of time, with
+the idea of potentially relocating long term. We've been individually selecting places we think might suit everyone in the group. It's a
+fun exercise, but we are also being intentional, as we fully intend to attempt this.
+
+{class="italic"}
+\
+*Wait, aren't you just doing gentrification in another country???*
+
+
+\
+We are committed to treat the places we go, and cultures we see,
+ with the upmost respect. As short term residents, we want to cause as little impact as we can. We don't want to contribute
+to rising living costs either. I completely support immigrants relocating for better work opportunities, I don't see how relocating for better
+LIFE opportunities is a bad thing. Especially when done with respect and a commitment towards assimilation.
+
+
+\
+We plan to:
+
+* Live modestly in shared housing
+* Predominantly patron local small business
+* Pay all relevant local taxes and fees
+* Create as little waste/trash as possible
+* Keep our accommodations clean and treat local parks/landmarks with respect
+
+\
+I'm trying to do this House Hunters style, so I've selected three places that I think are suitable for the group.
+I'll be covering one destination a per week.
+
+{class="text-lg font-bold"}
+\
+Non-Negotiables:
+
+* Max 1k USD housing expense per person
+* Safe, especially considering women, minorities and LGBTQ+
+* Possesses the wow factor
+
+{class="text-lg font-bold"}
+\
+Priorities:
+
+* Access to natural landmarks (ocean, lakes, mountains)
+* Solid climate
+* Walkability
+* Good air quality
+* Good public transportation
+* Not overcrowded
+* Distance to major airport
+* High Speed Internet
+* Diversity
+
+\
+Now for this week's destination...
+
+{class="text-lg self-center items-center font-bold"}
+\
+Panama City, Panama
+
+{class="md:max-w-3/4 self-center"}
+![Panama City](/images/panama-city-scape.webp)
+
+{class="font-bold"}
+\
+Pros:
+
+* No currency conversion 1 Balboa = 1 USD (USD is also standard currency)
+* Great opportunity to learn Spanish in a smaller more personable country
+* Extremely lenient travel visa laws (Can stay 180 days without a tourist visa!!!)
+* Great remote work visa and path to citizenship
+* World class healthcare
+* Great time conversion (US central time)
+* Great international airport with cheap Flights
+* No double dip taxes
+* High quality water supply
+* Very stable economy
+* Diverse expat community
+* Really bad allergy symptoms for uninitiated
+* Good cheap public transportation
+* High quality medical and dental care
+* Amazing weather in dry season (low humidity, between 75-85F)
+* Co-working venues with generators and reliable internet
+
+{class="font-bold"}
+\
+Cons:
+
+* Bad traffic
+* Wealth inequality
+* Eating out is vastly more expensive than cooking
+* Questionable electricity reliability
+* Humid season is really really humid...
+
+{class="font-bold"}
+\
+Comps:
+
+
+
+``` =html
+<table class="w-full mt-4 border-collapse font-sans border border-gray-300">
+  <thead>
+      <tr>
+          <th class="border border-gray-300 text-left p-2 bg-gray-100"></th>
+          <th class="border border-gray-300 text-left p-2 bg-gray-100">Charlotte, NC</th>
+          <th class="border border-gray-300 text-left p-2 bg-gray-100">Panama City, PA</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td class="border border-gray-300 text-left p-2">1BDR City Center</td>
+          <td class="border border-gray-300 text-left p-2">$1,895</td>
+          <td class="border border-gray-300 text-left p-2">$1,185</td>
+      </tr>
+      <tr class="bg-gray-200">
+          <td class="border border-gray-300 text-left p-2">Average Meal Out</td>
+          <td class="border border-gray-300 text-left p-2">$18.00</td>
+          <td class="border border-gray-300 text-left p-2">$10.75</td>
+      </tr>
+      <tr>
+          <td class="border border-gray-300 text-left p-2">Bus ticket</td>
+          <td class="border border-gray-300 text-left p-2">$2.20</td>
+          <td class="border border-gray-300 text-left p-2">$0.35</td>
+      </tr>
+      <tr class="bg-gray-200">
+          <td class="border border-gray-300 text-left p-2">VW Golf (Avg new car)</td>
+          <td class="border border-gray-300 text-left p-2">$35k</td>
+          <td class="border border-gray-300 text-left p-2">$20k</td>
+      </tr>
+      <tr>
+          <td class="border border-gray-300 text-left p-2">Summer Dress in a Chain Store (Zara, H&M, etc.)</td>
+          <td class="border border-gray-300 text-left p-2">$36</td>
+          <td class="border border-gray-300 text-left p-2">$45</td>
+      </tr>
+  </tbody>
+</table>
+```
+
+{class="text-lg items-center font-bold"}
+\
+Airbnb
+
+
+{class="md:max-w-3/4 self-center pt-4"}
+![Casco Living Room](/images/loft-living-room.avif)
+
+``` =html
+<div class="flex justify-center w-full pt-8 pb-4">
+    <div class="grid grid-cols-3 gap-2 md:max-w-3/4">
+        <img src="/images/panama-kitchen.avif" alt="kitchen pic"/>
+        <img src="/images/balcony.avif" alt="balcony pic"/>
+        <img src="/images/bathroom.avif" alt="bathroom pic"/>
+        <img src="/images/gym.avif" alt="gym pic"/>
+        <img src="/images/pool.avif" alt="pool pic"/>
+        <img src="/images/living-room-2.avif" alt="living room pic"/>
+    </div>
+</div>
+```
+
+``` =html
+<p class="text-blue-700 underline flex flex-row justify-center">
+    <a rel="noopener noreferrer" target="_blank" href="https://www.airbnb.com/rooms/1250060023570983767?adults=4&check_in=2025-12-01&check_out=2025-12-08&search_mode=regular_search&source_impression_id=p3_1755604437_P3qXfIdgKRZRnH0S&previous_page_section_name=1000&federated_search_id=9bb0f76e-4ff0-4de7-8661-8cd25a99aa17">
+        Casco Viejo Loft - 4 Guests ($1k -> 7 nights)
+    </a>
+</p>
+```
+
+{class="text-lg items-center font-bold"}
+\
+Apartments
+
+{class="md:max-w-3/4 self-center pt-4"}
+![East Coast Living Room](/images/apartment-living-room.avif)
+
+``` =html
+<p class="text-blue-700 underline flex flex-row justify-center">
+    <a rel="noopener noreferrer" target="_blank" href="https://www.encuentra24.com/panama-es/bienes-raices-alquiler-apartamentos/apartamento-amueblado-165m2-3-recamaras-3-banos-completos-costa-del-este/30917047">
+        East Coast Apartment - 3 Bdr / 3 Bth ($1750 a month)
+    </a>
+</p>
+```
+
+{class="text-lg items-center font-bold"}
+\
+Nature
+
+{class="md:max-w-3/4 self-center pt-4"}
+![Wilderness](/images/wilderness.webp)
+
+{class="md:max-w-3/4 self-center pt-4"}
+![Mountains](/images/mountains.webp)
+
+{class="md:max-w-3/4 self-center pt-4"}
+![Mountains](/images/beach.webp)
+
+{class="text-lg items-center font-bold"}
+\
+Restaurants
+
+``` =html
+<div class="flex w-full justify-center pt-8 pb-4">
+    <div class="grid grid-cols-2 gap-2 md:max-w-3/4">
+        <img src="/images/menu-pulperia.jpg" alt="pulperia restaurant pic"/>
+        <div class="grid grid-rows-2 gap-4">
+            <img src="/images/fish.webp" alt="fish pic"/>
+            <img src="/images/shrimp.webp" alt="shrimp pic"/>
+        </div>
+    </div>
+</div>
+```
+
+``` =html
+<p class="text-blue-700 underline flex flex-row justify-center">
+    <a rel="noopener noreferrer" target="_blank" href="https://www.lapulperia.com.pa/">
+        La Pulperia
+    </a>
+</p>
+```
