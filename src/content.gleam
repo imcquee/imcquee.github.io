@@ -112,7 +112,7 @@ fn body(content: Element(a)) -> Element(a) {
   html.body([class("w-screen bg-fuchsia-100")], [
     html.header([], [
       link.render_link(
-        link.Internal("index.html"),
+        link.Internal("/index.html"),
         [class("inline-flex p-4 gap-2 items-center")],
         [
           html.img([
