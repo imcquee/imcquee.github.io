@@ -20,6 +20,7 @@
         colima
         tailwindcss-language-server
         bun
+        nodejs
         vscode-langservers-extracted
         typescript-language-server
         codebook
