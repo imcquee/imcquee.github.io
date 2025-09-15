@@ -13,14 +13,15 @@
         erlang_28
         rebar3
         tailwindcss_4
+        bun
+        nodejs
+        cacert
       ];
       # Development-specific packages
       devPackages = pkgs: with pkgs; [
         act
         colima
         tailwindcss-language-server
-        bun
-        nodejs
         vscode-langservers-extracted
         typescript-language-server
         codebook
@@ -35,9 +36,6 @@
               ++ pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [
               inotify-tools
             ]);
-            shellHook = ''
-              export DOCKER_HOST="unix:///Users/imcquee/.config/colima/default/docker.sock"
-            '';
           };
         });
       packages = forAllSystems ({ pkgs }: {
@@ -45,12 +43,30 @@
           pname = "website";
           version = "1.0.0";
           src = ./.;
-          nativeBuildInputs = (gleamPackages pkgs) ++ [ pkgs.bun ];
+          nativeBuildInputs = (gleamPackages pkgs);
+          DOCKER_HOST = "unix:///Users/imcquee/.config/colima/default/docker.sock";
+          SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+          SSL_CERT_DIR = "${pkgs.cacert}/etc/ssl/certs";
+          NODE_EXTRA_CA_CERTS = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+          GIT_SSL_CAINFO = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+          CURL_CA_BUNDLE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+          BUILD_ENV = "production";
+          NODE_ENV = "production";
+          CSS_INPUT = "website.css";
+          CSS_OUTPUT = "output.css";
+          POST_DIR = "./posts";
+          STATIC_DIR = "./static";
+          OUT_DIR = "./priv";
+          COMPONENTS_DIR = "./src/components";
+          SRC_DIR = "./src";
+          DEV_DIR = "./.dev";
           buildPhase = ''
             export HOME=$TMPDIR
             export XDG_CACHE_HOME=$TMPDIR/gleam-cache
             mkdir -p "$XDG_CACHE_HOME/gleam/hex/hexpm/packages"
+            gleam run -m esgleam/install
             gleam run -m build
+            bun i
             bun run scripts/shiki.ts
             tailwindcss -i ./website.css -o ./priv/output.css --minify
           '';
