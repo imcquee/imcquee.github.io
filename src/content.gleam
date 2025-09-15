@@ -103,13 +103,8 @@ fn head(page: PageInfo) -> Element(a) {
       ],
       "import{main}from'/js/clipboard.js';document.addEventListener(\"DOMContentLoaded\",()=>{main({})});",
     ),
-    html.script(
-      [
-        attribute.attribute("type", "module"),
-        attribute.src("/js/mermaid.tiny.js")
-      ],
-      ""
-    )
+    html.script([attribute.src("/js/mermaid.tiny.js")], ""),
+    html.script([], "window.mermaid?.initialize({ startOnLoad: true });"),
   ])
 }
 
@@ -139,29 +134,33 @@ fn body(content: Element(a)) -> Element(a) {
 
 fn footer() -> Element(a) {
   html.footer([], [
-  html.div([class("flex flex-col items-center")],[
-    html.div([class("flex justify-center items-center gap-1")], [
-      html.p([class("md:text-lg text-xs")], [element.text("Made with")]),
-      render_footer_button(FooterButton(
-        name: "Gleam",
-        src: "https://gleam.run/",
-        icon: "/images/lucy.svg",
-      )),
-      html.p([class("md:text-lg text-xs")], [element.text("and")]),
-      render_footer_button(FooterButton(
-        name: "Lustre",
-        src: "https://github.com/lustre-labs/lustre",
-        icon: "/images/lustre.png",
-      )),
-      html.p([class("md:text-lg text-xs")], [element.text("on")]),
-      render_footer_button(FooterButton(
-        name: "Github",
-        src: "https://github.com/imcquee/imcquee.github.io",
-        icon: "/images/github.svg",
-      )),
+    html.div([class("flex flex-col items-center")], [
+      html.div([class("flex justify-center items-center gap-1")], [
+        html.p([class("md:text-lg text-xs")], [element.text("Made with")]),
+        render_footer_button(FooterButton(
+          name: "Gleam",
+          src: "https://gleam.run/",
+          icon: "/images/lucy.svg",
+        )),
+        html.p([class("md:text-lg text-xs")], [element.text("and")]),
+        render_footer_button(FooterButton(
+          name: "Lustre",
+          src: "https://github.com/lustre-labs/lustre",
+          icon: "/images/lustre.png",
+        )),
+        html.p([class("md:text-lg text-xs")], [element.text("on")]),
+        render_footer_button(FooterButton(
+          name: "Github",
+          src: "https://github.com/imcquee/imcquee.github.io",
+          icon: "/images/github.svg",
+        )),
+      ]),
+      html.p([class("text-xs")], [
+        element.text(
+          "All product names, logos, and brands are property of their respective owners",
+        ),
+      ]),
     ]),
-    html.p([class("text-xs")],[element.text("All product names, logos, and brands are property of their respective owners")])
-    ])
   ])
 }
 
