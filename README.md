@@ -31,7 +31,7 @@
 - [x] Add mermaid support
 - [ ] Setup blog source code section
 - [x] Move dirs to env
-- [ ] Add tag filters
+- [x] Add tag filters
 - [x] Add giscus
 
 ### Credit

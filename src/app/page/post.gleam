@@ -80,7 +80,7 @@ pub fn view(post: Post) -> Element(Nil) {
         html.h1([class("italic")], [
           element.text(post.metadata.date |> date.pretty_print()),
         ]),
-        render_tags(post.metadata.tags, [class("text-xs md:text-base")]),
+        render_tags(post.metadata.tags, [class("text-xs md:text-base")], True),
       ],
     ),
     html.div(
