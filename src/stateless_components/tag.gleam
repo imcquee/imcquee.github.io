@@ -21,7 +21,7 @@ pub type Tag {
   Career
   Languages
   Music
-  Food
+  Opinion
 }
 
 pub type TagInfo {
@@ -37,7 +37,7 @@ pub fn string_to_tag(tag_name: String) -> Result(TagInfo, TagError) {
     "travel" -> Ok(TagInfo(Travel, Red))
     "programming" -> Ok(TagInfo(Programming, Blue))
     "music" -> Ok(TagInfo(Music, Green))
-    "food" -> Ok(TagInfo(Food, Purple))
+    "opinion" -> Ok(TagInfo(Opinion, Purple))
     "languages" -> Ok(TagInfo(Languages, Orange))
     "gleam" -> Ok(TagInfo(Gleam, Pink))
     "career" -> Ok(TagInfo(Career, Yellow))
@@ -49,7 +49,7 @@ pub fn to_string(tag: Tag, color: Color) -> #(String, String) {
   let tag_string = case tag {
     Programming -> "Programming"
     Music -> "Music"
-    Food -> "Food"
+    Opinion -> "Opinion"
     Travel -> "Travel"
     Languages -> "Languages"
     Gleam -> "Gleam"

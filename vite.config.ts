@@ -2,14 +2,22 @@ import { defineConfig, type ViteDevServer, type Plugin } from "vite";
 import { spawn, type ChildProcess } from "node:child_process";
 import { mkdirSync, existsSync, copyFileSync, watch } from "node:fs";
 import { resolve, dirname, basename } from "node:path";
+import assert from "node:assert";
+
+assert(process.env.POST_DIR);
+assert(process.env.SRC_DIR);
+assert(process.env.OUT_DIR);
+assert(process.env.CSS_INPUT);
+assert(process.env.CSS_OUTPUT);
+assert(process.env.DEV_DIR);
 
 // Configuration constants
 const PATHS = {
-  cssInput: "website.css",
-  cssTempOutput: resolve(".dev/output.css"),
-  cssOutput: resolve("priv/output.css"),
-  srcDir: "src",
-  postsDir: "posts",
+  cssInput: process.env.CSS_INPUT,
+  cssTempOutput: resolve(process.env.DEV_DIR + "/" + process.env.CSS_INPUT),
+  cssOutput: resolve(process.env.OUT_DIR + "/" + process.env.CSS_OUTPUT),
+  srcDir: process.env.SRC_DIR,
+  postsDir: process.env.POST_DIR,
 } as const;
 
 // Utility functions
@@ -35,7 +43,7 @@ function copyCssToOutput(): void {
   }
 }
 
-// Main plugin
+// plugin
 function createDevPlugin(): Plugin {
   let isBuilding = false;
   let tailwindProcess: ChildProcess | null = null;
@@ -141,7 +149,7 @@ function createDevPlugin(): Plugin {
 
 // Export configuration
 export default defineConfig(async () => ({
-  root: "./priv",
+  root: process.env.OUT_DIR,
   plugins: [createDevPlugin()],
   server: {
     watch: { ignored: [] },

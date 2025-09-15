@@ -2,6 +2,7 @@ import app/page/blog
 import app/page/index
 import app/page/post.{type Post}
 import app/page/projects
+import envoy
 import esgleam
 import gleam/dict
 import gleam/io
@@ -10,17 +11,19 @@ import lustre/ssg
 import simplifile
 
 pub fn main() {
-  let static_dir = "./static"
-  let out_dir = "./priv"
+  let assert Ok(posts_dir) = envoy.get("POST_DIR")
+  let assert Ok(static_dir) = envoy.get("STATIC_DIR")
+  let assert Ok(out_dir) = envoy.get("OUT_DIR")
+  let assert Ok(components_dir) = envoy.get("COMPONENTS_DIR")
   let posts =
-    get_posts()
+    get_posts(posts_dir)
     |> list.map(fn(post) { #(post.metadata.slug, post) })
     |> dict.from_list()
 
   let build =
     ssg.new(out_dir)
     |> ssg.add_static_route("/", index.view())
-    |> ssg.add_static_route("/blog", get_posts() |> blog.view())
+    |> ssg.add_static_route("/blog", get_posts(posts_dir) |> blog.view())
     |> ssg.add_static_route("/projects", projects.view())
     |> ssg.add_dynamic_route("/blog", posts, post.view)
     |> ssg.add_static_dir(static_dir)
@@ -33,11 +36,11 @@ pub fn main() {
       io.println("Build failed!")
     }
   }
-  get_components()
+  get_components(components_dir)
 }
 
-fn get_components() {
-  let assert Ok(paths) = simplifile.read_directory("./src/components")
+fn get_components(components_dir: String) {
+  let assert Ok(paths) = simplifile.read_directory(components_dir)
   use file <- list.map(paths)
   let es_build =
     esgleam.new("./static/js")
@@ -53,8 +56,7 @@ fn get_components() {
   }
 }
 
-fn get_posts() -> List(Post) {
-  let posts_dir = "./posts"
+fn get_posts(posts_dir: String) -> List(Post) {
   let assert Ok(paths) = simplifile.read_directory(posts_dir)
   use file <- list.map(paths)
   post.parse(path: posts_dir <> "/" <> file)

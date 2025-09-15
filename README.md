@@ -30,7 +30,7 @@
 - [x] Switch components from building with vite to esgleam
 - [x] Add mermaid support
 - [ ] Setup blog source code section
-- [ ] Move dirs to env
+- [x] Move dirs to env
 
 ### Credit
 

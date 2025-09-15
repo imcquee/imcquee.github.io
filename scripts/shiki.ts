@@ -42,7 +42,7 @@ async function highlightHtml(html: string): Promise<string> {
   return document.toString();
 }
 
-const files = await glob("priv/**/*.html", { nodir: true });
+const files = await glob(process.env.OUT_DIR + "/**/*.html", { nodir: true });
 
 for (const file of files) {
   const html = await readFile(file, "utf8");

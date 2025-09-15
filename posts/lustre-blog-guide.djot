@@ -243,6 +243,5 @@ Now that you have a foundation, there's so many features you can add like:
 * Auto image optimization
 * Auto timestamps (and update timestamps)
 * Comment section like [Giscus](https://github.com/giscus/giscus)
-* Add hot reloading (Detailed in this blog post)
 * Old fashioned visitor counter or more complex blog analytics
 
