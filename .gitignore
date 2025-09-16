@@ -8,5 +8,3 @@ erl_crash.dump
 .aider*
 /priv
 /result
-/static/js/*
-!/static/js/mermaid.tiny.js

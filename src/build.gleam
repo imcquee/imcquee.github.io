@@ -60,7 +60,7 @@ fn get_components(components_dir: String) {
   let assert Ok(paths) = simplifile.read_directory(components_dir)
   use file <- list.map(paths)
   let es_build =
-    esgleam.new("./static/js")
+    esgleam.new("./priv/js")
     |> esgleam.entry("components/" <> file)
     |> esgleam.bundle
 
