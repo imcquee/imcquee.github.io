@@ -99,7 +99,7 @@ pub fn view() -> Element(a) {
       ),
     ],
   )
-  |> content.view_home(content.PageInfo(
+  |> content.view_page(content.PageInfo(
     title: "Isaac McQueen website home page",
     description: "Isaac McQueen's Personal Website and Blog",
     image: "/images/city.png",

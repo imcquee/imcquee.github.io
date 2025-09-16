@@ -11,23 +11,15 @@ type FooterButton {
   FooterButton(name: String, src: String, icon: String)
 }
 
-pub fn view_home(home_content: Element(msg), page: PageInfo) -> Element(msg) {
-  html.html([attribute.lang("en")], [
-    head(page),
-    html.div([class("flex flex-col h-screen justify-between")], [
-      html.body([class("bg-fuchsia-100")], [
-        html.main([], [home_content]),
-      ]),
-      footer(),
-    ]),
-  ])
-}
-
-pub fn view_page(content: Element(a), page: PageInfo) -> Element(a) {
+pub fn view_page(
+  content: Element(a),
+  page: PageInfo,
+  show_header: Bool,
+) -> Element(a) {
   html.html([attribute.lang("en")], [
     head(page),
     html.div([class("flex flex-col min-h-screen h-full justify-between")], [
-      body(content),
+      body(content, show_header),
       footer(),
     ]),
   ])
@@ -108,24 +100,30 @@ fn head(page: PageInfo) -> Element(a) {
   ])
 }
 
-fn body(content: Element(a)) -> Element(a) {
+fn body(content: Element(a), show_header: Bool) -> Element(a) {
+  let header = case show_header {
+    True ->
+      html.header([], [
+        link.render_link(
+          link.Internal("/index.html"),
+          [class("inline-flex p-4 gap-2 items-center")],
+          [
+            html.img([
+              attribute.src("/images/city.png"),
+              attribute.alt("city logo"),
+              class("object-cover h-10 w-10 rounded-full"),
+            ]),
+            html.h1([class("text-2xl font-mono text-black")], [
+              element.text("imcquee"),
+            ]),
+          ],
+        ),
+      ])
+    False -> element.none()
+  }
+
   html.body([class("w-screen bg-fuchsia-100")], [
-    html.header([], [
-      link.render_link(
-        link.Internal("/index.html"),
-        [class("inline-flex p-4 gap-2 items-center")],
-        [
-          html.img([
-            attribute.src("/images/city.png"),
-            attribute.alt("city logo"),
-            class("object-cover h-10 w-10 rounded-full"),
-          ]),
-          html.h1([class("text-2xl font-mono text-black")], [
-            element.text("imcquee"),
-          ]),
-        ],
-      ),
-    ]),
+    header,
     html.div([class("w-screen mb-auto")], [
       html.main([class("pb-12")], [content]),
     ]),
