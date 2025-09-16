@@ -33,7 +33,7 @@
 - [x] Move dirs to env
 - [x] Add tag filters
 - [x] Add giscus
-- [ ] Minify esgleam generated js
+- [x] Minify esgleam generated js
 
 ### Credit
 
