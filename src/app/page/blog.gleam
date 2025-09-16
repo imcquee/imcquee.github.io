@@ -39,7 +39,7 @@ pub fn view(posts: PostList) -> Element(a) {
         tag.render_tags(all_tags, [], True),
       ])
     Some(tag) ->
-      html.div([class("flex flex-row gap-2")], [
+      html.div([class("flex flex-row gap-2 items-center")], [
         tag.render_tags([tag], [], False),
         link.render_link(
           link.Internal("/blog"),
