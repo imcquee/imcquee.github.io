@@ -95,8 +95,14 @@ fn head(page: PageInfo) -> Element(a) {
       ],
       "import{main}from'/js/clipboard.js';document.addEventListener(\"DOMContentLoaded\",()=>{main({})});",
     ),
-    html.script([attribute.src("/js/mermaid.tiny.js")], ""),
-    html.script([], "window.mermaid?.initialize({ startOnLoad: true });"),
+    html.script(
+      [attribute.src("/js/mermaid.tiny.js"), attribute.attribute("defer", "")],
+      "",
+    ),
+    html.script(
+      [],
+      "window.addEventListener(\"DOMContentLoaded\", () => {window.mermaid?.initialize({ startOnLoad: true });});",
+    ),
   ])
 }
 
