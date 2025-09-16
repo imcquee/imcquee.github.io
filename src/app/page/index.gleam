@@ -99,12 +99,15 @@ pub fn view() -> Element(a) {
       ),
     ],
   )
-  |> content.view_page(content.PageInfo(
-    title: "Isaac McQueen website home page",
-    description: "Isaac McQueen's Personal Website and Blog",
-    image: "/images/city.png",
-    page_type: "website",
-  ))
+  |> content.view_page(
+    content.PageInfo(
+      title: "Isaac McQueen website home page",
+      description: "Isaac McQueen's Personal Website and Blog",
+      image: "/images/city.png",
+      page_type: "website",
+    ),
+    False,
+  )
 }
 
 fn get_card_container(

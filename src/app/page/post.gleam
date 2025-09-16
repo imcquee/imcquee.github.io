@@ -93,10 +93,13 @@ pub fn view(post: Post) -> Element(Nil) {
     ),
     giscus.render_discus(),
   ])
-  |> content.view_page(content.PageInfo(
-    title: post.metadata.title,
-    description: post.metadata.description,
-    image: post.metadata.preview_img,
-    page_type: "article",
-  ))
+  |> content.view_page(
+    content.PageInfo(
+      title: post.metadata.title,
+      description: post.metadata.description,
+      image: post.metadata.preview_img,
+      page_type: "article",
+    ),
+    True,
+  )
 }

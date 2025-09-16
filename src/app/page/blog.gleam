@@ -85,14 +85,16 @@ pub fn view(posts: PostList) -> Element(a) {
     })
 
   html.div([class("w-screen md:px-12 px-4 flex flex-col gap-4")], [
-    html.div([], []),
     filter,
     ..blog_posts
   ])
-  |> content.view_page(content.PageInfo(
-    title: "Isaac McQueen Blog",
-    description: "Blog page where you can browse my blog posts",
-    image: "/images/city.png",
-    page_type: "website",
-  ))
+  |> content.view_page(
+    content.PageInfo(
+      title: "Isaac McQueen Blog",
+      description: "Blog page where you can browse my blog posts",
+      image: "/images/city.png",
+      page_type: "website",
+    ),
+    True,
+  )
 }
