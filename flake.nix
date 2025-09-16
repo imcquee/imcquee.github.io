@@ -52,7 +52,7 @@
           CURL_CA_BUNDLE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
           BUILD_ENV = "production";
           NODE_ENV = "production";
-          CSS_INPUT = "website.css";
+          CSS_INPUT = "/src/website.css";
           CSS_OUTPUT = "output.css";
           POST_DIR = "./posts";
           STATIC_DIR = "./static";
@@ -68,7 +68,7 @@
             gleam run -m build
             bun i
             bun run scripts/shiki.ts
-            tailwindcss -i ./website.css -o ./priv/output.css --minify
+            tailwindcss -i ./src/website.css -o ./priv/output.css --minify
           '';
           installPhase = ''
             mkdir -p $out

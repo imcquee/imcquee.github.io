@@ -1,0 +1,276 @@
+---
+slug = "lustre-blog-guide"
+title = "Building a blog with Lustre SSG"
+date = "2025-08-01"
+description = "Building a very simple blog using Gleam, Lustre, and Tailwind. No JS required 😎"
+preview_img = "/images/lucy.svg"
+tags = "programming|gleam"
+---
+
+``` =html
+<img class="pt-4 mx-auto min-w-1/4 md:max-w-3/5" src="/images/lucy.svg" alt="Lucy Cover" fetchpriority="high" />
+```
+
+
+{class="italic self-center"}
+Meet Lucy - The protagonist in the Gleam universe
+
+
+``` =html
+<a href="https://github.com/imcquee/imcquee.github.io" rel="noopener noreferrer" target="_blank">
+  <button class="flex flew-row gap-1 p-2 rounded-md border-2 border-black bg-white cursor-pointer select-none transition ease-out duration-200 hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
+            active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2">
+      <img src="/images/github.svg"/>
+      <p>Source code for this article<p/>
+  </button>
+</a>
+```
+\
+There's so many ways to build a blog. You can use ol' reliable [WordPress](https://wordpress.org), or some newer CMS like [Ghost](https://ghost.org). If you
+desire more control, and work with a popular frontend framework such as React, you can simply use [Astro](https://astro.build/).
+Astro builds the static content for you, so there's no React overhead at runtime. You just get a fast and performant static site without any trouble.
+The motivation to build a site with a lower level abstraction than these can only be, as the kids say: *For the love of the game*.
+
+\
+I built this site using Lustre and Gleam because I find it very enjoyable to not only write Gleam code, but to refactor it as well.
+So when we inevitably leave our blog unmaintained for a year, it's very simple to get back on the horse. The development environment is pretty
+easy to setup, the language is easy to use for basic tasks, and the compiler pretty much holds your hand the entire time (but doesn't squeeze 🙂).
+
+\
+If you're still reading I'm assuming you didn't listen to my warnings and want to proceed building your blog with Gleam and Lustre. Yay!
+
+\
+By the end of this guide you will have created:
+
+- Lustre static site including a home page and blog
+- Hot reload environment to edit your site in real time
+- Code component with syntax highlighting and copy support for code snippets
+
+
+### What we'll need:
+
+* [*Gleam*](https://gleam.run) (Highly recommend version 1.12.0 and greater)
+* Any JS Runtime like Bun, Deno, NodeJS (For this guide I'll be using [*Bun*](https://bun.com/))
+* Any modern text editor that supports [LSP](https://microsoft.github.io/language-server-protocol/)
+
+\
+I use Nix for my project dependencies, but for this guide I will go through normal installation. Here's the nix config for those interested: [flake.nix](https://github.com/imcquee/imcquee.github.io/blob/main/flake.nix)
+
+\
+First let's install Gleam and Bun
+
+[Gleam Instructions](https://gleam.run/getting-started/installing/)
+
+[Bun Instructions](https://bun.com/docs/installation)
+
+\
+Then quickly verify the versions:
+
+{title="shell"}
+```bash
+gleam --version && echo "bun $(bun --version)"
+```
+
+I recommend gleam version of *1.12.0* or higher, any bun version should work fine.
+
+\
+Sweet! Now we're ready to start. Let's create a new gleam project called *website*
+
+{title="shell"}
+```bash
+gleam new website
+cd website
+```
+
+Per Lustre SSG documentation, we should add lustre_ssg as a dev dependency for our project. Remember that lustre ssg is very simple to use,
+you give it a few instructions, and it orchestrates the building of your static site. We only rely on it at build time.
+
+\
+We're also going to add tailwind using lustre dev tools. You can always use traditional CSS, but this guide will be using tailwind.
+
+
+{title="shell"}
+```bash
+gleam add lustre
+gleam add lustre_ssg --dev
+gleam add lustre_dev_tools --dev
+gleam run -m lustre/dev add tailwind
+```
+
+Now navigate to the src directory in the root and rename the file *website.gleam* to *build.gleam*. This will be the initial contents:
+
+
+{title="build.gleam"}
+```gleam
+import gleam/io
+import lustre/ssg
+
+pub fn main() {
+  let out_dir = "./priv"
+  let static_dir = "./static"
+  let build =
+    ssg.new(out_dir)
+    |> ssg.add_static_route("/", todo)
+    |> ssg.add_static_dir(static_dir)
+    |> ssg.build
+
+  case build {
+    Ok(_) -> io.println("Build succeeded!")
+    Error(e) -> {
+      echo e
+      io.println("Build failed!")
+    }
+  }
+}
+```
+
+The code here is very readable and self explanatory (Thank you Hayleigh and Louis). In this file we:
+
+\
+1. Initialize lustre ssg
+
+2. Define an out directory which will hold our generated static html and assets after building
+
+3. Add our first static page which will eventually be our home page
+
+4. [Pattern Match](https://tour.gleam.run/flow-control/case-expressions/) on the build, logging error if matched
+
+{class="italic"}
+\
+Note: The [todo](https://tour.gleam.run/advanced-features/todo/) keyword is a convenient placeholder we can use until we finish our home page
+
+\
+Create a new file in the */src* directory called *layout.gleam*. This is will contain helper functions to scaffold our html on each page
+
+{title="layout.gleam"}
+```gleam
+import gleam/io
+import lustre/ssg
+
+pub fn main() {
+  let out_dir = "./priv"
+  let static_dir = "./static"
+  let build =
+    ssg.new(out_dir)
+    |> ssg.add_static_route("/", todo)
+    |> ssg.add_static_dir(static_dir)
+    |> ssg.build
+
+  case build {
+    Ok(_) -> io.println("Build succeeded!")
+    Error(e) -> {
+      echo e
+      io.println("Build failed!")
+    }
+  }
+}
+```
+
+Still in our */src* directory, let's create a new directory *app* and a second directory inside that called *page*. Finally, we can create
+*home.gleam* in the *page* directory. Let's also take this time to create our *static* directory in the root. The resulting file structure
+should contain these folders and files:
+
+{title="Directory"}
+{not_copyable="true"}
+```bash
+.
+├── static/
+└── src/
+    ├── build.gleam
+    ├── layout.gleam
+    └── app/
+        └── page/
+            └── home.gleam
+```
+
+{title="home.gleam"}
+```gleam
+echo "hello gall"
+```
+
+### Dynamic Content
+
+All of our website content is currently static and determined at build time. This keeps our site fast, predictable and easy to manage.
+However, there are a few instances where you might want side-effects. In this case, we want to extend our code snippet component by adding the ability to copy code to a user's clipboard.
+
+\
+Thankfully a few gleam packages make this very simple to do:
+
+[Plinth](https://github.com/CrowdHailer/plinth) Provides us js bindings for common browser APIs like the clipboard API
+
+[Grille_Pain](https://github.com/ghivert/grille-pain) Gives us the ability to display a toast notification when our user hits the copy button
+
+{title="shell"}
+```bash
+gleam add plinth
+gleam add grille_pain
+gleam add gleam_javascript
+gleam add esgleam
+```
+
+Let's create a new directory called *components* in the */src* directory. This will contain any components that have side-effects. For our clipboard interaction,
+we want to build a script attached to our html that will interact with the DOM, adding event listeners that will trigger on a click event.
+
+{title="clipboard.gleam"}
+```gleam
+import gleam/javascript/array
+import gleam/list
+import gleam/result
+import grille_pain
+import grille_pain/options
+import grille_pain/toast
+import plinth/browser/clipboard
+import plinth/browser/document
+import plinth/browser/element
+
+pub fn main() {
+  let elements =
+    document.query_selector_all("[copy_button]")
+    |> array.to_list()
+
+  let assert Ok(_) =
+    options.default() |> options.timeout(2000) |> grille_pain.setup()
+
+  list.index_map(elements, fn(element, _index) {
+    let copy_text =
+      element.get_attribute(element, "data-copy")
+      |> result.unwrap("")
+
+    element.add_event_listener(element, "click", fn(_event) {
+      clipboard.write_text(copy_text)
+      toast.info("Copied!")
+      Nil
+    })
+  })
+}
+```
+{title="diagram"}
+```mermaid
+flowchart LR
+  A("User")
+  A --> B@{ shape: proc, label: 'Request Code' }
+  B --> C@{ shape: decision, label: 'Has Fixed Code' }
+  C -- Yes --> D@{ shape: doc, label: 'Fixed Code' }
+  D --> G@{ shape: proc, label: 'Delete code' }
+  C -- No --> E@{ shape: proc, label: 'Random Code' }
+  D --> F@{ shape: proc, label: 'Send code to device' }
+  E --> F
+  F -- Nonce --> A
+
+  A -- Nonce & Code --> K@{ shape: proc, label: 'Verify code' }
+  K --> J@{ shape: decision, label: 'Valid code' }
+  J -- Yes --> O@{ shape: doc, label: 'Create session' }
+  J -- No --> L@{ shape: doc, label: 'Invalid code' }
+```
+
+### Next Steps
+
+Now that you have a foundation, there's so many features you can add like:
+
+* Syntax highlighting for other languages, there's some gleam projects like [Glimra](https://github.com/ollema/glimra) - [Just](https://github.com/GearsDatapacks/just) - [Pearl](https://github.com/GearsDatapacks/pearl)
+* [Mermaid](https://mermaid.js.org/) rendering
+* Auto image optimization
+* Auto timestamps (and update timestamps)
+* Comment section like [Giscus](https://github.com/giscus/giscus)
+* Old fashioned visitor counter or more complex blog analytics
+

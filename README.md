@@ -29,10 +29,11 @@
 - [x] Replace shoelace with [grille-pain](https://github.com/ghivert/grille-pain)
 - [x] Switch components from building with vite to esgleam
 - [x] Add mermaid support
-- [ ] Setup blog source code section
+- [x] Setup blog source code section
 - [x] Move dirs to env
 - [x] Add tag filters
 - [x] Add giscus
+- [ ] Minify esgleam generated js
 
 ### Credit
 
