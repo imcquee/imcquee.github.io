@@ -29,8 +29,15 @@ pub fn view(posts: PostList) -> Element(a) {
       })
   }
 
+  let all_tags =
+    list.flat_map(filtered_list, fn(post) { post.metadata.tags })
+    |> list.unique()
+
   let filter = case posts.tag {
-    None -> element.none()
+    None ->
+      html.div([class("flex flex-row gap-2")], [
+        tag.render_tags(all_tags, [], True),
+      ])
     Some(tag) ->
       html.div([class("flex flex-row gap-2")], [
         tag.render_tags([tag], [], False),
