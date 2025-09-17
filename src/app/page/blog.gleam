@@ -36,11 +36,11 @@ pub fn view(posts: PostList) -> Element(a) {
   let filter = case posts.tag {
     None ->
       html.div([class("flex flex-row gap-2")], [
-        tag.render_tags(all_tags, [], True),
+        tag.render_tags(all_tags, [class("lg:text-md text-sm")], True),
       ])
     Some(tag) ->
       html.div([class("flex flex-row gap-2 items-center")], [
-        tag.render_tags([tag], [], False),
+        tag.render_tags([tag], [class("lg:text-md text-sm")], False),
         link.render_link(
           link.Internal("/blog"),
           [class("text-blue-700 underline")],

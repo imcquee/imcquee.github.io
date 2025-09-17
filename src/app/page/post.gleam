@@ -51,19 +51,29 @@ fn parse_metadata(path: String) -> Result(Metadata, Nil) {
 
 pub fn view(post: Post) -> Element(Nil) {
   html.div([class("flex flex-col items-center lg:px-12 lg:gap-2")], [
-    link.render_link(link.Internal("/blog"), [class("self-start")], [
-      card.render_card(
-        True,
-        [
-          class("lg:fixed lg:left-3 ml-2 p-4 mt-2 lg:h-18 flex items-center"),
-        ],
-        [html.h1([class("font-bold text-xl")], [element.text("⬅️ Blog")])],
-      ),
-    ]),
+    link.render_link(
+      link.Internal("/blog"),
+      [
+        class(
+          "lg:self-start w-full lg:w-auto px-4 lg:px-0 self-center flex lg:items-start items-center justify-center",
+        ),
+      ],
+      [
+        card.render_card(
+          True,
+          [
+            class(
+              "lg:fixed lg:left-3 lg:ml-2 p-4 lg:mt-2 lg:h-18 flex items-center w-full lg:w-auto flex justify-center",
+            ),
+          ],
+          [html.h1([class("font-bold text-xl")], [element.text("⬅️ Blog")])],
+        ),
+      ],
+    ),
     html.div(
       [
         class(
-          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full",
+          "lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full flex justify-center lg:justify-start",
         ),
       ],
       [
@@ -75,7 +85,7 @@ pub fn view(post: Post) -> Element(Nil) {
     html.div(
       [
         class(
-          "flex flex-col md:flex-row gap-3 md:items-center lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full",
+          "flex flex-col lg:flex-row gap-3 lg:p-4 py-1 px-2 lg:rounded-md lg:border-2 lg:border-black lg:bg-white lg:w-4/5 w-full items-center",
         ),
       ],
       [

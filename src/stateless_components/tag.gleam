@@ -127,23 +127,5 @@ pub fn render_tags(
       }
     })
 
-  html.div([class("flex flex-row gap-3")], tag_list)
+  html.div([class("flex flex-row flex-wrap gap-3")], tag_list)
 }
-// pub fn render_tags(
-//   tags: List(TagInfo),
-//   tag_attrs: List(Attribute(a)),
-// ) -> Element(a) {
-//   let tag_list =
-//     list.map(tags, fn(tag) {
-//       let #(name, color) = to_string(tag.name, tag.color)
-
-//       html.div(
-//         [
-//           class(color <> " px-4 border-2 border-black rounded-md"),
-//         ],
-//         [html.p(tag_attrs, [element.text(name)])],
-//       )
-//     })
-
-//   html.div([class("flex flex-row gap-3")], tag_list)
-// }
