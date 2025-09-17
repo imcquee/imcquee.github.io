@@ -1,3 +1,4 @@
+import components/clipboard
 import content
 import gleam/list
 import gleam/option.{type Option, None, Some}
@@ -77,7 +78,7 @@ pub fn view() -> Element(a) {
     [
       html.div([class("flex flex-col lg:items-start items-center")], [
         html.img([
-          attribute.src("images/city.png"),
+          attribute.src("images/city.webp"),
           attribute.alt("city logo"),
           class("object-cover mb-8 h-48 w-48 rounded-full"),
         ]),
@@ -100,13 +101,14 @@ pub fn view() -> Element(a) {
     ],
   )
   |> content.view_page(
-    content.PageInfo(
+    page_info: content.PageInfo(
       title: "Isaac McQueen website home page",
       description: "Isaac McQueen's Personal Website and Blog",
-      image: "/images/city.png",
+      image: "/images/city.webp",
       page_type: "website",
     ),
-    False,
+    show_header: False,
+    custom_scripts: [clipboard.get_script()],
   )
 }
 

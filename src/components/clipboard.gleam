@@ -4,9 +4,21 @@ import gleam/result
 import grille_pain
 import grille_pain/options
 import grille_pain/toast
+import lustre/attribute
+import lustre/element as lustre_element
+import lustre/element/html
 import plinth/browser/clipboard
 import plinth/browser/document
 import plinth/browser/element
+
+pub fn get_script() -> lustre_element.Element(a) {
+  html.script(
+    [
+      attribute.attribute("type", "module"),
+    ],
+    "import{main}from'/js/clipboard.js';document.addEventListener(\"DOMContentLoaded\",()=>{main({})});",
+  )
+}
 
 pub fn main() {
   let elements =

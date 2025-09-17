@@ -42,12 +42,13 @@ pub fn view() -> Element(a) {
       |> list.map(fn(card) { project_to_element(card) }),
   )
   |> content.view_page(
-    content.PageInfo(
+    page_info: content.PageInfo(
       title: "Projects Page",
       description: "Page showcasing projects",
-      image: "/images/city.png",
+      image: "/images/city.webp",
       page_type: "website",
     ),
-    True,
+    show_header: True,
+    custom_scripts: [],
   )
 }

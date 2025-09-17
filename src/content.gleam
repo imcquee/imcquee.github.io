@@ -12,12 +12,13 @@ type FooterButton {
 }
 
 pub fn view_page(
-  content: Element(a),
-  page: PageInfo,
-  show_header: Bool,
+  content content: Element(a),
+  page_info page: PageInfo,
+  show_header show_header: Bool,
+  custom_scripts custom_scripts: List(Element(a)),
 ) -> Element(a) {
   html.html([attribute.lang("en")], [
-    head(page),
+    head(page, custom_scripts),
     html.div([class("flex flex-col min-h-screen h-full justify-between")], [
       body(content, show_header),
       footer(),
@@ -25,7 +26,7 @@ pub fn view_page(
   ])
 }
 
-fn head(page: PageInfo) -> Element(a) {
+fn head(page: PageInfo, custom_scripts: List(Element(a))) -> Element(a) {
   html.head([], [
     html.title([], page.title),
     html.meta([attribute.charset("UTF-8")]),
@@ -90,12 +91,6 @@ fn head(page: PageInfo) -> Element(a) {
       attribute.rel("stylesheet"),
     ]),
     html.script(
-      [
-        attribute.attribute("type", "module"),
-      ],
-      "import{main}from'/js/clipboard.js';document.addEventListener(\"DOMContentLoaded\",()=>{main({})});",
-    ),
-    html.script(
       [attribute.src("/js/mermaid.tiny.js"), attribute.attribute("defer", "")],
       "",
     ),
@@ -103,6 +98,7 @@ fn head(page: PageInfo) -> Element(a) {
       [],
       "window.addEventListener(\"DOMContentLoaded\", () => {window.mermaid?.initialize({ startOnLoad: true });});",
     ),
+    ..custom_scripts
   ])
 }
 
@@ -115,7 +111,7 @@ fn body(content: Element(a), show_header: Bool) -> Element(a) {
           [class("inline-flex p-4 gap-2 items-center")],
           [
             html.img([
-              attribute.src("/images/city.png"),
+              attribute.src("/images/city.webp"),
               attribute.alt("city logo"),
               class("object-cover h-10 w-10 rounded-full"),
             ]),

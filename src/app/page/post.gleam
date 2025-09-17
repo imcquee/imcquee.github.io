@@ -1,5 +1,7 @@
 import app/utilities/date
 import app/utilities/djot_renderer
+import components/callout
+import components/clipboard
 import content
 import lustre/attribute.{class}
 import lustre/element.{type Element}
@@ -94,12 +96,13 @@ pub fn view(post: Post) -> Element(Nil) {
     giscus.render_discus(),
   ])
   |> content.view_page(
-    content.PageInfo(
+    page_info: content.PageInfo(
       title: post.metadata.title,
       description: post.metadata.description,
       image: post.metadata.preview_img,
       page_type: "article",
     ),
-    True,
+    show_header: True,
+    custom_scripts: [clipboard.get_script(), callout.get_script()],
   )
 }

@@ -89,12 +89,13 @@ pub fn view(posts: PostList) -> Element(a) {
     ..blog_posts
   ])
   |> content.view_page(
-    content.PageInfo(
+    page_info: content.PageInfo(
       title: "Isaac McQueen Blog",
       description: "Blog page where you can browse my blog posts",
-      image: "/images/city.png",
+      image: "/images/city.webp",
       page_type: "website",
     ),
-    True,
+    show_header: True,
+    custom_scripts: [],
   )
 }
