@@ -57,7 +57,7 @@ pub fn view(post: Post) -> Element(Nil) {
         [
           class("lg:fixed lg:left-3 ml-2 p-4 mt-2 lg:h-18 flex items-center"),
         ],
-        [html.h1([class("font-bold text-xl")], [element.text("<- Blog")])],
+        [html.h1([class("font-bold text-xl")], [element.text("⬅️ Blog")])],
       ),
     ]),
     html.div(
