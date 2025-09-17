@@ -1,6 +1,5 @@
 import app/utilities/date
 import app/utilities/djot_renderer
-import app/utilities/mermaid
 import components/callout
 import components/clipboard
 import content
@@ -107,7 +106,20 @@ pub fn view(post: Post) -> Element(Nil) {
     custom_scripts: [
       clipboard.get_script(),
       callout.get_script(),
-      ..mermaid.get_script()
+      ..get_mermaid_scripts()
     ],
   )
+}
+
+pub fn get_mermaid_scripts() -> List(Element(a)) {
+  [
+    html.script(
+      [attribute.src("/js/mermaid.tiny.js"), attribute.attribute("defer", "")],
+      "",
+    ),
+    html.script(
+      [],
+      "window.addEventListener(\"DOMContentLoaded\", () => {window.mermaid?.initialize({ startOnLoad: true });});",
+    ),
+  ]
 }
