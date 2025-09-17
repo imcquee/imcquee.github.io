@@ -1,5 +1,6 @@
 import app/utilities/date
 import app/utilities/djot_renderer
+import app/utilities/mermaid
 import components/callout
 import components/clipboard
 import content
@@ -103,6 +104,10 @@ pub fn view(post: Post) -> Element(Nil) {
       page_type: "article",
     ),
     show_header: True,
-    custom_scripts: [clipboard.get_script(), callout.get_script()],
+    custom_scripts: [
+      clipboard.get_script(),
+      callout.get_script(),
+      ..mermaid.get_script()
+    ],
   )
 }
