@@ -34,6 +34,7 @@
 - [x] Add tag filters
 - [x] Add giscus
 - [x] Minify esgleam generated js
+- [ ] Add support for custom Lustre elements like for example: callout, source code buttons etc.
 
 ### Credit
 
