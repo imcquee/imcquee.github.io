@@ -36,6 +36,8 @@
 - [x] Minify esgleam generated js
 - [x] Add support for custom Lustre elements like for example: callout, source code buttons etc.
 - [ ] Add callout component
+- [ ] Fix Project page mobile layout
+- [ ] Fixup env stuff, inject with workflow so I can remove from flake
 
 ### Credit
 
