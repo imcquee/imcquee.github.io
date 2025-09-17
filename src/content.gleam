@@ -90,14 +90,6 @@ fn head(page: PageInfo, custom_scripts: List(Element(a))) -> Element(a) {
       attribute.type_("text/css"),
       attribute.rel("stylesheet"),
     ]),
-    html.script(
-      [attribute.src("/js/mermaid.tiny.js"), attribute.attribute("defer", "")],
-      "",
-    ),
-    html.script(
-      [],
-      "window.addEventListener(\"DOMContentLoaded\", () => {window.mermaid?.initialize({ startOnLoad: true });});",
-    ),
     ..custom_scripts
   ])
 }
