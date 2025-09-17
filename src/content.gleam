@@ -155,7 +155,7 @@ fn footer() -> Element(a) {
           icon: "/images/github.svg",
         )),
       ]),
-      html.p([class("text-xs")], [
+      html.p([class("text-xs text-center")], [
         element.text(
           "All product names, logos, and brands are property of their respective owners",
         ),
