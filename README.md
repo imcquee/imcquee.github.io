@@ -38,6 +38,7 @@
 - [ ] Add callout component
 - [ ] Fix Project page mobile layout
 - [ ] Fixup env stuff, inject with workflow so I can remove from flake
+- [ ] Investigate using chic instead of typical shiki package
 
 ### Credit
 

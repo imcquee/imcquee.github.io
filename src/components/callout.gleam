@@ -20,7 +20,7 @@ pub fn main() {
     document.query_selector_all("[callout]")
     |> array.to_list()
 
-  list.index_map(elements, fn(element, _) {
+  list.map(elements, fn(element) {
     let inner_html =
       html.p([], [lustre_element.text("Hello Paul")])
       |> lustre_element.to_string()
