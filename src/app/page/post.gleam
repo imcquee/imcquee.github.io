@@ -55,7 +55,7 @@ pub fn view(post: Post) -> Element(Nil) {
       link.Internal("/blog"),
       [
         class(
-          "lg:self-start w-full lg:w-auto px-4 lg:px-0 self-center flex lg:items-start items-center justify-center",
+          "lg:self-start w-full lg:w-auto mb-2 lg:mb-0 px-2 lg:px-0 self-center flex lg:items-start items-center justify-center",
         ),
       ],
       [
