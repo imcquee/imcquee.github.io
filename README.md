@@ -36,9 +36,10 @@
 - [x] Minify esgleam generated js
 - [x] Add support for custom Lustre elements like for example: callout, source code buttons etc.
 - [ ] Add callout component
-- [ ] Fix Project page mobile layout
+- [x] Fix Project page mobile layout
 - [ ] Fixup env stuff, inject with workflow so I can remove from flake
-- [ ] Investigate using chic instead of typical shiki package
+- [ ] Migrate from vite to custom gleam serve script
+- [ ] Migrate from shiki script to gleam implementation (in build.gleam) that maps to shiki (maybe use chic)
 
 ### Credit
 
