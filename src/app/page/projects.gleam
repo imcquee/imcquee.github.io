@@ -19,7 +19,7 @@ fn project_to_element(project: Project(a)) {
 
 pub fn view() -> Element(a) {
   html.div(
-    [class("grid grid-cols-3 w-screen gap-12 px-12")],
+    [class("grid lg:grid-cols-3 grid-cols-1 w-screen gap-12 px-12")],
     [
       Project("NixOS Configuration", [
         html.p([], [
