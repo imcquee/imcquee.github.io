@@ -1,6 +1,5 @@
 import gleam/javascript/array
 import gleam/list
-import gleam/result
 import grille_pain
 import grille_pain/options
 import grille_pain/toast
@@ -28,12 +27,10 @@ pub fn main() {
   let assert Ok(_) =
     options.default() |> options.timeout(2000) |> grille_pain.setup()
 
-  list.index_map(elements, fn(element, _index) {
-    let copy_text =
-      element.get_attribute(element, "data-copy")
-      |> result.unwrap("")
+  list.map(elements, fn(element) {
+    let assert Ok(copy_text) = element.get_attribute(element, "data-copy")
 
-    element.add_event_listener(element, "click", fn(_event) {
+    element.add_event_listener(element, "click", fn(_) {
       clipboard.write_text(copy_text)
       toast.info("Copied!")
       Nil
