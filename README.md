@@ -35,7 +35,7 @@
 - [x] Add giscus
 - [x] Minify esgleam generated js
 - [x] Add support for custom Lustre elements like for example: callout, source code buttons etc.
-- [ ] Add callout component
+- [x] Add callout component
 - [x] Fix Project page mobile layout
 - [ ] Fixup env stuff, inject with workflow so I can remove from flake
 - [ ] Migrate from vite to custom gleam serve script

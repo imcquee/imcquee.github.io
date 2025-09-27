@@ -27,7 +27,7 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
       let lang = option.unwrap(lang, "text")
 
       case lang {
-        "callout" -> callout.render_callout(attrs)
+        "callout" -> callout.render_callout(attrs, code)
         "mermaid" -> html.pre([class("mermaid")], [element.text(code)])
         _ -> {
           let not_copyable = dict.has_key(attrs, "not_copyable")
