@@ -3,17 +3,8 @@ import gleam/string
 import lustre/attribute.{type Attribute, class}
 import lustre/element.{type Element}
 import lustre/element/html
+import stateless_components/color.{type Color}
 import stateless_components/link
-
-pub type Color {
-  Red
-  Green
-  Purple
-  Pink
-  Yellow
-  Blue
-  Orange
-}
 
 pub type Tag {
   Travel
@@ -35,25 +26,25 @@ pub type TagError {
 
 pub fn get_tag_list() {
   [
-    TagInfo(Travel, Red),
-    TagInfo(Programming, Blue),
-    TagInfo(Music, Green),
-    TagInfo(Opinion, Purple),
-    TagInfo(Languages, Orange),
-    TagInfo(Gleam, Pink),
-    TagInfo(Career, Yellow),
+    TagInfo(Travel, color.Red),
+    TagInfo(Programming, color.Blue),
+    TagInfo(Music, color.Green),
+    TagInfo(Opinion, color.Purple),
+    TagInfo(Languages, color.Orange),
+    TagInfo(Gleam, color.Pink),
+    TagInfo(Career, color.Yellow),
   ]
 }
 
 pub fn string_to_tag(tag_name: String) -> Result(TagInfo, TagError) {
   case string.lowercase(tag_name) {
-    "travel" -> Ok(TagInfo(Travel, Red))
-    "programming" -> Ok(TagInfo(Programming, Blue))
-    "music" -> Ok(TagInfo(Music, Green))
-    "opinion" -> Ok(TagInfo(Opinion, Purple))
-    "languages" -> Ok(TagInfo(Languages, Orange))
-    "gleam" -> Ok(TagInfo(Gleam, Pink))
-    "career" -> Ok(TagInfo(Career, Yellow))
+    "travel" -> Ok(TagInfo(Travel, color.Red))
+    "programming" -> Ok(TagInfo(Programming, color.Blue))
+    "music" -> Ok(TagInfo(Music, color.Green))
+    "opinion" -> Ok(TagInfo(Opinion, color.Purple))
+    "languages" -> Ok(TagInfo(Languages, color.Orange))
+    "gleam" -> Ok(TagInfo(Gleam, color.Pink))
+    "career" -> Ok(TagInfo(Career, color.Yellow))
     _ -> Error(TagNotFound("Tag not found, please add it"))
   }
 }
@@ -75,18 +66,6 @@ pub fn tag_to_string(tag: Tag, lower: Bool) {
   }
 }
 
-pub fn tag_color_to_string(color: Color) {
-  case color {
-    Red -> "bg-red-200"
-    Green -> "bg-green-200"
-    Purple -> "bg-purple-200"
-    Blue -> "bg-blue-200"
-    Yellow -> "bg-yellow-200"
-    Orange -> "bg-orange-200"
-    Pink -> "bg-pink-200"
-  }
-}
-
 pub fn parse_tags(tags: String, delimiter: String) -> List(TagInfo) {
   string.split(tags, delimiter)
   |> list.filter_map(string_to_tag)
@@ -101,7 +80,7 @@ pub fn render_tags(
     list.map(tags, fn(tag) {
       let #(name, color) = #(
         tag_to_string(tag.name, False),
-        tag_color_to_string(tag.color),
+        color.color_to_string(tag.color),
       )
 
       case clickable {
