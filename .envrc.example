@@ -1,0 +1,10 @@
+use flake
+export CSS_INPUT="./src/website.css"
+export CSS_OUTPUT="output.css"
+export POST_DIR="./posts"
+export STATIC_DIR="./static"
+export OUT_DIR="./priv"
+export COMPONENTS_DIR="./src/components"
+export SRC_DIR="./src"
+export DEV_DIR="./.dev"
+export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"

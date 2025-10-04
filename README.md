@@ -7,6 +7,10 @@
 
 `nix run .#develop`
 
+### Generate mermaid docs
+
+`mmdc -i docs/mermaid.mmd -o static/images/mermaid.svg`
+
 ### TODO
 
 - [x] Add Workflow
@@ -40,7 +44,8 @@
 - [ ] Fixup env stuff, inject with workflow so I can remove from flake
 - [ ] Migrate from vite to custom gleam serve script
 - [ ] Migrate from shiki script to gleam implementation (in build.gleam) that maps to shiki (maybe use chic)
-- [ ] Add classname func
+- [x] Add classname func
+- [ ] Pre-gen mermaid docs
 
 ### Credit
 

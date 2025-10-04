@@ -26,6 +26,7 @@
         typescript-language-server
         codebook
         ffmpeg
+        mermaid-cli
       ];
     in
     {
