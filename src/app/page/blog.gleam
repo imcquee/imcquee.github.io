@@ -1,4 +1,5 @@
 import app/page/post.{type Post}
+import app/utilities/classname.{cn}
 import app/utilities/date
 import content
 import gleam/list
@@ -35,15 +36,15 @@ pub fn view(posts: PostList) -> Element(a) {
 
   let filter = case posts.tag {
     None ->
-      html.div([class("flex flex-row gap-2")], [
-        tag.render_tags(all_tags, [class("lg:text-md text-sm")], True),
+      html.div([class(cn(["flex", "flex-row", "gap-2"]))], [
+        tag.render_tags(all_tags, [class(cn(["lg:text-md", "text-sm"]))], True),
       ])
     Some(tag) ->
-      html.div([class("flex flex-row gap-2 items-center")], [
-        tag.render_tags([tag], [class("lg:text-md text-sm")], False),
+      html.div([class(cn(["flex", "flex-row", "gap-2", "items-center"]))], [
+        tag.render_tags([tag], [class(cn(["lg:text-md", "text-sm"]))], False),
         link.render_link(
           link.Internal("/blog"),
-          [class("text-blue-700 underline")],
+          [class(cn(["text-blue-700", "underline"]))],
           [element.text("Clear Filter")],
         ),
       ])
@@ -56,26 +57,48 @@ pub fn view(posts: PostList) -> Element(a) {
           True,
           [
             class(
-              "flex md:flex-row flex-col gap-1 items-center w-full py-2 px-4",
+              cn([
+                "flex",
+                "md:flex-row",
+                "flex-col",
+                "gap-1",
+                "items-center",
+                "w-full",
+                "py-2",
+                "px-4",
+              ]),
             ),
           ],
           [
             html.img([
-              class("object-contain md:h-36 md:w-36 h-48 w-48 rounded-md"),
+              class(
+                cn([
+                  "object-contain",
+                  "md:h-36",
+                  "md:w-36",
+                  "h-48",
+                  "w-48",
+                  "rounded-md",
+                ]),
+              ),
               attribute.src(post.metadata.preview_img),
               attribute.width(48),
               attribute.height(48),
               attribute.alt(post.metadata.title),
             ]),
-            html.div([class("flex flex-col p-4 gap-2")], [
-              html.h1([class("md:text-3xl text-xl font-bold")], [
+            html.div([class(cn(["flex", "flex-col", "p-4", "gap-2"]))], [
+              html.h1([class(cn(["md:text-3xl", "text-xl", "font-bold"]))], [
                 element.text(post.metadata.title),
               ]),
-              tag.render_tags(post.metadata.tags, [class("text-sm")], False),
-              html.h1([class("italic md:text-lg")], [
+              tag.render_tags(
+                post.metadata.tags,
+                [class(cn(["text-sm"]))],
+                False,
+              ),
+              html.h1([class(cn(["italic", "md:text-lg"]))], [
                 element.text(post.metadata.date |> date.pretty_print()),
               ]),
-              html.p([class("md:text-lg")], [
+              html.p([class(cn(["md:text-lg"]))], [
                 element.text(post.metadata.description),
               ]),
             ]),
@@ -84,10 +107,10 @@ pub fn view(posts: PostList) -> Element(a) {
       ])
     })
 
-  html.div([class("w-screen md:px-12 px-4 flex flex-col gap-4")], [
-    filter,
-    ..blog_posts
-  ])
+  html.div(
+    [class(cn(["w-screen", "md:px-12", "px-4", "flex", "flex-col", "gap-4"]))],
+    [filter, ..blog_posts],
+  )
   |> content.view_page(
     page_info: content.PageInfo(
       title: "Isaac McQueen Blog",

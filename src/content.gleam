@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import lustre/attribute.{class}
 import lustre/element.{type Element}
 import lustre/element/html
@@ -19,10 +20,17 @@ pub fn view_page(
 ) -> Element(a) {
   html.html([attribute.lang("en")], [
     head(page, custom_scripts),
-    html.div([class("flex flex-col min-h-screen h-full justify-between")], [
-      body(content, show_header),
-      footer(),
-    ]),
+    html.div(
+      [
+        class(
+          cn(["flex", "flex-col", "min-h-screen", "h-full", "justify-between"]),
+        ),
+      ],
+      [
+        body(content, show_header),
+        footer(),
+      ],
+    ),
   ])
 }
 
@@ -100,14 +108,14 @@ fn body(content: Element(a), show_header: Bool) -> Element(a) {
       html.header([], [
         link.render_link(
           link.Internal("/index.html"),
-          [class("inline-flex p-4 gap-2 items-center")],
+          [class(cn(["inline-flex", "p-4", "gap-2", "items-center"]))],
           [
             html.img([
               attribute.src("/images/city.webp"),
               attribute.alt("city logo"),
-              class("object-cover h-10 w-10 rounded-full"),
+              class(cn(["object-cover", "h-10", "w-10", "rounded-full"])),
             ]),
-            html.h1([class("text-2xl font-mono text-black")], [
+            html.h1([class(cn(["text-2xl", "font-mono", "text-black"]))], [
               element.text("imcquee"),
             ]),
           ],
@@ -116,38 +124,43 @@ fn body(content: Element(a), show_header: Bool) -> Element(a) {
     False -> element.none()
   }
 
-  html.body([class("w-screen bg-fuchsia-100")], [
+  html.body([class(cn(["w-screen", "bg-fuchsia-100"]))], [
     header,
-    html.div([class("w-screen mb-auto")], [
-      html.main([class("pb-12")], [content]),
+    html.div([class(cn(["w-screen", "mb-auto"]))], [
+      html.main([class(cn(["pb-12"]))], [content]),
     ]),
   ])
 }
 
 fn footer() -> Element(a) {
   html.footer([], [
-    html.div([class("flex flex-col items-center")], [
-      html.div([class("flex justify-center items-center gap-1")], [
-        html.p([class("md:text-lg text-xs")], [element.text("Made with")]),
-        render_footer_button(FooterButton(
-          name: "Gleam",
-          src: "https://gleam.run/",
-          icon: "/images/lucy.svg",
-        )),
-        html.p([class("md:text-lg text-xs")], [element.text("and")]),
-        render_footer_button(FooterButton(
-          name: "Lustre",
-          src: "https://github.com/lustre-labs/lustre",
-          icon: "/images/lustre.png",
-        )),
-        html.p([class("md:text-lg text-xs")], [element.text("on")]),
-        render_footer_button(FooterButton(
-          name: "Github",
-          src: "https://github.com/imcquee/imcquee.github.io",
-          icon: "/images/github.svg",
-        )),
-      ]),
-      html.p([class("text-xs text-center")], [
+    html.div([class(cn(["flex", "flex-col", "items-center"]))], [
+      html.div(
+        [class(cn(["flex", "justify-center", "items-center", "gap-1"]))],
+        [
+          html.p([class(cn(["md:text-lg", "text-xs"]))], [
+            element.text("Made with"),
+          ]),
+          render_footer_button(FooterButton(
+            name: "Gleam",
+            src: "https://gleam.run/",
+            icon: "/images/lucy.svg",
+          )),
+          html.p([class(cn(["md:text-lg", "text-xs]"]))], [element.text("and")]),
+          render_footer_button(FooterButton(
+            name: "Lustre",
+            src: "https://github.com/lustre-labs/lustre",
+            icon: "/images/lustre.png",
+          )),
+          html.p([class(cn(["md:text-lg", "text-xs"]))], [element.text("on")]),
+          render_footer_button(FooterButton(
+            name: "Github",
+            src: "https://github.com/imcquee/imcquee.github.io",
+            icon: "/images/github.svg",
+          )),
+        ],
+      ),
+      html.p([class(cn(["text-xs", "text-center"]))], [
         element.text(
           "All product names, logos, and brands are property of their respective owners",
         ),
@@ -161,18 +174,29 @@ fn render_footer_button(button: FooterButton) {
     link.External(button.src),
     [
       class(
-        "flex items-center hover:scale-110 transition-transform duration-200",
+        cn([
+          "flex",
+          "items-center",
+          "hover:scale-110",
+          "transition-transform",
+          "duration-200",
+        ]),
       ),
     ],
     [
-      html.div([class("flex items-center rounded-full gap-1 p-1")], [
-        html.p([class("md:text-lg text-xs")], [element.text(button.name)]),
-        html.img([
-          class("rounded-full h-6 w-6"),
-          attribute.src(button.icon),
-          attribute.alt(button.name <> "logo"),
-        ]),
-      ]),
+      html.div(
+        [class(cn(["flex", "items-center", "rounded-full", "gap-1", "p-1"]))],
+        [
+          html.p([class(cn(["md:text-lg", "text-xs"]))], [
+            element.text(button.name),
+          ]),
+          html.img([
+            class(cn(["rounded-full", "h-6", "w-6"])),
+            attribute.src(button.icon),
+            attribute.alt(button.name <> "logo"),
+          ]),
+        ],
+      ),
     ],
   )
 }

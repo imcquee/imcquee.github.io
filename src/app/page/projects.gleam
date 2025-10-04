@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import content
 import gleam/list
 import lustre/attribute.{class}
@@ -11,15 +12,26 @@ type Project(a) {
 }
 
 fn project_to_element(project: Project(a)) {
-  card.render_card(False, [class("p-8")], [
-    html.h1([class("text-4xl mb-8")], [element.text(project.title)]),
+  card.render_card(False, [class(cn(["p-8"]))], [
+    html.h1([class(cn(["text-4xl", "mb-8"]))], [element.text(project.title)]),
     ..project.content
   ])
 }
 
 pub fn view() -> Element(a) {
   html.div(
-    [class("grid lg:grid-cols-3 grid-cols-1 w-screen gap-12 px-12")],
+    [
+      class(
+        cn([
+          "grid",
+          "lg:grid-cols-3",
+          "grid-cols-1",
+          "w-screen",
+          "gap-12",
+          "px-12",
+        ]),
+      ),
+    ],
     [
       Project("NixOS Configuration", [
         html.p([], [
@@ -27,12 +39,12 @@ pub fn view() -> Element(a) {
             "My Nix config for NixOS, Darwin, and Linux based environments",
           ),
         ]),
-        html.p([class("mt-4 text-2xl")], [
+        html.p([class(cn(["mt-4", "text-2xl"]))], [
           element.text("⭐  4"),
         ]),
         link.render_link(
           link.External("https://github.com/imcquee/nix-home"),
-          [class("text-blue-700 underline")],
+          [class(cn(["text-blue-700", "underline"]))],
           [
             element.text("Source"),
           ],

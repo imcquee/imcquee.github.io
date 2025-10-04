@@ -1,8 +1,9 @@
+import app/utilities/classname.{cn}
 import lustre/attribute.{class}
 import lustre/element/html
 
 pub fn render_discus() {
-  html.div([class("w-full px-2 lg:p-0 lg:w-4/5")], [
+  html.div([class(cn(["w-full", "px-2", "lg:p-0", "lg:w-4/5"]))], [
     html.script(
       [
         attribute.src("https://giscus.app/client.js"),

@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import gleam/list
 import gleam/string
 import lustre/attribute.{type Attribute, class}
@@ -89,9 +90,26 @@ pub fn render_tags(
             link.Internal("/blog/tag/" <> tag_to_string(tag.name, True)),
             [
               class(
-                color
-                <> " px-4 border-2 border-black rounded-md cursor-pointer select-none transition ease-out duration-200 hover:bg-black/5 hover:shadow-md hover:-translate-y-0.5
-          active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
+                cn([
+                  color,
+                  "px-4",
+                  "border-2",
+                  "border-black",
+                  "rounded-md",
+                  "cursor-pointer",
+                  "select-none",
+                  "transition",
+                  "ease-out",
+                  "duration-200",
+                  "hover:bg-black/5",
+                  "hover:shadow-md",
+                  "hover:-translate-y-0.5",
+                  "active:translate-y-0",
+                  "focus-visible:outline-none",
+                  "focus-visible:ring-2",
+                  "focus-visible:ring-black",
+                  "focus-visible:ring-offset-2",
+                ]),
               ),
             ],
             [html.p(tag_attrs, [element.text(name)])],
@@ -99,12 +117,14 @@ pub fn render_tags(
         False ->
           html.div(
             [
-              class(color <> " px-4 border-2 border-black rounded-md"),
+              class(
+                cn([color, "px-4", "border-2", "border-black", "rounded-md"]),
+              ),
             ],
             [html.p(tag_attrs, [element.text(name)])],
           )
       }
     })
 
-  html.div([class("flex flex-row flex-wrap gap-3")], tag_list)
+  html.div([class(cn(["flex", "flex-row", "flex-wrap", "gap-3"]))], tag_list)
 }

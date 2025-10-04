@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import gleam/dict
 import gleam/list
 import gleam/option
@@ -28,7 +29,7 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
 
       case lang {
         "callout" -> callout.render_callout(attrs, code)
-        "mermaid" -> html.pre([class("mermaid")], [element.text(code)])
+        "mermaid" -> html.pre([class(cn(["mermaid"]))], [element.text(code)])
         _ -> {
           let not_copyable = dict.has_key(attrs, "not_copyable")
           let assert Ok(title) = dict.get(attrs, "title")
@@ -39,10 +40,10 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
     },
     heading: fn(_, level, content) {
       case level {
-        1 -> html.h1([class("py-2 text-3xl font-bold")], content)
-        2 -> html.h2([class("py-2 text-2xl font-bold")], content)
-        3 -> html.h3([class("py-2 text-xl font-bold")], content)
-        _ -> html.p([class("py-2 font-bold")], content)
+        1 -> html.h1([class(cn(["py-2", "text-3xl", "font-bold"]))], content)
+        2 -> html.h2([class(cn(["py-2", "text-2xl", "font-bold"]))], content)
+        3 -> html.h3([class(cn(["py-2", "text-xl", "font-bold"]))], content)
+        _ -> html.p([class(cn(["py-2", "font-bold"]))], content)
       }
     },
     bullet_list: fn(layout, style, items) {
@@ -52,7 +53,7 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
           _ -> "circle"
         })
 
-      html.ul([list_style_type, class("ml-4")], {
+      html.ul([list_style_type, class(cn(["ml-4"]))], {
         list.map(items, fn(item) {
           case layout {
             jot.Tight -> html.li([], item)
@@ -78,7 +79,7 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
         jot.Url(url) ->
           link.render_link(
             link.External(url),
-            [class("text-blue-700 underline")],
+            [class(cn(["text-blue-700", "underline"]))],
             content,
           )
       }

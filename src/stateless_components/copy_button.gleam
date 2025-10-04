@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import lustre/attribute.{class}
 import lustre/element
 import lustre/element/html
@@ -12,7 +13,13 @@ pub fn render_copy_button(text_to_copy: String) {
       html.p(
         [
           class(
-            "cursor-pointer hover:scale-120 transition-transform duration-200 text-xl",
+            cn([
+              "cursor-pointer",
+              "hover:scale-120",
+              "transition-transform",
+              "duration-200",
+              "text-xl",
+            ]),
           ),
         ],
         [element.text("📋")],

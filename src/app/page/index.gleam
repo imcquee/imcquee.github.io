@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import components/clipboard
 import content
 import gleam/list
@@ -72,28 +73,42 @@ pub fn view() -> Element(a) {
   html.div(
     [
       class(
-        "flex-row grid p-12 lg:p-24 grid-cols-1 gap-8 lg:grid-cols-2 w-screen",
+        cn([
+          "flex-row",
+          "grid",
+          "p-12",
+          "lg:p-24",
+          "grid-cols-1",
+          "gap-8",
+          "lg:grid-cols-2",
+          "w-screen",
+        ]),
       ),
     ],
     [
-      html.div([class("flex flex-col lg:items-start items-center")], [
-        html.img([
-          attribute.src("images/city.webp"),
-          attribute.alt("city logo"),
-          class("object-cover mb-8 h-48 w-48 rounded-full"),
-        ]),
-        html.h1([class("font-mono text-4xl pb-8 text-black")], [
-          element.text("Isaac McQueen"),
-        ]),
-        html.p([class("w-full text-2xl text-black")], [
-          element.text(
-            "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
-          ),
-        ]),
-      ]),
+      html.div(
+        [class(cn(["flex", "flex-col", "lg:items-start", "items-center"]))],
+        [
+          html.img([
+            attribute.src("images/city.webp"),
+            attribute.alt("city logo"),
+            class(cn(["object-cover", "mb-8", "h-48", "w-48", "rounded-full"])),
+          ]),
+          html.h1([class(cn(["font-mono", "text-4xl", "pb-8", "text-black"]))], [
+            element.text("Isaac McQueen"),
+          ]),
+          html.p([class(cn(["w-full", "text-2xl", "text-black"]))], [
+            element.text(
+              "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
+            ),
+          ]),
+        ],
+      ),
       html.div(
         [
-          class("grid w-full grid-cols-1 lg:grid-cols-2 gap-4"),
+          class(
+            cn(["grid", "w-full", "grid-cols-1", "lg:grid-cols-2", "gap-4"]),
+          ),
         ],
         about_cards
           |> display_about_cards,
@@ -123,10 +138,10 @@ fn get_card_container(
       link.render_link(
         link,
         [
-          classes([#("col-span-full", full_width)]),
+          classes([#(cn(["col-span-full"]), full_width)]),
         ],
         [
-          card.render_card(True, [class(style)], content),
+          card.render_card(True, [class(cn([style]))], content),
         ],
       )
     Copy(text) ->
@@ -136,7 +151,7 @@ fn get_card_container(
           attribute.role("button"),
           attribute.attribute("copy_button", ""),
           attribute.attribute("data-copy", text),
-          classes([#("col-span-full", full_width), #(style, True)]),
+          classes([#(cn(["col-span-full"]), full_width), #(style, True)]),
         ],
         content,
       )
@@ -147,7 +162,7 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
   list.map(cards, fn(card) {
     let AboutCard(image_source, title, subtext, action, full_width) = card
     get_card_container(action, full_width, [
-      html.div([class("flex flex-row gap-2 items-center")], [
+      html.div([class(cn(["flex", "flex-row", "gap-2", "items-center"]))], [
         case image_source {
           Image(source) ->
             html.img([
@@ -157,14 +172,16 @@ fn display_about_cards(cards: List(AboutCard)) -> List(Element(a)) {
               attribute.alt(title),
             ])
           Unicode(source) ->
-            html.p([class("text-xl font-light")], [element.text(source)])
+            html.p([class(cn(["text-xl", "font-light"]))], [
+              element.text(source),
+            ])
         },
-        html.p([class("text-2xl truncate")], [element.text(title)]),
+        html.p([class(cn(["text-2xl", "truncate"]))], [element.text(title)]),
       ]),
       case subtext {
         None -> element.none()
         Some(text) ->
-          html.p([class("font-mono text-lg truncate")], [
+          html.p([class(cn(["font-mono", "text-lg", "truncate"]))], [
             element.text(text),
           ])
       },

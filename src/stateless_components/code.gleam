@@ -1,3 +1,4 @@
+import app/utilities/classname.{cn}
 import gleam/dict.{type Dict}
 import lustre/attribute.{attribute, class}
 import lustre/element
@@ -22,17 +23,23 @@ pub fn render_code_snippet(
   }
 
   html.div(
-    [
-      class("flex flex-col my-4 border-1 border-black"),
-    ],
+    [class(cn(["flex", "flex-col", "my-4", "border-1", "border-black"]))],
     [
       html.div(
         [
           class(
-            "flex flex-row p-2 bg-white border-b-1 border-black justify-between",
+            cn([
+              "flex",
+              "flex-row",
+              "p-2",
+              "bg-white",
+              "border-b-1",
+              "border-black",
+              "justify-between",
+            ]),
           ),
         ],
-        [html.p([class("text-xl")], [element.text(title)]), display_copy],
+        [html.p([class(cn(["text-xl"]))], [element.text(title)]), display_copy],
       ),
       html.pre(to_attributes(attrs), [
         html.code([attribute("data-lang", lang)], [html.text(code)]),

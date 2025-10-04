@@ -40,6 +40,7 @@
 - [ ] Fixup env stuff, inject with workflow so I can remove from flake
 - [ ] Migrate from vite to custom gleam serve script
 - [ ] Migrate from shiki script to gleam implementation (in build.gleam) that maps to shiki (maybe use chic)
+- [ ] Add classname func
 
 ### Credit
 
