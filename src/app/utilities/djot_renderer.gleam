@@ -29,7 +29,6 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
 
       case lang {
         "callout" -> callout.render_callout(attrs, code)
-        "mermaid" -> html.pre([class(cn(["mermaid"]))], [element.text(code)])
         _ -> {
           let not_copyable = dict.has_key(attrs, "not_copyable")
           let assert Ok(title) = dict.get(attrs, "title")

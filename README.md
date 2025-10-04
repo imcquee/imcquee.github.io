@@ -45,7 +45,7 @@
 - [ ] Migrate from vite to custom gleam serve script
 - [ ] Migrate from shiki script to gleam implementation (in build.gleam) that maps to shiki (maybe use chic)
 - [x] Add classname func
-- [ ] Pre-gen mermaid docs
+- [x] Pre-gen mermaid docs
 
 ### Credit
 

@@ -190,19 +190,6 @@ pub fn view(post: Post) -> Element(Nil) {
       page_type: "article",
     ),
     show_header: True,
-    custom_scripts: [clipboard.get_script(), ..get_mermaid_scripts()],
+    custom_scripts: [clipboard.get_script()],
   )
-}
-
-pub fn get_mermaid_scripts() -> List(Element(a)) {
-  [
-    html.script(
-      [attribute.src("/js/mermaid.tiny.js"), attribute.attribute("defer", "")],
-      "",
-    ),
-    html.script(
-      [],
-      "window.addEventListener(\"DOMContentLoaded\", () => {window.mermaid?.initialize({ startOnLoad: true });});",
-    ),
-  ]
 }
