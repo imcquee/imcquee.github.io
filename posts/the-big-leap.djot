@@ -44,17 +44,13 @@ We plan to:
 I'm trying to do this House Hunters style, so I've selected three places that I think are suitable for the group.
 I'll be covering one destination a per week.
 
-{class="text-lg font-bold"}
-\
-Non-Negotiables:
+### Non-Negotiables:
 
 * Max 1k USD housing expense per person
 * Safe, especially considering women, minorities and LGBTQ+
 * Possesses the wow factor
 
-{class="text-lg font-bold"}
-\
-Priorities:
+### Priorities:
 
 * Access to natural landmarks (ocean, lakes, mountains)
 * Solid climate
@@ -69,9 +65,8 @@ Priorities:
 \
 Now for this week's destination...
 
-{class="text-lg self-center items-center font-bold"}
-\
-Panama City, Panama
+{class="self-center"}
+### Panama City, Panama
 
 {class="md:max-w-3/4 self-center"}
 ![Panama City](/images/panama-city-scape.webp)
@@ -152,9 +147,7 @@ Comps:
 </table>
 ```
 
-{class="text-lg items-center font-bold"}
-\
-Airbnb
+### Airbnb
 
 
 {class="md:max-w-3/4 self-center pt-4"}
@@ -181,9 +174,7 @@ Airbnb
 </p>
 ```
 
-{class="text-lg items-center font-bold"}
-\
-Apartments
+### Apartments
 
 {class="md:max-w-3/4 self-center pt-4"}
 ![East Coast Living Room](/images/apartment-living-room.avif)
@@ -196,9 +187,7 @@ Apartments
 </p>
 ```
 
-{class="text-lg items-center font-bold"}
-\
-Nature
+### Nature
 
 {class="md:max-w-3/4 self-center pt-4"}
 ![Wilderness](/images/wilderness.webp)
@@ -209,9 +198,7 @@ Nature
 {class="md:max-w-3/4 self-center pt-4"}
 ![Mountains](/images/beach.webp)
 
-{class="text-lg items-center font-bold"}
-\
-Restaurants
+### Restaurants
 
 ``` =html
 <div class="flex w-full justify-center pt-8 pb-4">

@@ -3,6 +3,7 @@ import gleam/dict
 import gleam/list
 import gleam/option
 import gleam/regexp
+import gleam/result
 import gleam/string
 import jot
 import lustre/attribute.{class}
@@ -37,11 +38,25 @@ pub fn custom_renderer() -> Renderer(Element(msg)) {
         }
       }
     },
-    heading: fn(_, level, content) {
+    heading: fn(attrs, level, content) {
+      let custom_classes = dict.get(attrs, "class") |> result.unwrap("")
+
       case level {
-        1 -> html.h1([class(cn(["py-2", "text-3xl", "font-bold"]))], content)
-        2 -> html.h2([class(cn(["py-2", "text-2xl", "font-bold"]))], content)
-        3 -> html.h3([class(cn(["py-2", "text-xl", "font-bold"]))], content)
+        1 ->
+          html.h1(
+            [class(cn(["py-2", "text-2xl", "font-bold", custom_classes]))],
+            content,
+          )
+        2 ->
+          html.h2(
+            [class(cn(["py-2", "text-xl", "font-bold", custom_classes]))],
+            content,
+          )
+        3 ->
+          html.h3(
+            [class(cn(["py-2", "text-lg", "font-bold", custom_classes]))],
+            content,
+          )
         _ -> html.p([class(cn(["py-2", "font-bold"]))], content)
       }
     },
