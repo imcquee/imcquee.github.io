@@ -46,6 +46,7 @@
 - [ ] Migrate from shiki script to gleam implementation (in build.gleam) that maps to shiki (maybe use chic)
 - [x] Add classname func
 - [x] Pre-gen mermaid docs
+- [ ] Add dark mode
 
 ### Credit
 
