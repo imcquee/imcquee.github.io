@@ -99,7 +99,7 @@ pub fn view() -> Element(a) {
           ]),
           html.p([class(cn(["w-full", "text-2xl", "text-black"]))], [
             element.text(
-              "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this page to talk about things that excite me. You can also access my cv, contacts, and relevant links.",
+              "Hello 🙋🏾‍♂️ I'm a full-stack software engineer with 6+ years of experience. I use this site to showcase things that excite me. You can also access my cv, contacts, and relevant links.",
             ),
           ]),
         ],
