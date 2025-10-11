@@ -117,7 +117,7 @@ pub fn view() -> Element(a) {
   )
   |> content.view_page(
     page_info: content.PageInfo(
-      title: "Isaac McQueen website home page",
+      title: "Isaac McQueen",
       description: "Isaac McQueen's Personal Website and Blog",
       image: "/images/city.webp",
       page_type: "website",
