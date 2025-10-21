@@ -41,6 +41,7 @@
 - [x] Add support for custom Lustre elements like for example: callout, source code buttons etc.
 - [x] Add callout component
 - [x] Fix Project page mobile layout
+- [ ] Integrate sops-nix
 - [ ] Fixup env stuff, inject with workflow so I can remove from flake
 - [ ] Migrate from vite to custom gleam serve script
 - [ ] Migrate from shiki script to gleam implementation (in build.gleam) that maps to shiki (maybe use chic)
