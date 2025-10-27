@@ -18,6 +18,8 @@ pub fn main() {
   let assert Ok(out_dir) = envoy.get("OUT_DIR")
   let assert Ok(components_dir) = envoy.get("COMPONENTS_DIR")
 
+  echo "dog"
+
   let posts =
     get_posts(posts_dir)
     |> list.map(fn(post) { #(post.metadata.slug, post) })
@@ -53,16 +55,16 @@ pub fn main() {
       io.println("Build failed!")
     }
   }
-  get_components(components_dir)
+  get_components(out_dir, components_dir)
 }
 
-fn get_components(components_dir: String) {
+fn get_components(out_dir: String, components_dir: String) {
   let assert Ok(paths) = simplifile.read_directory(components_dir)
   use file <- list.map(paths)
   let es_build =
     esgleam.Config(
       autoinstall: True,
-      outdir: "./priv/js",
+      outdir: out_dir <> "/js",
       entry_points: [],
       format: esgleam.Esm,
       kind: esgleam.Library,

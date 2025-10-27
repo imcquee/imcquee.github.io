@@ -69,11 +69,11 @@
             gleam run -m build
             bun i
             bun run scripts/shiki.ts
-            tailwindcss -i ./src/website.css -o ./priv/output.css --minify
+            tailwindcss -i ./src/website.css -o $OUT_DIR/output.css --minify
           '';
           installPhase = ''
             mkdir -p $out
-            cp -r priv $out
+            cp -r $OUT_DIR $out
           '';
         };
       });
